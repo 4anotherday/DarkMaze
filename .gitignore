@@ -7,7 +7,6 @@
 *.dll
 *.log
 *.lib
-Motor/
 Temp/
 Debug/
 Release/
