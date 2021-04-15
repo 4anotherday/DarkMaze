@@ -110,6 +110,10 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Motor\lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>MotorUnitario.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>call "$(ProjectDir)compile_x86.bat"
+call "$(ProjectDir)compilePhysx_x86_DEBUG.bat"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -128,6 +132,10 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Motor\lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>MotorUnitario.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>call "$(ProjectDir)compile_x86.bat"
+call "$(ProjectDir)compilePhysx_x86.bat"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -143,6 +151,10 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Motor\lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>MotorUnitario.lib;MotorAudio.lib;MotorFisico.lib;MotorGrafico.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>call "$(ProjectDir)compile_x64.bat"
+call "$(ProjectDir)compilePhysx_x64_DEBUG.bat"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -162,6 +174,10 @@
       <AdditionalLibraryDirectories>$(SolutionDir)Motor\lib\$(Platform)\$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>MotorUnitario.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>call "$(ProjectDir)compile_x64.bat"
+call "$(ProjectDir)compilePhysx_x64.bat"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
