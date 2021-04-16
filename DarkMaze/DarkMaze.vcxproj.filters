@@ -18,12 +18,17 @@
     <ClCompile Include="..\Src\main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="..\Src\HealthComponent.cpp">
+    <ClCompile Include="..\Src\PlayerMovementComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Src\HealthComponent.h">
+    <ClInclude Include="..\Src\PlayerMovementComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\UserComponentsIDs.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

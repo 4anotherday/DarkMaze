@@ -21,6 +21,13 @@
   <ItemGroup>
     <ClCompile Include="..\Src\HealthComponent.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
+    <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\PlayerMovementComponent.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\UserComponentsIDs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\HealthComponent.h" />

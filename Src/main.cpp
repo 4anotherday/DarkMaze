@@ -1,5 +1,3 @@
-#define SDL_MAIN_HANDLED
-
 #include "Engine.h"
 #include "Exceptions.h"
 #include "Logger.h"
