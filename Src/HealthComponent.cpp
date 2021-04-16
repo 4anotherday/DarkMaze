@@ -1,6 +1,5 @@
 #include "PlayerHealth.h"
 #include "ComponentIDs.h"
-#include "Component.h"
 
 HealthComponent::HealthComponent(unsigned int healthPoints) :Component(ComponentId::HealthComponent), _maxHealthPoints(healthPoints), _healthPoints(healthPoints)
 {}

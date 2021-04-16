@@ -19,11 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\HealthComponent.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
-    <ClCompile Include="..\Src\PlayerHealth.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Src\PlayerHealth.h" />
+    <ClInclude Include="..\Src\HealthComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

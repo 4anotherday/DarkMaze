@@ -1,6 +1,10 @@
 #pragma once
 
-class Component;
+#ifndef HEALTHCOMPONENT_H
+#define HEALTHCOMPONENT_H
+
+#include "Component.h"
+
 class GameObject;
 
 class HealthComponent : public Component
@@ -51,3 +55,4 @@ private:
 	int _maxHealthPoints;
 };
 
+#endif // !HEALTHCOMPONENT_H
