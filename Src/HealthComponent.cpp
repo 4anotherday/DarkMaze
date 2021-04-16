@@ -1,10 +1,10 @@
-#include "PlayerHealth.h"
-#include "ComponentIDs.h"
+#include "HealthComponent.h"
+#include "UserComponentsIDs.h"
 
-HealthComponent::HealthComponent(unsigned int healthPoints) :Component(ComponentId::HealthComponent), _maxHealthPoints(healthPoints), _healthPoints(healthPoints)
+HealthComponent::HealthComponent(unsigned int healthPoints) :Component(UserComponentId::HealthComponent), _maxHealthPoints(healthPoints), _healthPoints(healthPoints)
 {}
 
-HealthComponent::HealthComponent(unsigned int healthPoints, GameObject* go) : Component(ComponentId::HealthComponent, go), _maxHealthPoints(healthPoints), _healthPoints(healthPoints)
+HealthComponent::HealthComponent(unsigned int healthPoints, GameObject* go) : Component(UserComponentId::HealthComponent, go), _maxHealthPoints(healthPoints), _healthPoints(healthPoints)
 {}
 
 void HealthComponent::addHPs(unsigned int n)
