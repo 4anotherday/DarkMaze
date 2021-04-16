@@ -1,11 +1,11 @@
 #include "PlayerMovementComponent.h"
 #include "GameObject.h"
-#include "ComponentIDs.h"
+#include "UserComponentsIDs.h"
 #include "KeyboardInput.h"
 #include "Transform.h"
 #include "RigidBodyComponent.h"
 
-PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Component(12, gameObject), 
+PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Component(UserComponentId::PlayerMovementComponent, gameObject), 
 	_tr(nullptr), _rb(nullptr),
 	_keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyBackward(KeyCode::KEYCODE_S),
 	_speedForward(5), _speedSideways(2), _speedBackwards(2)

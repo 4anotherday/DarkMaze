@@ -15,8 +15,8 @@ It's recommendable to keep an order when introducing a new Component to the enum
 
 namespace UserComponentId {
 	enum UserComponentId : unsigned int {
-
-		HealthComponent = ComponentId::__StartPointUser__
+		HealthComponent = ComponentId::__StartPointUser__,
+		PlayerMovementComponent
 	};
 }
 
