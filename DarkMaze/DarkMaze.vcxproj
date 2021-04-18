@@ -21,9 +21,11 @@
   <ItemGroup>
     <ClCompile Include="..\Src\HealthComponent.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
+    <ClCompile Include="..\Src\PlayerLightComponent.cpp" />
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\PlayerLightComponent.h" />
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
   </ItemGroup>
   <ItemGroup>
@@ -114,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Motor\Src\MotorUnitario\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Motor\Src\;$(SolutionDir)Motor\Src\MotorUnitario\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,7 +137,7 @@ call "$(ProjectDir)compilePhysx_x86_DEBUG.bat"</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Motor\Src\MotorUnitario\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Motor\Src\;$(SolutionDir)Motor\Src\MotorUnitario\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -156,7 +158,7 @@ call "$(ProjectDir)compilePhysx_x86.bat"</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Motor\Src\MotorUnitario\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Motor\Src\;$(SolutionDir)Motor\Src\MotorUnitario\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -177,7 +179,7 @@ call "$(ProjectDir)compilePhysx_x64_DEBUG.bat"</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Motor\Src\MotorUnitario\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Motor\Src\;$(SolutionDir)Motor\Src\MotorUnitario\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

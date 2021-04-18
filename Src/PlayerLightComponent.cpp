@@ -8,10 +8,12 @@ PlayerLightComponent::PlayerLightComponent(GameObject* go) : Component(UserCompo
 	_playerLight(nullptr)
 {
 	_playerLight = static_cast<LightComponent*>(go->getComponent(ComponentId::LightComponent));
-	//WIP
-	//Set light position to player position
-	//Set light type as Point light
 	_transform = static_cast<Transform*>(go->getComponent(ComponentId::Transform));
+
+	//Set light position to player position
+	_playerLight->setPosition(_transform->getPosition().getX(), _transform->getPosition().getY(), _transform->getPosition().getZ());
+	//Set light type as Point light
+	_playerLight->setType(Light::LightType::POINT);
 }
 
 PlayerLightComponent::~PlayerLightComponent()
@@ -20,4 +22,6 @@ PlayerLightComponent::~PlayerLightComponent()
 
 void PlayerLightComponent::update()
 {
+	//Set light position to player position
+	_playerLight->setPosition(_transform->getPosition().getX(), _transform->getPosition().getY(), _transform->getPosition().getZ());
 }
