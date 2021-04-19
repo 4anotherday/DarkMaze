@@ -14,6 +14,8 @@ xcopy ..\Motor\dependencies\Ogre\Build\bin\release\OgreMain.dll ..\bin\ /s /d /y
 xcopy ..\Motor\dependencies\Ogre\Build\bin\release\zlib.dll ..\bin\ /s /d /y
 xcopy ..\Motor\dependencies\Ogre\Build\bin\debug\OgreRTShaderSystem_d.dll ..\bin\ /s /d /y
 xcopy ..\Motor\dependencies\Ogre\Build\bin\release\OgreRTShaderSystem.dll ..\bin\ /s /d /y
+xcopy ..\Motor\dependencies\Ogre\Build\bin\release\OgreOverlay.dll ..\bin\ /s /d /y
+xcopy ..\Motor\dependencies\Ogre\Build\bin\debug\OgreOverlay_d.dll ..\bin\ /s /d /y
 
 rem copia las dlls explicitas de los plugins a bin\Ogre[Debug/Release]
 xcopy ..\Motor\dependencies\Ogre\Build\bin\debug\Codec_STBI_d.dll ..\bin\OgreDEBUG\ /s /d /y
