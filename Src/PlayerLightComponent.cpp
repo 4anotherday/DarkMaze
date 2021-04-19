@@ -4,7 +4,7 @@
 #include "Transform.h"
 #include "GameObject.h"
 
-PlayerLightComponent::PlayerLightComponent(GameObject* go) : Component(UserComponentId::PlayerLightComponent),
+PlayerLightComponent::PlayerLightComponent(GameObject* go) : Component(UserComponentId::PlayerLightComponent, go),
 	_playerLight(nullptr)
 {
 	_playerLight = static_cast<LightComponent*>(go->getComponent(ComponentId::LightComponent));
