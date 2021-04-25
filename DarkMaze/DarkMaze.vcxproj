@@ -20,11 +20,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\HealthComponent.cpp" />
+    <ClCompile Include="..\Src\InteractiveObjectComponent.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
+    <ClCompile Include="..\Src\PlayerInteractiveComponent.cpp" />
     <ClCompile Include="..\Src\PlayerLightComponent.cpp" />
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\InteractiveObjectComponent.h" />
+    <ClInclude Include="..\Src\PlayerInteractiveComponent.h" />
     <ClInclude Include="..\Src\PlayerLightComponent.h" />
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
   </ItemGroup>
