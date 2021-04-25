@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\FSMEnemyComponent.cpp" />
     <ClCompile Include="..\Src\HealthComponent.cpp" />
     <ClCompile Include="..\Src\InteractiveObjectComponent.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
@@ -27,6 +28,7 @@
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\FSMEnemyComponent.h" />
     <ClInclude Include="..\Src\InteractiveObjectComponent.h" />
     <ClInclude Include="..\Src\PlayerInteractiveComponent.h" />
     <ClInclude Include="..\Src\PlayerLightComponent.h" />

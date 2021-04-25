@@ -20,6 +20,7 @@ namespace UserComponentId {
 		PlayerLightComponent,
 		InteractiveObjectComponent,
 		PlayerInteractiveComponent,
+		FSMEnemyComponent,
 	};
 }
 
