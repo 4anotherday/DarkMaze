@@ -3,6 +3,7 @@
 #include "UserComponentsIDs.h"
 #include "Transform.h"
 #include "RigidBodyComponent.h"
+#include "ColliderComponent.h"
 #include "CameraComponent.h"
 #include "KeyboardInput.h"
 #include "MouseInput.h"
@@ -12,12 +13,13 @@ PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Compon
 	_tr(nullptr), _rb(nullptr), _camera(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
 	_cameraSpeed(1.0f),
 	_keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyBackward(KeyCode::KEYCODE_S), _keyCrouch(KeyCode::KEYCODE_LCTRL),
-	_speedForward(5), _speedSideways(2), _speedBackwards(2), _slowCrouching(0.5f),
+	_speedForward(5), _speedSideways(2), _speedBackwards(2), _slowCrouching(0.5f), _playerHeight(2.0f),
 	_crouching(false)
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 	_camera = static_cast<CameraComponent*>(_gameObject->getComponent(ComponentId::Camera));
+	_collider = static_cast<BoxColliderComponent*>(_gameObject->getComponent(ComponentId::BoxCollider));
 
 	_mouse->setMouseRelativeMode(true);
 }
@@ -86,10 +88,14 @@ void PlayerMovementComponent::manageCrouching()
 {
 	if (_keyboard->isKeyJustDown(_keyCrouch)) {
 		_crouching = true;
-		//Mover camara y el collider hacerlo mas chiquito
+		//Move camera and make smaller the collider
+		_camera->setPosition(_tr->getPosition().getX(), _playerHeight / 2, _tr->getPosition().getZ());
+		_collider->setScale(1, _playerHeight / 2, 1);
 	}
 	else if (_keyboard->isKeyJustUp(_keyCrouch)) {
 		_crouching = false;
-		//Mover camara y el collider ponerlo de vuelta
+		//Move camerea and restore collider
+		_camera->setPosition(_tr->getPosition().getX(), _playerHeight, _tr->getPosition().getZ());
+		_collider->setScale(1, _playerHeight, 1);
 	}
 }

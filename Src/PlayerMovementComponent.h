@@ -8,6 +8,7 @@
 class GameObject;
 class RigidBodyComponent;
 class Transform;
+class BoxColliderComponent;
 class CameraComponent;
 class EngineTime;
 class KeyBoardInput;
@@ -42,6 +43,7 @@ private:
 	Transform* _tr;
 	RigidBodyComponent* _rb;
 	CameraComponent* _camera;
+	BoxColliderComponent* _collider;
 
 	EngineTime* _time;
 	KeyBoardInput* _keyboard;
@@ -51,6 +53,7 @@ private:
 
 	KeyCode _keyForward, _keyLeft, _keyRight, _keyBackward, _keyCrouch;
 	float _speedForward, _speedSideways, _speedBackwards, _slowCrouching;
+	float _playerHeight;
 
 	bool _crouching;
 };
