@@ -22,3 +22,8 @@ xcopy ..\Motor\dependencies\Ogre\Build32\bin\debug\Codec_STBI_d.dll ..\bin\OgreD
 xcopy ..\Motor\dependencies\Ogre\Build32\bin\debug\RenderSystem_Direct3d11_d.dll ..\bin\OgreDEBUG\ /s /d /y
 xcopy ..\Motor\dependencies\Ogre\Build32\bin\release\Codec_STBI.dll ..\bin\OgreRELEASE\ /s /d /y
 xcopy ..\Motor\dependencies\Ogre\Build32\bin\release\RenderSystem_Direct3d11.dll ..\bin\OgreRELEASE\ /s /d /y
+
+rem LUA
+xcopy ..\Motor\dependencies\Lua\Buildx86\lua54.dll ..\bin\ /s /d /y
+
+exit 0
