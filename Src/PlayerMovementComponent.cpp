@@ -9,6 +9,8 @@
 #include "MouseInput.h"
 #include "EngineTime.h"
 
+ADD_COMPONENT(PlayerMovementComponent)
+
 PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Component(UserComponentId::PlayerMovementComponent, gameObject), 
 	_tr(nullptr), _rb(nullptr), _camera(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
 	_cameraSpeed(1.0f),

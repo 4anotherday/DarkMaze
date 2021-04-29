@@ -10,18 +10,12 @@ class GameObject;
 class HealthComponent : public Component
 {
 public:
-	/// <summary>
-	/// initialize the player with "lives" lives
-	/// </summary>
-	/// <param name="nLives">initial lives of the player</param>
-	HealthComponent(unsigned int healthPoints);
 
-	/// <summary>
-	/// initialize the player with "lives" lives
-	/// </summary>
-	/// <param name="nLives">initial lives of the player</param>
-	/// <param name="go">the gameObject this component will be attached to</param>
-	HealthComponent(unsigned int healthPoints, GameObject* go);
+	HealthComponent();
+
+
+	//TODO
+	void awake(luabridge::LuaRef& data) {}
 
 	/// <summary>
 	/// add n life points to the player

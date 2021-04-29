@@ -3,6 +3,8 @@
 #include "PlayerInteractiveComponent.h"
 #include "GameObject.h"
 
+ADD_COMPONENT(InteractiveObjectComponent)
+
 InteractiveObjectComponent::InteractiveObjectComponent() : Component(UserComponentId::InteractiveObjectComponent)
 {
 }

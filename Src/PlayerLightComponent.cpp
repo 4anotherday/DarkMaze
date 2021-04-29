@@ -4,20 +4,27 @@
 #include "Transform.h"
 #include "GameObject.h"
 
-PlayerLightComponent::PlayerLightComponent(GameObject* go) : Component(UserComponentId::PlayerLightComponent, go),
-	_playerLight(nullptr)
+ADD_COMPONENT(PlayerLightComponent)
+
+PlayerLightComponent::PlayerLightComponent() : Component(UserComponentId::PlayerLightComponent),
+	_playerLight(nullptr), _transform(nullptr)
 {
-	_playerLight = static_cast<LightComponent*>(go->getComponent(ComponentId::LightComponent));
-	_transform = static_cast<Transform*>(go->getComponent(ComponentId::Transform));
+	
+}
+
+PlayerLightComponent::~PlayerLightComponent()
+{
+}
+
+void PlayerLightComponent::start()
+{
+	_playerLight = static_cast<LightComponent*>(_gameObject->getComponent(ComponentId::LightComponent));
+	_transform = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 
 	//Set light position to player position
 	_playerLight->setPosition(_transform->getPosition().getX(), _transform->getPosition().getY(), _transform->getPosition().getZ());
 	//Set light type as Point light
 	_playerLight->setType(Light::LightType::POINT);
-}
-
-PlayerLightComponent::~PlayerLightComponent()
-{
 }
 
 void PlayerLightComponent::update()

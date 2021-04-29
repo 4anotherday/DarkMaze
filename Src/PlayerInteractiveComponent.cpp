@@ -6,6 +6,8 @@
 #include "GameObject.h"
 #include "Transform.h"
 
+ADD_COMPONENT(PlayerInteractiveComponent)
+
 PlayerInteractiveComponent::PlayerInteractiveComponent():Component(UserComponentId::PlayerInteractiveComponent), _objectToInteract(nullptr),
 _keyboard(KeyBoardInput::getInstance()), _transform(nullptr), _key(KeyCode::KEYCODE_E)
 {

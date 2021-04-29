@@ -16,10 +16,12 @@ public:
 	/// Class constructor
 	/// </summary>
 	/// <param name="go"> Component game object</param>
-	PlayerLightComponent(GameObject* go);
+	PlayerLightComponent();
 	~PlayerLightComponent();
 
-	void update();
+	void start() override;
+
+	void update() override;
 	
 private:
 	LightComponent* _playerLight;
