@@ -5,11 +5,13 @@
 #include "Component.h"
 #include "FSM/FSM.h"
 
-class InvisibleAIComponent : public Component {
-public:
-	InvisibleAIComponent();
+class Transform;
 
-	~InvisibleAIComponent();
+class InvisibleEnemyAIComponent : public Component {
+public:
+	InvisibleEnemyAIComponent();
+
+	~InvisibleEnemyAIComponent();
 
 	void awake(luabridge::LuaRef& data) override;
 
@@ -17,11 +19,15 @@ public:
 
 private:
 
+	void createFSM(luabridge::LuaRef& data);
+
 	template <typename T>
 	State* createState();
 
 	template <typename T>
 	Transition* createTransition();
+
+	Transform* _transformPlayer;
 
 	FSM* _ai;
 
@@ -29,14 +35,26 @@ private:
 	std::list<Transition*> _transitions;
 
 	//States
-	class FindState : public State { public: void execute(Component* component); };
-	class GoTowardsPlayerState : public State { public: void execute(Component* component); };
-	class AttackPlayerState : public State { public: void execute(Component* component); };
+	class FindState : public State { 
+		void execute(Component* component); 
+	};
+	class GoTowardsPlayerState : public State { 
+		void execute(Component* component);
+	};
+	class AttackPlayerState : public State { 
+		void execute(Component* component); 
+	};
 
 	//Transitions
-	class LostSightTransition : public Transition { public: bool evaluate(Component* component); };
-	class GainSightTransition : public Transition { public: bool evaluate(Component* component); };
-	class InRangeTransition : public Transition { public: bool evaluate(Component* component); };
+	class LostSightTransition : public Transition { 
+		bool evaluate(Component* component); 
+	};
+	class GainSightTransition : public Transition { 
+		bool evaluate(Component* component);
+	};
+	class InRangeTransition : public Transition { 
+		bool evaluate(Component* component); 
+	};
 };
 
 #endif // !_INVISIBLE_AI_COMPONENT_

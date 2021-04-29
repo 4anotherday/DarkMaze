@@ -1,15 +1,20 @@
 #include "InvisibleEnemyAIComponent.h"
 #include "UserComponentsIDs.h"
+#include "Transform.h"
+#include "Engine.h"
+#include "GameObject.h"
 
-ADD_COMPONENT(InvisibleAIComponent)
+#define CAST_COMPONENT component = static_cast<InvisibleEnemyAIComponent*>(component)
 
-InvisibleAIComponent::InvisibleAIComponent() : Component(UserComponentId::InvisibleEnemyAIComponent),
-	_ai(nullptr), _states(), _transitions()
+ADD_COMPONENT(InvisibleEnemyAIComponent)
+
+InvisibleEnemyAIComponent::InvisibleEnemyAIComponent() : Component(UserComponentId::InvisibleEnemyAIComponent),
+	_transformPlayer(nullptr), _ai(nullptr), _states(), _transitions()
 {
 
 }
 
-InvisibleAIComponent::~InvisibleAIComponent()
+InvisibleEnemyAIComponent::~InvisibleEnemyAIComponent()
 {
 	delete _ai; _ai = nullptr;
 	for (State* s : _states) {
@@ -20,7 +25,21 @@ InvisibleAIComponent::~InvisibleAIComponent()
 	}
 }
 
-void InvisibleAIComponent::awake(luabridge::LuaRef& data)
+void InvisibleEnemyAIComponent::awake(luabridge::LuaRef& data)
+{
+	GameObject* player = Engine::getInstance()->findGameObject("player");
+
+	_transformPlayer = GETCOMPONENT(Transform, ComponentId::Transform);
+
+	createFSM(data);
+}
+
+void InvisibleEnemyAIComponent::update()
+{
+	_ai->run();
+}
+
+void InvisibleEnemyAIComponent::createFSM(luabridge::LuaRef& data)
 {
 	_ai = new FSM(this);
 
@@ -34,18 +53,13 @@ void InvisibleAIComponent::awake(luabridge::LuaRef& data)
 
 	_ai->add(find, gainSightTransition, towardsPlayer);
 	_ai->add(towardsPlayer, lostSightTransition, find);
-	_ai->add(find, inRangeTransition, attackPlayer);
+
 	_ai->add(towardsPlayer, inRangeTransition, attackPlayer);
 	_ai->add(attackPlayer, lostSightTransition, find);
 }
 
-void InvisibleAIComponent::update()
-{
-	_ai->run();
-}
-
 template<typename T>
-State* InvisibleAIComponent::createState()
+State* InvisibleEnemyAIComponent::createState()
 {
 	T* state = new T();
 	_states.push_back(state);
@@ -53,7 +67,7 @@ State* InvisibleAIComponent::createState()
 }
 
 template<typename T>
-Transition* InvisibleAIComponent::createTransition()
+Transition* InvisibleEnemyAIComponent::createTransition()
 {
 	T* transition = new T();
 	_transitions.push_back(transition);
@@ -66,19 +80,19 @@ Transition* InvisibleAIComponent::createTransition()
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
-void InvisibleAIComponent::FindState::execute(Component* component)
+void InvisibleEnemyAIComponent::FindState::execute(Component* component)
 {
-
+	CAST_COMPONENT;
 }
 
-void InvisibleAIComponent::GoTowardsPlayerState::execute(Component* component)
+void InvisibleEnemyAIComponent::GoTowardsPlayerState::execute(Component* component)
 {
-
+	CAST_COMPONENT;
 }
 
-void InvisibleAIComponent::AttackPlayerState::execute(Component* component)
+void InvisibleEnemyAIComponent::AttackPlayerState::execute(Component* component)
 {
-
+	CAST_COMPONENT;
 }
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------
@@ -87,17 +101,20 @@ void InvisibleAIComponent::AttackPlayerState::execute(Component* component)
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------------------------------------
 
-bool InvisibleAIComponent::LostSightTransition::evaluate(Component* component)
+bool InvisibleEnemyAIComponent::LostSightTransition::evaluate(Component* component)
 {
+	CAST_COMPONENT;
 	return false;
 }
 
-bool InvisibleAIComponent::GainSightTransition::evaluate(Component* component)
+bool InvisibleEnemyAIComponent::GainSightTransition::evaluate(Component* component)
 {
+	CAST_COMPONENT;
 	return false;
 }
 
-bool InvisibleAIComponent::InRangeTransition::evaluate(Component* component)
+bool InvisibleEnemyAIComponent::InRangeTransition::evaluate(Component* component)
 {
+	CAST_COMPONENT;
 	return false;
 }
