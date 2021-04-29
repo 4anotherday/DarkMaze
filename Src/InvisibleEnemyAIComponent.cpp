@@ -36,7 +36,7 @@ void InvisibleEnemyAIComponent::awake(luabridge::LuaRef& data)
 
 void InvisibleEnemyAIComponent::update()
 {
-	_ai->run();
+	_ai->step();
 }
 
 void InvisibleEnemyAIComponent::createFSM(luabridge::LuaRef& data)
@@ -56,6 +56,8 @@ void InvisibleEnemyAIComponent::createFSM(luabridge::LuaRef& data)
 
 	_ai->add(towardsPlayer, inRangeTransition, attackPlayer);
 	_ai->add(attackPlayer, lostSightTransition, find);
+
+	_ai->setInitialState(find);
 }
 
 template<typename T>

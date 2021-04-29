@@ -10,15 +10,31 @@
 class FSM {
 public:
 
+	/// <summary>
+	/// </summary>
+	/// <param name="component">: component to be called to get usefull data</param>
 	FSM(Component* component);
 
-	~FSM();
-
+	/// <summary>
+	/// (Source -> Target) if transitions returns true
+	/// </summary>
 	void add(State* source, Transition* transition, State* target);
 
+	/// <summary>
+	/// Starting state
+	/// </summary>
+	/// <param name="initial"></param>
 	void setInitialState(State* initial);
 
-	void run();
+	/// <summary>
+	/// Executes one step
+	/// </summary>
+	void step();
+
+	/// <summary>
+	/// Sets the currentState to be initialState
+	/// </summary>
+	void reset();
 
 private:
 

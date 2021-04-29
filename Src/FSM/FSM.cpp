@@ -1,10 +1,7 @@
 #include "FSM.h"
+#include "Exceptions.h"
 
 FSM::FSM(Component* component): _component(component), _current(nullptr), _initial(nullptr), _machine()
-{
-}
-
-FSM::~FSM()
 {
 }
 
@@ -22,10 +19,15 @@ void FSM::add(State* source, Transition* transition, State* target)
 void FSM::setInitialState(State* initial)
 {
 	_initial = initial;
+	_current = initial;
 }
 
-void FSM::run()
+void FSM::step()
 {
+	if (_current == nullptr) {
+		throw NullptrObjectException("FSM: Current state was not set");
+	}
+
 	auto it = _machine.find(_current);
 	//If there are no transitions to be made
 	if (it == _machine.end()) {
@@ -41,4 +43,9 @@ void FSM::run()
 	}
 
 	_current->execute(_component);
+}
+
+void FSM::reset()
+{
+	_current = _initial;
 }
