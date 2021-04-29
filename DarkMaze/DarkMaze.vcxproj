@@ -20,8 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Src\FSMEnemyComponent.cpp" />
+    <ClCompile Include="..\Src\FSM\FSM.cpp" />
     <ClCompile Include="..\Src\HealthComponent.cpp" />
     <ClCompile Include="..\Src\InteractiveObjectComponent.cpp" />
+    <ClCompile Include="..\Src\InvisibleEnemyAIComponent.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
     <ClCompile Include="..\Src\PlayerInteractiveComponent.cpp" />
     <ClCompile Include="..\Src\PlayerLightComponent.cpp" />
@@ -29,7 +31,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\FSMEnemyComponent.h" />
+    <ClInclude Include="..\Src\FSM\FSM.h" />
+    <ClInclude Include="..\Src\FSM\State.h" />
+    <ClInclude Include="..\Src\FSM\Transition.h" />
     <ClInclude Include="..\Src\InteractiveObjectComponent.h" />
+    <ClInclude Include="..\Src\InvisibleEnemyAIComponent.h" />
     <ClInclude Include="..\Src\PlayerInteractiveComponent.h" />
     <ClInclude Include="..\Src\PlayerLightComponent.h" />
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
