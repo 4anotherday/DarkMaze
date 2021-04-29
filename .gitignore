@@ -19,3 +19,5 @@ bin/DarkMaze_x64.exe
 bin/DarkMaze_x64_DEBUG.exe
 bin/DarkMaze_x86.exe
 bin/DarkMaze_x86_DEBUG.exe
+bin/Assets/Logs/*
+bin/Assets/ShaderCache/*

@@ -1,0 +1,1 @@
+16:08:16 -> INFO: Archivo de carga de escena de lua correctamente inicializado
