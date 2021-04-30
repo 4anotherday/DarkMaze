@@ -26,6 +26,7 @@
     <ClCompile Include="..\Src\PlayerInteractiveComponent.cpp" />
     <ClCompile Include="..\Src\PlayerLightComponent.cpp" />
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
+    <ClCompile Include="..\Src\ScreamerAIEnemyComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\FSMEnemyComponent.h" />
@@ -35,6 +36,7 @@
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\ScreamerAIEnemyComponent.h" />
     <ClInclude Include="..\Src\UserComponentsIDs.h" />
   </ItemGroup>
   <ItemGroup>

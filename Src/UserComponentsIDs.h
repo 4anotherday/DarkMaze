@@ -21,6 +21,7 @@ namespace UserComponentId {
 		InteractiveObjectComponent,
 		PlayerInteractiveComponent,
 		FSMEnemyComponent,
+		ScreamerAIEnemyComponent
 	};
 }
 
