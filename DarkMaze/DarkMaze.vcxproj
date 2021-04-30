@@ -24,6 +24,7 @@
     <ClCompile Include="..\Src\HealthComponent.cpp" />
     <ClCompile Include="..\Src\InteractiveObjectComponent.cpp" />
     <ClCompile Include="..\Src\InvisibleEnemyAIComponent.cpp" />
+    <ClCompile Include="..\Src\KamikazeEnemyComponent.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
     <ClCompile Include="..\Src\PlayerInteractiveComponent.cpp" />
     <ClCompile Include="..\Src\PlayerLightComponent.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="..\Src\FSM\Transition.h" />
     <ClInclude Include="..\Src\InteractiveObjectComponent.h" />
     <ClInclude Include="..\Src\InvisibleEnemyAIComponent.h" />
+    <ClInclude Include="..\Src\KamikazeEnemyComponent.h" />
     <ClInclude Include="..\Src\PlayerInteractiveComponent.h" />
     <ClInclude Include="..\Src\PlayerLightComponent.h" />
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
