@@ -41,7 +41,7 @@ protected:
 	/// </summary>
 	virtual void actionState();
 
-	double _rangeToAttack;
+	double _distanceAction;
 private:
 	AudioSourceComponent* _audioSource;
 	Transform* _trPlayer;
