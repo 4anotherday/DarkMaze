@@ -6,8 +6,9 @@
 #include "FSM/FSM.h"
 #include "Vector3.h"
 #include <algorithm>
-class Transform;
 
+class Transform;
+class RigidBodyComponent;
 
 class InvisibleEnemyAIComponent : public Component {
 public:
@@ -19,12 +20,16 @@ public:
 
 	void update() override;
 
+	void moveTowardsPos(const Vector3& pos);
+
 	inline Transform* getMyTransform() const { return _myTransform; }
 	inline Transform* getPlayerTransform() const { return _transformPlayer; }
 
 	inline void updateRadiusFind(double delta) { _radiusFindPlayer = std::min(_maxRadiusFindPlayer, std::max(_minRadiusFindPlayer, (_radiusFindPlayer + delta))); }
+	inline void setFindRadius(double radius) { _radiusFindPlayer = std::min(_maxRadiusFindPlayer, std::max(_minRadiusFindPlayer, radius)); }
 
-	inline void setRadius(double radius) { _radiusFindPlayer = std::min(_maxRadiusFindPlayer, std::max(_minRadiusFindPlayer, radius));}
+	inline void justLostSight();
+	inline const Vector3& getLastKnownPosition() const { return _lastKnownPosition; }
 
 private:
 
@@ -39,89 +44,105 @@ private:
 	Transform* _transformPlayer;
 	Transform* _myTransform;
 
+	RigidBodyComponent* _rb;
+	double _speed;
+
 	FSM* _ai;
 
 	std::list<State*> _states;
 	std::list<Transition*> _transitions;
 
+	//--------------------------------------------------------------------------------
+	//----  AI-RELATED VARIABLES    AI-RELATED VARIABLES    AI-RELATED VARIABLES  ----
+	//--------------------------------------------------------------------------------
+
+	//Find-related
 	double _radiusFindPlayer, _maxRadiusFindPlayer, _minRadiusFindPlayer;
 
-	//States
+	//Sighting-related
+	double _sightingDistance;
+	Vector3 _lastKnownPosition;
+	float _justLostSightTime;
+	float _lostSightSearchTime;
+
+	//Attack-related
+	float _attackRange;
+
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+	//-------------  STATES    STATES    STATES    STATES    STATES    STATES    STATES    STATES    STATES    STATES    STATES    STATES  -------------
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+
 	class FindState : public State { 
 	public:	
 		void execute(Component* component); 
-		inline void setRadius(double* radius) { _radiusFromPlayer = radius; }
+		inline void setFindRadius(double* radius) { _radiusFromPlayer = radius; }
+		inline void setJustLostTime(float* time) { _justLostTime = time; }
 	private:
-		void findNewTargetPos(const Vector3& playerPos);
-		void moveToTargetPos();
-
-		double* _radiusFromPlayer;
-		Vector3 _targetPos;
+		double* _radiusFromPlayer = nullptr;
+		float* _justLostTime = nullptr;
+		Vector3 _targetPos = Vector3();
 	};
 
 	class GoTowardsPlayerState : public State { 
 	public:
-
 		void execute(Component* component);
 	private:
-
 	};
 
 	class AttackPlayerState : public State { 
 	public:
-
 		void execute(Component* component); 
 	private:
-
 	};
 
 	class TowardsSoundState : public State {
 	public:
-
 		void execute(Component* component);
 	private:
-
 	};
 
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+	//-------------  TRANSITIONS   TRANSITIONS  TRANSITIONS  TRANSITIONS  TRANSITIONS  TRANSITIONS  TRANSITIONS  TRANSITIONS  TRANSITIONS  -------------
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
+	//--------------------------------------------------------------------------------------------------------------------------------------------------
 
-	//Transitions
 	class LostSightTransition : public Transition {
 	public:
-
 		bool evaluate(Component* component); 
+		inline void setSightingDistance(double* distance) { _sightingDistance = distance; }
 	private:
+		double* _sightingDistance = nullptr;
 	};
 
 	class GainSightTransition : public Transition { 
 	public:
-
 		bool evaluate(Component* component);
+		inline void setSightingDistance(double* distance) { _sightingDistance = distance; }
 	private:
-
+		double* _sightingDistance = nullptr;
 	};
 
 	class LoudSoundTransition : public Transition {
 	public:
-
 		bool evaluate(Component* component);
 	private:
-
 	};
 
 	class NoSoundTransition : public Transition {
 	public:
-
 		bool evaluate(Component* component);
 	private:
-
 	};
 
 	class InRangeTransition : public Transition { 
 	public:
-
 		bool evaluate(Component* component); 
+		inline void setRange(float range) { _attackRange = range; }
 	private:
-
+		float _attackRange;
 	};
 };
 
