@@ -59,7 +59,7 @@ void InvisibleEnemyAIComponent::moveTowardsPos(const Vector3& pos)
 	_rb->addForce(dir);
 }
 
-inline void InvisibleEnemyAIComponent::justLostSight()
+void InvisibleEnemyAIComponent::justLostSight()
 {
 	_justLostSightTime = _lostSightSearchTime;
 	_lastKnownPosition = _transformPlayer->getPosition();
@@ -145,6 +145,7 @@ void InvisibleEnemyAIComponent::FindState::execute(Component* component)
 	}
 	comp->moveTowardsPos(_targetPos);
 }
+
 
 void InvisibleEnemyAIComponent::GoTowardsPlayerState::execute(Component* component)
 {

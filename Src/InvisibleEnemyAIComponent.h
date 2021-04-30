@@ -28,7 +28,7 @@ public:
 	inline void updateRadiusFind(double delta) { _radiusFindPlayer = std::min(_maxRadiusFindPlayer, std::max(_minRadiusFindPlayer, (_radiusFindPlayer + delta))); }
 	inline void setFindRadius(double radius) { _radiusFindPlayer = std::min(_maxRadiusFindPlayer, std::max(_minRadiusFindPlayer, radius)); }
 
-	inline void justLostSight();
+	void justLostSight();
 	inline const Vector3& getLastKnownPosition() const { return _lastKnownPosition; }
 
 private:
@@ -142,7 +142,7 @@ private:
 		bool evaluate(Component* component); 
 		inline void setRange(float range) { _attackRange = range; }
 	private:
-		float _attackRange;
+		float _attackRange = 2;
 	};
 };
 
