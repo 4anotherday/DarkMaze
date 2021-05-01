@@ -8,7 +8,7 @@
 ADD_COMPONENT(FSMEnemyComponent)
 
 FSMEnemyComponent::FSMEnemyComponent() : Component(UserComponentId::FSMEnemyComponent), _distanceAction(),
- _trPlayer(nullptr), _trEnemy(nullptr), _action(false)
+ _trPlayer(nullptr), _trEnemy(nullptr), _audioSource(nullptr), _action(false)
 {
 }
 
