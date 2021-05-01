@@ -12,34 +12,56 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 3
+HowManyGameObjects = 4
 -- Player
 go_0 = {}
-go_0[0] = { Name = "Player", HowManyCmps = 6}
-go_0[1] = { Component = "Transform", Coord = {X = 1, Y = 1, Z = 1}}
-go_0[2] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
-go_0[3] = { Component = "PlayerMovementComponent", PlayerHeight = 100}
-go_0[4] = { Component = "PlayerLightComponent"}
-go_0[5] = { Component = "RigidBody", Type="Box", Mass=9, Width=20, Depth=20, Height=100}
-go_0[6] = { Component = "Camera", Orientation = {X = 3, Y = 2, Z = 1}}
+go_0[0] = { Name = "Player", HowManyCmps = 4, Persist = false}
+go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 20, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+--go_0[2] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
+go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 10}
+--go_0[4] = { Component = "PlayerLightComponent"}
+go_0[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, ConstrainAngle = true}
+go_0[4] = { Component = "Camera"}
 
 -- Suelo
 go_1 = {}
 go_1[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
-go_1[1] = { Component = "Transform", Coord = {X = 0, Y = -80, Z = -300}}
+go_1[1] = { Component = "Transform", Coord = {X = 0, Y = -5, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 10, Y = 1, Z = 10}}
 go_1[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Brown", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=5, Y=.1, Z=5}, LookAt ={X=1, Y=1, Z=1},
-			Visible=true, Shadows=true, RenderingDistance = 1000}
-go_1[3] = { Component = "BoxCollider", Type="Box",Width=1000,Height=10,Depth=1000,IsTrigger=true}
-
--- Objeto sonoro
-go_2 = {}
-go_2[0] = { Name = "ObjetoSonoro", HowManyCmps = 3}
-go_2[1] = { Component = "Transform", Coord = {X = 20, Y = 1, Z = 1}}
-go_2[2] = { Component = "AudioSource", Route = "../Audio/ProtoDarkMaze_Menu.mp3"}
-go_2[3] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_1[3] = { Component = "BoxCollider", Type="Box",Width=10,Height=1,Depth=10,IsTrigger=false}
+
+-- Cabesa ogre
+go_2 = {}
+go_2[0] = { Name = "Dummie2", HowManyCmps = 3, Persist = false}
+go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = -10}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+go_2[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_2[3] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
+		    Diffuse = {Red = 1, Green= 1, Blue = 1}, 
+			Specular = {Red = 1, Green= 1, Blue = 1}}
+
+-- Cabesa ogre 2
+go_3 = {}
+go_3[0] = { Name = "Dummie", HowManyCmps = 3, Persist = false}
+go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = 10}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
+		RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+		Visible=true, Shadows=true, RenderingDistance = 1000}
+go_3[3] = { Component = "LightComponent", LightType= "POINT", Visible = true,
+		    Diffuse = {Red = 1, Green= 1, Blue = 1}, 
+			Specular = {Red = 1, Green= 1, Blue = 1}}
+
+-- Objeto sonoro
+-- go_2 = {}
+-- go_2[0] = { Name = "ObjetoSonoro", HowManyCmps = 3}
+-- go_2[1] = { Component = "Transform", Coord = {X = 20, Y = 1, Z = 1}}
+-- go_2[2] = { Component = "AudioSource", Route = "../Audio/ProtoDarkMaze_Menu.mp3"}
+-- go_2[3] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", 
+-- 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
+-- 			Visible=true, Shadows=true, RenderingDistance = 1000}
 
  
 

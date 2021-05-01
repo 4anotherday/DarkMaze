@@ -14,15 +14,11 @@ ADD_COMPONENT(PlayerMovementComponent)
 
 PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Component(UserComponentId::PlayerMovementComponent, gameObject), 
 	_tr(nullptr), _rb(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
-	_cameraSpeed(1.0f),
+	_cameraSpeed(10.0f),
 	_keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyBackward(KeyCode::KEYCODE_S), _keyCrouch(KeyCode::KEYCODE_LCTRL),
 	_speedForward(5), _speedSideways(2), _speedBackwards(2), _slowCrouching(0.5f), _playerHeight(2.0f),
 	_crouching(false)
 {
-	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
-
-	_mouse->setMouseRelativeMode(true);
 }
 
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
@@ -46,6 +42,15 @@ void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 		_slowCrouching = data["PlayerHeight"].cast<float>();
 }
 
+void PlayerMovementComponent::start()
+{
+	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	_cam = static_cast<CameraComponent*>(_gameObject->getComponent(ComponentId::Camera));
+
+	_mouse->setMouseRelativeMode(true);
+}
+
 void PlayerMovementComponent::update()
 {
 	float deltaTime = _time->deltaTime();
@@ -65,16 +70,24 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 
 	double pitch = 0, yaw = 0;
 	//Limit the pitch angle
-	if (abs(_tr->getRotation().getY() + deltaY * _cameraSpeed * deltaTime) < 89.0f) {
+	if (abs(_tr->getRotation().getX() + deltaY * _cameraSpeed * deltaTime) < 15.0f) {
 		pitch = deltaY * _cameraSpeed * deltaTime;
+		_cam->pitchDegrees(-deltaY, true);
+		if()
+		_cam->pitchDegrees(-deltaY, true);
 	}
 	yaw = deltaX * _cameraSpeed * deltaTime;
-	_tr->setRotation(Vector3(_tr->getRotation().getX() + pitch, _tr->getRotation().getY() + yaw, 0));
+	_cam->yawDegrees(-deltaX, false);
+
+	double x = _tr->getRotation().getX() + pitch;
+	double y = _tr->getRotation().getY() + yaw;
+	_tr->setRotation(Vector3(x, y, 0));
 }
 
 void PlayerMovementComponent::manageMovement(const float deltaTime)
 {
-	Vector3 velocity = _tr->getForward();
+	Vector3 velocity = Vector3(0, 0, -1);
+	//Vector3 velocity = _tr->getForward();
 	velocity.normalize();
 	Vector3 rightVector = { velocity.getZ(), 0, -velocity.getX() };
 	rightVector.normalize();
