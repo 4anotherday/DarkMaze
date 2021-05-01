@@ -3,14 +3,15 @@
 #define _KAMIKAZE_ENEMY_COMPONENT_
 
 #include "Component.h"
+#include "Vector3.h"
 
 class Transform;
 class RigidBodyComponent;
 class ColliderComponent;
-class Vector3;
 class InvisibleEnemyAIComponent;
 class HealthComponent;
 class ParticleSystemComponent;
+class AudioSourceComponent;
 
 class KamikazeEnemyComponent : public Component {
 public:

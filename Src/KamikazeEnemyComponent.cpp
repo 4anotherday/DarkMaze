@@ -8,7 +8,6 @@
 #include "EngineTime.h"
 #include "InvisibleEnemyAIComponent.h"
 #include "HealthComponent.h"
-#include "Vector3.h"
 #include "includeLUA.h"
 #include "ParticleSystemComponent.h"
 #include "AudioSourceComponent.h"
