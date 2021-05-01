@@ -42,8 +42,6 @@ private:
 
 	Transform* _tr;
 	RigidBodyComponent* _rb;
-	CameraComponent* _camera;
-	BoxColliderComponent* _collider;
 
 	EngineTime* _time;
 	KeyBoardInput* _keyboard;
