@@ -22,6 +22,7 @@ namespace UserComponentId {
 		PlayerInteractiveComponent,
 		FSMEnemyComponent,
 		InvisibleEnemyAIComponent,
+		KamikazeEnemyComponent,
 	};
 }
 

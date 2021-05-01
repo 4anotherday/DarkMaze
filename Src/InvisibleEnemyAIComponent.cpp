@@ -14,7 +14,8 @@
 ADD_COMPONENT(InvisibleEnemyAIComponent)
 
 InvisibleEnemyAIComponent::InvisibleEnemyAIComponent() : Component(UserComponentId::InvisibleEnemyAIComponent),
-	_rb(nullptr), _speed(3.0), _transformPlayer(nullptr), _myTransform(nullptr), _ai(nullptr), _states(), _transitions(), 
+	_rb(nullptr), _transformPlayer(nullptr), _myTransform(nullptr), _ai(nullptr), _states(), _transitions(),
+	_speed(3.0),
 	_radiusFindPlayer(15.0), _minRadiusFindPlayer(4.0), _maxRadiusFindPlayer(20.0),
 	_sightingDistance(19.0), _lastKnownPosition(), _justLostSightTime(-1.0f), _lostSightSearchTime(3.0f),
 	_attackRange(2.0f), 
