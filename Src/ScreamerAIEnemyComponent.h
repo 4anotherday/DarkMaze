@@ -33,30 +33,33 @@ public:
 
 protected:
 	/// <summary>
-	/// State that enemy realize when player is not near
+	/// State where the screamer stays in its place and makes noises to attract the player
 	/// </summary>
 	virtual void idlestate();
 
 	/// <summary>
-	/// State that enemy realize when player is near.
+	/// State where the screamer detects the player and moves towards the player. It is done with raycast
 	/// Do not override this method.
 	/// </summary>
 	virtual void movingState();
 
 	/// <summary>
-	/// State that enemy realize when player is near.
+	/// State where the screamer get close enough to the player and starts screaming heavily, noticing the invisible enemy and scaring the player
+	/// Close is considered its detect range/3
 	/// Do not override this method.
 	/// </summary>
 	virtual void screamingState();
 
+	//TBD: Given by lua or gameobject itself?
 	double _rangeToAttack;
 private:
 	AudioSourceComponent* _audioSource;
-	Transform* _trPlayer;
-	Transform* _trEnemy;
+	Transform* _tranformPlayer;
+	Transform* _transformEnemy;
 	RigidBodyComponent* _rigidBodyEnemy;
 
-	bool _move;
+	bool _startToMove;
+	bool _startScream;
 };
 
 #endif // !SCREAMERAIMENEMYCOMPONENT_H

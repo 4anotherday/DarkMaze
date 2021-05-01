@@ -5,11 +5,12 @@
 #include "GameObject.h"
 #include "Engine.h"
 #include "RigidBodyComponent.h"
+#include "EngineTime.h"
 
 ADD_COMPONENT(ScreamerAIEnemyComponent)
 
 ScreamerAIEnemyComponent::ScreamerAIEnemyComponent() : Component(UserComponentId::ScreamerAIEnemyComponent), _rangeToAttack(),
- _trPlayer(nullptr), _trEnemy(nullptr), _move(false), _audioSource(nullptr), _rigidBodyEnemy(nullptr)
+ _tranformPlayer(nullptr), _transformEnemy(nullptr), _startToMove(false), _startScream(false), _audioSource(nullptr), _rigidBodyEnemy(nullptr)
 {
 }
 
@@ -20,22 +21,22 @@ ScreamerAIEnemyComponent::~ScreamerAIEnemyComponent()
 void ScreamerAIEnemyComponent::start()
 {
 	_rigidBodyEnemy = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
-	_trPlayer = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
-	_trEnemy = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
+	_tranformPlayer = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
+	_transformEnemy = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_audioSource = static_cast<AudioSourceComponent*>(_gameObject->getComponent(ComponentId::AudioSource));
 }
 
 void ScreamerAIEnemyComponent::update()
 {
-	double distance = (_trPlayer->getPosition() - _trEnemy->getPosition()).magnitude();
+	double distance = (_tranformPlayer->getPosition() - _transformEnemy->getPosition()).magnitude();
 	if (distance <= _rangeToAttack) {
-		_move = true;	
+		_startToMove = true;	
 	}
 	else idlestate();
 
-	if (_move) {
+	if (_startToMove) {
 		movingState();
-		if (distance <= _rangeToAttack / 2) {
+		if (distance <= _rangeToAttack / 3 && !_startScream) {
 			screamingState();
 		}
 	}
@@ -50,11 +51,11 @@ void ScreamerAIEnemyComponent::idlestate()
 
 void ScreamerAIEnemyComponent::movingState()
 {
-	_move = true;
+	_startToMove = true;
 	//TODO: Parar audio idle	
 
-	//Raycsast o pathfinding para encontrar el camino al jugador
-	Vector3 dir = _trPlayer->getPosition();
+	//TODO: Raycast o pathfinding para encontrar el camino al jugador
+	Vector3 dir = _tranformPlayer->getPosition();
 	_rigidBodyEnemy->moveTo(dir);
 }
 
@@ -62,5 +63,6 @@ void ScreamerAIEnemyComponent::screamingState()
 {
 	//1 corresponds with attack
 	_audioSource->playAudio(1);
+	_startScream = true;
 	// WARN THE INVISIBLE ENEMY 
 }
