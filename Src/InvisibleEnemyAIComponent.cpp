@@ -7,6 +7,7 @@
 #include <random>
 #include "EngineTime.h"
 #include "RayCast.h"
+#include "includeLUA.h"
 
 #define CAST_COMPONENT InvisibleEnemyAIComponent* comp = static_cast<InvisibleEnemyAIComponent*>(component);
 
@@ -14,9 +15,10 @@ ADD_COMPONENT(InvisibleEnemyAIComponent)
 
 InvisibleEnemyAIComponent::InvisibleEnemyAIComponent() : Component(UserComponentId::InvisibleEnemyAIComponent),
 	_rb(nullptr), _speed(3.0), _transformPlayer(nullptr), _myTransform(nullptr), _ai(nullptr), _states(), _transitions(), 
-	_radiusFindPlayer(15), _minRadiusFindPlayer(4), _maxRadiusFindPlayer(20),
-	_sightingDistance(19), _lastKnownPosition(), _justLostSightTime(-1.0f), _lostSightSearchTime(3.0f),
-	_attackRange(2.0f)
+	_radiusFindPlayer(15.0), _minRadiusFindPlayer(4.0), _maxRadiusFindPlayer(20.0),
+	_sightingDistance(19.0), _lastKnownPosition(), _justLostSightTime(-1.0f), _lostSightSearchTime(3.0f),
+	_attackRange(2.0f), 
+	_hearingDistance(20.0), _soundLocation(), _soundTime(-1.0f), _soundTimeSearchTime(8.0f)
 {
 
 }
@@ -34,6 +36,27 @@ InvisibleEnemyAIComponent::~InvisibleEnemyAIComponent()
 
 void InvisibleEnemyAIComponent::awake(luabridge::LuaRef& data)
 {
+	if (LUAFIELDEXIST(Speed))					_speed = GETLUAFIELD(Speed, float);
+
+	//Find
+	if (LUAFIELDEXIST(InitialRadiusFindPlayer))	_radiusFindPlayer = GETLUAFIELD(InitialRadiusFindPlayer, double);
+	if (LUAFIELDEXIST(MinRadiusFindPlayer))		_minRadiusFindPlayer = GETLUAFIELD(MinRadiusFindPlayer, double);
+	if (LUAFIELDEXIST(MaxRadiusFindPlayer))		_maxRadiusFindPlayer = GETLUAFIELD(MaxRadiusFindPlayer, double);
+
+	//Sight
+	if (LUAFIELDEXIST(SightingDistance))		_sightingDistance = GETLUAFIELD(SightingDistance, double);
+	if (LUAFIELDEXIST(LostSightSearchTime))		_lostSightSearchTime = GETLUAFIELD(LostSightSearchTime, float);
+
+	//Attack
+	if (LUAFIELDEXIST(AttackRange))				_attackRange = GETLUAFIELD(AttackRange, float);
+
+	//Hearing
+	if (LUAFIELDEXIST(HearingDistance))			_hearingDistance = GETLUAFIELD(HearingDistance, double);
+	if (LUAFIELDEXIST(SoundTimeSearchTime))		_soundTimeSearchTime = GETLUAFIELD(SoundTimeSearchTime, float);
+}
+
+void InvisibleEnemyAIComponent::start()
+{
 	GameObject* player = Engine::getInstance()->findGameObject("Player");
 
 	_rb = GETCOMPONENT(RigidBodyComponent, ComponentId::Rigidbody);
@@ -41,12 +64,13 @@ void InvisibleEnemyAIComponent::awake(luabridge::LuaRef& data)
 	_transformPlayer = static_cast<Transform*>(player->getComponent(ComponentId::Transform));
 	_myTransform = GETCOMPONENT(Transform, ComponentId::Transform);
 
-	createFSM(data);
+	createFSM();
 }
 
 void InvisibleEnemyAIComponent::update()
 {
 	_ai->step();
+	if(_soundTime > -1.0f) _soundTime -= EngineTime::getInstance()->deltaTime();
 }
 
 void InvisibleEnemyAIComponent::moveTowardsPos(const Vector3& pos)
@@ -59,13 +83,25 @@ void InvisibleEnemyAIComponent::moveTowardsPos(const Vector3& pos)
 	_rb->addForce(dir);
 }
 
+void InvisibleEnemyAIComponent::sound(const Vector3& soundLocation, float intensity)
+{
+	intensity = std::min(1.0f, std::max(0.0f, intensity));
+
+	//If I can hear the sound
+	double distance = (soundLocation - _myTransform->getPosition()).magnitude();
+	if ((soundLocation - _myTransform->getPosition()).magnitude() < _hearingDistance * intensity) {
+		_soundTime = _soundTimeSearchTime;
+		_soundLocation.set(soundLocation);
+	}
+}
+
 void InvisibleEnemyAIComponent::justLostSight()
 {
 	_justLostSightTime = _lostSightSearchTime;
 	_lastKnownPosition = _transformPlayer->getPosition();
 }
 
-void InvisibleEnemyAIComponent::createFSM(luabridge::LuaRef& data)
+void InvisibleEnemyAIComponent::createFSM()
 {
 	_ai = new FSM(this);
 
@@ -75,7 +111,9 @@ void InvisibleEnemyAIComponent::createFSM(luabridge::LuaRef& data)
 
 	State* towardsPlayer = createState<GoTowardsPlayerState>();
 	State* attackPlayer = createState<AttackPlayerState>();
-	State* towardsSound = createState<TowardsSoundState>();
+
+	TowardsSoundState* towardsSound = createState<TowardsSoundState>();
+	towardsSound->setSoundPos(&_soundLocation);
 
 	LostSightTransition* lostSightTransition = createTransition<LostSightTransition>();
 	lostSightTransition->setSightingDistance(&_sightingDistance);
@@ -86,8 +124,11 @@ void InvisibleEnemyAIComponent::createFSM(luabridge::LuaRef& data)
 	InRangeTransition* inRangeTransition = createTransition<InRangeTransition>();
 	inRangeTransition->setRange(_attackRange);
 
-	Transition* loudSoundTransition = createTransition<LoudSoundTransition>();
-	Transition* noSoundTransition = createTransition<NoSoundTransition>();
+	LoudSoundTransition* loudSoundTransition = createTransition<LoudSoundTransition>();
+	loudSoundTransition->setSoundTime(&_soundTime);
+
+	NoSoundTransition* noSoundTransition = createTransition<NoSoundTransition>();
+	noSoundTransition->setSoundTime(&_soundTime);
 
 	_ai->add(find, gainSightTransition, towardsPlayer);
 	_ai->add(find, loudSoundTransition, towardsSound);
@@ -140,7 +181,7 @@ void InvisibleEnemyAIComponent::FindState::execute(Component* component)
 
 	//If I arrived to destination, I change it
 	if (distance < 2) {
-		Vector3 dirVector = Vector3(-1.0 + 2.0 * ((float)rand()) / RAND_MAX, -1.0 + 2.0 * ((float)rand()) / RAND_MAX, -1.0 + 2.0 * ((float)rand()) / RAND_MAX).normalize();
+		Vector3 dirVector = Vector3(-1.0 + 2.0 * ((float)rand()) / RAND_MAX, comp->getMyTransform()->getPosition().getY(), -1.0 + 2.0 * ((float)rand()) / RAND_MAX).normalize();
 		_targetPos = comp->getPlayerTransform()->getPosition() + (dirVector * *_radiusFromPlayer);
 	}
 	comp->moveTowardsPos(_targetPos);
@@ -169,6 +210,8 @@ void InvisibleEnemyAIComponent::AttackPlayerState::execute(Component* component)
 void InvisibleEnemyAIComponent::TowardsSoundState::execute(Component* component)
 {
 	CAST_COMPONENT;
+
+	comp->moveTowardsPos(*_soundPos);
 }
 
 //---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -213,15 +256,12 @@ bool InvisibleEnemyAIComponent::GainSightTransition::evaluate(Component* compone
 
 bool InvisibleEnemyAIComponent::LoudSoundTransition::evaluate(Component* component)
 {
-	CAST_COMPONENT;
-	return false;
+	return _soundTime > 0;
 }
-
 
 bool InvisibleEnemyAIComponent::NoSoundTransition::evaluate(Component* component)
 {
-	CAST_COMPONENT;
-	return false;
+	return _soundTime <= 0;
 }
 
 bool InvisibleEnemyAIComponent::InRangeTransition::evaluate(Component* component)

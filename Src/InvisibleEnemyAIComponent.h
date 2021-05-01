@@ -18,9 +18,18 @@ public:
 
 	void awake(luabridge::LuaRef& data) override;
 
+	void start() override;
+
 	void update() override;
 
 	void moveTowardsPos(const Vector3& pos);
+
+	/// <summary>
+	/// Called from outside when a sound is created
+	/// </summary>
+	/// <param name="soundLocation">: global position</param>
+	/// <param name="intensity">: 0 to 1, 0 representing no sound and 1 very high volume</param>
+	void sound(const Vector3& soundLocation, float intensity);
 
 	inline Transform* getMyTransform() const { return _myTransform; }
 	inline Transform* getPlayerTransform() const { return _transformPlayer; }
@@ -33,7 +42,7 @@ public:
 
 private:
 
-	void createFSM(luabridge::LuaRef& data);
+	void createFSM();
 
 	template <typename T>
 	T* createState();
@@ -68,6 +77,12 @@ private:
 	//Attack-related
 	float _attackRange;
 
+	//Sound-related
+	double _hearingDistance;
+	Vector3 _soundLocation;
+	float _soundTime;
+	float _soundTimeSearchTime;
+
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
 	//-------------  STATES    STATES    STATES    STATES    STATES    STATES    STATES    STATES    STATES    STATES    STATES    STATES  -------------
@@ -100,7 +115,9 @@ private:
 	class TowardsSoundState : public State {
 	public:
 		void execute(Component* component);
+		inline void setSoundPos(Vector3* pos) { _soundPos = pos; }
 	private:
+		Vector3* _soundPos;
 	};
 
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
@@ -128,13 +145,17 @@ private:
 	class LoudSoundTransition : public Transition {
 	public:
 		bool evaluate(Component* component);
+		inline void setSoundTime(float* time) { _soundTime = time; }
 	private:
+		float* _soundTime;
 	};
 
 	class NoSoundTransition : public Transition {
 	public:
 		bool evaluate(Component* component);
+		inline void setSoundTime(float* time) { _soundTime = time; }
 	private:
+		float* _soundTime;
 	};
 
 	class InRangeTransition : public Transition { 
