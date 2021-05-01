@@ -19,8 +19,8 @@ public:
 	PlayerLightComponent();
 	~PlayerLightComponent();
 
+	void awake(luabridge::LuaRef& data) override;
 	void start() override;
-
 	void update() override;
 	
 private:

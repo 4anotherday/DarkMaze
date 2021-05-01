@@ -3,16 +3,20 @@
 #include "LightComponent.h"
 #include "Transform.h"
 #include "GameObject.h"
+#include "ListenerComponent.h"
 
 ADD_COMPONENT(PlayerLightComponent)
 
 PlayerLightComponent::PlayerLightComponent() : Component(UserComponentId::PlayerLightComponent),
 	_playerLight(nullptr), _transform(nullptr)
-{
-	
+{	
 }
 
 PlayerLightComponent::~PlayerLightComponent()
+{
+}
+
+void PlayerLightComponent::awake(luabridge::LuaRef& data)
 {
 }
 

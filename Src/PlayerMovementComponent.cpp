@@ -8,11 +8,12 @@
 #include "KeyboardInput.h"
 #include "MouseInput.h"
 #include "EngineTime.h"
+#include "includeLUA.h"
 
 ADD_COMPONENT(PlayerMovementComponent)
 
 PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Component(UserComponentId::PlayerMovementComponent, gameObject), 
-	_tr(nullptr), _rb(nullptr), _camera(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
+	_tr(nullptr), _rb(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
 	_cameraSpeed(1.0f),
 	_keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyBackward(KeyCode::KEYCODE_S), _keyCrouch(KeyCode::KEYCODE_LCTRL),
 	_speedForward(5), _speedSideways(2), _speedBackwards(2), _slowCrouching(0.5f), _playerHeight(2.0f),
@@ -20,15 +21,29 @@ PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Compon
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
-	_camera = static_cast<CameraComponent*>(_gameObject->getComponent(ComponentId::Camera));
-	_collider = static_cast<BoxColliderComponent*>(_gameObject->getComponent(ComponentId::BoxCollider));
 
 	_mouse->setMouseRelativeMode(true);
 }
 
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 {
+	//Default values 
+	_speedForward = 5;	_speedSideways = 5;	_speedBackwards = 5; _slowCrouching = 3; _playerHeight = 10;
+	//Lua values if exist
+	if (LUAFIELDEXIST("SpeedForward"))
+		_speedForward = data["SpeedForward"].cast<float>();
 
+	if (LUAFIELDEXIST("SpeedSideWays"))
+		_speedSideways = data["SpeedSideWays"].cast<float>();
+
+	if (LUAFIELDEXIST("SpeedBackwards"))
+		_speedBackwards = data["SpeedBackwards"].cast<float>();
+
+	if (LUAFIELDEXIST("SlowCrouching"))
+		_slowCrouching = data["SlowCrouching"].cast<float>();
+	
+	if (LUAFIELDEXIST("PlayerHeight"))
+		_slowCrouching = data["PlayerHeight"].cast<float>();
 }
 
 void PlayerMovementComponent::update()
@@ -48,12 +63,13 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 	deltaX = _mouse->getMouseDelta()[0];
 	deltaY = _mouse->getMouseDelta()[1];
 
+	double pitch = 0, yaw = 0;
 	//Limit the pitch angle
-	if (abs(_camera->getOrientation().getY() + deltaY * _cameraSpeed * deltaTime) < 89.0f) {
-		_camera->pitchDegrees(deltaY * _cameraSpeed * deltaTime);
+	if (abs(_tr->getRotation().getY() + deltaY * _cameraSpeed * deltaTime) < 89.0f) {
+		pitch = deltaY * _cameraSpeed * deltaTime;
 	}
-
-	_camera->yawDegrees(deltaX * _cameraSpeed * deltaTime);
+	yaw = deltaX * _cameraSpeed * deltaTime;
+	_tr->setRotation(Vector3(_tr->getRotation().getX() + pitch, _tr->getRotation().getY() + yaw, 0));
 }
 
 void PlayerMovementComponent::manageMovement(const float deltaTime)
@@ -91,13 +107,13 @@ void PlayerMovementComponent::manageCrouching()
 	if (_keyboard->isKeyJustDown(_keyCrouch)) {
 		_crouching = true;
 		//Move camera and make smaller the collider
-		_camera->setPosition(_tr->getPosition().getX(), _playerHeight / 2, _tr->getPosition().getZ());
-		_collider->setScale(1, _playerHeight / 2, 1);
+		_tr->setPosition(Vector3(_tr->getPosition().getX(), _playerHeight / 2, _tr->getPosition().getZ()));
+		_rb->setScale(Vector3(1, _playerHeight / 2, 1));
 	}
 	else if (_keyboard->isKeyJustUp(_keyCrouch)) {
 		_crouching = false;
 		//Move camerea and restore collider
-		_camera->setPosition(_tr->getPosition().getX(), _playerHeight, _tr->getPosition().getZ());
-		_collider->setScale(1, _playerHeight, 1);
+		_tr->setPosition(Vector3(_tr->getPosition().getX(), _playerHeight, _tr->getPosition().getZ()));
+		_rb->setScale(Vector3(1, _playerHeight, 1));
 	}
 }
