@@ -73,7 +73,7 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 	if (abs(_tr->getRotation().getX() + deltaY * _cameraSpeed * deltaTime) < 15.0f) {
 		pitch = deltaY * _cameraSpeed * deltaTime;
 		_cam->pitchDegrees(-deltaY, true);
-		if()
+		//if()
 		_cam->pitchDegrees(-deltaY, true);
 	}
 	yaw = deltaX * _cameraSpeed * deltaTime;
