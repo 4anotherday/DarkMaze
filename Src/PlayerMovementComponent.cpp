@@ -14,7 +14,7 @@ ADD_COMPONENT(PlayerMovementComponent)
 
 PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Component(UserComponentId::PlayerMovementComponent, gameObject), 
 	_tr(nullptr), _rb(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
-	_cameraSpeed(10.0f),
+	_cameraSpeed(10.0f), _cam(nullptr),
 	_keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyBackward(KeyCode::KEYCODE_S), _keyCrouch(KeyCode::KEYCODE_LCTRL),
 	_speedForward(5), _speedSideways(2), _speedBackwards(2), _slowCrouching(0.5f), _playerHeight(2.0f),
 	_crouching(false)
@@ -79,10 +79,7 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 
 	double x = _tr->getRotation().getX() + pitch;
 	double y = _tr->getRotation().getY() + yaw;
-	_tr->setRotation(Vector3((int)x % 360, (int)y % 360, 0));
-
-	std::cout << "---------------------------------\n";
-	std::cout << _tr->getRotation().getX() << " " << _tr->getRotation().getY() << " " << _tr->getRotation().getZ() << '\n';
+	_tr->setRotation(Vector3(x, y, 0));
 }
 
 void PlayerMovementComponent::manageMovement(const float deltaTime)

@@ -44,6 +44,7 @@ private:
 
 	Transform* _tr;
 	RigidBodyComponent* _rb;
+	CameraComponent* _cam;
 
 	EngineTime* _time;
 	KeyBoardInput* _keyboard;
@@ -57,7 +58,6 @@ private:
 
 	bool _crouching;
 
-	CameraComponent* _cam;	//TBR
 };
 
 #endif // !_PLAYER_MOVEMENT_COMPONENT_
