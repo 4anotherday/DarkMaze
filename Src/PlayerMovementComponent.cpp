@@ -16,7 +16,7 @@ PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Compon
 	_tr(nullptr), _rb(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
 	_cameraSpeed(10.0f), _cam(nullptr),
 	_keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyBackward(KeyCode::KEYCODE_S), _keyCrouch(KeyCode::KEYCODE_LCTRL),
-	_speedForward(5), _speedSideways(2), _speedBackwards(2), _slowCrouching(0.5f), _playerHeight(2.0f),
+	_speedForward(10), _speedSideways(5), _speedBackwards(5), _slowCrouching(0.5f), _playerHeight(2.0f),
 	_crouching(false)
 {
 }
@@ -84,11 +84,14 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 
 void PlayerMovementComponent::manageMovement(const float deltaTime)
 {
-	Vector3 velocity = Vector3(0, 0, -1);
-	//Vector3 velocity = _tr->getForward();
+	//Vector3 velocity = Vector3(0, 0, -1);
+	Vector3 velocity = _tr->getForward();
 	velocity.normalize();
 	Vector3 rightVector = { velocity.getZ(), 0, -velocity.getX() };
 	rightVector.normalize();
+
+	std::cout << "---------------------\n";
+	std::cout << velocity.getX() << " " << velocity.getY() << " " << velocity.getZ() << "\n";
 
 	//Front and back movement
 	if (_keyboard->isKeyDown(_keyForward)) {
