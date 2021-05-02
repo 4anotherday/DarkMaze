@@ -70,18 +70,19 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 
 	double pitch = 0, yaw = 0;
 	//Limit the pitch angle
-	if (abs(_tr->getRotation().getX() + deltaY * _cameraSpeed * deltaTime) < 15.0f) {
+	if (abs(_tr->getRotation().getX() + deltaY * _cameraSpeed * deltaTime) < 45.0f) {
 		pitch = deltaY * _cameraSpeed * deltaTime;
-		_cam->pitchDegrees(-deltaY, true);
-		//if()
-		_cam->pitchDegrees(-deltaY, true);
+		_cam->pitchDegrees(-pitch, false);
 	}
 	yaw = deltaX * _cameraSpeed * deltaTime;
-	_cam->yawDegrees(-deltaX, false);
+	_cam->yawDegrees(-yaw, true);
 
 	double x = _tr->getRotation().getX() + pitch;
 	double y = _tr->getRotation().getY() + yaw;
-	_tr->setRotation(Vector3(x, y, 0));
+	_tr->setRotation(Vector3((int)x % 360, (int)y % 360, 0));
+
+	std::cout << "---------------------------------\n";
+	std::cout << _tr->getRotation().getX() << " " << _tr->getRotation().getY() << " " << _tr->getRotation().getZ() << '\n';
 }
 
 void PlayerMovementComponent::manageMovement(const float deltaTime)

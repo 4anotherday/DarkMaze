@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 4
+HowManyGameObjects = 6
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 4, Persist = false}
@@ -47,13 +47,34 @@ go_2[3] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 go_3 = {}
 go_3[0] = { Name = "Dummie", HowManyCmps = 3, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = 10}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
-go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
-		RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
+		RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1},
 		Visible=true, Shadows=true, RenderingDistance = 1000}
-go_3[3] = { Component = "LightComponent", LightType= "POINT", Visible = true,
+go_3[3] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
 		    Diffuse = {Red = 1, Green= 1, Blue = 1}, 
 			Specular = {Red = 1, Green= 1, Blue = 1}}
 
+-- Cabesa ogre 3
+go_4 = {}
+go_4[0] = { Name = "Dummie3", HowManyCmps = 3, Persist = false}
+go_4[1] = { Component = "Transform", Coord = {X = 10, Y = 0, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+go_4[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Orange", 
+		RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1},
+		Visible=true, Shadows=true, RenderingDistance = 1000}
+go_4[3] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
+		    Diffuse = {Red = 1, Green= 1, Blue = 1}, 
+			Specular = {Red = 1, Green= 1, Blue = 1}}
+
+-- Cabesa ogre 4
+go_5 = {}
+go_5[0] = { Name = "Dummie4", HowManyCmps = 3, Persist = false}
+go_5[1] = { Component = "Transform", Coord = {X = -10, Y = 0, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+go_5[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/NoFucsia", 
+		RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1},
+		Visible=true, Shadows=true, RenderingDistance = 1000}
+go_5[3] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
+		    Diffuse = {Red = 1, Green= 1, Blue = 1}, 
+			Specular = {Red = 1, Green= 1, Blue = 1}}
 -- Objeto sonoro
 -- go_2 = {}
 -- go_2[0] = { Name = "ObjetoSonoro", HowManyCmps = 3}
