@@ -7,7 +7,6 @@
 #include "RigidBodyComponent.h"
 #include "EngineTime.h"
 #include "ParticleSystemComponent.h"
-#include "Vector3.h"
 #include "includeLUA.h"
 #include "InvisibleEnemyAIComponent.h"
 #include "RayCast.h"

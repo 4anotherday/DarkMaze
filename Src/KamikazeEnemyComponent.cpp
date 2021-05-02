@@ -66,6 +66,8 @@ void KamikazeEnemyComponent::update()
 		_lastPlayerPos = playerPos;
 		if (!_active) {
 			_active = true;
+			_audioSource->setAudioLoop(0, 0);
+			_audioSource->playAudio(0);
 			_elapsedFollowTime = 0;
 		}
 	}
@@ -103,7 +105,9 @@ void KamikazeEnemyComponent::explode()
 	_active = false;
 	_dead = true;
 
-	//_audioSource->playAudio();
+	_audioSource->stopChannel(0);
+	_audioSource->setAudioLoop(1, 0);
+	_audioSource->playAudio(1);
 
 	//Damage player
 	const Vector3& playerPos = _playerTr->getPosition();

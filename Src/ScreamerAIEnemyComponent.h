@@ -4,6 +4,7 @@
 #define SCREAMERAIMENEMYCOMPONENT_H
 
 #include "Component.h"
+#include "Vector3.h"
 
 class Transform;
 class RigidBodyComponent;
