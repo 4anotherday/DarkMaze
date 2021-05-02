@@ -70,7 +70,7 @@ void ScreamerAIEnemyComponent::update()
 	if (_dead) {
 		_elapsedDyingTime += EngineTime::getInstance()->deltaTime();
 		if (_elapsedDyingTime >= _dyingTime) {
-			_audioSource->stopChannel();
+			_audioSource->stopChannel(1);
 			Engine::getInstance()->remGameObject(_gameObject);
 		}
 	}
@@ -86,7 +86,7 @@ void ScreamerAIEnemyComponent::idlestate()
 void ScreamerAIEnemyComponent::movingState()
 {
 	//TODO: Parar audio idle	
-	_audioSource->stopChannel();
+	_audioSource->stopChannel(0);
 
 	//TODO: Raycast o pathfinding para encontrar el camino al jugador
 	Vector3 dir = _tranformPlayer->getPosition();

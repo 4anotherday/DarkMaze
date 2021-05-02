@@ -68,6 +68,8 @@ void InvisibleEnemyAIComponent::start()
 	_myTransform = GETCOMPONENT(Transform, ComponentId::Transform);
 
 	_audioSource = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
+	_audioSource->setAudioLoop(0, -1);
+	_audioSource->playAudio(0);
 	_playerHealth = static_cast<HealthComponent*>(player->getComponent(UserComponentId::HealthComponent));
 
 	createFSM();
@@ -232,7 +234,7 @@ void InvisibleEnemyAIComponent::AttackPlayerState::execute(Component* component)
 	if ((playerPos - myPos).magnitude() < _attackRange && *_attackCooldownTime < 0.0f) {
 		*_attackCooldownTime = _attackCooldown;
 		_playerHealth->loseHPs();
-		//TODO: _audioSource->playAudio();
+		_audioSource->playAudio(1);
 	}
 
 	//Move towards player while slowed

@@ -42,13 +42,9 @@
     <ClInclude Include="..\Src\PlayerInteractiveComponent.h" />
     <ClInclude Include="..\Src\PlayerLightComponent.h" />
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\Src\ScreamerAIEnemyComponent.h" />
-    <ClInclude Include="..\Src\UserComponentsIDs.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\Src\HealthComponent.h" />
+    <ClInclude Include="..\Src\UserComponentsIDs.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

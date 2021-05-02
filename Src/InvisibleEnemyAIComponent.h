@@ -125,11 +125,11 @@ private:
 		inline void setAttackCoolDownTime(float* time) { _attackCooldownTime = time; }
 		inline void setRange(float range) { _attackRange = range; }
 	private:
-		AudioSourceComponent* _audioSource;
-		HealthComponent* _playerHealth;
-		float _attackCooldown;
-		float* _attackCooldownTime;
-		float _attackRange;
+		AudioSourceComponent* _audioSource = nullptr;
+		HealthComponent* _playerHealth = nullptr;
+		float _attackCooldown = 0.0f;
+		float* _attackCooldownTime = nullptr;
+		float _attackRange = 0.0f;
 	};
 
 	class TowardsSoundState : public State {
@@ -137,7 +137,7 @@ private:
 		void execute(Component* component);
 		inline void setSoundPos(Vector3* pos) { _soundPos = pos; }
 	private:
-		Vector3* _soundPos;
+		Vector3* _soundPos = nullptr;
 	};
 
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
@@ -151,7 +151,7 @@ private:
 		bool evaluate(Component* component); 
 		inline void setSightingDistance(double* distance) { _sightingDistance = distance; }
 	private:
-		double* _sightingDistance;
+		double* _sightingDistance = nullptr;
 	};
 
 	class GainSightTransition : public Transition { 
@@ -159,7 +159,7 @@ private:
 		bool evaluate(Component* component);
 		inline void setSightingDistance(double* distance) { _sightingDistance = distance; }
 	private:
-		double* _sightingDistance;
+		double* _sightingDistance = nullptr;
 	};
 
 	class LoudSoundTransition : public Transition {
@@ -167,7 +167,7 @@ private:
 		bool evaluate(Component* component);
 		inline void setSoundTime(float* time) { _soundTime = time; }
 	private:
-		float* _soundTime;
+		float* _soundTime = nullptr;
 	};
 
 	class NoSoundTransition : public Transition {
@@ -175,7 +175,7 @@ private:
 		bool evaluate(Component* component);
 		inline void setSoundTime(float* time) { _soundTime = time; }
 	private:
-		float* _soundTime;
+		float* _soundTime = nullptr;
 	};
 
 	class InRangeTransition : public Transition { 
@@ -183,7 +183,7 @@ private:
 		bool evaluate(Component* component); 
 		inline void setRange(float range) { _attackRange = range; }
 	private:
-		float _attackRange;
+		float _attackRange = 0.0f;
 	};
 };
 
