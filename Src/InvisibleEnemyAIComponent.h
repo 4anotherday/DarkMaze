@@ -8,7 +8,8 @@
 #include <algorithm>
 
 class Transform;
-class RigidBodyComponent;
+class AudioSourceComponent;
+class HealthComponent;
 
 class InvisibleEnemyAIComponent : public Component {
 public:
@@ -23,6 +24,8 @@ public:
 	void update() override;
 
 	void moveTowardsPos(const Vector3& pos);
+
+	void slowAfterHit(bool apply);
 
 	/// <summary>
 	/// Called from outside when a sound is created
@@ -53,8 +56,12 @@ private:
 	Transform* _transformPlayer;
 	Transform* _myTransform;
 
-	RigidBodyComponent* _rb;
+	AudioSourceComponent* _audioSource;
+	HealthComponent* _playerHealth;
+
+	double _actualSpeed;
 	double _speed;
+	double _slowAfterHit;
 
 	FSM* _ai;
 
@@ -66,21 +73,24 @@ private:
 	//--------------------------------------------------------------------------------
 
 	//Find-related
-	double _radiusFindPlayer, _maxRadiusFindPlayer, _minRadiusFindPlayer;
+	double _radiusFindPlayer; //Non configurable
+	double _maxRadiusFindPlayer, _minRadiusFindPlayer;
 
 	//Sighting-related
-	double _sightingDistance;
-	Vector3 _lastKnownPosition;
-	float _justLostSightTime;
+	double _sightingDistance; 
+	Vector3 _lastKnownPosition; //Non configurable
+	float _justLostSightTime;	//Non configurable
 	float _lostSightSearchTime;
 
 	//Attack-related
 	float _attackRange;
+	float _attackCooldown;
+	float _attackCooldownTime; //Non configurable
 
 	//Sound-related
 	double _hearingDistance;
-	Vector3 _soundLocation;
-	float _soundTime;
+	Vector3 _soundLocation; //Non configurable
+	float _soundTime;		//Non configurable
 	float _soundTimeSearchTime;
 
 	//--------------------------------------------------------------------------------------------------------------------------------------------------
@@ -109,7 +119,17 @@ private:
 	class AttackPlayerState : public State { 
 	public:
 		void execute(Component* component); 
+		inline void setAudioSource(AudioSourceComponent* comp) { _audioSource = comp; }
+		inline void setHealthComp(HealthComponent* comp) { _playerHealth = comp; }
+		inline void setAttackCoolDown(float cd) { _attackCooldown = cd; }
+		inline void setAttackCoolDownTime(float* time) { _attackCooldownTime = time; }
+		inline void setRange(float range) { _attackRange = range; }
 	private:
+		AudioSourceComponent* _audioSource;
+		HealthComponent* _playerHealth;
+		float _attackCooldown;
+		float* _attackCooldownTime;
+		float _attackRange;
 	};
 
 	class TowardsSoundState : public State {
@@ -131,7 +151,7 @@ private:
 		bool evaluate(Component* component); 
 		inline void setSightingDistance(double* distance) { _sightingDistance = distance; }
 	private:
-		double* _sightingDistance = nullptr;
+		double* _sightingDistance;
 	};
 
 	class GainSightTransition : public Transition { 
@@ -139,7 +159,7 @@ private:
 		bool evaluate(Component* component);
 		inline void setSightingDistance(double* distance) { _sightingDistance = distance; }
 	private:
-		double* _sightingDistance = nullptr;
+		double* _sightingDistance;
 	};
 
 	class LoudSoundTransition : public Transition {
@@ -163,7 +183,7 @@ private:
 		bool evaluate(Component* component); 
 		inline void setRange(float range) { _attackRange = range; }
 	private:
-		float _attackRange = 2;
+		float _attackRange;
 	};
 };
 
