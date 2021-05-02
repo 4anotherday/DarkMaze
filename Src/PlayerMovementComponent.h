@@ -21,6 +21,8 @@ public:
 
 	void awake(luabridge::LuaRef& data) override;
 
+	void start() override;
+
 	void update() override;
 private:
 
@@ -42,8 +44,6 @@ private:
 
 	Transform* _tr;
 	RigidBodyComponent* _rb;
-	CameraComponent* _camera;
-	BoxColliderComponent* _collider;
 
 	EngineTime* _time;
 	KeyBoardInput* _keyboard;
@@ -56,6 +56,8 @@ private:
 	float _playerHeight;
 
 	bool _crouching;
+
+	CameraComponent* _cam;	//TBR
 };
 
 #endif // !_PLAYER_MOVEMENT_COMPONENT_

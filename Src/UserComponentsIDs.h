@@ -23,6 +23,7 @@ namespace UserComponentId {
 		FSMEnemyComponent,
 		InvisibleEnemyAIComponent,
 		KamikazeEnemyComponent,
+		ScreamerAIEnemyComponent
 	};
 }
 

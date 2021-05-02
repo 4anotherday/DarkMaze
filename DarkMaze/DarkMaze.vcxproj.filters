@@ -43,6 +43,7 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="..\Src\KamikazeEnemyComponent.cpp">
+    <ClCompile Include="..\Src\ScreamerAIEnemyComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
@@ -78,6 +79,7 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\KamikazeEnemyComponent.h">
+    <ClInclude Include="..\Src\ScreamerAIEnemyComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
