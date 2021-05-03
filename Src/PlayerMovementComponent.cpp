@@ -24,7 +24,7 @@ PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Compon
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 {
 	//Default values 
-	_speedForward = 5;	_speedSideways = 5;	_speedBackwards = 5; _slowCrouching = 3; _playerHeight = 10;
+	_speedForward = 2000;	_speedSideways = 500;	_speedBackwards = 500; _slowCrouching = 3; _playerHeight = 10;
 	//Lua values if exist
 	if (LUAFIELDEXIST("SpeedForward"))
 		_speedForward = data["SpeedForward"].cast<float>();
@@ -85,35 +85,39 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 void PlayerMovementComponent::manageMovement(const float deltaTime)
 {
 	//Vector3 velocity = Vector3(0, 0, -1);
-	Vector3 velocity = _tr->getForward();
-	velocity.normalize();
-	Vector3 rightVector = { velocity.getZ(), 0, -velocity.getX() };
+	Vector3 direction = _tr->getForward();
+	direction.normalize();
+	direction.setY(0);
+	Vector3 rightVector = { direction.getZ(), 0, -direction.getX() };
 	rightVector.normalize();
 
-	std::cout << "---------------------\n";
-	std::cout << velocity.getX() << " " << velocity.getY() << " " << velocity.getZ() << "\n";
+	Vector3 vel;
+
+	//std::cout << "---------------------\n";
+	//std::cout << "Before: " << velocity.getX() << " " << velocity.getY() << " " << velocity.getZ() << "\n";
 
 	//Front and back movement
 	if (_keyboard->isKeyDown(_keyForward)) {
-		velocity = velocity * (_speedForward);
+		direction = direction * (_speedForward);
 	}
 	else if (_keyboard->isKeyDown(_keyBackward)) {
-		velocity = velocity * (_speedBackwards * -1.0);
+		direction = direction * (_speedBackwards * -1.0);
 	}
 	//Sideways movement
 	if (_keyboard->isKeyDown(_keyRight)) {
-		velocity = velocity + (rightVector * _speedSideways);
+		direction = direction + (rightVector * _speedSideways * -1);
 	}
 	else if (_keyboard->isKeyDown(_keyLeft)) {
-		velocity = velocity + (rightVector * -1.0 * _speedSideways);
+		direction = direction + (rightVector *  _speedSideways);
 	}
 
 	if (_crouching)
-		velocity = velocity * _slowCrouching;
+		direction = direction * _slowCrouching;
 
-	velocity = velocity * deltaTime;
+	direction = direction * deltaTime;
+	//std::cout << "After: " << velocity.getX() << " " << velocity.getY() << " " << velocity.getZ() << "\n";
 
-	_rb->addForce(velocity);
+	_rb->setLinearVelocity(direction);
 }
 
 void PlayerMovementComponent::manageCrouching()
