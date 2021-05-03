@@ -9,6 +9,8 @@
 #include "MouseInput.h"
 #include "EngineTime.h"
 #include "includeLUA.h"
+#include "Logger.h"
+
 
 ADD_COMPONENT(PlayerMovementComponent)
 
@@ -24,7 +26,7 @@ PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Compon
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 {
 	//Default values 
-	_speedForward = 5;	_speedSideways = 5;	_speedBackwards = 5; _slowCrouching = 3; _playerHeight = 10;
+	_speedForward = 50;	_speedSideways = 50;	_speedBackwards = 50; _slowCrouching = 3; _playerHeight = 10;
 	//Lua values if exist
 	if (LUAFIELDEXIST("SpeedForward"))
 		_speedForward = data["SpeedForward"].cast<float>();
@@ -56,10 +58,20 @@ void PlayerMovementComponent::update()
 	float deltaTime = _time->deltaTime();
 	
 	moveCameraWithMouse(deltaTime);
-
-	manageCrouching();
-
 	manageMovement(deltaTime);
+	manageCrouching();
+}
+
+void PlayerMovementComponent::fixedUpdate()
+{
+	float deltaTime = _time->deltaTime();
+
+	if (_crouching)
+		_speed = _speed * _slowCrouching;
+
+	Vector3 forze = _speed;
+	forze.setY(0);
+	_rb->addForce(forze);
 }
 
 void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
@@ -84,36 +96,25 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 
 void PlayerMovementComponent::manageMovement(const float deltaTime)
 {
-	//Vector3 velocity = Vector3(0, 0, -1);
-	Vector3 velocity = _tr->getForward();
-	velocity.normalize();
-	Vector3 rightVector = { velocity.getZ(), 0, -velocity.getX() };
+	_speed = _tr->getForward();
+	_speed.normalize();
+	Vector3 rightVector = { _speed.getZ(), 0, -_speed.getX() };
 	rightVector.normalize();
-
-	std::cout << "---------------------\n";
-	std::cout << velocity.getX() << " " << velocity.getY() << " " << velocity.getZ() << "\n";
 
 	//Front and back movement
 	if (_keyboard->isKeyDown(_keyForward)) {
-		velocity = velocity * (_speedForward);
+		_speed = _speed * (_speedForward);
 	}
 	else if (_keyboard->isKeyDown(_keyBackward)) {
-		velocity = velocity * (_speedBackwards * -1.0);
+		_speed = _speed * (_speedBackwards * -1.0);
 	}
 	//Sideways movement
 	if (_keyboard->isKeyDown(_keyRight)) {
-		velocity = velocity + (rightVector * _speedSideways);
+		_speed = _speed + (rightVector * _speedSideways);
 	}
 	else if (_keyboard->isKeyDown(_keyLeft)) {
-		velocity = velocity + (rightVector * -1.0 * _speedSideways);
+		_speed = _speed + (rightVector * -1.0 * _speedSideways);
 	}
-
-	if (_crouching)
-		velocity = velocity * _slowCrouching;
-
-	velocity = velocity * deltaTime;
-
-	_rb->addForce(velocity);
 }
 
 void PlayerMovementComponent::manageCrouching()
@@ -121,13 +122,13 @@ void PlayerMovementComponent::manageCrouching()
 	if (_keyboard->isKeyJustDown(_keyCrouch)) {
 		_crouching = true;
 		//Move camera and make smaller the collider
-		_tr->setPosition(Vector3(_tr->getPosition().getX(), _playerHeight / 2, _tr->getPosition().getZ()));
-		_rb->setScale(Vector3(1, _playerHeight / 2, 1));
+		//_tr->setPosition(Vector3(_tr->getPosition().getX(), _playerHeight / 2, _tr->getPosition().getZ()));
+		_cam->setPosition(_tr->getPosition().getX(), _playerHeight / 2, _tr->getPosition().getZ());
 	}
 	else if (_keyboard->isKeyJustUp(_keyCrouch)) {
 		_crouching = false;
-		//Move camerea and restore collider
-		_tr->setPosition(Vector3(_tr->getPosition().getX(), _playerHeight, _tr->getPosition().getZ()));
-		_rb->setScale(Vector3(1, _playerHeight, 1));
+		//Move camera and restore collider
+		//_tr->setPosition(Vector3(_tr->getPosition().getX(), _playerHeight, _tr->getPosition().getZ()));
+		_cam->setPosition(_tr->getPosition().getX(), _playerHeight, _tr->getPosition().getZ());
 	}
 }

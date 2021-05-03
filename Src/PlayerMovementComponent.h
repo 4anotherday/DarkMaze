@@ -4,6 +4,7 @@
 
 #include "Component.h"
 #include "KeyCodes.h"
+#include "Vector3.h"
 
 class GameObject;
 class RigidBodyComponent;
@@ -24,6 +25,8 @@ public:
 	void start() override;
 
 	void update() override;
+
+	void fixedUpdate() override;
 private:
 
 	/// <summary>
@@ -50,6 +53,7 @@ private:
 	KeyBoardInput* _keyboard;
 	MouseInput* _mouse;
 
+	Vector3 _speed;
 	float _cameraSpeed;
 
 	KeyCode _keyForward, _keyLeft, _keyRight, _keyBackward, _keyCrouch;

@@ -12,18 +12,18 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 8
+HowManyGameObjects = 7
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 6, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 20, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 --go_0[2] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
-go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 20}
+go_0[2] = { Component = "PlayerMovementComponent", SpeedForward = 50000, SpeedSideWays = 50, SpeedBackwards = 50, SlowCrouching = 50, PlayerHeight = 10, PlayerHeight = 20}
 go_0[3] = { Component = "PlayerLightComponent", LightType= "POINT", Visible = true,
 			Diffuse = {Red = 1, Green= 1, Blue = 1}, 
 			Specular = {Red = 1, Green= 1, Blue = 1},
 			Attenuation = {Range = 100, Constant = 1.0, Linear = 0.045, Quadratic = 0.0075}}
-go_0[4] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=20, ConstrainAngle = true}
+go_0[4] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=20, ConstrainAngle = true, Bounciness = 1}
 go_0[5] = { Component = "Camera"}
 go_0[6] = { Component = "LightComponent", LightType= "POINT", Visible = true,
 			Diffuse = {Red = 1, Green= 1, Blue = 1}, 
@@ -37,7 +37,7 @@ go_1[1] = { Component = "Transform", Coord = {X = 0, Y = -5, Z = 0}, Rotation = 
 go_1[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Brown", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
-go_1[3] = { Component = "BoxCollider", Type="Box",Width=100,Height=1,Depth=100,IsTrigger=false}
+go_1[3] = { Component = "BoxCollider", Type="Box",Width=100,Height=1,Depth=100,IsTrigger=false, Bounciness = 0}
 
 -- Cabesa ogre
 go_2 = {}
@@ -45,7 +45,7 @@ go_2[0] = { Name = "Dummie2", HowManyCmps = 2, Persist = false}
 go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = -10}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
 go_2[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-			Visible=false, Shadows=false, RenderingDistance = 1000}
+			Visible=true, Shadows=false, RenderingDistance = 1000}
 
 -- Cabesa ogre 2
 go_3 = {}
@@ -53,7 +53,7 @@ go_3[0] = { Name = "Dummie", HowManyCmps = 2, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = 10}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
 go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
 		RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1},
-		Visible=false, Shadows=true, RenderingDistance = 1000}
+		Visible=true, Shadows=true, RenderingDistance = 1000}
 
 -- Cabesa ogre 3
 go_4 = {}
@@ -61,7 +61,7 @@ go_4[0] = { Name = "Dummie3", HowManyCmps = 2, Persist = false}
 go_4[1] = { Component = "Transform", Coord = {X = 10, Y = 0, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
 go_4[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Orange", 
 		RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1},
-		Visible=false, Shadows=true, RenderingDistance = 1000}
+		Visible=true, Shadows=true, RenderingDistance = 1000}
 
 -- Cabesa ogre 4
 go_5 = {}
@@ -80,13 +80,13 @@ go_6[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = fa
 			Specular = {Red = 1, Green= 1, Blue = 1},
 			LightDirection = {X = 0, Y = -1,Z = 0}}
 
-go_7 = {}
-go_7[0] = { Name = "CuboReferencia", HowManyCmps = 3, Persist = false}
-go_7[1] = { Component = "Transform", Coord = {X = 0, Y = 20, Z = -10}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.01, Y = 0.05, Z = 0.01}}
-go_7[2] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=10, ConstrainAngle = true}
-go_7[3] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1},
-			Visible=true, Shadows=true, RenderingDistance = 1000}
+-- go_7 = {}
+-- go_7[0] = { Name = "CuboReferencia", HowManyCmps = 3, Persist = false}
+-- go_7[1] = { Component = "Transform", Coord = {X = 0, Y = 20, Z = -10}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.01, Y = 0.05, Z = 0.01}}
+-- go_7[2] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=10, ConstrainAngle = true}
+-- go_7[3] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+-- 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1},
+-- 			Visible=true, Shadows=true, RenderingDistance = 1000}
 
 -- Objeto sonoro
 -- go_2 = {}
