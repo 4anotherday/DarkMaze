@@ -12,6 +12,8 @@
 #include "ParticleSystemComponent.h"
 #include "AudioSourceComponent.h"
 
+ADD_COMPONENT(KamikazeEnemyComponent)
+
 KamikazeEnemyComponent::KamikazeEnemyComponent() : Component(UserComponentId::KamikazeEnemyComponent),
 	_rb(nullptr), _tr(nullptr), _playerTr(nullptr), _invisibleEnemy(nullptr), _playerHealth(nullptr),
 	_audioSource(nullptr), _particleSystem(nullptr), _active(false), _dead(false), _lastPlayerPos(Vector3(0, 0, 0)),
