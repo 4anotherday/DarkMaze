@@ -14,9 +14,9 @@ ADD_COMPONENT(PlayerMovementComponent)
 
 PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Component(UserComponentId::PlayerMovementComponent, gameObject), 
 	_tr(nullptr), _rb(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
-	_cameraSpeed(10.0f),
+	_cameraSpeed(10.0f), _cam(nullptr),
 	_keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyBackward(KeyCode::KEYCODE_S), _keyCrouch(KeyCode::KEYCODE_LCTRL),
-	_speedForward(5), _speedSideways(2), _speedBackwards(2), _slowCrouching(0.5f), _playerHeight(2.0f),
+	_speedForward(10), _speedSideways(5), _speedBackwards(5), _slowCrouching(0.5f), _playerHeight(2.0f),
 	_crouching(false)
 {
 }
@@ -24,7 +24,7 @@ PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Compon
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 {
 	//Default values 
-	_speedForward = 5;	_speedSideways = 5;	_speedBackwards = 5; _slowCrouching = 3; _playerHeight = 10;
+	_speedForward = 2000;	_speedSideways = 500;	_speedBackwards = 500; _slowCrouching = 3; _playerHeight = 10;
 	//Lua values if exist
 	if (LUAFIELDEXIST("SpeedForward"))
 		_speedForward = data["SpeedForward"].cast<float>();
@@ -70,14 +70,12 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 
 	double pitch = 0, yaw = 0;
 	//Limit the pitch angle
-	if (abs(_tr->getRotation().getX() + deltaY * _cameraSpeed * deltaTime) < 15.0f) {
+	if (abs(_tr->getRotation().getX() + deltaY * _cameraSpeed * deltaTime) < 45.0f) {
 		pitch = deltaY * _cameraSpeed * deltaTime;
-		_cam->pitchDegrees(-deltaY, true);
-		//if()
-		_cam->pitchDegrees(-deltaY, true);
+		_cam->pitchDegrees(-pitch, false);
 	}
 	yaw = deltaX * _cameraSpeed * deltaTime;
-	_cam->yawDegrees(-deltaX, false);
+	_cam->yawDegrees(-yaw, true);
 
 	double x = _tr->getRotation().getX() + pitch;
 	double y = _tr->getRotation().getY() + yaw;
@@ -86,33 +84,40 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 
 void PlayerMovementComponent::manageMovement(const float deltaTime)
 {
-	Vector3 velocity = Vector3(0, 0, -1);
-	//Vector3 velocity = _tr->getForward();
-	velocity.normalize();
-	Vector3 rightVector = { velocity.getZ(), 0, -velocity.getX() };
+	//Vector3 velocity = Vector3(0, 0, -1);
+	Vector3 direction = _tr->getForward();
+	direction.normalize();
+	direction.setY(0);
+	Vector3 rightVector = { direction.getZ(), 0, -direction.getX() };
 	rightVector.normalize();
+
+	Vector3 vel;
+
+	//std::cout << "---------------------\n";
+	//std::cout << "Before: " << velocity.getX() << " " << velocity.getY() << " " << velocity.getZ() << "\n";
 
 	//Front and back movement
 	if (_keyboard->isKeyDown(_keyForward)) {
-		velocity = velocity * (_speedForward);
+		direction = direction * (_speedForward);
 	}
 	else if (_keyboard->isKeyDown(_keyBackward)) {
-		velocity = velocity * (_speedBackwards * -1.0);
+		direction = direction * (_speedBackwards * -1.0);
 	}
 	//Sideways movement
 	if (_keyboard->isKeyDown(_keyRight)) {
-		velocity = velocity + (rightVector * _speedSideways);
+		direction = direction + (rightVector * _speedSideways * -1);
 	}
 	else if (_keyboard->isKeyDown(_keyLeft)) {
-		velocity = velocity + (rightVector * -1.0 * _speedSideways);
+		direction = direction + (rightVector *  _speedSideways);
 	}
 
 	if (_crouching)
-		velocity = velocity * _slowCrouching;
+		direction = direction * _slowCrouching;
 
-	velocity = velocity * deltaTime;
+	direction = direction * deltaTime;
+	//std::cout << "After: " << velocity.getX() << " " << velocity.getY() << " " << velocity.getZ() << "\n";
 
-	_rb->addForce(velocity);
+	_rb->setLinearVelocity(direction);
 }
 
 void PlayerMovementComponent::manageCrouching()

@@ -29,7 +29,17 @@ material Practica1/Yellow{
 		}
 	}
 }
-
+material Practica1/Suelo{
+	technique{
+		pass{
+			diffuse 1.0 1.0 1.0
+			texture_unit {
+				texture texture.png
+				tex_address_mode wrap
+			}
+		}
+	}
+}
 material Prueba{
 	technique{
 		pass{
