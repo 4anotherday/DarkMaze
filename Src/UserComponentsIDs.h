@@ -18,10 +18,11 @@ namespace UserComponentId {
 		HealthComponent = ComponentId::__StartPointUser__,
 		PlayerMovementComponent,
 		PlayerLightComponent,
-		InteractiveObjectComponent,
+		//InteractiveObjectComponent,
 		PlayerInteractiveComponent,
 		FSMEnemyComponent,
-		ScreamerAIEnemyComponent
+		ScreamerAIEnemyComponent,
+		FirstAidKitComponent
 	};
 }
 

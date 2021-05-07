@@ -12,7 +12,7 @@ public:
 	/// <summary>
 	/// Constructor of the class
 	/// </summary>
-	InteractiveObjectComponent();
+	InteractiveObjectComponent(unsigned int id);
 	/// <summary>
 	/// Destructor of the class
 	/// </summary>

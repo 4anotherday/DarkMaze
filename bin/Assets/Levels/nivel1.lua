@@ -12,15 +12,17 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 7
+HowManyGameObjects = 8
 -- Player
 go_0 = {}
-go_0[0] = { Name = "Player", HowManyCmps = 5, Persist = false}
+go_0[0] = { Name = "Player", HowManyCmps = 7, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = -10, Y = 10, Z = 20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 20}
 go_0[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, kinematic = true, ConstrainAngle = true, IsTrigger=false}
 go_0[4] = { Component = "Camera"}
 go_0[5] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
+go_0[6] = { Component = "PlayerInteractiveComponent" }
+go_0[7] = { Component = "HealthComponent"}
 
 -- Suelo
 go_1 = {}
@@ -70,6 +72,18 @@ go_6[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 		    Diffuse = {Red = 0.7, Green= 0.5, Blue = 0.5}, 
 			Specular = {Red = 1, Green= 1, Blue = 1},
 			LightDirection = {X = 0.7, Y = -1.2,Z = 0}}
+
+go_7 = {}
+go_7[0] = { Name = "FirstAidKit", HowManyCmps = 4, Persist = false}
+go_7[1] = { Component = "Transform", Coord = {X = -10, Y = 2, Z = -20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.04, Y = 0.01, Z = 0.04}}
+go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
+						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+						Visible=true, Shadows=false, RenderingDistance = 1000}
+go_7[3] = { Component = "BoxCollider", Type="Box",Width=8,Height=8,Depth=8,IsTrigger=true}
+go_7[4] = { Component = "FirstAidKitComponent" }
+
+
+
 
 -- Objeto sonoro
 -- go_2 = {}

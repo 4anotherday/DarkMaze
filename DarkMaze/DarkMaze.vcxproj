@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\FirstAidKitComponent.cpp" />
     <ClCompile Include="..\Src\FSMEnemyComponent.cpp" />
     <ClCompile Include="..\Src\HealthComponent.cpp" />
     <ClCompile Include="..\Src\InteractiveObjectComponent.cpp" />
@@ -29,6 +30,7 @@
     <ClCompile Include="..\Src\ScreamerAIEnemyComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\FirstAidKitComponent.h" />
     <ClInclude Include="..\Src\FSMEnemyComponent.h" />
     <ClInclude Include="..\Src\InteractiveObjectComponent.h" />
     <ClInclude Include="..\Src\PlayerInteractiveComponent.h" />

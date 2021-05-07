@@ -3,7 +3,7 @@
 
 ADD_COMPONENT(HealthComponent)
 
-HealthComponent::HealthComponent() :Component(UserComponentId::HealthComponent), _maxHealthPoints(), _healthPoints()
+HealthComponent::HealthComponent() : Component(UserComponentId::HealthComponent), _maxHealthPoints(), _healthPoints()
 {}
 
 

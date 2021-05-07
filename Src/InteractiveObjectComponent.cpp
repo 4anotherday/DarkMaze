@@ -3,9 +3,9 @@
 #include "PlayerInteractiveComponent.h"
 #include "GameObject.h"
 
-ADD_COMPONENT(InteractiveObjectComponent)
+//ADD_COMPONENT(InteractiveObjectComponent)
 
-InteractiveObjectComponent::InteractiveObjectComponent() : Component(UserComponentId::InteractiveObjectComponent)
+InteractiveObjectComponent::InteractiveObjectComponent(unsigned int id) : Component(id),_distance(7.0f)
 {
 }
 
