@@ -1,11 +1,12 @@
 #include "InteractiveObjectComponent.h"
-#include "UserComponentsIDs.h"
 #include "PlayerInteractiveComponent.h"
 #include "GameObject.h"
 
 ADD_COMPONENT(InteractiveObjectComponent)
 
-InteractiveObjectComponent::InteractiveObjectComponent() : Component(UserComponentId::InteractiveObjectComponent)
+
+
+InteractiveObjectComponent::InteractiveObjectComponent(UserComponentId::UserComponentId id): Component(id)
 {
 }
 

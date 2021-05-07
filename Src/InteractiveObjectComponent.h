@@ -4,15 +4,19 @@
 #define INTERACTIVEOBJECTCOMPONENT_H
 
 #include "Component.h"
+#include "UserComponentsIDs.h"
 
 
 class InteractiveObjectComponent : public Component
 {
 public:
+
+	
 	/// <summary>
 	/// Constructor of the class
 	/// </summary>
-	InteractiveObjectComponent();
+	/// <param name="id">component Id for subclasses</param>
+	InteractiveObjectComponent(UserComponentId::UserComponentId id = UserComponentId::InteractiveObjectComponent);
 	/// <summary>
 	/// Destructor of the class
 	/// </summary>

@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\DeactivatableObjectComponent.cpp" />
     <ClCompile Include="..\Src\FSMEnemyComponent.cpp" />
     <ClCompile Include="..\Src\HealthComponent.cpp" />
     <ClCompile Include="..\Src\InteractiveObjectComponent.cpp" />
@@ -27,8 +28,10 @@
     <ClCompile Include="..\Src\PlayerLightComponent.cpp" />
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
     <ClCompile Include="..\Src\ScreamerAIEnemyComponent.cpp" />
+    <ClCompile Include="..\Src\TrapComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\DeactivatableObjectComponent.h" />
     <ClInclude Include="..\Src\FSMEnemyComponent.h" />
     <ClInclude Include="..\Src\InteractiveObjectComponent.h" />
     <ClInclude Include="..\Src\PlayerInteractiveComponent.h" />
@@ -37,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\ScreamerAIEnemyComponent.h" />
+    <ClInclude Include="..\Src\TrapComponent.h" />
     <ClInclude Include="..\Src\UserComponentsIDs.h" />
   </ItemGroup>
   <ItemGroup>
