@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 7
+HowManyGameObjects = 8
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 5, Persist = false}
@@ -33,40 +33,52 @@ go_1[3] = { Component = "BoxCollider", Type="Box",Width=100,Height=1,Depth=100,I
 
 -- Cabesa ogre
 go_2 = {}
-go_2[0] = { Name = "Dummie2", HowManyCmps = 3, Persist = false}
-go_2[1] = { Component = "Transform", Coord = {X = 30, Y = 5, Z = -30}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+go_2[0] = { Name = "Dummie2", HowManyCmps = 4, Persist = false}
+go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 5, Z = -30}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
 go_2[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
-go_2[3] = { Component = "AudioSource", Route = {"ProtoDarkMaze_Menu.mp3"}, Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume=15, Play = true}
+go_2[3] = { Component = "AudioSource", Route = {"Assets/Audio/kid_laugh.mp3" ,"Assets/Audio/goat_cry.mp3"}, Stereo = true,
+			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
+go_2[4] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
+			DetectionRange = 50, FollowTime = 5, DyingTime = 3, MoveSpeed = 6}
+			
+go_3 = {}
+go_3[0] = { Name = "InvisibleEnemy", HowManyCmps = 3, Persist = false}
+go_3[1] = { Component = "Transform", Coord = {X = -15, Y = 5, Z = -30}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+			Visible=true, Shadows=false, RenderingDistance = 1000}
+go_3[3] = { Component = "AudioSource", Route = {"Assets/Audio/ProtoDarkMaze_Menu.mp3"}, Stereo = true,
+			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
 
 --Luz direccional
-go_3 = {}
-go_3[0] = { Name = "LuzDireccionalLOL", HowManyCmps = 2, Persist = false}
-go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 500, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
-go_3[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
+go_4 = {}
+go_4[0] = { Name = "LuzDireccionalLOL", HowManyCmps = 2, Persist = false}
+go_4[1] = { Component = "Transform", Coord = {X = 0, Y = 500, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+go_4[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
 		    Diffuse = {Red = 0.7, Green= 0.5, Blue = 0.5}, 
 			Specular = {Red = 1, Green= 1, Blue = 1},
 			LightDirection = {X = -1.3, Y = -1,Z = 0}}
 
-go_4 = {}
-go_4[0] = { Name = "Pared2", HowManyCmps = 2, Persist = false}
-go_4[1] = { Component = "Transform", Coord = {X = -30, Y = 5, Z = 15}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.2, Y = 0.2, Z = 0.7}}
-go_4[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
-			Visible=true, Shadows=true, RenderingDistance = 1000}
--- Paredes
 go_5 = {}
-go_5[0] = { Name = "Pared1", HowManyCmps = 2, Persist = false}
-go_5[1] = { Component = "Transform", Coord = {X = 20, Y = 5, Z = 15}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.2, Y = 0.2, Z = 0.7}}
+go_5[0] = { Name = "Pared2", HowManyCmps = 2, Persist = false}
+go_5[1] = { Component = "Transform", Coord = {X = -30, Y = 5, Z = 15}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.2, Y = 0.2, Z = 0.7}}
 go_5[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
-
+-- Paredes
 go_6 = {}
-go_6[0] = { Name = "LuzDireccional2", HowManyCmps = 2, Persist = false}
-go_6[1] = { Component = "Transform", Coord = {X = 0, Y = 500, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
-go_6[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
+go_6[0] = { Name = "Pared1", HowManyCmps = 2, Persist = false}
+go_6[1] = { Component = "Transform", Coord = {X = 20, Y = 5, Z = 15}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.2, Y = 0.2, Z = 0.7}}
+go_6[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
+			Visible=true, Shadows=true, RenderingDistance = 1000}
+
+go_7 = {}
+go_7[0] = { Name = "LuzDireccional2", HowManyCmps = 2, Persist = false}
+go_7[1] = { Component = "Transform", Coord = {X = 0, Y = 500, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+go_7[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
 		    Diffuse = {Red = 0.7, Green= 0.5, Blue = 0.5}, 
 			Specular = {Red = 1, Green= 1, Blue = 1},
 			LightDirection = {X = 0.7, Y = -1.2,Z = 0}}
