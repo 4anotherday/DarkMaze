@@ -12,10 +12,10 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 8
+HowManyGameObjects = 9
 -- Player
 go_0 = {}
-go_0[0] = { Name = "Player", HowManyCmps = 7, Persist = false}
+go_0[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = -10, Y = 10, Z = 20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 20}
 go_0[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, kinematic = true, ConstrainAngle = true, IsTrigger=false}
@@ -23,6 +23,7 @@ go_0[4] = { Component = "Camera"}
 go_0[5] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
 go_0[6] = { Component = "PlayerInteractiveComponent" }
 go_0[7] = { Component = "HealthComponent"}
+go_0[8] = { Component = "PlayerKeysComponent"}
 
 -- Suelo
 go_1 = {}
@@ -82,7 +83,14 @@ go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 go_7[3] = { Component = "SphereCollider",Radius=12,IsTrigger=true}
 go_7[4] = { Component = "FirstAidKitComponent" }
 
-
+go_8 = {}
+go_8[0] = { Name = "Key", HowManyCmps = 4, Persist = false}
+go_8[1] = { Component = "Transform", Coord = {X = -10, Y = 1, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.04, Y = 0.01, Z = 0.01}}
+go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
+						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+						Visible=true, Shadows=false, RenderingDistance = 1000}
+go_8[3] = { Component = "SphereCollider",Radius=12,IsTrigger=true}
+go_8[4] = { Component = "KeyComponent" }
 
 
 -- Objeto sonoro
