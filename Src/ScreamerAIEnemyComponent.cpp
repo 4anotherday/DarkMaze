@@ -78,7 +78,7 @@ void ScreamerAIEnemyComponent::update()
 	if (_readyToMove) {
 		//If ray doesnt hit anything static, that means we have direct sight towards the player
 		RayCast::RayCastHit ray = RayCast(currentEnemyPos, currentPlayerPos, RayCast::Type::Static).getRayCastInformation();
-		if (ray.hit)
+		if (!ray.hit)
 		{
 			std::cout << "player transform found & changed" << std::endl;
 			_lastPlayerPos = currentPlayerPos;
@@ -131,15 +131,18 @@ void ScreamerAIEnemyComponent::idlestate()
 
 void ScreamerAIEnemyComponent::movingState()
 {
-	//if (!_moving) return;
+	if (!_moving) return;
 
 	_audioSource->stopChannel(0);
 
-	Vector3 dir = (_tranformPlayer->getPosition()).normalize() - _transformEnemy->getPosition();
-
+	//Vector3 dir = (_tranformPlayer->getPosition()).normalize() - _transformEnemy->getPosition();
+	Vector3 dir = (_lastPlayerPos) - _transformEnemy->getPosition();
+	dir.normalize();
 	dir = dir * _moveSpeed;
+	dir.setY(0.0);
+
 	std::cout << dir.getX() << " " << dir.getY() << " " << dir.getZ() << " " << std::endl;
-	_rigidBodyEnemy->addForce(dir);
+	_rigidBodyEnemy->setLinearVelocity(dir);
 
 	/*Vector3 dir = _tranformPlayer->getPosition();
 	_rigidBodyEnemy->moveTo(dir);*/
@@ -151,7 +154,8 @@ void ScreamerAIEnemyComponent::screamingState()
 	//1 corresponds with AttackAudio
 	if (!_screamingSoundOn) {
 		_audioSource->playAudio(1);
-		_audioSource->setVolumeChannel(_audioSource->getVolumeChannel(1)*2, 1);
+		int a = _audioSource->getVolumeChannel(0); // esto es 0??
+		_audioSource->setVolumeChannel(15* 4, 1);
 		_screamingSoundOn = true;
 	}
 	//_particleSystem->setEnabled(true);
