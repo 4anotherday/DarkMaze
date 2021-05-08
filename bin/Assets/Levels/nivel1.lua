@@ -17,8 +17,8 @@ HowManyGameObjects = 8
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 5, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = -10, Y = 10, Z = 20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 20}
-go_0[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, kinematic = true, ConstrainAngle = true, IsTrigger=false}
+go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 20, }
+go_0[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
 go_0[4] = { Component = "Camera"}
 go_0[5] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
 
@@ -38,12 +38,12 @@ go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 5, Z = -30}, Rotation =
 go_2[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
-go_2[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, kinematic = true,
-			ConstrainAngle = true, IsTrigger=false}
-go_2[4] = { Component = "AudioSource", Route = {"Assets/Audio/kid_laugh.mp3" ,"Assets/Audio/goat_cry.mp3"}, Stereo = true,
-			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
+go_2[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, Kinematic = false,
+			ConstrainAngle = true, IsTrigger= false}
+go_2[4] = { Component = "AudioSource", Route = {"Assets/Audio/woman_cry.mp3" ,"Assets/Audio/baby_crying.mp3"},
+			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
 go_2[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
-			DetectionRange = 30, FollowTime = 5, DyingTime = 3, MoveSpeed = 3}
+			DetectionRange = 30, FollowTime = 5, DyingTime = 4, MoveSpeed = 3}
 			
 go_3 = {}
 go_3[0] = { Name = "InvisibleEnemy", HowManyCmps = 3, Persist = false}
@@ -52,7 +52,7 @@ go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Prac
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
 go_3[3] = { Component = "AudioSource", Route = {"Assets/Audio/ProtoDarkMaze_Menu.mp3"}, Stereo = true,
-			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
+			MinMaxDistance = {Min = 2, Max = 6}, Volume= 30, Play = false}
 
 --Luz direccional
 go_4 = {}
