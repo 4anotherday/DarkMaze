@@ -43,6 +43,7 @@ go_2[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Hei
 			ConstrainAngle = true, IsTrigger= false}
 go_2[4] = { Component = "AudioSource", Route = {"Assets/Audio/woman_cry.mp3" ,"Assets/Audio/baby_crying.mp3"},
 			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
+--go_2[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
 go_2[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
 			DetectionRange = 30, FollowTime = 5, DyingTime = 4, MoveSpeed = 3}
 			

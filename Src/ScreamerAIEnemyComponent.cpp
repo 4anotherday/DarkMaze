@@ -55,15 +55,12 @@ void ScreamerAIEnemyComponent::update()
 	const Vector3& currentEnemyPos  = _transformEnemy->getPosition();
 
 	double distance = (currentPlayerPos - currentEnemyPos).magnitude();
-	//std::cout << distance << std::endl;
 	if (!_screamingSoundOn) {
 		if (distance <= _detectionRange) {
 			_readyToMove = true;
-			//std::cout << "inside detection range" << std::endl;
 		}
 		else if (!_dead) {
 			//_invisibleEnemy->sound(currentPlayerPos, _shoutIntensityIdle);
-			//std::cout << "outside detection range" << std::endl;
 			idlestate();
 		}
 
@@ -80,7 +77,6 @@ void ScreamerAIEnemyComponent::update()
 		RayCast::RayCastHit ray = RayCast(currentEnemyPos, currentPlayerPos, RayCast::Type::Static).getRayCastInformation();
 		if (!ray.hit)
 		{
-			//std::cout << "player transform found & changed" << std::endl;
 			_lastPlayerPos = currentPlayerPos;
 			_moving = true;
 		}
@@ -89,7 +85,6 @@ void ScreamerAIEnemyComponent::update()
 
 		if ((distance <= _detectionRange / 2) ||
 			_elapsedFollowTime >= _followTime) {
-			//std::cout << "screaming state" << std::endl;
 			_invisibleEnemy->sound(currentPlayerPos, _shoutIntensityAttack);
 			screamingState();
 		}
@@ -116,7 +111,7 @@ void ScreamerAIEnemyComponent::idlestate()
 	Vector3 trEnem = _transformEnemy->getPosition();
 	if (_initialTransformEnemy != _transformEnemy->getPosition()) {
 		_transformEnemy->setPosition(_initialTransformEnemy);
-
+		//_particleSystem->setEnabled(true);
 		/*Vector3 dir =  (_initialTransformEnemy).normalize() - _transformEnemy->getPosition();
 		dir = dir * _moveSpeed;
 		std::cout << dir.getX() << " " << dir.getY() << " " << dir.getZ() << " " << std::endl;
