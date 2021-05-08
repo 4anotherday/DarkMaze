@@ -41,18 +41,19 @@ go_2[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Prac
 go_2[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, Kinematic = false,
 			ConstrainAngle = true, IsTrigger= false}
 go_2[4] = { Component = "AudioSource", Route = {"Assets/Audio/woman_cry.mp3" ,"Assets/Audio/baby_crying.mp3"},
-			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
+			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
 go_2[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
 			DetectionRange = 30, FollowTime = 5, DyingTime = 4, MoveSpeed = 3}
 			
 go_3 = {}
-go_3[0] = { Name = "InvisibleEnemy", HowManyCmps = 3, Persist = false}
+go_3[0] = { Name = "InvisibleEnemy", HowManyCmps = 4, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = -15, Y = 5, Z = -30}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
 go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
 go_3[3] = { Component = "AudioSource", Route = {"Assets/Audio/ProtoDarkMaze_Menu.mp3"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume= 30, Play = false}
+go_3[4] = { Component = "InvisibleEnemyAIComponent"}
 
 --Luz direccional
 go_4 = {}

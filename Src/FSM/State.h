@@ -8,6 +8,8 @@ class State {
 public:
 	virtual ~State() {}
 	virtual void execute(Component* component) = 0;
+
+	const char* name;
 };
 
 #endif // !_STATE_

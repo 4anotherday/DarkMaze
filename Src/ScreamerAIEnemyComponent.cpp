@@ -45,8 +45,8 @@ void ScreamerAIEnemyComponent::start()
 	_audioSource = static_cast<AudioSourceComponent*>(_gameObject->getComponent(ComponentId::AudioSource));
 	_particleSystem = GETCOMPONENT(ParticleSystemComponent, ComponentId::ParticleSystem);
 
-	/*_invisibleEnemy = static_cast<InvisibleEnemyAIComponent*>(Engine::getInstance()->findGameObject("InvisibleEnemy")->
-		getComponent(UserComponentId::InvisibleEnemyAIComponent));*/
+	_invisibleEnemy = static_cast<InvisibleEnemyAIComponent*>(Engine::getInstance()->findGameObject("InvisibleEnemy")->
+		getComponent(UserComponentId::InvisibleEnemyAIComponent));
 }
 
 void ScreamerAIEnemyComponent::update()
@@ -59,11 +59,11 @@ void ScreamerAIEnemyComponent::update()
 	if (!_screamingSoundOn) {
 		if (distance <= _detectionRange) {
 			_readyToMove = true;
-			std::cout << "inside detection range" << std::endl;
+			//std::cout << "inside detection range" << std::endl;
 		}
 		else if (!_dead) {
 			//_invisibleEnemy->sound(currentPlayerPos, _shoutIntensityIdle);
-			std::cout << "outside detection range" << std::endl;
+			//std::cout << "outside detection range" << std::endl;
 			idlestate();
 		}
 
@@ -80,7 +80,7 @@ void ScreamerAIEnemyComponent::update()
 		RayCast::RayCastHit ray = RayCast(currentEnemyPos, currentPlayerPos, RayCast::Type::Static).getRayCastInformation();
 		if (!ray.hit)
 		{
-			std::cout << "player transform found & changed" << std::endl;
+			//std::cout << "player transform found & changed" << std::endl;
 			_lastPlayerPos = currentPlayerPos;
 			_moving = true;
 		}
@@ -89,8 +89,8 @@ void ScreamerAIEnemyComponent::update()
 
 		if ((distance <= _detectionRange / 2) ||
 			_elapsedFollowTime >= _followTime) {
-			std::cout << "screaming state" << std::endl;
-			//_invisibleEnemy->sound(currentPlayerPos, _shoutIntensityAttack);
+			//std::cout << "screaming state" << std::endl;
+			_invisibleEnemy->sound(currentPlayerPos, _shoutIntensityAttack);
 			screamingState();
 		}
 	}
@@ -154,7 +154,7 @@ void ScreamerAIEnemyComponent::screamingState()
 	if (!_screamingSoundOn) {
 		_audioSource->playAudio(1);
 		int a = _audioSource->getVolumeChannel(0); // esto es 0??
-		_audioSource->setVolumeChannel(15* 4, 1);
+		_audioSource->setVolumeChannel(4, 1);
 		_screamingSoundOn = true;
 	}
 	//_particleSystem->setEnabled(true);

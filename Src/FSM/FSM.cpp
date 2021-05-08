@@ -38,6 +38,7 @@ void FSM::step()
 	for (TransitionState& ts : it->second) {
 		if (ts.transition->evaluate(_component)) {
 			_current = ts.target;
+			std::cout << _current->name << '\n';
 			break;
 		}
 	}

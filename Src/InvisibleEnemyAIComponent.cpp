@@ -17,10 +17,10 @@ ADD_COMPONENT(InvisibleEnemyAIComponent)
 InvisibleEnemyAIComponent::InvisibleEnemyAIComponent() : Component(UserComponentId::InvisibleEnemyAIComponent),
 	_transformPlayer(nullptr), _myTransform(nullptr), _audioSource(nullptr), _playerHealth(nullptr), _ai(nullptr), _states(), _transitions(),
 	_actualSpeed(3.0), _speed(3.0), _slowAfterHit(0.5),
-	_radiusFindPlayer(15.0), _minRadiusFindPlayer(6.0), _maxRadiusFindPlayer(20.0),
-	_sightingDistance(19.0), _lastKnownPosition(), _justLostSightTime(-1.0f), _lostSightSearchTime(3.0f),
+	_radiusFindPlayer(15.0 * 10), _minRadiusFindPlayer(6.0 * 10), _maxRadiusFindPlayer(20.0 * 10),
+	_sightingDistance(19.0 * 10), _lastKnownPosition(), _justLostSightTime(-1.0f), _lostSightSearchTime(3.0f),
 	_attackRange(2.0f), _attackCooldown(3.0f), _attackCooldownTime(-1.0f),
-	_hearingDistance(20.0), _soundLocation(), _soundTime(-1.0f), _soundTimeSearchTime(8.0f)
+	_hearingDistance(20.0 * 10), _soundLocation(), _soundTime(-1.0f), _soundTimeSearchTime(8.0f)
 {
 }
 
@@ -86,7 +86,7 @@ void InvisibleEnemyAIComponent::update()
 
 void InvisibleEnemyAIComponent::moveTowardsPos(const Vector3& pos)
 {
-	Vector3 dir = _myTransform->getPosition() - pos;
+	Vector3 dir = pos - _myTransform->getPosition();
 	if (dir.magnitude() < 0.2)
 		return;
 	dir = dir.normalize();
@@ -122,20 +122,20 @@ void InvisibleEnemyAIComponent::createFSM()
 {
 	_ai = new FSM(this);
 
-	FindState* find = createState<FindState>(); 
+	FindState* find = createState<FindState>("findState"); 
 	find->setFindRadius(&_radiusFindPlayer);
 	find->setJustLostTime(&_justLostSightTime);
 
-	GoTowardsPlayerState* towardsPlayer = createState<GoTowardsPlayerState>();
+	GoTowardsPlayerState* towardsPlayer = createState<GoTowardsPlayerState>("towardsPlayer");
 
-	AttackPlayerState* attackPlayer = createState<AttackPlayerState>();
+	AttackPlayerState* attackPlayer = createState<AttackPlayerState>("attackPlayer");
 	attackPlayer->setHealthComp(_playerHealth);
 	attackPlayer->setAudioSource(_audioSource);
 	attackPlayer->setAttackCoolDown(_attackCooldown);
 	attackPlayer->setAttackCoolDownTime(&_attackCooldownTime);
 	attackPlayer->setRange(_attackRange);
 
-	TowardsSoundState* towardsSound = createState<TowardsSoundState>();
+	TowardsSoundState* towardsSound = createState<TowardsSoundState>("towardsSound");
 	towardsSound->setSoundPos(&_soundLocation);
 
 	LostSightTransition* lostSightTransition = createTransition<LostSightTransition>();
@@ -172,9 +172,10 @@ void InvisibleEnemyAIComponent::createFSM()
 }
 
 template<typename T>
-T* InvisibleEnemyAIComponent::createState()
+T* InvisibleEnemyAIComponent::createState(const char* name)
 {
 	T* state = new T();
+	state->name = name;
 	_states.push_back(state);
 	return state;
 }
@@ -292,12 +293,12 @@ bool InvisibleEnemyAIComponent::GainSightTransition::evaluate(Component* compone
 
 bool InvisibleEnemyAIComponent::LoudSoundTransition::evaluate(Component* component)
 {
-	return _soundTime > 0;
+	return *_soundTime > 0;
 }
 
 bool InvisibleEnemyAIComponent::NoSoundTransition::evaluate(Component* component)
 {
-	return _soundTime <= 0;
+	return *_soundTime <= 0;
 }
 
 bool InvisibleEnemyAIComponent::InRangeTransition::evaluate(Component* component)

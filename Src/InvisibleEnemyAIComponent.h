@@ -48,7 +48,7 @@ private:
 	void createFSM();
 
 	template <typename T>
-	T* createState();
+	T* createState(const char* name);
 
 	template <typename T>
 	T* createTransition();
