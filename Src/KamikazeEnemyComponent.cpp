@@ -22,7 +22,7 @@ KamikazeEnemyComponent::KamikazeEnemyComponent() : Component(UserComponentId::Ka
 	_elapsedFollowTime(0.0f), _elapsedParticlesTime(0.0f),
 
 	//Default configuration values
-	_nearExplosionRange(1.0f), _farExplosionRange(2.5f),
+	_nearExplosionRange(8.0f), _farExplosionRange(20.0f),
 	_followTime(3.0f), _speed(40.0f), _visionRange(30.0f), _shoutingIntensity(0.6f),
 	_particlesDuration(2.0f)
 {}
@@ -55,10 +55,10 @@ void KamikazeEnemyComponent::start()
 
 	GameObject* player = Engine::getInstance()->findGameObject("Player");
 	_playerTr = static_cast<Transform*>(player->getComponent(ComponentId::Transform));
-	//_playerHealth = static_cast<HealthComponent*>(player->getComponent(UserComponentId::HealthComponent));
+	_playerHealth = static_cast<HealthComponent*>(player->getComponent(UserComponentId::HealthComponent));
 
-	/*_invisibleEnemy = static_cast<InvisibleEnemyAIComponent*>(Engine::getInstance()->findGameObject("InvisibleEnemy")->
-		getComponent(UserComponentId::InvisibleEnemyAIComponent));*/
+	_invisibleEnemy = static_cast<InvisibleEnemyAIComponent*>(Engine::getInstance()->findGameObject("InvisibleEnemy")->
+		getComponent(UserComponentId::InvisibleEnemyAIComponent));
 }
 
 void KamikazeEnemyComponent::update()
@@ -83,7 +83,7 @@ void KamikazeEnemyComponent::update()
 		moveTowardsPos(_lastPlayerPos);
 		_elapsedFollowTime += EngineTime::getInstance()->deltaTime();
 		if (_elapsedFollowTime >= _followTime) {
-			//_invisibleEnemy->sound(_tr->getPosition(), _shoutingIntensity);
+			_invisibleEnemy->sound(_tr->getPosition(), _shoutingIntensity);
 			explode();
 		}
 	}
@@ -123,9 +123,9 @@ void KamikazeEnemyComponent::explode()
 	float distance = (playerPos - myPos).magnitude();
 
 	if (distance < _nearExplosionRange) {
-		//_playerHealth->loseHPs();
+		_playerHealth->loseHPs();
 	}
 	else if ( distance < _farExplosionRange) {
-		//_playerHealth->loseHPs(2);
+		_playerHealth->loseHPs(2);
 	}
 }

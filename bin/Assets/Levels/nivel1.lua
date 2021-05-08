@@ -15,12 +15,13 @@
 HowManyGameObjects = 9
 -- Player
 go_0 = {}
-go_0[0] = { Name = "Player", HowManyCmps = 5, Persist = false}
+go_0[0] = { Name = "Player", HowManyCmps = 6, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = -10, Y = 10, Z = 20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 20, }
 go_0[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
 go_0[4] = { Component = "Camera"}
 go_0[5] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
+go_0[6] = { Component = "HealthComponent", HPs = 2 }
 
 -- Suelo
 go_1 = {}

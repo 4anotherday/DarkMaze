@@ -13,9 +13,8 @@ public:
 
 	HealthComponent();
 
-
 	//TODO
-	void awake(luabridge::LuaRef& data) {}
+	void awake(luabridge::LuaRef& data);
 
 	/// <summary>
 	/// add n life points to the player
