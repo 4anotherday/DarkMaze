@@ -12,6 +12,7 @@ class InvisibleEnemyAIComponent;
 class HealthComponent;
 class ParticleSystemComponent;
 class AudioSourceComponent;
+class RenderObjectComponent;
 
 class KamikazeEnemyComponent : public Component {
 public:
@@ -45,6 +46,7 @@ private:
 	HealthComponent* _playerHealth;
 	ParticleSystemComponent* _particleSystem;
 	AudioSourceComponent* _audioSource;
+	RenderObjectComponent* _renderObject;
 
 	//Position where player was last seen
 	Vector3 _lastPlayerPos;
