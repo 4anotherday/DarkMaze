@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 8
+HowManyGameObjects = 9
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 5, Persist = false}
@@ -31,9 +31,9 @@ go_1[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_1[3] = { Component = "BoxCollider", Type="Box",Width=100,Height=1,Depth=100,IsTrigger=false}
 
--- Cabesa ogre
+--Enemigos
 go_2 = {}
-go_2[0] = { Name = "Dummie2", HowManyCmps = 5, Persist = false}
+go_2[0] = { Name = "Screamer", HowManyCmps = 5, Persist = false}
 go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 5, Z = -30}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
 go_2[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
@@ -54,6 +54,18 @@ go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Prac
 go_3[3] = { Component = "AudioSource", Route = {"Assets/Audio/ProtoDarkMaze_Menu.mp3"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume= 30, Play = false}
 go_3[4] = { Component = "InvisibleEnemyAIComponent"}
+
+go_8 = {}
+go_8[0] = { Name = "Kamikaze", HowManyCmps = 5, Persist = false}
+go_8[1] = { Component = "Transform", Coord = {X = 25, Y = 5, Z = -40}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+go_8[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+			Visible=true, Shadows=false, RenderingDistance = 1000}
+go_8[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, kinematic = true,
+			ConstrainAngle = true, IsTrigger=false}
+go_8[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
+			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
+go_8[5] = { Component = "KamikazeEnemyComponent" }
 
 --Luz direccional
 go_4 = {}

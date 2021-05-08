@@ -136,12 +136,13 @@ void ScreamerAIEnemyComponent::movingState()
 	_audioSource->stopChannel(0);
 
 	//Vector3 dir = (_tranformPlayer->getPosition()).normalize() - _transformEnemy->getPosition();
-	Vector3 dir = (_lastPlayerPos).normalize() - _transformEnemy->getPosition();
-
+	Vector3 dir = (_lastPlayerPos) - _transformEnemy->getPosition();
+	dir.normalize();
 	dir = dir * _moveSpeed;
 	dir.setY(0.0);
+
 	std::cout << dir.getX() << " " << dir.getY() << " " << dir.getZ() << " " << std::endl;
-	_rigidBodyEnemy->addForce(dir);
+	_rigidBodyEnemy->setLinearVelocity(dir);
 
 	/*Vector3 dir = _tranformPlayer->getPosition();
 	_rigidBodyEnemy->moveTo(dir);*/
