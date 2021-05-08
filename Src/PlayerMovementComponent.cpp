@@ -24,7 +24,7 @@ PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Compon
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 {
 	//Default values 
-	_speedForward = 4000;	_speedSideways = 500;	_speedBackwards = 4000; _slowCrouching = 3; _playerHeight = 10;
+	_speedForward = 4000;	_speedSideways = 2000;	_speedBackwards = 2000; _slowCrouching = .3; _playerHeight = 10;
 	//Lua values if exist
 	if (LUAFIELDEXIST("SpeedForward"))
 		_speedForward = data["SpeedForward"].cast<float>();
