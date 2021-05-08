@@ -22,8 +22,8 @@ namespace UserComponentId {
 		PlayerInteractiveComponent,
 		FSMEnemyComponent,
 		ScreamerAIEnemyComponent,
-		DeactivableObjectCompoent,
-		TrapComponent
+		TrapComponent,
+		ObjectDeactivatorComponent,
 	};
 }
 

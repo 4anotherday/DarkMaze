@@ -1,12 +1,15 @@
 #include "InteractiveObjectComponent.h"
 #include "PlayerInteractiveComponent.h"
+#include "ColliderComponent.h"
 #include "GameObject.h"
+#include "Logger.h"
+#include <iostream>
 
 ADD_COMPONENT(InteractiveObjectComponent)
 
 
 
-InteractiveObjectComponent::InteractiveObjectComponent(UserComponentId::UserComponentId id): Component(id)
+InteractiveObjectComponent::InteractiveObjectComponent(UserComponentId::UserComponentId id) : Component(id), _log(nullptr)
 {
 }
 
@@ -20,6 +23,19 @@ void InteractiveObjectComponent::onTrigger(GameObject* other)
 	if (playerInt != nullptr) {
 		playerInt->setObject(this);
 	}
+}
+
+void InteractiveObjectComponent::start()
+{
+	_log = Logger::getInstance();
+	SphereColliderComponent* col = GETCOMPONENT(SphereColliderComponent, ComponentId::SphereCollider);
+	if (col != nullptr)
+		_distance = col->getRadius() * 2;
+	else {
+		_distance = 1;
+		_log->log("The trigger is not a sphere, using default distance", Logger::Level::WARN);
+	}
+
 }
 
 void InteractiveObjectComponent::interact()

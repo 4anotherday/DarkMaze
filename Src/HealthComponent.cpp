@@ -1,6 +1,7 @@
 #include "HealthComponent.h"
 #include "UserComponentsIDs.h"
 #include "includeLUA.h"
+#include "GameManager.h"
 
 ADD_COMPONENT(HealthComponent)
 
@@ -46,5 +47,5 @@ void HealthComponent::reset()
 
 void HealthComponent::onDead()
 {
-
+	GameManager::getInstance()->resetLevel();
 }

@@ -8,7 +8,7 @@
 
 ADD_COMPONENT(PlayerInteractiveComponent)
 
-PlayerInteractiveComponent::PlayerInteractiveComponent():Component(UserComponentId::PlayerInteractiveComponent), _objectToInteract(nullptr),
+PlayerInteractiveComponent::PlayerInteractiveComponent() :Component(UserComponentId::PlayerInteractiveComponent), _objectToInteract(nullptr),
 _keyboard(KeyBoardInput::getInstance()), _transform(nullptr), _key(KeyCode::KEYCODE_E)
 {
 }
@@ -24,15 +24,17 @@ void PlayerInteractiveComponent::start()
 
 void PlayerInteractiveComponent::update()
 {
-	if (_keyboard->isKeyDown(_key) && _objectToInteract != nullptr && _isStillTrigger()) {
-
-		_objectToInteract->interact();
+	if (_keyboard->isKeyJustDown(_key) && _objectToInteract != nullptr && _isStillTrigger()) {
+		
+			_objectToInteract->interact();
+			_objectToInteract = nullptr;
 	}
 }
 
 void PlayerInteractiveComponent::setObject(InteractiveObjectComponent* ob)
 {
-	_objectToInteract = ob;
+	if (ob != nullptr)
+		_objectToInteract = ob;
 }
 
 bool PlayerInteractiveComponent::_isStillTrigger()
@@ -40,11 +42,15 @@ bool PlayerInteractiveComponent::_isStillTrigger()
 	//Get the transform of the interactive object
 	GameObject* gIntObject = _objectToInteract->getGameObject();
 	Transform* trIntObject = static_cast<Transform*>(gIntObject->getComponent(ComponentId::Transform));
+	
+	//Set an imaginary position at same height than the player in order to do the correct calculations
+	Vector3 auxPos = trIntObject->getPosition();
+	auxPos.set(auxPos.getX(), _transform->getPosition().getY(), auxPos.getZ());
 	//Get the distance between the player and the object
-	double distance = (trIntObject->getPosition() - _transform->getPosition()).magnitude();
+	double distance = (auxPos - _transform->getPosition()).magnitude();
 	//If is still trigger
 	if (distance <= _objectToInteract->getDistance()) return true;
 	//If not dereference the object
-	_objectToInteract = nullptr;
+	//_objectToInteract = nullptr;
 	return false;
 }
