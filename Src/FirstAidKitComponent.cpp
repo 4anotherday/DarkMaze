@@ -23,8 +23,7 @@ void FirstAidKitComponent::interact()
 {
 	if (_health != nullptr)
 	{
-		_health->addHPs(_healthAmount);
-		//destroy firstaidkit
+		_health->addHPs(_healthAmount);		
 	}
 }
 

@@ -5,7 +5,7 @@
 
 //ADD_COMPONENT(InteractiveObjectComponent)
 
-InteractiveObjectComponent::InteractiveObjectComponent(unsigned int id) : Component(id),_distance(7.0f)
+InteractiveObjectComponent::InteractiveObjectComponent(unsigned int id) : Component(id),_distance(15.0f)
 {
 }
 

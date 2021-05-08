@@ -15,14 +15,19 @@ public:
 	FirstAidKitComponent();
 	~FirstAidKitComponent();
 
+	/// <summary>
+	/// Initializes the component, called once at the start of the execution
+	/// </summary>
 	virtual void start() override;
 
+	/// <summary>
+	/// Make the action when player interacts with the object
+	/// </summary>
 	virtual void interact() override;
 
 private:
 
 	HealthComponent* _health;
-
 	unsigned int _healthAmount;
 };
 

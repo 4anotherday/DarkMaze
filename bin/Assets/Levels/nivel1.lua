@@ -75,11 +75,11 @@ go_6[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = tr
 
 go_7 = {}
 go_7[0] = { Name = "FirstAidKit", HowManyCmps = 4, Persist = false}
-go_7[1] = { Component = "Transform", Coord = {X = -10, Y = 2, Z = -20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.04, Y = 0.01, Z = 0.04}}
+go_7[1] = { Component = "Transform", Coord = {X = -10, Y = 1, Z = -20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.04, Y = 0.01, Z = 0.04}}
 go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
 						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 						Visible=true, Shadows=false, RenderingDistance = 1000}
-go_7[3] = { Component = "BoxCollider", Type="Box",Width=8,Height=8,Depth=8,IsTrigger=true}
+go_7[3] = { Component = "BoxCollider", Type="Box",Width=12,Height=12,Depth=12,IsTrigger=true}
 go_7[4] = { Component = "FirstAidKitComponent" }
 
 
