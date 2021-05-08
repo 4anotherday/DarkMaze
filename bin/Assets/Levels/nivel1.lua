@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 9
+HowManyGameObjects = 10
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 7, Persist = false}
@@ -92,6 +92,20 @@ go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_8[3] = { Component = "SphereCollider",Radius=5,IsTrigger=true}
 go_8[4] = { Component = "ObjectDeactivatorComponent",ObjName="Trampa1"}
+
+-- FirstAidKit
+go_9 = {}
+go_9[0] = { Name = "FirstAidKit", HowManyCmps = 4, Persist = false}
+go_9[1] = { Component = "Transform", Coord = {X = -10, Y = 2, Z = -20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.04, Y = 0.01, Z = 0.04}}
+go_9[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
+						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+						Visible=true, Shadows=false, RenderingDistance = 1000}
+go_9[3] = { Component = "BoxCollider", Type="Box",Width=8,Height=8,Depth=8,IsTrigger=true}
+go_9[4] = { Component = "FirstAidKitComponent" }
+
+
+
+
 -- Objeto sonoro
 -- go_2 = {}
 -- go_2[0] = { Name = "ObjetoSonoro", HowManyCmps = 3}
