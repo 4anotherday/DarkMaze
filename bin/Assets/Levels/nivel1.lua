@@ -33,15 +33,17 @@ go_1[3] = { Component = "BoxCollider", Type="Box",Width=100,Height=1,Depth=100,I
 
 -- Cabesa ogre
 go_2 = {}
-go_2[0] = { Name = "Dummie2", HowManyCmps = 4, Persist = false}
+go_2[0] = { Name = "Dummie2", HowManyCmps = 5, Persist = false}
 go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 5, Z = -30}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
 go_2[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
-go_2[3] = { Component = "AudioSource", Route = {"Assets/Audio/kid_laugh.mp3" ,"Assets/Audio/goat_cry.mp3"}, Stereo = true,
+go_2[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, kinematic = true,
+			ConstrainAngle = true, IsTrigger=false}
+go_2[4] = { Component = "AudioSource", Route = {"Assets/Audio/kid_laugh.mp3" ,"Assets/Audio/goat_cry.mp3"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
-go_2[4] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
-			DetectionRange = 50, FollowTime = 5, DyingTime = 3, MoveSpeed = 6}
+go_2[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
+			DetectionRange = 30, FollowTime = 5, DyingTime = 3, MoveSpeed = 3}
 			
 go_3 = {}
 go_3[0] = { Name = "InvisibleEnemy", HowManyCmps = 3, Persist = false}

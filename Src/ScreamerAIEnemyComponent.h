@@ -67,7 +67,7 @@ private:
 	AudioSourceComponent* _audioSource;
 	Transform* _tranformPlayer;
 	Transform* _transformEnemy;
-	Transform* _initialTransformEnemy;
+	Vector3 _initialTransformEnemy;
 
 	//Position where player was last seen
 	Vector3 _lastPlayerPos;
@@ -85,6 +85,8 @@ private:
 	float _shoutIntensityAttack;
 	//Enemy's detection range to detect the player, if detected, it procceeds to move towards the player
 	float _detectionRange;
+	//The sound will be heard from this position
+	//float _idleSoundRange;
 
 	float _moveSpeed;
 
@@ -93,6 +95,9 @@ private:
 	bool _moving;
 	//If dead, performs the scream and the particle's effect
 	bool _dead;
+
+	float _idleSoundOn;
+	float _screamingSoundOn;
 };
 
 #endif // !SCREAMERAIMENEMYCOMPONENT_H
