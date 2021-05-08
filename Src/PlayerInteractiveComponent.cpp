@@ -24,8 +24,8 @@ void PlayerInteractiveComponent::start()
 
 void PlayerInteractiveComponent::update()
 {
-	if (_keyboard->isKeyDown(_key) && _objectToInteract != nullptr && _isStillTrigger()) {
-
+	if (_keyboard->isKeyJustDown(_key) && _objectToInteract != nullptr && _isStillTrigger()) 
+	{
 		_objectToInteract->interact();
 	}
 }

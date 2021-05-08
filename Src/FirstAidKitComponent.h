@@ -7,6 +7,7 @@
 
 class GameObject;
 class HealthComponent;
+class PlayerInteractiveComponent;
 
 class FirstAidKitComponent : public InteractiveObjectComponent
 {
@@ -28,6 +29,7 @@ public:
 private:
 
 	HealthComponent* _health;
+	PlayerInteractiveComponent* _plInteractive;
 	unsigned int _healthAmount;
 };
 
