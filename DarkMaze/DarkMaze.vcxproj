@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Src\DoorComponent.cpp" />
     <ClCompile Include="..\Src\FirstAidKitComponent.cpp" />
     <ClCompile Include="..\Src\FSMEnemyComponent.cpp" />
     <ClCompile Include="..\Src\HealthComponent.cpp" />
@@ -32,6 +33,7 @@
     <ClCompile Include="..\Src\ScreamerAIEnemyComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\DoorComponent.h" />
     <ClInclude Include="..\Src\FirstAidKitComponent.h" />
     <ClInclude Include="..\Src\FSMEnemyComponent.h" />
     <ClInclude Include="..\Src\InteractiveObjectComponent.h" />

@@ -26,9 +26,13 @@ void FirstAidKitComponent::interact()
 	if (_health != nullptr)
 	{
 		_health->addHPs(_healthAmount);
-		//I set the interactiveObject to nullptr, because I want to destoy it 
-		_plInteractive->setObject(nullptr);
-		Engine::getInstance()->remGameObjectString(_gameObject->getName());
+
+		if (_plInteractive != nullptr)
+		{
+			//I set the interactiveObject to nullptr, because I want to destoy it 
+			_plInteractive->setObject(nullptr);
+			Engine::getInstance()->remGameObjectString(_gameObject->getName());
+		}
 	}
 }
 

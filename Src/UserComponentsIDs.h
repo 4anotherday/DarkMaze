@@ -24,7 +24,8 @@ namespace UserComponentId {
 		ScreamerAIEnemyComponent,
 		FirstAidKitComponent,
 		KeyComponent,
-		PlayerKeysComponent
+		PlayerKeysComponent,
+		DoorComponent
 	};
 }
 

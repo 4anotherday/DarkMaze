@@ -26,9 +26,12 @@ void KeyComponent::interact()
 	if (_playerKeys != nullptr)
 	{
 		_playerKeys->addKey();
-		//I set the interactiveObject to nullptr, because I want to destoy it 
-		_plInteractive->setObject(nullptr);
-		Engine::getInstance()->remGameObjectString(_gameObject->getName());
+		if(_plInteractive!=nullptr)
+		{
+			//I set the interactiveObject to nullptr, because I want to destoy it 
+			_plInteractive->setObject(nullptr);
+			Engine::getInstance()->remGameObjectString(_gameObject->getName());
+		}
 	}
 }
 
