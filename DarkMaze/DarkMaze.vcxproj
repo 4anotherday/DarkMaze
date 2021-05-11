@@ -41,6 +41,7 @@
     <ClInclude Include="..\Src\FSMEnemyComponent.h" />
     <ClInclude Include="..\Src\GameManager.h" />
     <ClInclude Include="..\Src\InteractiveObjectComponent.h" />
+    <ClInclude Include="..\Src\KeyComponent.h" />
     <ClInclude Include="..\Src\ObjectDeactivatorComponent.h" />
     <ClInclude Include="..\Src\PlayerInteractiveComponent.h" />
     <ClInclude Include="..\Src\PlayerKeysComponent.h" />

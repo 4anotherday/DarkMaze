@@ -4,6 +4,7 @@
 #include "PlayerInteractiveComponent.h"
 #include "Engine.h"
 #include "GameObject.h"
+#include "includeLUA.h"
 
 ADD_COMPONENT(FirstAidKitComponent)
 
@@ -13,6 +14,14 @@ FirstAidKitComponent::FirstAidKitComponent() : InteractiveObjectComponent(UserCo
 
 FirstAidKitComponent::~FirstAidKitComponent()
 {
+}
+
+void FirstAidKitComponent::awake(luabridge::LuaRef& data)
+{
+	if (LUAFIELDEXIST(HealthAmount))
+	{
+		_healthAmount = GETLUAFIELD(HealthAmount, unsigned int);
+	}
 }
 
 void FirstAidKitComponent::start()
@@ -35,6 +44,3 @@ void FirstAidKitComponent::interact()
 		}
 	}
 }
-
-
-

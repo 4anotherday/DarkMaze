@@ -38,7 +38,7 @@ void GameManager::nextLevel()
 	_level++;
 	if (_level < _maxLevel)
 		Engine::getInstance()->changeScene("nivel" + std::to_string(_level) + ".lua");
-	else throw LevelException("Last level already reached, cannot load next level");
+	else throw "Last level already reached, cannot load next level";
 
 }
 
