@@ -25,7 +25,10 @@ namespace UserComponentId {
 		FirstAidKitComponent,
 		KeyComponent,
 		PlayerKeysComponent,
-		DoorComponent
+		DoorComponent,
+		TrapComponent,
+		ObjectDeactivatorComponent
+
 	};
 }
 

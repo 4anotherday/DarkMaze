@@ -4,7 +4,6 @@
 #define HEALTHCOMPONENT_H
 
 #include "Component.h"
-
 class GameObject;
 
 class HealthComponent : public Component
@@ -14,8 +13,11 @@ public:
 	HealthComponent();
 
 
-	//TODO
-	void awake(luabridge::LuaRef& data) {}
+	/// <summary>
+	/// initializes the HP of the player
+	/// </summary>
+	/// <param name="data"></param>
+	void awake(luabridge::LuaRef& data);
 
 	/// <summary>
 	/// add n life points to the player
@@ -38,6 +40,12 @@ public:
 	/// reset the player life points
 	/// </summary>
 	void reset();
+
+	/// <summary>
+	/// gets the player's current HP
+	/// </summary>
+	/// <returns>the player's current health points</returns>
+	int getCurrentHP() { return _healthPoints; }
 private:
 
 	/// <summary>

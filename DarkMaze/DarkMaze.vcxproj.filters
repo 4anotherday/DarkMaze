@@ -39,6 +39,13 @@
     <ClCompile Include="..\Src\ScreamerAIEnemyComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\Src\TrapComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ObjectDeactivatorComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GameManager.cpp">
     <ClCompile Include="..\Src\FirstAidKitComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -74,6 +81,13 @@
     <ClInclude Include="..\Src\ScreamerAIEnemyComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="..\Src\TrapComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ObjectDeactivatorComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GameManager.h">
     <ClInclude Include="..\Src\FirstAidKitComponent.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>

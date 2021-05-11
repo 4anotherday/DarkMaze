@@ -1,6 +1,8 @@
 #include "Engine.h"
 #include "Exceptions.h"
 #include "Logger.h"
+#include "GameManager.h"
+#define MAX_LEVELS 3
 
 #if (defined _DEBUG) || !(defined _WIN32)
 int main() {
@@ -14,6 +16,8 @@ WinMain(HINSTANCE zhInstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdS
 		Engine::CreateInstance();
 		Engine* prueba = Engine::getInstance();
 		prueba->init("Assets/prueba.cfg", "Assets/Levels");
+		GameManager::CreateInstance();
+		GameManager::getInstance()->init(MAX_LEVELS);
 		prueba->changeScene("nivel1.lua");
 		prueba->run();
 	}

@@ -1,11 +1,21 @@
 #include "HealthComponent.h"
 #include "UserComponentsIDs.h"
+#include "includeLUA.h"
+#include "GameManager.h"
 
 ADD_COMPONENT(HealthComponent)
 
 HealthComponent::HealthComponent() : Component(UserComponentId::HealthComponent), _maxHealthPoints(), _healthPoints()
 {}
 
+
+void HealthComponent::awake(luabridge::LuaRef& data)
+{
+	_maxHealthPoints = 100;
+	if (LUAFIELDEXIST(HP))
+		_maxHealthPoints = GETLUAFIELD(HP, int);
+	_healthPoints = _maxHealthPoints;
+}
 
 void HealthComponent::addHPs(unsigned int n)
 {
@@ -37,5 +47,5 @@ void HealthComponent::reset()
 
 void HealthComponent::onDead()
 {
-
+	GameManager::getInstance()->resetLevel();
 }
