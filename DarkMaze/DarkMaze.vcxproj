@@ -28,6 +28,7 @@
     <ClCompile Include="..\Src\main.cpp" />
     <ClCompile Include="..\Src\PlayerInteractiveComponent.cpp" />
     <ClCompile Include="..\Src\PlayerLightComponent.cpp" />
+    <ClCompile Include="..\Src\PlayerLookEnemyGlitchComponent.cpp" />
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
     <ClCompile Include="..\Src\ScreamerAIEnemyComponent.cpp" />
   </ItemGroup>
@@ -41,6 +42,7 @@
     <ClInclude Include="..\Src\KamikazeEnemyComponent.h" />
     <ClInclude Include="..\Src\PlayerInteractiveComponent.h" />
     <ClInclude Include="..\Src\PlayerLightComponent.h" />
+    <ClInclude Include="..\Src\PlayerLookEnemyGlitchComponent.h" />
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
     <ClInclude Include="..\Src\ScreamerAIEnemyComponent.h" />
     <ClInclude Include="..\Src\HealthComponent.h" />

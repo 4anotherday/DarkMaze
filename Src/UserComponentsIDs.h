@@ -18,6 +18,7 @@ namespace UserComponentId {
 		HealthComponent = ComponentId::__StartPointUser__,
 		PlayerMovementComponent,
 		PlayerLightComponent,
+		PlayerLookEnemyGlitchComponent,
 		InteractiveObjectComponent,
 		PlayerInteractiveComponent,
 		FSMEnemyComponent,
