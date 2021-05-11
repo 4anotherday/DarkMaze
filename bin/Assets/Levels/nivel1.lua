@@ -56,8 +56,8 @@ go_3[1] = { Component = "Transform", Coord = {X = -15, Y = 5, Z = -30}, Rotation
 go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
-go_3[3] = { Component = "AudioSource", Route = {"Assets/Audio/ProtoDarkMaze_Menu.mp3"}, Stereo = true,
-			MinMaxDistance = {Min = 2, Max = 6}, Volume= 30, Play = false}
+go_3[3] = { Component = "AudioSource", Route = {"Assets/Audio/ProtoDarkMaze_Menu.mp3", "Assets/Audio/goat_cry.mp3"}, Stereo = true,
+			MinMaxDistance = {Min = 2, Max = 6}, Volume= 10, Play = false}
 go_3[4] = { Component = "InvisibleEnemyAIComponent"}
 
 go_8 = {}
