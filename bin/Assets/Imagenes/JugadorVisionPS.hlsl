@@ -35,7 +35,7 @@ float4 ps_main( VS_OUTPUT input ): COLOR0
     else if(strength > 1) strength = 1;
 
     //number between 0 and 8
-    int randomCell = (int)((random(float2(input.texCoord0.x * input.texCoord0.y, Time)) + 1) * 4);
+    int randomCell = (int)((random(float2(input.texCoord0.x * input.texCoord0.y * Time, Time)) + 1) * 4);
 
     float4 color = tex2D(RT, input.texCoord0.xy) * (1 - strength);
     color += tex2D(RT, (input.texCoord0.xy + incUV[randomCell])) * strength;

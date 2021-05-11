@@ -208,7 +208,7 @@ vertex_program RenderQuadVS hlsl
 fragment_program JugadorVisionPS hlsl
 {
     source JugadorVisionPS.hlsl
-	target ps_4_0
+	target ps_3_0
 	entry_point ps_main
     default_params {
         param_named strength float 0.0f
@@ -224,7 +224,7 @@ material JugadorVisionWeakMaterial {
             vertex_program_ref RenderQuadVS {
             }
             fragment_program_ref JugadorVisionPS {
-				param_named strength float 0.4f
+				param_named strength float 0.5f
             }
             texture_unit RTT0
             {
