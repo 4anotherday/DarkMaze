@@ -22,9 +22,13 @@ namespace UserComponentId {
 		PlayerInteractiveComponent,
 		FSMEnemyComponent,
 		ScreamerAIEnemyComponent,
+		FirstAidKitComponent,
+		KeyComponent,
+		PlayerKeysComponent,
+		DoorComponent,
 		TrapComponent,
-		ObjectDeactivatorComponent,
-		FirstAidKitComponent
+		ObjectDeactivatorComponent
+
 	};
 }
 

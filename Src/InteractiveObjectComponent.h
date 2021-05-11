@@ -16,7 +16,7 @@ public:
 	/// Constructor of the class
 	/// </summary>
 	/// <param name="id">component Id for subclasses</param>
-	InteractiveObjectComponent(UserComponentId::UserComponentId id =UserComponentId::InteractiveObjectComponent);
+	InteractiveObjectComponent(UserComponentId::UserComponentId id);
 	/// <summary>
 	/// Destructor of the class
 	/// </summary>

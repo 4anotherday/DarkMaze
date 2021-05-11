@@ -20,6 +20,7 @@ void HealthComponent::awake(luabridge::LuaRef& data)
 void HealthComponent::addHPs(unsigned int n)
 {
 	_healthPoints += n;
+	if(_healthPoints>=_maxHealthPoints) _healthPoints = _maxHealthPoints;
 }
 
 void HealthComponent::loseHPs()

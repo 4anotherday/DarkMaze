@@ -12,17 +12,18 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 10
+HowManyGameObjects = 12
 -- Player
 go_0 = {}
-go_0[0] = { Name = "Player", HowManyCmps = 7, Persist = false}
+go_0[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = -10, Y = 10, Z = 20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 20}
 go_0[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, kinematic = true, ConstrainAngle = true, IsTrigger=false}
 go_0[4] = { Component = "Camera"}
 go_0[5] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
-go_0[6] = { Component = "HealthComponent", HP=100 }
-go_0[7] = { Component = "PlayerInteractiveComponent" }
+go_0[6] = { Component = "PlayerInteractiveComponent" }
+go_0[7] = { Component = "PlayerKeysComponent"}
+go_0[8] = { Component = "HealthComponent", HP=100 }
 
 -- Suelo
 go_1 = {}
@@ -96,13 +97,32 @@ go_8[4] = { Component = "ObjectDeactivatorComponent",ObjName="Trampa1"}
 -- FirstAidKit
 go_9 = {}
 go_9[0] = { Name = "FirstAidKit", HowManyCmps = 4, Persist = false}
-go_9[1] = { Component = "Transform", Coord = {X = -10, Y = 2, Z = -20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.04, Y = 0.01, Z = 0.04}}
+go_9[1] = { Component = "Transform", Coord = {X = -10, Y = 1, Z = -35}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.04, Y = 0.01, Z = 0.04}}
 go_9[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
 						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 						Visible=true, Shadows=false, RenderingDistance = 1000}
 go_9[3] = { Component = "BoxCollider", Type="Box",Width=8,Height=8,Depth=8,IsTrigger=true}
-go_9[4] = { Component = "FirstAidKitComponent" }
+go_9[4] = { Component = "FirstAidKitComponent", HealthAmount = 10 }
 
+
+go_10 = {}
+go_10[0] = { Name = "Key", HowManyCmps = 4, Persist = false}
+go_10[1] = { Component = "Transform", Coord = {X = -10, Y = 1, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.04, Y = 0.01, Z = 0.01}}
+go_10[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
+						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+						Visible=true, Shadows=false, RenderingDistance = 1000}
+go_10[3] = { Component = "SphereCollider",Radius=10,IsTrigger=true}
+go_10[4] = { Component = "KeyComponent" }
+
+go_11 = {}
+go_11[0] = { Name = "Puerta", HowManyCmps = 5, Persist = false}
+go_11[1] = { Component = "Transform", Coord = {X = 0, Y = 1, Z = 40}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.2, Z = 0.01}}
+go_11[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
+						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+						Visible=true, Shadows=false, RenderingDistance = 1000}
+go_11[3] = { Component = "SphereCollider",Radius=10,IsTrigger=true}
+go_11[4] = { Component = "BoxCollider", Type="Box",Width=15,Height=30,Depth=15,IsTrigger=false}
+go_11[5] = { Component = "DoorComponent" }
 
 
 
