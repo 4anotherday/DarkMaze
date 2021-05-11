@@ -15,7 +15,7 @@
 HowManyGameObjects = 12
 -- Player
 go_0 = {}
-go_0[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
+go_0[0] = { Name = "Player", HowManyCmps = 10, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = -10, Y = 10, Z = 20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 20}
 go_0[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, kinematic = true, ConstrainAngle = true, IsTrigger=false}
@@ -24,12 +24,12 @@ go_0[5] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0
 go_0[6] = { Component = "PlayerInteractiveComponent" }
 go_0[7] = { Component = "PlayerKeysComponent"}
 go_0[8] = { Component = "HealthComponent", HP=100 }
---go_0[9] = { Component = "LightComponent", LightType= "SPOTLIGHT", Visible = true,
---										Diffuse = {Red = 1, Green= 1, Blue = 1}, 
---										Specular = {Red = 1, Green= 1, Blue = 1},	
---										SpotLightRange = {InnerAngle = 0.1, OuterAngle = 0.5, FallOf = 0.5},									
---										LightDirection = {X = 0, Y = 0, Z = -1}}
---go_0[10] = { Component = "PlayerLightComponent"}
+go_0[9] = { Component = "LightComponent", LightType= "POINT", Visible = true,
+										Diffuse = {Red = 1, Green= 1, Blue = 1}, 
+									    Specular = {Red = 1, Green= 1, Blue = 1},																				
+										LightDirection = {X = 0, Y = 0, Z = -1},
+									    Intensity= 0.3}
+go_0[10] = { Component = "PlayerLightComponent"}
 
 
 -- Suelo
@@ -52,7 +52,7 @@ go_2[3] = { Component = "AudioSource", Route = {"ProtoDarkMaze_Menu.mp3"}, Stere
 
 --Luz direccional
 go_3 = {}
-go_3[0] = { Name = "LuzDireccionalLOL", HowManyCmps = 2, Persist = false}
+go_3[0] = { Name = "LuzDireccional", HowManyCmps = 2, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 500, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
 go_3[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
 		    Diffuse = {Red = 0.7, Green= 0.5, Blue = 0.5}, 
