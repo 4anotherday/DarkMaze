@@ -24,6 +24,13 @@ go_0[5] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0
 go_0[6] = { Component = "PlayerInteractiveComponent" }
 go_0[7] = { Component = "PlayerKeysComponent"}
 go_0[8] = { Component = "HealthComponent", HP=100 }
+--go_0[9] = { Component = "LightComponent", LightType= "SPOTLIGHT", Visible = true,
+--										Diffuse = {Red = 1, Green= 1, Blue = 1}, 
+--										Specular = {Red = 1, Green= 1, Blue = 1},	
+--										SpotLightRange = {InnerAngle = 0.1, OuterAngle = 0.5, FallOf = 0.5},									
+--										LightDirection = {X = 0, Y = 0, Z = -1}}
+--go_0[10] = { Component = "PlayerLightComponent"}
+
 
 -- Suelo
 go_1 = {}
@@ -147,9 +154,9 @@ go_11[5] = { Component = "DoorComponent" }
 -- AudioSource 		-> go_goNumber[componentNumber] = { Component = "AudioSource", Route = "./src"}
 
 -- LightComponent	-> go_goNumber[componentNumber] = { Component = "LightComponent", LightType= "POINT", Visible = false,
---														Diffuse = {Red = 1, Green= 1, Blue = 1} 
---														Specular = {Red = 1, Green= 1, Blue = 1}
---														Attenuation = {Range = 1, Constant = 1, Linear = 1, Quadratic = 1}
+--														Diffuse = {Red = 1, Green= 1, Blue = 1}, 
+--														Specular = {Red = 1, Green= 1, Blue = 1},
+--														Attenuation = {Range = 1, Constant = 1, Linear = 1, Quadratic = 1},
 --														SpotLightRange = {InnerAngle = 1, OuterAngle = 1, FallOf = 1},
 --														LightDirection = {X = 0, Y = -1, Z = 0}}
 
