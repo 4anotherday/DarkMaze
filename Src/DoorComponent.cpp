@@ -7,7 +7,7 @@
 
 ADD_COMPONENT(DoorComponent)
 
-DoorComponent::DoorComponent() : InteractiveObjectComponent(UserComponentId::DoorComponent),_plInteractive(nullptr)
+DoorComponent::DoorComponent() : InteractiveObjectComponent(UserComponentId::DoorComponent), _plInteractive(nullptr),_playerKeys(nullptr)
 {
 }
 
