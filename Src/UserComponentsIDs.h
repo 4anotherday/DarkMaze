@@ -18,6 +18,7 @@ namespace UserComponentId {
 		HealthComponent = ComponentId::__StartPointUser__,
 		PlayerMovementComponent,
 		PlayerLightComponent,
+
 		PlayerLookEnemyGlitchComponent,
 		InteractiveObjectComponent,
 		PlayerInteractiveComponent,
@@ -25,6 +26,14 @@ namespace UserComponentId {
 		InvisibleEnemyAIComponent,
 		KamikazeEnemyComponent,
 		ScreamerAIEnemyComponent
+		FirstAidKitComponent,
+		KeyComponent,
+		PlayerKeysComponent,
+		DoorComponent,
+		TrapComponent,
+		ObjectDeactivatorComponent,
+		UIManagerComponent
+
 	};
 }
 

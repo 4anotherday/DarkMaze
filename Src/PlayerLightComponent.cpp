@@ -28,7 +28,7 @@ void PlayerLightComponent::start()
 	//Set light position to player position
 	_playerLight->setPosition(_transform->getPosition().getX(), _transform->getPosition().getY(), _transform->getPosition().getZ());
 	//Set light type as Point light
-	_playerLight->setType(Light::LightType::POINT);
+	_playerLight->setType(Light::LightType::POINT); 
 }
 
 void PlayerLightComponent::update()
