@@ -8,7 +8,6 @@ ADD_COMPONENT(HealthComponent)
 HealthComponent::HealthComponent() : Component(UserComponentId::HealthComponent), _maxHealthPoints(), _healthPoints()
 {}
 
-
 void HealthComponent::awake(luabridge::LuaRef& data)
 {
 	_maxHealthPoints = 100;
