@@ -278,3 +278,42 @@ material JugadorVisionStrongMaterial {
         }
     } 
 }
+
+//---------------VisionInjured------------------
+fragment_program JugadorVisionInjuredPS hlsl
+{
+    source JugadorVisionInjuredPS.hlsl
+	target ps_4_0
+	entry_point ps_main
+    default_params {
+        param_named_auto timeSin sintime_0_2pi 2
+		param_named tamanioBorde float 0.4f
+    }
+}
+
+material JugadorVisionInjuredMaterial
+{
+	technique {
+        pass {
+            depth_check off
+            depth_write off
+			alpha_rejection greater_equal 128
+            vertex_program_ref RenderQuadVS {
+            }
+            fragment_program_ref JugadorVisionInjuredPS {		
+            }
+            texture_unit RTT0
+            {
+                filtering none
+                tex_address_mode clamp
+            }
+
+			texture_unit bordeRojo
+            {
+				texture sangre.jpg
+                filtering none
+                tex_address_mode clamp
+            }
+        }
+    } 
+}
