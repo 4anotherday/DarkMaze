@@ -24,7 +24,8 @@ private:
 	RenderObjectComponent* _render;
 	Logger* _log;
 
-	float _alpha;
+	std::string _normalMaterial;
+	std::string _alphaMaterial;
 	std::string _playerName;
 	float _distance;
 };

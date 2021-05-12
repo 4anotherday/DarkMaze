@@ -14,7 +14,7 @@
 ADD_COMPONENT(HideoutComponent)
 
 HideoutComponent::HideoutComponent() :Component(UserComponentId::HideoutComponent), _log(nullptr), _playerTransform(nullptr), _myTransform(nullptr), _visibility(nullptr), _playerName("Player")
-, _render(nullptr), _alpha(.5f), _distance(1) {
+, _render(nullptr), _alphaMaterial("Practica1/BushAlpha"),_normalMaterial("Practica1/Bush"), _distance(1) {
 }
 HideoutComponent::~HideoutComponent()
 {
@@ -24,8 +24,10 @@ void HideoutComponent::awake(luabridge::LuaRef& data)
 {
 	if (LUAFIELDEXIST(PlayerName))
 		_playerName = GETLUASTRINGFIELD(PlayerName);
-	if (LUAFIELDEXIST(Alpha))
-		_alpha = GETLUAFIELD(Alpha, float);
+	if (LUAFIELDEXIST(AlphaMaterial))
+		_alphaMaterial = GETLUASTRINGFIELD(AlphaMaterial);
+	if (LUAFIELDEXIST(NormalMaterial))
+		_normalMaterial = GETLUASTRINGFIELD(NormalMaterial);
 }
 
 void HideoutComponent::start()
@@ -63,7 +65,7 @@ void HideoutComponent::update()
 		if (distance >= _distance) {
 
 			_visibility->setVisible(true);
-			_render->setAlpha(1.0f);
+			_render->setMaterial(_normalMaterial);
 		}
 	}
 
@@ -72,6 +74,6 @@ void HideoutComponent::update()
 void HideoutComponent::onTrigger(GameObject* other)
 {
 	_visibility->setVisible(false);
-	_render->setAlpha(_alpha);
+	_render->setMaterial(_alphaMaterial);
 
 }
