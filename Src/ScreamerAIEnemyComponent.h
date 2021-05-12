@@ -9,6 +9,7 @@ class Transform;
 class RigidBodyComponent;
 class AudioSourceComponent;
 class ParticleSystemComponent;
+class PlayerVisibilityComponent;
 
 class ScreamerAIEnemyComponent : public Component
 {
@@ -59,6 +60,7 @@ protected:
 
 private:
 	ParticleSystemComponent* _particleSystem;
+	PlayerVisibilityComponent* _visibility;
 	RigidBodyComponent* _rigidBodyEnemy;
 	AudioSourceComponent* _audioSource;
 	Transform* _tranformPlayer;

@@ -23,12 +23,14 @@
     <ClCompile Include="..\Src\FSMEnemyComponent.cpp" />
     <ClCompile Include="..\Src\GameManager.cpp" />
     <ClCompile Include="..\Src\HealthComponent.cpp" />
+    <ClCompile Include="..\Src\HideoutComponent.cpp" />
     <ClCompile Include="..\Src\InteractiveObjectComponent.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
     <ClCompile Include="..\Src\ObjectDeactivatorComponent.cpp" />
     <ClCompile Include="..\Src\PlayerInteractiveComponent.cpp" />
     <ClCompile Include="..\Src\PlayerLightComponent.cpp" />
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
+    <ClCompile Include="..\Src\PlayerVisibilityComponent.cpp" />
     <ClCompile Include="..\Src\ScreamerAIEnemyComponent.cpp" />
     <ClCompile Include="..\Src\TrapComponent.cpp" />
   </ItemGroup>
@@ -36,6 +38,7 @@
     <ClInclude Include="..\Src\FirstAidKitComponent.h" />
     <ClInclude Include="..\Src\FSMEnemyComponent.h" />
     <ClInclude Include="..\Src\GameManager.h" />
+    <ClInclude Include="..\Src\HideoutComponent.h" />
     <ClInclude Include="..\Src\InteractiveObjectComponent.h" />
     <ClInclude Include="..\Src\ObjectDeactivatorComponent.h" />
     <ClInclude Include="..\Src\PlayerInteractiveComponent.h" />
@@ -43,6 +46,7 @@
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Src\PlayerVisibilityComponent.h" />
     <ClInclude Include="..\Src\ScreamerAIEnemyComponent.h" />
     <ClInclude Include="..\Src\TrapComponent.h" />
     <ClInclude Include="..\Src\UserComponentsIDs.h" />

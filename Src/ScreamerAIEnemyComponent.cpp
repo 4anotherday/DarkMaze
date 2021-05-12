@@ -5,6 +5,7 @@
 #include "GameObject.h"
 #include "Engine.h"
 #include "RigidBodyComponent.h"
+#include "PlayerVisibilityComponent.h"
 #include "EngineTime.h"
 #include "ParticleSystemComponent.h"
 #include "Vector3.h"
@@ -13,11 +14,11 @@
 ADD_COMPONENT(ScreamerAIEnemyComponent)
 
 ScreamerAIEnemyComponent::ScreamerAIEnemyComponent() : Component(UserComponentId::ScreamerAIEnemyComponent), _detectionRange(),
- _tranformPlayer(nullptr), _transformEnemy(nullptr), _startToMove(false), _audioSource(nullptr), _rigidBodyEnemy(nullptr),
+_tranformPlayer(nullptr), _transformEnemy(nullptr), _startToMove(false), _audioSource(nullptr), _visibility(nullptr), _rigidBodyEnemy(nullptr),
 _particleSystem(nullptr), _dead(false), _elapsedFollowTime(0.0f), _elapsedDyingTime(0.0f),
 
 //some random values
-_followTime(3.0f), _moveSpeed(5.0f), _shoutIntensityIdle(0.5f), _shoutIntensityAttack(2.0f), _dyingTime (1.0f)
+_followTime(3.0f), _moveSpeed(5.0f), _shoutIntensityIdle(0.5f), _shoutIntensityAttack(2.0f), _dyingTime(1.0f)
 {
 }
 
@@ -48,11 +49,11 @@ void ScreamerAIEnemyComponent::start()
 void ScreamerAIEnemyComponent::update()
 {
 	const Vector3& currentPlayerPos = _tranformPlayer->getPosition();
-	const Vector3& currentEnemyPos  = _transformEnemy->getPosition();
+	const Vector3& currentEnemyPos = _transformEnemy->getPosition();
 
 	double distance = (currentPlayerPos - currentEnemyPos).magnitude();
-	if (distance <= _detectionRange) {
-		_startToMove = true;	
+	if (distance <= _detectionRange && _visibility->getVisible()) {
+		_startToMove = true;
 		_elapsedFollowTime = 0;
 	}
 	else idlestate();

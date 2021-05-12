@@ -40,6 +40,19 @@ material Practica1/Suelo{
 		}
 	}
 }
+material Practica1/Bush{
+	technique{
+		pass{
+			diffuse 1.0 1.0 1.0
+			
+
+			texture_unit {
+				texture bushTexture.jpg
+				tex_address_mode wrap
+			}
+		}
+	}
+}
 material Prueba{
 	technique{
 		pass{

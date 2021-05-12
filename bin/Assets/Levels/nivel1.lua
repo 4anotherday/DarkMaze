@@ -12,10 +12,10 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 10
+HowManyGameObjects = 11
 -- Player
 go_0 = {}
-go_0[0] = { Name = "Player", HowManyCmps = 7, Persist = false}
+go_0[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = -10, Y = 10, Z = 20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 20}
 go_0[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, kinematic = true, ConstrainAngle = true, IsTrigger=false}
@@ -23,6 +23,7 @@ go_0[4] = { Component = "Camera"}
 go_0[5] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
 go_0[6] = { Component = "HealthComponent", HP=100 }
 go_0[7] = { Component = "PlayerInteractiveComponent" }
+go_0[8] = { Component = "PlayerVisibilityComponent" }
 
 -- Suelo
 go_1 = {}
@@ -103,6 +104,15 @@ go_9[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica
 go_9[3] = { Component = "BoxCollider", Type="Box",Width=8,Height=8,Depth=8,IsTrigger=true}
 go_9[4] = { Component = "FirstAidKitComponent" }
 
+-- Bush
+go_10 = {}
+go_10[0] = { Name = "Bush1", HowManyCmps = 4, Persist = false}
+go_10[1] = { Component = "Transform", Coord = {X = -10, Y = 2, Z = -10}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.06, Y = 0.1, Z = 0.06}}
+go_10[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Bush", 
+						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+						Visible=true, Shadows=false, RenderingDistance = 1000}
+go_10[3] = { Component = "SphereCollider", Radius=3,IsTrigger=true}
+go_10[4] = { Component = "HideoutComponent" ,Alpha=.7}
 
 
 
