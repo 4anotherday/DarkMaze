@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 12
+HowManyGameObjects = 13
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 10, Persist = false}
@@ -130,6 +130,12 @@ go_11[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practic
 go_11[3] = { Component = "SphereCollider",Radius=10,IsTrigger=true}
 go_11[4] = { Component = "BoxCollider", Type="Box",Width=15,Height=30,Depth=15,IsTrigger=false}
 go_11[5] = { Component = "DoorComponent" }
+
+go_12 = {}
+go_12[0] = { Name = "UIManager", HowManyCmps = 2, Persist = false}
+go_12[1] = { Component = "Transform"}
+go_12[2] = { Component = "OverlayComponent", Name = "GameUI", Hide = false}
+--go_12[2] = { Component = "UIManagerComponent"}
 
 
 

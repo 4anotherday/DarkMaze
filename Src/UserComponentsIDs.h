@@ -27,7 +27,8 @@ namespace UserComponentId {
 		PlayerKeysComponent,
 		DoorComponent,
 		TrapComponent,
-		ObjectDeactivatorComponent
+		ObjectDeactivatorComponent,
+		UIManagerComponent
 
 	};
 }
