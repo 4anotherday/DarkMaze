@@ -25,7 +25,7 @@ namespace UserComponentId {
 		FSMEnemyComponent,
 		InvisibleEnemyAIComponent,
 		KamikazeEnemyComponent,
-		ScreamerAIEnemyComponent
+		ScreamerAIEnemyComponent,
 		FirstAidKitComponent,
 		KeyComponent,
 		PlayerKeysComponent,

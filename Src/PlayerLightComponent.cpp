@@ -26,7 +26,7 @@ void PlayerLightComponent::start()
 	_transform = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 
 	//Set light position to player position
-	_playerLight->setPosition(_transform->getPosition().getX(), _transform->getPosition().getY(), _transform->getPosition().getZ());
+	//_playerLight->setPosition(_transform->getPosition().getX(), _transform->getPosition().getY(), _transform->getPosition().getZ());
 	//Set light type as Point light
 	_playerLight->setType(Light::LightType::POINT); 
 }
@@ -34,5 +34,5 @@ void PlayerLightComponent::start()
 void PlayerLightComponent::update()
 {
 	//Set light position to player position
-	_playerLight->setPosition(_transform->getPosition().getX(), _transform->getPosition().getY(), _transform->getPosition().getZ());
+	//_playerLight->setPosition(_transform->getPosition().getX(), _transform->getPosition().getY(), _transform->getPosition().getZ());
 }

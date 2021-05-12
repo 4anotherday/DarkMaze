@@ -23,10 +23,12 @@
     <ClCompile Include="..\Src\FirstAidKitComponent.cpp" />
     <ClCompile Include="..\Src\FSMEnemyComponent.cpp" />
     <ClCompile Include="..\Src\FSM\FSM.cpp" />
+    <ClCompile Include="..\Src\GameManager.cpp" />
     <ClCompile Include="..\Src\HealthComponent.cpp" />
     <ClCompile Include="..\Src\InteractiveObjectComponent.cpp" />
     <ClCompile Include="..\Src\InvisibleEnemyAIComponent.cpp" />
     <ClCompile Include="..\Src\KamikazeEnemyComponent.cpp" />
+    <ClCompile Include="..\Src\KeyComponent.cpp" />
     <ClCompile Include="..\Src\main.cpp" />
     <ClCompile Include="..\Src\ObjectDeactivatorComponent.cpp" />
     <ClCompile Include="..\Src\PlayerInteractiveComponent.cpp" />
@@ -45,9 +47,12 @@
     <ClInclude Include="..\Src\FSM\FSM.h" />
     <ClInclude Include="..\Src\FSM\State.h" />
     <ClInclude Include="..\Src\FSM\Transition.h" />
+    <ClInclude Include="..\Src\GameManager.h" />
     <ClInclude Include="..\Src\InteractiveObjectComponent.h" />
     <ClInclude Include="..\Src\InvisibleEnemyAIComponent.h" />
     <ClInclude Include="..\Src\KamikazeEnemyComponent.h" />
+    <ClInclude Include="..\Src\KeyComponent.h" />
+    <ClInclude Include="..\Src\ObjectDeactivatorComponent.h" />
     <ClInclude Include="..\Src\PlayerInteractiveComponent.h" />
     <ClInclude Include="..\Src\PlayerKeysComponent.h" />
     <ClInclude Include="..\Src\PlayerLightComponent.h" />
@@ -55,6 +60,8 @@
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
     <ClInclude Include="..\Src\ScreamerAIEnemyComponent.h" />
     <ClInclude Include="..\Src\HealthComponent.h" />
+    <ClInclude Include="..\Src\TrapComponent.h" />
+    <ClInclude Include="..\Src\UIManagerComponent.h" />
     <ClInclude Include="..\Src\UserComponentsIDs.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
