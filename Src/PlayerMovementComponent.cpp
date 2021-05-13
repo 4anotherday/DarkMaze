@@ -54,11 +54,6 @@ void PlayerMovementComponent::start()
 void PlayerMovementComponent::update()
 {
 	float deltaTime = _time->deltaTime();
-	
-	if (KeyBoardInput::getInstance()->isKeyJustDown(KeyCode::KEYCODE_H))
-		_mouse->setMouseRelativeMode(true);
-	if (KeyBoardInput::getInstance()->isKeyJustDown(KeyCode::KEYCODE_J))
-		_mouse->setMouseRelativeMode(false);
 
 	moveCameraWithMouse(deltaTime);
 
