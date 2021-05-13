@@ -4,12 +4,14 @@
 #define SCREAMERAIMENEMYCOMPONENT_H
 
 #include "Component.h"
+#include "Vector3.h"
 
 class Transform;
 class RigidBodyComponent;
 class AudioSourceComponent;
 class ParticleSystemComponent;
 class PlayerVisibilityComponent;
+class InvisibleEnemyAIComponent;
 
 class ScreamerAIEnemyComponent : public Component
 {
@@ -42,6 +44,7 @@ public:
 protected:
 	/// <summary>
 	/// State where the screamer stays in its place and makes noises to attract the player
+	/// If the player manages to get out of the vision range and the enemy is not dead, it will go back to its original position
 	/// </summary>
 	virtual void idlestate();
 
@@ -59,14 +62,17 @@ protected:
 	virtual void screamingState();
 
 private:
+	InvisibleEnemyAIComponent* _invisibleEnemy;
 	ParticleSystemComponent* _particleSystem;
 	PlayerVisibilityComponent* _visibility;
 	RigidBodyComponent* _rigidBodyEnemy;
 	AudioSourceComponent* _audioSource;
 	Transform* _tranformPlayer;
 	Transform* _transformEnemy;
+	Vector3 _initialTransformEnemy;
 
-	//TODO:Meter InvisibleAIcomponent y avisarle
+	//Position where player was last seen
+	Vector3 _lastPlayerPos;
 
 	//Enemy's timer to chase the player	 
 	float _elapsedFollowTime;
@@ -81,13 +87,19 @@ private:
 	float _shoutIntensityAttack;
 	//Enemy's detection range to detect the player, if detected, it procceeds to move towards the player
 	float _detectionRange;
+	//The sound will be heard from this position
+	//float _idleSoundRange;
 
 	float _moveSpeed;
 
-	//Starts moving if the player entered within its detection range
-	bool _startToMove;
+	//Ready to move if the player entered within its detection range and raycast finds the player
+	bool _readyToMove;
+	bool _moving;
 	//If dead, performs the scream and the particle's effect
 	bool _dead;
+
+	float _idleSoundOn;
+	float _screamingSoundOn;
 };
 
 #endif // !SCREAMERAIMENEMYCOMPONENT_H

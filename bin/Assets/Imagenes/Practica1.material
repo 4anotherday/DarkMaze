@@ -10,6 +10,31 @@ material Practica1/Billboard{
 	}
 }
 
+material keyMaterial{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			texture_unit {
+				texture key.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material OverlayNegro{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			texture_unit{
+				colour_op_ex source1 src_manual src_current 0 0 0
+			}
+		}
+	}
+}
+
 material Practica1/Red{
 	technique{
 		pass{
@@ -223,4 +248,102 @@ material Practica2/ColaAvion{
 			}
 		}
 	}
+}
+
+vertex_program RenderQuadVS hlsl
+{
+    source DefaultVS.hlsl
+	target vs_2_0
+	entry_point vs_main
+    default_params {
+        param_named_auto worldViewProj worldviewproj_matrix
+    }
+}
+
+fragment_program JugadorVisionPS hlsl
+{
+    source JugadorVisionPS.hlsl
+	target ps_3_0
+	entry_point ps_main
+    default_params {
+        param_named strength float 0.0f
+		param_named_auto Time time
+    }
+}
+
+material JugadorVisionWeakMaterial {
+    technique {
+        pass {
+            depth_check off
+            depth_write off
+            vertex_program_ref RenderQuadVS {
+            }
+            fragment_program_ref JugadorVisionPS {
+				param_named strength float 0.5f
+            }
+            texture_unit RTT0
+            {
+                filtering none
+                tex_address_mode clamp
+            }
+        }
+    } 
+}
+
+material JugadorVisionStrongMaterial {
+    technique {
+        pass {
+            depth_check off
+            depth_write off
+            vertex_program_ref RenderQuadVS {
+            }
+            fragment_program_ref JugadorVisionPS {
+				param_named strength float 1.0f
+            }
+            texture_unit RTT0
+            {
+                filtering none
+                tex_address_mode clamp
+            }
+        }
+    } 
+}
+
+//---------------VisionInjured------------------
+fragment_program JugadorVisionInjuredPS hlsl
+{
+    source JugadorVisionInjuredPS.hlsl
+	target ps_4_0
+	entry_point ps_main
+    default_params {
+        param_named_auto timeSin sintime_0_2pi 2
+		param_named tamanioBorde float 0.4f
+    }
+}
+
+material JugadorVisionInjuredMaterial
+{
+	technique {
+        pass {
+            depth_check off
+            depth_write off
+			alpha_rejection greater_equal 128
+            vertex_program_ref RenderQuadVS {
+            }
+            fragment_program_ref JugadorVisionInjuredPS {		
+            }
+            texture_unit RTT0
+            {
+                filtering none
+                tex_address_mode clamp
+            }
+
+			texture_unit bordeRojo
+            {
+				texture sangre.jpg
+                filtering none
+                tex_address_mode clamp
+            }
+        }
+    } 
 }

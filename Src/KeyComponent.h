@@ -1,22 +1,20 @@
 #pragma once
 
-#ifndef FIRSTAIDKITCOMPONENT_H
-#define FIRSTAIDKITCOMPONENT_H
+#ifndef KEYCOMPONENT_H
+#define KEYCOMPONENT_H
 
 #include "InteractiveObjectComponent.h"
 
 class GameObject;
-class HealthComponent;
 class PlayerInteractiveComponent;
+class PlayerKeysComponent;
 
-class FirstAidKitComponent : public InteractiveObjectComponent
+class KeyComponent : public InteractiveObjectComponent
 {
 public:
 
-	FirstAidKitComponent();
-	~FirstAidKitComponent();
-
-	virtual void awake(luabridge::LuaRef& data) override;
+	KeyComponent();
+	~KeyComponent();
 
 	/// <summary>
 	/// Initializes the component, called once at the start of the execution
@@ -30,9 +28,8 @@ public:
 
 private:
 
-	HealthComponent* _health;
 	PlayerInteractiveComponent* _plInteractive;
-	unsigned int _healthAmount;
+	PlayerKeysComponent* _playerKeys;
 };
 
-#endif // !FIRSTAIDKITCOMPONENT_H
+#endif // !KEYCOMPONENT_H
