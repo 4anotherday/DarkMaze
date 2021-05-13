@@ -33,7 +33,7 @@ namespace UserComponentId {
 		TrapComponent,
 		ObjectDeactivatorComponent,
 		HideoutComponent,
-		PlayerVisibilityComponent
+		PlayerVisibilityComponent,
 		UIManagerComponent
 	};
 }
