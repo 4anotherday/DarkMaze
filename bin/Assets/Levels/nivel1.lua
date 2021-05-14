@@ -15,7 +15,7 @@
 HowManyGameObjects = 16
 -- Player
 go_0 = {}
-go_0[0] = { Name = "Player", HowManyCmps = 11, Persist = false}
+go_0[0] = { Name = "Player", HowManyCmps = 10, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = -10, Y = 10, Z = 20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 20, }
 go_0[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
@@ -29,8 +29,7 @@ go_0[9] = { Component = "LightComponent", LightType= "POINT", Visible = true,
 									    Specular = {Red = 1, Green= 1, Blue = 1},																				
 										LightDirection = {X = 0, Y = 0, Z = -1},
 									    Intensity= 0.3}
-go_0[10] = { Component = "PlayerLightComponent"}
-go_0[11] = { Component = "PlayerVisibilityComponent" }
+go_0[10] = { Component = "PlayerVisibilityComponent" }
 
 
 -- Suelo
@@ -60,12 +59,12 @@ go_2[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, Sh
 go_3 = {}
 go_3[0] = { Name = "InvisibleEnemy", HowManyCmps = 4, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = -15, Y = 5, Z = -30}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
-go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-			Visible=true, Shadows=false, RenderingDistance = 1000}
-go_3[3] = { Component = "AudioSource", Route = {"Assets/Audio/ProtoDarkMaze_Menu.mp3", "Assets/Audio/goat_cry.mp3"}, Stereo = true,
+-- go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
+-- 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+-- 			Visible=true, Shadows=false, RenderingDistance = 1000}
+go_3[2] = { Component = "AudioSource", Route = {"Assets/Audio/ProtoDarkMaze_Menu.mp3", "Assets/Audio/goat_cry.mp3"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume= 10, Play = false}
-go_3[4] = { Component = "InvisibleEnemyAIComponent"}
+go_3[3] = { Component = "InvisibleEnemyAIComponent"}
 
 go_4 = {}
 go_4[0] = { Name = "Kamikaze", HowManyCmps = 5, Persist = false}

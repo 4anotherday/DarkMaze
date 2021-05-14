@@ -9,7 +9,7 @@
 
 ADD_COMPONENT(PlayerLookEnemyGlitchComponent)
 
-PlayerLookEnemyGlitchComponent::PlayerLookEnemyGlitchComponent() : Component(UserComponentId::PlayerLightComponent),
+PlayerLookEnemyGlitchComponent::PlayerLookEnemyGlitchComponent() : Component(UserComponentId::PlayerLookEnemyGlitchComponent),
 	_camera(nullptr), _myTransform(nullptr), _enemyTransform(nullptr), 
 	_sightDistanceWeak(20.0), _angleWeakRange(20.0), _sightDistanceStrong(8.0), _angleStrongRange(60.0),
 	_weakComp(false), _strongComp(false)

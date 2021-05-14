@@ -10,6 +10,7 @@
 class Transform;
 class AudioSourceComponent;
 class HealthComponent;
+class PlayerVisibilityComponent;
 
 class InvisibleEnemyAIComponent : public Component {
 public:
@@ -58,6 +59,7 @@ private:
 
 	AudioSourceComponent* _audioSource;
 	HealthComponent* _playerHealth;
+	PlayerVisibilityComponent* _playerVisibility;
 
 	double _actualSpeed;
 	double _speed;
@@ -150,16 +152,20 @@ private:
 	public:
 		bool evaluate(Component* component); 
 		inline void setSightingDistance(double* distance) { _sightingDistance = distance; }
+		inline void setPlayerVisibilityComp(PlayerVisibilityComponent* comp) { _playerVis = comp; }
 	private:
 		double* _sightingDistance = nullptr;
+		PlayerVisibilityComponent* _playerVis = nullptr;
 	};
 
 	class GainSightTransition : public Transition { 
 	public:
 		bool evaluate(Component* component);
 		inline void setSightingDistance(double* distance) { _sightingDistance = distance; }
+		inline void setPlayerVisibilityComp(PlayerVisibilityComponent* comp) { _playerVis = comp; }
 	private:
 		double* _sightingDistance = nullptr;
+		PlayerVisibilityComponent* _playerVis = nullptr;
 	};
 
 	class LoudSoundTransition : public Transition {

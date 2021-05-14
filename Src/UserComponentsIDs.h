@@ -17,8 +17,6 @@ namespace UserComponentId {
 	enum UserComponentId : unsigned int {
 		HealthComponent = ComponentId::__StartPointUser__,
 		PlayerMovementComponent,
-		PlayerLightComponent,
-
 		PlayerLookEnemyGlitchComponent,
 		InteractiveObjectComponent,
 		PlayerInteractiveComponent,
