@@ -1,36 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\Src\FirstAidKitComponent.cpp" />
-    <ClCompile Include="..\Src\FSMEnemyComponent.cpp" />
-    <ClCompile Include="..\Src\GameManager.cpp" />
-    <ClCompile Include="..\Src\HealthComponent.cpp" />
-    <ClCompile Include="..\Src\InteractiveObjectComponent.cpp" />
-    <ClCompile Include="..\Src\main.cpp" />
-    <ClCompile Include="..\Src\ObjectDeactivatorComponent.cpp" />
-    <ClCompile Include="..\Src\PlayerInteractiveComponent.cpp" />
-    <ClCompile Include="..\Src\PlayerLightComponent.cpp" />
-    <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
-    <ClCompile Include="..\Src\ScreamerAIEnemyComponent.cpp" />
-    <ClCompile Include="..\Src\TrapComponent.cpp" />
-    <ClCompile Include="..\Src\HideoutComponent.cpp" />
-    <ClCompile Include="..\Src\PlayerVisibilityComponent.cpp" />
+    <ClCompile Include="..\Src\FirstAidKitComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\FSMEnemyComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\GameManager.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HealthComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\HideoutComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\InteractiveObjectComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\main.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ObjectDeactivatorComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerInteractiveComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerLightComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerMovementComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\PlayerVisibilityComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\ScreamerAIEnemyComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Src\TrapComponent.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Src\FirstAidKitComponent.h" />
-    <ClInclude Include="..\Src\FSMEnemyComponent.h" />
-    <ClInclude Include="..\Src\GameManager.h" />
-    <ClInclude Include="..\Src\InteractiveObjectComponent.h" />
-    <ClInclude Include="..\Src\ObjectDeactivatorComponent.h" />
-    <ClInclude Include="..\Src\PlayerInteractiveComponent.h" />
-    <ClInclude Include="..\Src\PlayerLightComponent.h" />
-    <ClInclude Include="..\Src\PlayerMovementComponent.h" />
-    <ClInclude Include="..\Src\ScreamerAIEnemyComponent.h" />
-    <ClInclude Include="..\Src\TrapComponent.h" />
-    <ClInclude Include="..\Src\UserComponentsIDs.h" />
-    <ClInclude Include="..\Src\HealthComponent.h" />
-    <ClInclude Include="..\Src\HideoutComponent.h" />
-    <ClInclude Include="..\Src\PlayerVisibilityComponent.h" />
     <ClCompile Include="..\Src\FSM\FSM.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -91,6 +105,45 @@
     <ClCompile Include="..\Src\KeyComponent.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClInclude Include="..\Src\FirstAidKitComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\FSMEnemyComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\GameManager.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HealthComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\HideoutComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\InteractiveObjectComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ObjectDeactivatorComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerInteractiveComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerLightComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerMovementComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\PlayerVisibilityComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\ScreamerAIEnemyComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\TrapComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Src\FSM\FSM.h">
@@ -157,6 +210,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\Src\ObjectDeactivatorComponent.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Src\UserComponentsIDs.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
