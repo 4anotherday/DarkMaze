@@ -25,6 +25,7 @@
     <ClCompile Include="..\Src\FSM\FSM.cpp" />
     <ClCompile Include="..\Src\GameManager.cpp" />
     <ClCompile Include="..\Src\HealthComponent.cpp" />
+    <ClCompile Include="..\Src\HideoutComponent.cpp" />
     <ClCompile Include="..\Src\InteractiveObjectComponent.cpp" />
     <ClCompile Include="..\Src\InvisibleEnemyAIComponent.cpp" />
     <ClCompile Include="..\Src\KamikazeEnemyComponent.cpp" />
@@ -36,6 +37,7 @@
     <ClCompile Include="..\Src\PlayerLightComponent.cpp" />
     <ClCompile Include="..\Src\PlayerLookEnemyGlitchComponent.cpp" />
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
+    <ClCompile Include="..\Src\PlayerVisibilityComponent.cpp" />
     <ClCompile Include="..\Src\ScreamerAIEnemyComponent.cpp" />
     <ClCompile Include="..\Src\TrapComponent.cpp" />
     <ClCompile Include="..\Src\UIManagerComponent.cpp" />
@@ -48,6 +50,7 @@
     <ClInclude Include="..\Src\FSM\State.h" />
     <ClInclude Include="..\Src\FSM\Transition.h" />
     <ClInclude Include="..\Src\GameManager.h" />
+    <ClInclude Include="..\Src\HideoutComponent.h" />
     <ClInclude Include="..\Src\InteractiveObjectComponent.h" />
     <ClInclude Include="..\Src\InvisibleEnemyAIComponent.h" />
     <ClInclude Include="..\Src\KamikazeEnemyComponent.h" />
@@ -58,6 +61,9 @@
     <ClInclude Include="..\Src\PlayerLightComponent.h" />
     <ClInclude Include="..\Src\PlayerLookEnemyGlitchComponent.h" />
     <ClInclude Include="..\Src\PlayerMovementComponent.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Src\PlayerVisibilityComponent.h" />
     <ClInclude Include="..\Src\ScreamerAIEnemyComponent.h" />
     <ClInclude Include="..\Src\HealthComponent.h" />
     <ClInclude Include="..\Src\TrapComponent.h" />

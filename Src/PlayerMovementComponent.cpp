@@ -47,18 +47,13 @@ void PlayerMovementComponent::start()
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 	_cam = static_cast<CameraComponent*>(_gameObject->getComponent(ComponentId::Camera));
-
+	_rb->setGravity(false);
 	_mouse->setMouseRelativeMode(true);
 }
 
 void PlayerMovementComponent::update()
 {
 	float deltaTime = _time->deltaTime();
-	
-	if (KeyBoardInput::getInstance()->isKeyJustDown(KeyCode::KEYCODE_H))
-		_mouse->setMouseRelativeMode(true);
-	if (KeyBoardInput::getInstance()->isKeyJustDown(KeyCode::KEYCODE_J))
-		_mouse->setMouseRelativeMode(false);
 
 	moveCameraWithMouse(deltaTime);
 

@@ -10,6 +10,7 @@ class Transform;
 class RigidBodyComponent;
 class AudioSourceComponent;
 class ParticleSystemComponent;
+class PlayerVisibilityComponent;
 class InvisibleEnemyAIComponent;
 
 class ScreamerAIEnemyComponent : public Component
@@ -63,6 +64,7 @@ protected:
 private:
 	InvisibleEnemyAIComponent* _invisibleEnemy;
 	ParticleSystemComponent* _particleSystem;
+	PlayerVisibilityComponent* _visibility;
 	RigidBodyComponent* _rigidBodyEnemy;
 	AudioSourceComponent* _audioSource;
 	Transform* _tranformPlayer;

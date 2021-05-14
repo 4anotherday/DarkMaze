@@ -32,8 +32,9 @@ namespace UserComponentId {
 		DoorComponent,
 		TrapComponent,
 		ObjectDeactivatorComponent,
+		HideoutComponent,
+		PlayerVisibilityComponent,
 		UIManagerComponent
-
 	};
 }
 

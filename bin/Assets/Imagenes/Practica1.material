@@ -47,6 +47,7 @@ material Practica1/Yellow{
 	technique{
 		pass{
 			diffuse 1.0 1.0 1.0
+			alpha_rejection greater_equal 128
 			texture_unit {
 				texture MomiaMeme.png
 				tex_address_mode wrap
@@ -60,6 +61,35 @@ material Practica1/Suelo{
 			diffuse 1.0 1.0 1.0
 			texture_unit {
 				texture texture.png
+				tex_address_mode wrap
+			}
+		}
+	}
+}
+material Practica1/Bush{
+	technique{
+		pass{
+			diffuse 1.0 1.0 1.0
+			
+
+			texture_unit {
+				texture bushTexture.jpg
+				tex_address_mode wrap
+			}
+		}
+	}
+}
+
+material Practica1/BushAlpha{
+	technique{
+		pass{
+			diffuse 1.0 1.0 1.0 0.5
+			cull_software front
+			cull_hardware none
+			scene_blend alpha_blend
+       		 depth_write off
+			texture_unit {
+				texture bushTexture.jpg
 				tex_address_mode wrap
 			}
 		}
