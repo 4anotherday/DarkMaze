@@ -40,12 +40,13 @@ void ScreamerAIEnemyComponent::awake(luabridge::LuaRef& data)
 void ScreamerAIEnemyComponent::start()
 {
 	_rigidBodyEnemy = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
-	_tranformPlayer = static_cast<Transform*>(Engine::getInstance()->findGameObject("Player")->getComponent(ComponentId::Transform));
+	GameObject* player = Engine::getInstance()->findGameObject("Player");
+	_tranformPlayer = static_cast<Transform*>(player->getComponent(ComponentId::Transform));
 	_initialTransformEnemy = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform))->getPosition();
 	_transformEnemy = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_audioSource = static_cast<AudioSourceComponent*>(_gameObject->getComponent(ComponentId::AudioSource));
 	_particleSystem = GETCOMPONENT(ParticleSystemComponent, ComponentId::ParticleSystem);
-
+	_visibility= static_cast<PlayerVisibilityComponent*>(player->getComponent(UserComponentId::PlayerVisibilityComponent));
 	_invisibleEnemy = static_cast<InvisibleEnemyAIComponent*>(Engine::getInstance()->findGameObject("InvisibleEnemy")->
 		getComponent(UserComponentId::InvisibleEnemyAIComponent));
 }

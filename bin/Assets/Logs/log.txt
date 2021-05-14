@@ -1,3 +1,2 @@
-13:18:51 -> INFO: Creacion
-13:18:54 -> WARN: disabledMaterial not set
-13:18:54 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+19:01:26 -> INFO: Creacion
+19:01:31 -> INFO: Archivo de carga de escena de lua correctamente inicializado
