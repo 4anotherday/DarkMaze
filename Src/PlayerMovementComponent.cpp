@@ -16,7 +16,7 @@ PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Compon
 	_tr(nullptr), _rb(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
 	_cameraSpeed(10.0f), _cam(nullptr),
 	_keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyBackward(KeyCode::KEYCODE_S), _keyCrouch(KeyCode::KEYCODE_LCTRL),
-	_speedForward(10), _speedSideways(5), _speedBackwards(5), _slowCrouching(0.5f), _playerHeight(2.0f),
+	_speedForward(550), _speedSideways(240), _speedBackwards(250), _slowCrouching(0.1f), _playerHeight(2.0f),
 	_crouching(false)
 {
 }
@@ -24,7 +24,7 @@ PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Compon
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 {
 	//Default values 
-	_speedForward = 4000;	_speedSideways = 2000;	_speedBackwards = 2000; _slowCrouching = .3; _playerHeight = 10; _cameraSpeed = 10;
+	_speedForward = 8000;	_speedSideways = 8000;	_speedBackwards = 8000; _slowCrouching = .3; _playerHeight = 10; _cameraSpeed = 10;
 	//Lua values if exist
 	if (LUAFIELDEXIST(SpeedForward))
 		_speedForward = GETLUAFIELD(SpeedForward,float);
