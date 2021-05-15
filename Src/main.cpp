@@ -18,7 +18,7 @@ WinMain(HINSTANCE zhInstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdS
 		prueba->init("Assets/prueba.cfg", "Assets/Levels");
 		GameManager::CreateInstance();
 		GameManager::getInstance()->init(MAX_LEVELS);
-		prueba->changeScene("nivel1.lua");
+		prueba->changeScene("menu.lua");
 		prueba->run();
 	}
 	catch (const ExcepcionTAD& e) {
