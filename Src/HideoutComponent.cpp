@@ -14,7 +14,7 @@
 ADD_COMPONENT(HideoutComponent)
 
 HideoutComponent::HideoutComponent() :Component(UserComponentId::HideoutComponent), _log(nullptr), _playerTransform(nullptr), _myTransform(nullptr), _visibility(nullptr), _playerName("Player")
-, _render(nullptr), _alphaMaterial("Practica1/BushAlpha"),_normalMaterial("Practica1/Bush"), _distance(1) {
+, _render(nullptr), _alphaMaterial("Practica1/BushAlpha"), _normalMaterial("Practica1/Bush"), _distance(1) {
 }
 HideoutComponent::~HideoutComponent()
 {
@@ -47,7 +47,7 @@ void HideoutComponent::start()
 			throw "Hideout doesn't have Transform";
 		SphereColliderComponent* col = GETCOMPONENT(SphereColliderComponent, ComponentId::SphereCollider);
 		if (col != nullptr)
-			_distance = 2 * col->getRadius();
+			_distance = .55 * col->getRadius();
 		else if (_log != nullptr) _log->log("Hideout doesn't have SphereColliderComponent", Logger::Level::WARN);
 		_render = GETCOMPONENT(RenderObjectComponent, ComponentId::RenderObject);
 		if (_render == nullptr && _log != nullptr)
