@@ -1,6 +1,7 @@
 sampler RT : register(s0);
 sampler Text0 : register(s1);
 uniform float timeSin;
+float alphaBlending;
 float tamanioBorde;
 
 struct VS_OUTPUT {
@@ -18,7 +19,7 @@ float4 ps_main( VS_OUTPUT input ): COLOR0
         return colorVertex;
     }
     
-    float4 colorTex = tex2D(Text0, input.texCoord0.xy);
+    float4 color = (tex2D(Text0, input.texCoord0.xy) * alphaBlending) + (colorVertex * (1 - alphaBlending));
 
-    return colorTex;
+    return color;
 }

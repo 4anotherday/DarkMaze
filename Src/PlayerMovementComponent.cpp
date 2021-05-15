@@ -82,7 +82,7 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 	double x = _tr->getRotation().getX() + pitch;
 	double y = _tr->getRotation().getY() + yaw;
 	_tr->setRotation(Vector3(x, y, 0));
-	std::cout << x << " " << y<< " " << "\n";
+	//std::cout << x << " " << y<< " " << "\n";
 
 }
 
