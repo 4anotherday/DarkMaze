@@ -29,8 +29,7 @@ go_0[9] = { Component = "LightComponent", LightType= "POINT", Visible = true,
 									    Specular = {Red = 1, Green= 1, Blue = 1},																				
 										LightDirection = {X = 0, Y = 0, Z = -1},
 									    Intensity= 0.3}
-go_0[10] = { Component = "PlayerLightComponent"}
-go_0[11] = { Component = "PlayerVisibilityComponent" }
+go_0[10] = { Component = "PlayerVisibilityComponent" }
 
 
 -- Suelo
