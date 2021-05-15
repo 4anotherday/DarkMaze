@@ -8,7 +8,7 @@
 //ADD_COMPONENT(InteractiveObjectComponent)
 
 
-InteractiveObjectComponent::InteractiveObjectComponent(UserComponentId::UserComponentId id) : Component(id),_distance(30.0f), _log(nullptr)
+InteractiveObjectComponent::InteractiveObjectComponent(UserComponentId::UserComponentId id) : Component(id), _distance(30.0f), _log(nullptr)
 {
 }
 
@@ -29,7 +29,7 @@ void InteractiveObjectComponent::start()
 	_log = Logger::getInstance();
 	SphereColliderComponent* col = GETCOMPONENT(SphereColliderComponent, ComponentId::SphereCollider);
 	if (col != nullptr)
-		_distance = col->getRadius() * 2;
+		_distance = col->getRadius() * .55;
 	else {
 		_distance = 1;
 		_log->log("The trigger is not a sphere, using default distance", Logger::Level::WARN);

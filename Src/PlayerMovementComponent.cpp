@@ -16,7 +16,7 @@ PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Compon
 	_tr(nullptr), _rb(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
 	_cameraSpeed(10.0f), _cam(nullptr),
 	_keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyBackward(KeyCode::KEYCODE_S), _keyCrouch(KeyCode::KEYCODE_LCTRL),
-	_speedForward(10), _speedSideways(5), _speedBackwards(5), _slowCrouching(0.5f), _playerHeight(2.0f),
+	_speedForward(550), _speedSideways(240), _speedBackwards(250), _slowCrouching(0.1f), _playerHeight(2.0f),
 	_crouching(false)
 {
 }
@@ -24,22 +24,24 @@ PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Compon
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 {
 	//Default values 
-	_speedForward = 4000;	_speedSideways = 2000;	_speedBackwards = 2000; _slowCrouching = .3; _playerHeight = 10;
+	_speedForward = 8000;	_speedSideways = 8000;	_speedBackwards = 8000; _slowCrouching = .3; _playerHeight = 10; _cameraSpeed = 10;
 	//Lua values if exist
-	if (LUAFIELDEXIST("SpeedForward"))
-		_speedForward = data["SpeedForward"].cast<float>();
+	if (LUAFIELDEXIST(SpeedForward))
+		_speedForward = GETLUAFIELD(SpeedForward,float);
 
-	if (LUAFIELDEXIST("SpeedSideWays"))
-		_speedSideways = data["SpeedSideWays"].cast<float>();
+	if (LUAFIELDEXIST(SpeedSideWays))
+		_speedSideways = GETLUAFIELD(SpeedSideWays, float);
 
-	if (LUAFIELDEXIST("SpeedBackwards"))
-		_speedBackwards = data["SpeedBackwards"].cast<float>();
+	if (LUAFIELDEXIST(SpeedBackwards))
+		_speedBackwards = GETLUAFIELD(SpeedBackwards,float);
 
-	if (LUAFIELDEXIST("SlowCrouching"))
-		_slowCrouching = data["SlowCrouching"].cast<float>();
+	if (LUAFIELDEXIST(SlowCrouching))
+		_slowCrouching = GETLUAFIELD(SlowCrouching,float);
 	
-	if (LUAFIELDEXIST("PlayerHeight"))
-		_slowCrouching = data["PlayerHeight"].cast<float>();
+	if (LUAFIELDEXIST(PlayerHeight))
+		_slowCrouching = GETLUAFIELD(PlayerHeight,float);
+	if (LUAFIELDEXIST(CameraSpeed))
+		_cameraSpeed= GETLUAFIELD(CameraSpeed,float);
 }
 
 void PlayerMovementComponent::start()
@@ -65,21 +67,23 @@ void PlayerMovementComponent::update()
 void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 {
 	double deltaX = 0, deltaY = 0;
-	deltaX = _mouse->getMouseDelta()[0];
-	deltaY = _mouse->getMouseDelta()[1];
+	deltaX =- _mouse->getMouseDelta()[0];
+	deltaY = -_mouse->getMouseDelta()[1];
 
 	double pitch = 0, yaw = 0;
 	//Limit the pitch angle
 	if (abs(_tr->getRotation().getX() + deltaY * _cameraSpeed * deltaTime) < 45.0f) {
 		pitch = deltaY * _cameraSpeed * deltaTime;
-		_cam->pitchDegrees(-pitch, false);
+		//_cam->pitchDegrees(-pitch, false);
 	}
 	yaw = deltaX * _cameraSpeed * deltaTime;
-	_cam->yawDegrees(-yaw, true);
+	/*_cam->yawdegrees(-yaw, true);*/
 
 	double x = _tr->getRotation().getX() + pitch;
 	double y = _tr->getRotation().getY() + yaw;
 	_tr->setRotation(Vector3(x, y, 0));
+	//std::cout << x << " " << y<< " " << "\n";
+
 }
 
 void PlayerMovementComponent::manageMovement(const float deltaTime)
