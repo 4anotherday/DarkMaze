@@ -9,18 +9,20 @@
 #include "includeLUA.h"
 #include "AudioSourceComponent.h"
 #include "HealthComponent.h"
+#include "PlayerVisibilityComponent.h"
 
 #define CAST_COMPONENT InvisibleEnemyAIComponent* comp = static_cast<InvisibleEnemyAIComponent*>(component);
 
 ADD_COMPONENT(InvisibleEnemyAIComponent)
 
 InvisibleEnemyAIComponent::InvisibleEnemyAIComponent() : Component(UserComponentId::InvisibleEnemyAIComponent),
-	_transformPlayer(nullptr), _myTransform(nullptr), _audioSource(nullptr), _playerHealth(nullptr), _ai(nullptr), _states(), _transitions(),
+	_transformPlayer(nullptr), _myTransform(nullptr), _audioSource(nullptr), _playerHealth(nullptr),
+	_playerVisibility(nullptr), _ai(nullptr), _states(), _transitions(),
 	_actualSpeed(3.0), _speed(3.0), _slowAfterHit(0.5),
-	_radiusFindPlayer(15.0 * 10), _minRadiusFindPlayer(6.0 * 10), _maxRadiusFindPlayer(20.0 * 10),
-	_sightingDistance(19.0 * 10), _lastKnownPosition(), _justLostSightTime(-1.0f), _lostSightSearchTime(3.0f),
+	_radiusFindPlayer(15.0), _minRadiusFindPlayer(6.0), _maxRadiusFindPlayer(20.0),
+	_sightingDistance(19.0), _lastKnownPosition(), _justLostSightTime(-1.0f), _lostSightSearchTime(3.0f),
 	_attackRange(2.0f), _attackCooldown(3.0f), _attackCooldownTime(-1.0f),
-	_hearingDistance(20.0 * 10), _soundLocation(), _soundTime(-1.0f), _soundTimeSearchTime(8.0f)
+	_hearingDistance(20.0), _soundLocation(), _soundTime(-1.0f), _soundTimeSearchTime(5.0f)
 {
 }
 
@@ -70,7 +72,9 @@ void InvisibleEnemyAIComponent::start()
 	_audioSource = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
 	_audioSource->setAudioLoop(0, -1);
 	_audioSource->playAudio(0);
+
 	_playerHealth = static_cast<HealthComponent*>(player->getComponent(UserComponentId::HealthComponent));
+	_playerVisibility = static_cast<PlayerVisibilityComponent*>(player->getComponent(UserComponentId::PlayerVisibilityComponent));
 
 	createFSM();
 }
@@ -89,6 +93,7 @@ void InvisibleEnemyAIComponent::moveTowardsPos(const Vector3& pos)
 	Vector3 dir = pos - _myTransform->getPosition();
 	if (dir.magnitude() < 0.2)
 		return;
+	dir.setY(0.0);
 	dir = dir.normalize();
 	dir = dir * _actualSpeed * EngineTime::getInstance()->deltaTime();
 	
@@ -140,9 +145,11 @@ void InvisibleEnemyAIComponent::createFSM()
 
 	LostSightTransition* lostSightTransition = createTransition<LostSightTransition>();
 	lostSightTransition->setSightingDistance(&_sightingDistance);
+	lostSightTransition->setPlayerVisibilityComp(_playerVisibility);
 
 	GainSightTransition* gainSightTransition = createTransition<GainSightTransition>();
 	gainSightTransition->setSightingDistance(&_sightingDistance);
+	gainSightTransition->setPlayerVisibilityComp(_playerVisibility);
 
 	InRangeTransition* inRangeTransition = createTransition<InRangeTransition>();
 	inRangeTransition->setRange(_attackRange);
@@ -207,7 +214,7 @@ void InvisibleEnemyAIComponent::FindState::execute(Component* component)
 	double distance = (comp->getMyTransform()->getPosition() - _targetPos).magnitude();
 
 	//If I arrived to destination, I change it
-	if (distance < 2) {
+	if (distance < 1) {
 		Vector3 dirVector = Vector3(-1.0 + 2.0 * ((float)rand()) / RAND_MAX, comp->getMyTransform()->getPosition().getY(), -1.0 + 2.0 * ((float)rand()) / RAND_MAX).normalize();
 		_targetPos = comp->getPlayerTransform()->getPosition() + (dirVector * *_radiusFromPlayer);
 	}
@@ -260,6 +267,12 @@ bool InvisibleEnemyAIComponent::LostSightTransition::evaluate(Component* compone
 {
 	CAST_COMPONENT;
 
+	//If player is not visible, i just lost sight on him but i look close to where he was
+	if (!_playerVis->getVisible()){ 
+		comp->setFindRadius(0.0); 
+		return true;
+	}
+
 	const Vector3& playerPos = comp->getPlayerTransform()->getPosition();
 	const Vector3& myPos = comp->getMyTransform()->getPosition();
 
@@ -277,6 +290,10 @@ bool InvisibleEnemyAIComponent::LostSightTransition::evaluate(Component* compone
 bool InvisibleEnemyAIComponent::GainSightTransition::evaluate(Component* component)
 {
 	CAST_COMPONENT;
+
+	//If player is not visible, i cant gain sight on him
+	if (!_playerVis->getVisible())
+		return false;
 	
 	const Vector3& playerPos = comp->getPlayerTransform()->getPosition();
 	const Vector3& myPos = comp->getMyTransform()->getPosition();
