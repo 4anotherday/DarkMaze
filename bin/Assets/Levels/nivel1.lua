@@ -16,10 +16,10 @@ HowManyGameObjects = 23--16
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 10, Persist = false}
-go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 20,CameraSpeed=1 }
-go_0[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
-go_0[4] = { Component = "Camera", Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false, "JugadorVisionInjured", false},SlaveRotation=true}
+go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 1.01, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 2, Z = 1}}
+go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 2, CameraSpeed=5 }
+go_0[3] = { Component = "RigidBody", Type="Box", Mass=10, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
+go_0[4] = { Component = "Camera", Plane = {Near = 0.01}, Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false, "JugadorVisionInjured", false}, SlaveRotation=false}
 go_0[5] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
 go_0[6] = { Component = "PlayerInteractiveComponent" }
 go_0[7] = { Component = "PlayerKeysComponent"}
@@ -28,18 +28,17 @@ go_0[9] = { Component = "LightComponent", LightType= "POINT", Visible = true,
 										Diffuse = {Red = 1, Green= 1, Blue = 1}, 
 									    Specular = {Red = 1, Green= 1, Blue = 1},																				
 										LightDirection = {X = 0, Y = 0, Z = -1},
-									    Intensity= 0.3}
+									    Intensity= 0.2}
 go_0[10] = { Component = "PlayerVisibilityComponent" }
 
 
 -- Suelo
 go_1 = {}
 go_1[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
-go_1[1] = { Component = "Transform", Coord = {X = 0, Y = -55, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1500, Y = 1, Z = 1500}}
+go_1[1] = { Component = "Transform", Coord = {X = 0, Y = -0.5, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 100, Y = 1, Z = 100}}
 go_1[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
-go_1[3] = { Component = "BoxCollider", Type="Box",Width=10000,Height=1,Depth=10000,IsTrigger=false}
+go_1[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
 --Enemigos
 --go_2 = {}
@@ -81,13 +80,13 @@ go_1[3] = { Component = "BoxCollider", Type="Box",Width=10000,Height=1,Depth=100
 --Luz direccional
 go_2 = {}
 go_2[0] = { Name = "LuzDireccional", HowManyCmps = 2, Persist = false}
-go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 500, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 500, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}}
 go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
 		    Diffuse = {Red = 0.7, Green= 0.5, Blue = 0.5}, 
 			Specular = {Red = 1, Green= 1, Blue = 1},
 			LightDirection = {X = -1.3, Y = -1,Z = 0}}
 
-			-- Paredes
+-- Paredes
 go_3 = {}
 go_3[0] = { Name = "Pared2", HowManyCmps = 3, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = -100, Y = -55, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 100, Y = 200, Z = 400}}
@@ -182,10 +181,9 @@ go_12[4] = { Component = "ObjectDeactivatorComponent",ObjName="Trampa1"}
 
 go_13 = {}
 go_13[0] = { Name = "Pared3", HowManyCmps = 3, Persist = false}
-go_13[1] = { Component = "Transform", Coord = {X = 0, Y = -55, Z = -150}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 100, Y = 200, Z = 100}}
+go_13[1] = { Component = "Transform", Coord = {X = 0, Y = 2, Z = -3}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 20, Y = 4, Z = 1}}
 go_13[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
-			Visible=true, Shadows=true, RenderingDistance = 1000}
+				Visible=true, Shadows=true, RenderingDistance = 1000}
 go_13[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=1,Depth=1,IsTrigger=false}
 
 go_14 = {}

@@ -24,7 +24,7 @@ PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Compon
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 {
 	//Default values 
-	_speedForward = 8000;	_speedSideways = 8000;	_speedBackwards = 8000; _slowCrouching = .3; _playerHeight = 10; _cameraSpeed = 10;
+	_speedForward = 80;	_speedSideways = 60;	_speedBackwards = 60; _slowCrouching = 0.3; _playerHeight = 2; _cameraSpeed = 5;
 	//Lua values if exist
 	if (LUAFIELDEXIST(SpeedForward))
 		_speedForward = GETLUAFIELD(SpeedForward,float);
@@ -39,7 +39,8 @@ void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 		_slowCrouching = GETLUAFIELD(SlowCrouching,float);
 	
 	if (LUAFIELDEXIST(PlayerHeight))
-		_slowCrouching = GETLUAFIELD(PlayerHeight,float);
+		_playerHeight = GETLUAFIELD(PlayerHeight,float) / 2;
+
 	if (LUAFIELDEXIST(CameraSpeed))
 		_cameraSpeed= GETLUAFIELD(CameraSpeed,float);
 }
@@ -66,24 +67,25 @@ void PlayerMovementComponent::update()
 
 void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 {
-	double deltaX = 0, deltaY = 0;
-	deltaX =- _mouse->getMouseDelta()[0];
-	deltaY = -_mouse->getMouseDelta()[1];
+	double deltaHorizontal = 0, deltaVertical = 0;
+	deltaHorizontal = -_mouse->getMouseDelta()[0];
+	deltaVertical = -_mouse->getMouseDelta()[1];
 
 	double pitch = 0, yaw = 0;
+	Vector3 orientation = _cam->getOrientation();
+
 	//Limit the pitch angle
-	if (abs(_tr->getRotation().getX() + deltaY * _cameraSpeed * deltaTime) < 45.0f) {
-		pitch = deltaY * _cameraSpeed * deltaTime;
-		//_cam->pitchDegrees(-pitch, false);
+	float newPitch = orientation.getX() + deltaVertical * _cameraSpeed * deltaTime;
+	if (newPitch < 85.0f && deltaVertical > 0 || newPitch > -85.0f && deltaVertical < 0) {
+		orientation.setX(newPitch);
 	}
-	yaw = deltaX * _cameraSpeed * deltaTime;
-	/*_cam->yawdegrees(-yaw, true);*/
+	yaw = deltaHorizontal * _cameraSpeed * deltaTime;
+	orientation.setY(_cam->getOrientation().getY() + yaw);
+	
+	_cam->setOrientation(orientation.getX() * PI / 180, orientation.getY() * PI / 180, 0);
 
-	double x = _tr->getRotation().getX() + pitch;
-	double y = _tr->getRotation().getY() + yaw;
-	_tr->setRotation(Vector3(x, y, 0));
-	//std::cout << x << " " << y<< " " << "\n";
-
+	double y = _tr->getRotation().getY() - yaw;
+	_tr->setRotation(Vector3(_tr->getRotation().getX(), y, 0));
 }
 
 void PlayerMovementComponent::manageMovement(const float deltaTime)
@@ -96,9 +98,6 @@ void PlayerMovementComponent::manageMovement(const float deltaTime)
 	rightVector.normalize();
 
 	Vector3 vel;
-
-	//std::cout << "---------------------\n";
-	//std::cout << "Before: " << velocity.getX() << " " << velocity.getY() << " " << velocity.getZ() << "\n";
 
 	//Front and back movement
 	if (_keyboard->isKeyDown(_keyForward)) {
@@ -119,7 +118,6 @@ void PlayerMovementComponent::manageMovement(const float deltaTime)
 		direction = direction * _slowCrouching;
 
 	direction = direction * deltaTime;
-	//std::cout << "After: " << velocity.getX() << " " << velocity.getY() << " " << velocity.getZ() << "\n";
 
 	_rb->setLinearVelocity(direction);
 }
@@ -130,7 +128,7 @@ void PlayerMovementComponent::manageCrouching()
 		_crouching = true;
 		//Move camera and make smaller the collider
 		_tr->setPosition(Vector3(_tr->getPosition().getX(), _playerHeight / 2, _tr->getPosition().getZ()));
-		_rb->setScale(Vector3(1, _playerHeight / 2, 1));
+		_rb->setScale(Vector3(0.5, _playerHeight / 2, 0.5));
 	}
 	else if (_keyboard->isKeyJustUp(_keyCrouch)) {
 		_crouching = false;
