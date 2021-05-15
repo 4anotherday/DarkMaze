@@ -19,7 +19,7 @@ go_0[0] = { Name = "Player", HowManyCmps = 11, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 20,CameraSpeed=1 }
 go_0[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
-go_0[4] = { Component = "Camera", Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false},SlaveRotation=true}
+go_0[4] = { Component = "Camera", Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false, "JugadorVisionInjured", false},SlaveRotation=true}
 go_0[5] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
 go_0[6] = { Component = "PlayerInteractiveComponent" }
 go_0[7] = { Component = "PlayerKeysComponent"}
@@ -145,6 +145,7 @@ go_8[3] = { Component = "SphereCollider",Radius=10,IsTrigger=true}
 go_8[4] = { Component = "BoxCollider", Type="Box",Width=1.5,Height=1.5,Depth=1.5,IsTrigger=false}
 go_8[5] = { Component = "DoorComponent" }
 
+-- UI Manager
 go_9 = {}
 go_9[0] = { Name = "UIManager", HowManyCmps = 2, Persist = false}
 go_9[1] = { Component = "Transform"}

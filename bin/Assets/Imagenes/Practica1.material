@@ -318,6 +318,7 @@ fragment_program JugadorVisionInjuredPS hlsl
     default_params {
         param_named_auto timeSin sintime_0_2pi 2
 		param_named tamanioBorde float 0.4f
+		param_named alphaBlending float 0.8f
     }
 }
 
@@ -327,7 +328,7 @@ material JugadorVisionInjuredMaterial
         pass {
             depth_check off
             depth_write off
-			alpha_rejection greater_equal 128
+			scene_blend alpha_blend
             vertex_program_ref RenderQuadVS {
             }
             fragment_program_ref JugadorVisionInjuredPS {		
