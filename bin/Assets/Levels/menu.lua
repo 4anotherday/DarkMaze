@@ -1,4 +1,4 @@
-HowManyGameObjects = 3
+HowManyGameObjects = 4
 
 go_0 = {}
 go_0[0] = { Name = "Camera", HowManyCmps = 2, Persist = false}
@@ -19,3 +19,8 @@ go_2[1] = { Component = "Transform"}
 go_2[2] = { Component = "ButtonComponent", Active = true, OverLayName="MenuUI", ContainerName= "Menu/QuitButton", 
 			DefaultMaterial = "keyMaterial", HoverMaterial = "keyMaterial", PressMaterial = "keyMaterial"}
 go_2[3] = { Component = "QuitButtonComponent"}
+
+go_3 = {}
+go_3[0] = { Name = "GameManager", HowManyCmps = 2, Persist = true}
+go_3[1] = { Component = "Transform"}
+go_3[2] = { Component = "GameManagerComponent", Level = 1, MaxLevel = 3}

@@ -33,6 +33,7 @@ namespace UserComponentId {
 		HideoutComponent,
 		PlayerVisibilityComponent,
 		UIManagerComponent,
+		GameManagerComponent,
 
 		//Buttons
 		PlayButtonComponent,
