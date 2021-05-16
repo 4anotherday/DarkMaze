@@ -1,7 +1,9 @@
 #include "HealthComponent.h"
 #include "UserComponentsIDs.h"
 #include "includeLUA.h"
-#include "GameManager.h"
+#include "GameManagerComponent.h"
+#include "Engine.h"
+#include "GameObject.h"
 
 ADD_COMPONENT(HealthComponent)
 
@@ -46,6 +48,8 @@ void HealthComponent::reset()
 }
 
 void HealthComponent::onDead()
-{
-	GameManager::getInstance()->resetLevel();
+{	
+	GameObject * go = Engine::getInstance()->findGameObject("GameManager");
+	GameManagerComponent* gm = GETCOMPONENT(GameManagerComponent, UserComponentId::GameManagerComponent);
+	gm->toMenu();
 }
