@@ -12,11 +12,11 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 13--21--16
+HowManyGameObjects = 20
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
-go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 50, Z = 0}, Rotation = {X = -90, Y = 0, Z = 0}, Scale = {X = 1, Y = 2, Z = 1}}
+go_0[1] = { Component = "Transform", Coord = {X = 5, Y = 40, Z = 5}, Rotation = {X = -90, Y = 0, Z = 0}, Scale = {X = 1, Y = 2, Z = 1}}
 --go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 2, CameraSpeed=35 }
 --go_0[2] = { Component = "RigidBody", Type="Box", Mass=10, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
 go_0[2] = { Component = "Camera", Plane = {Near = 0.01}, Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false, "JugadorVisionInjured", false}, SlaveRotation=true}
@@ -46,55 +46,6 @@ go_1[1] = { Component = "Transform", Coord = {X = 0, Y = -0.5, Z = 0}, Rotation 
 go_1[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_1[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
-
---Enemigos
---go_2 = {}
---go_2[0] = { Name = "Screamer", HowManyCmps = 5, Persist = false}
---go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 5, Z = -30}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
---go_2[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
---			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
---			Visible=true, Shadows=false, RenderingDistance = 1000}
---go_2[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, Kinematic = false,
---			ConstrainAngle = true, IsTrigger= false}
---go_2[4] = { Component = "AudioSource", Route = {"Assets/Audio/woman_cry.mp3" ,"Assets/Audio/baby_crying.mp3"},
---			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
---go_2[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
---go_2[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
---			DetectionRange = 30, FollowTime = 5, DyingTime = 4, MoveSpeed = 3}
-			
---go_3 = {}
---go_3[0] = { Name = "InvisibleEnemy", HowManyCmps = 4, Persist = false}
---go_3[1] = { Component = "Transform", Coord = {X = -15, Y = 5, Z = -30}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
---go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
---			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
---			Visible=true, Shadows=false, RenderingDistance = 1000}
---go_3[3] = { Component = "AudioSource", Route = {"Assets/Audio/ProtoDarkMaze_Menu.mp3", "Assets/Audio/goat_cry.mp3"}, Stereo = true,
---			MinMaxDistance = {Min = 2, Max = 6}, Volume= 10, Play = false}
---go_3[4] = { Component = "InvisibleEnemyAIComponent"}
-
---go_4 = {}
---go_4[0] = { Name = "Kamikaze", HowManyCmps = 5, Persist = false}
---go_4[1] = { Component = "Transform", Coord = {X = 25, Y = 5, Z = -40}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
---go_4[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
---			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
---			Visible=true, Shadows=false, RenderingDistance = 1000}
---go_4[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, kinematic = true,
---			ConstrainAngle = true, IsTrigger=false}
----go_4[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
---			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
---go_4[5] = { Component = "KamikazeEnemyComponent" }
-
---Luz direccional
--- go_2 = {}
--- go_2[0] = { Name = "LuzDireccional", HowManyCmps = 2, Persist = false}
--- go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 500, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}}
--- go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
--- 		    Diffuse = {Red = 0.7, Green= 0.5, Blue = 0.5}, 
--- 			Specular = {Red = 1, Green= 1, Blue = 1},
--- 			LightDirection = {X = -1.3, Y = -1,Z = 0}}
-
-
-
 
 -- FirstAidKit
 go_2 = {}
@@ -164,6 +115,7 @@ go_8[4] = { Component = "ObjectDeactivatorComponent",ObjName="Trampa1"}
 
 
 -- Paredes
+--  SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN    SPAWN  
 go_9 = {}
 go_9[0] = { Name = "ParedS1", HowManyCmps = 3, Persist = false}
 go_9[1] = { Component = "Transform", Coord = {X = -5, Y = 2, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=5, Y = 4, Z = 5}}
@@ -172,13 +124,13 @@ go_9[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
 go_10 = {}
 go_10[0] = { Name = "ParedS2", HowManyCmps = 3, Persist = false}
-go_10[1] = { Component = "Transform", Coord = {X = 5.5, Y = 2, Z = 0.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 8, Y = 4, Z = 6}}
+go_10[1] = { Component = "Transform", Coord = {X = 5.75, Y = 2, Z = 0.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 7.5, Y = 4, Z = 6}}
 go_10[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
 go_10[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
 go_11 = {}
 go_11[0] = { Name = "ParedS3", HowManyCmps = 3, Persist = false}
-go_11[1] = { Component = "Transform", Coord = {X = 0, Y = 2, Z = 4}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 10, Y = 4, Z = 3}}
+go_11[1] = { Component = "Transform", Coord = {X = 0, Y = 2, Z = 4.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 10, Y = 4, Z = 4}}
 go_11[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
 go_11[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
@@ -187,3 +139,101 @@ go_12[0] = { Name = "ParedS4", HowManyCmps = 3, Persist = false}
 go_12[1] = { Component = "Transform", Coord = {X = -5, Y = 2, Z = 3.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 2, Y = 4, Z = 2}}
 go_12[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
 go_12[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+--  ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C  
+
+go_13 = {}
+go_13[0] = { Name = "ParedC1", HowManyCmps = 3, Persist = false}
+go_13[1] = { Component = "Transform", Coord = {X = 12.5, Y = 2, Z = 0.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 2, Y = 4, Z = 6}}
+go_13[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_13[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+go_14 = {}
+go_14[0] = { Name = "ParedC2", HowManyCmps = 3, Persist = false}
+go_14[1] = { Component = "Transform", Coord = {X = 10.5, Y = 2, Z = 6.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 6, Y = 4, Z = 3}}
+go_14[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_14[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+go_15 = {}
+go_15[0] = { Name = "ParedC3", HowManyCmps = 3, Persist = false}
+go_15[1] = { Component = "Transform", Coord = {X = 17.5, Y = 2, Z = -0.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 5, Y = 4, Z = 4}}
+go_15[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_15[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+go_16 = {}
+go_16[0] = { Name = "ParedC4", HowManyCmps = 3, Persist = false}
+go_16[1] = { Component = "Transform", Coord = {X = 17.5, Y = 2, Z = 7.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 5, Y = 4, Z = 4}}
+go_16[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_16[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+go_17 = {}
+go_17[0] = { Name = "ParedC5", HowManyCmps = 3, Persist = false}
+go_17[1] = { Component = "Transform", Coord = {X = 19, Y = 2, Z = 3.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 2, Y = 4, Z = 4}}
+go_17[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_17[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+go_18 = {}
+go_18[0] = { Name = "ParedC6", HowManyCmps = 3, Persist = false}
+go_18[1] = { Component = "Transform", Coord = {X = 15.5, Y = 2, Z = 2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 4, Z = 1}}
+go_18[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_18[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+go_19 = {}
+go_19[0] = { Name = "ParedC7", HowManyCmps = 3, Persist = false}
+go_19[1] = { Component = "Transform", Coord = {X = 15.5, Y = 2, Z = 5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 4, Z = 1}}
+go_19[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_19[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+
+
+
+
+
+
+
+
+--Enemigos
+--go_2 = {}
+--go_2[0] = { Name = "Screamer", HowManyCmps = 5, Persist = false}
+--go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 5, Z = -30}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+--go_2[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
+--			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+--			Visible=true, Shadows=false, RenderingDistance = 1000}
+--go_2[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, Kinematic = false,
+--			ConstrainAngle = true, IsTrigger= false}
+--go_2[4] = { Component = "AudioSource", Route = {"Assets/Audio/woman_cry.mp3" ,"Assets/Audio/baby_crying.mp3"},
+--			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
+--go_2[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
+--go_2[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
+--			DetectionRange = 30, FollowTime = 5, DyingTime = 4, MoveSpeed = 3}
+			
+--go_3 = {}
+--go_3[0] = { Name = "InvisibleEnemy", HowManyCmps = 4, Persist = false}
+--go_3[1] = { Component = "Transform", Coord = {X = -15, Y = 5, Z = -30}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+--go_3[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
+--			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+--			Visible=true, Shadows=false, RenderingDistance = 1000}
+--go_3[3] = { Component = "AudioSource", Route = {"Assets/Audio/ProtoDarkMaze_Menu.mp3", "Assets/Audio/goat_cry.mp3"}, Stereo = true,
+--			MinMaxDistance = {Min = 2, Max = 6}, Volume= 10, Play = false}
+--go_3[4] = { Component = "InvisibleEnemyAIComponent"}
+
+--go_4 = {}
+--go_4[0] = { Name = "Kamikaze", HowManyCmps = 5, Persist = false}
+--go_4[1] = { Component = "Transform", Coord = {X = 25, Y = 5, Z = -40}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.1, Y = 0.1, Z = 0.1}}
+--go_4[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Red", 
+--			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+--			Visible=true, Shadows=false, RenderingDistance = 1000}
+--go_4[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=10, Depth=10, Height=10, kinematic = true,
+--			ConstrainAngle = true, IsTrigger=false}
+---go_4[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
+--			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
+--go_4[5] = { Component = "KamikazeEnemyComponent" }
+
+--Luz direccional
+-- go_2 = {}
+-- go_2[0] = { Name = "LuzDireccional", HowManyCmps = 2, Persist = false}
+-- go_2[1] = { Component = "Transform", Coord = {X = 0, Y = 500, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}}
+-- go_2[2] = { Component = "LightComponent", LightType= "DIRECTIONAL", Visible = true,
+-- 		    Diffuse = {Red = 0.7, Green= 0.5, Blue = 0.5}, 
+-- 			Specular = {Red = 1, Green= 1, Blue = 1},
+-- 			LightDirection = {X = -1.3, Y = -1,Z = 0}}
