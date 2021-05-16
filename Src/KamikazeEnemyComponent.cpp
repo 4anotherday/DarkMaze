@@ -12,12 +12,13 @@
 #include "ParticleSystemComponent.h"
 #include "AudioSourceComponent.h"
 #include "RenderObjectComponent.h"
+#include "PlayerVisibilityComponent.h"
 
 ADD_COMPONENT(KamikazeEnemyComponent)
 
 KamikazeEnemyComponent::KamikazeEnemyComponent() : Component(UserComponentId::KamikazeEnemyComponent),
 	_rb(nullptr), _tr(nullptr), _playerTr(nullptr), _invisibleEnemy(nullptr), _playerHealth(nullptr),
-	_audioSource(nullptr),_particleSystem(nullptr), _renderObject(nullptr), 
+	_audioSource(nullptr),_particleSystem(nullptr), _renderObject(nullptr),_playerVisibility(nullptr),
 	_active(false), _dead(false), _lastPlayerPos(Vector3(0, 0, 0)),
 	_elapsedFollowTime(0.0f), _elapsedParticlesTime(0.0f),
 
@@ -55,6 +56,7 @@ void KamikazeEnemyComponent::start()
 
 	GameObject* player = Engine::getInstance()->findGameObject("Player");
 	_playerTr = static_cast<Transform*>(player->getComponent(ComponentId::Transform));
+	_playerVisibility = static_cast<PlayerVisibilityComponent*>(player->getComponent(UserComponentId::PlayerVisibilityComponent));
 	_playerHealth = static_cast<HealthComponent*>(player->getComponent(UserComponentId::HealthComponent));
 
 	_invisibleEnemy = static_cast<InvisibleEnemyAIComponent*>(Engine::getInstance()->findGameObject("InvisibleEnemy")->
@@ -68,7 +70,7 @@ void KamikazeEnemyComponent::update()
 
 	//If ray doesnt hit anything static, that means we have direct sight towards the player
 	RayCast::RayCastHit ray = RayCast(myPos, playerPos, RayCast::Type::Static).getRayCastInformation();
-	if (!ray.hit && (playerPos - myPos).magnitude() < _visionRange) {
+	if (!ray.hit && (playerPos - myPos).magnitude() < _visionRange && _playerVisibility->getVisible()) {
 		_lastPlayerPos = playerPos;
 		if (!_active) {
 			_active = true;

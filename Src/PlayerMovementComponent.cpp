@@ -48,19 +48,19 @@ void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 void PlayerMovementComponent::start()
 {
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
-	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
+	//_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 	_cam = static_cast<CameraComponent*>(_gameObject->getComponent(ComponentId::Camera));
-	_rb->setGravity(false);
-	_mouse->setMouseRelativeMode(true);
+	//_rb->setGravity(false);
+	//_mouse->setMouseRelativeMode(true);
 }
 
 void PlayerMovementComponent::update()
 {
 	float deltaTime = _time->deltaTime();
 
-	moveCameraWithMouse(deltaTime);
+	//moveCameraWithMouse(deltaTime);
 
-	manageCrouching();
+	//manageCrouching();
 
 	manageMovement(deltaTime);
 }
@@ -91,35 +91,55 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 void PlayerMovementComponent::manageMovement(const float deltaTime)
 {
 	//Vector3 velocity = Vector3(0, 0, -1);
-	Vector3 direction = _tr->getForward();
-	direction.normalize();
-	direction.setY(0);
-	Vector3 rightVector = { direction.getZ(), 0, -direction.getX() };
-	rightVector.normalize();
+	//Vector3 direction = _tr->getForward();
+	//direction.normalize();
+	//direction.setY(0);
+	//Vector3 rightVector = { direction.getZ(), 0, -direction.getX() };
+	//rightVector.normalize();
 
-	Vector3 vel;
+	//Vector3 vel;
+
+	////Front and back movement
+	//if (_keyboard->isKeyDown(_keyForward)) {
+	//	direction = direction * (_speedForward);
+	//}
+	//else if (_keyboard->isKeyDown(_keyBackward)) {
+	//	direction = direction * (_speedBackwards * -1.0);
+	//}
+	////Sideways movement
+	//if (_keyboard->isKeyDown(_keyRight)) {
+	//	direction = direction + (rightVector * _speedSideways * -1);
+	//}
+	//else if (_keyboard->isKeyDown(_keyLeft)) {
+	//	direction = direction + (rightVector *  _speedSideways);
+	//}
+
+	//if (_crouching)
+	//	direction = direction * _slowCrouching;
+
+	//direction = direction * deltaTime;
+
+	//_rb->setLinearVelocity(direction);
+
+	Vector3 direction = _tr->getPosition();
 
 	//Front and back movement
 	if (_keyboard->isKeyDown(_keyForward)) {
-		direction = direction * (_speedForward);
+		direction.setZ(direction.getZ() - 0.5);
 	}
 	else if (_keyboard->isKeyDown(_keyBackward)) {
-		direction = direction * (_speedBackwards * -1.0);
+		direction.setZ(direction.getZ() + 0.5);
 	}
 	//Sideways movement
 	if (_keyboard->isKeyDown(_keyRight)) {
-		direction = direction + (rightVector * _speedSideways * -1);
+		direction.setX(direction.getX() + 0.5);
 	}
 	else if (_keyboard->isKeyDown(_keyLeft)) {
-		direction = direction + (rightVector *  _speedSideways);
+		direction.setX(direction.getX() - 0.5);
 	}
 
-	if (_crouching)
-		direction = direction * _slowCrouching;
+	_tr->setPosition(direction);
 
-	direction = direction * deltaTime;
-
-	_rb->setLinearVelocity(direction);
 }
 
 void PlayerMovementComponent::manageCrouching()
