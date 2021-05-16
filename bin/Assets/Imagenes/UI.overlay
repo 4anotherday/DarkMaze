@@ -10,20 +10,4 @@ overlay GameUI
         height 0.1
         material keyMaterial
     }
-     overlay_element Boton/Fondo Panel
-    {
-        // Center it horizontally, put it at the top
-        left 0.25
-        top 0
-        width 0.5
-        height 0.1
-        material keyMaterial
-        // Another panel nested in this one
-        overlay_element Boton/Texto TextArea
-        {
-            caption Hello World!
-            colour 1. .1 .1
-            font_name arialFont
-        }
-    }
 }

@@ -2,7 +2,7 @@
 overlay MenuUI
 {
     zorder 200
-     overlay_element Menu/PlayButton Panel
+    overlay_element Menu/PlayButton Panel
     {
         // Center it horizontally, put it at the top
         left 0.25
