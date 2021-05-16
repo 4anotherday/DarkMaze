@@ -12,12 +12,12 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 32
+HowManyGameObjects = 36
 -- Player
 go_0 = {}
-go_0[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
-go_0[1] = { Component = "Transform", Coord = {X = 15, Y = 40, Z = -5}, Rotation = {X = -90, Y = 0, Z = 0}, Scale = {X = 1, Y = 2, Z = 1}}
---go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 2, CameraSpeed=35 }
+go_0[0] = { Name = "Player", HowManyCmps = 9, Persist = false}
+go_0[1] = { Component = "Transform", Coord = {X = -5, Y = 40, Z = -5}, Rotation = {X = -90, Y = 0, Z = 0}, Scale = {X = 1, Y = 2, Z = 1}}
+go_0[9] = { Component = "PlayerMovementComponent", PlayerHeight = 2, CameraSpeed=35 }
 --go_0[2] = { Component = "RigidBody", Type="Box", Mass=10, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
 go_0[2] = { Component = "Camera", Plane = {Near = 0.01}, Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false, "JugadorVisionInjured", false}, SlaveRotation=true}
 go_0[3] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
@@ -140,127 +140,161 @@ go_12[1] = { Component = "Transform", Coord = {X = -5, Y = 2, Z = 3.5}, Rotation
 go_12[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
 go_12[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
---  ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C  
-
-go_13 = {}
-go_13[0] = { Name = "ParedC1", HowManyCmps = 3, Persist = false}
-go_13[1] = { Component = "Transform", Coord = {X = 12.5, Y = 2, Z = 0.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 2, Y = 4, Z = 6}}
-go_13[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
-go_13[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
-
-go_14 = {}
-go_14[0] = { Name = "ParedC2", HowManyCmps = 3, Persist = false}
-go_14[1] = { Component = "Transform", Coord = {X = 10.5, Y = 2, Z = 6.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 6, Y = 4, Z = 3}}
-go_14[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
-go_14[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
-
-go_15 = {}
-go_15[0] = { Name = "ParedC3", HowManyCmps = 3, Persist = false}
-go_15[1] = { Component = "Transform", Coord = {X = 17.5, Y = 2, Z = -0.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 5, Y = 4, Z = 4}}
-go_15[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
-go_15[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
-
-go_16 = {}
-go_16[0] = { Name = "ParedC4", HowManyCmps = 3, Persist = false}
-go_16[1] = { Component = "Transform", Coord = {X = 17.5, Y = 2, Z = 7.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 5, Y = 4, Z = 4}}
-go_16[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
-go_16[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
-
-go_17 = {}
-go_17[0] = { Name = "ParedC5", HowManyCmps = 3, Persist = false}
-go_17[1] = { Component = "Transform", Coord = {X = 19, Y = 2, Z = 3.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 2, Y = 4, Z = 4}}
-go_17[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
-go_17[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
-
-go_18 = {}
-go_18[0] = { Name = "ParedC6", HowManyCmps = 3, Persist = false}
-go_18[1] = { Component = "Transform", Coord = {X = 15.5, Y = 2, Z = 2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 4, Z = 1}}
-go_18[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
-go_18[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
-
-go_19 = {}
-go_19[0] = { Name = "ParedC7", HowManyCmps = 3, Persist = false}
-go_19[1] = { Component = "Transform", Coord = {X = 15.5, Y = 2, Z = 5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 4, Z = 1}}
-go_19[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
-go_19[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
-
-
 -- ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A ZONA A
 
+go_13 = {}
+go_13[0] = { Name = "ParedA1", HowManyCmps = 3, Persist = false}
+go_13[1] = { Component = "Transform", Coord = {X = -1.5, Y = 0, Z = -5.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=9, Y = 4, Z = 1}}
+go_13[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
+go_13[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
+go_14 = {}
+go_14[0] = { Name = "ParedA2", HowManyCmps = 3, Persist = false}
+go_14[1] = { Component = "Transform", Coord = {X = 6.25, Y = 0, Z = -6.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=3, Y = 4, Z = 3}}
+go_14[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
+go_14[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
+go_15 = {}
+go_15[0] = { Name = "ParedA3", HowManyCmps = 3, Persist = false}
+go_15[1] = { Component = "Transform", Coord = {X = 1, Y = 0, Z = -7.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=4, Y = 4, Z = 0.75}}
+go_15[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
+go_15[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
+go_16 = {}
+go_16[0] = { Name = "ParedA4", HowManyCmps = 3, Persist = false}
+go_16[1] = { Component = "Transform", Coord = {X = -4.25, Y = 0, Z = -7}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=3.5, Y = 4, Z = 2}}
+go_16[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
+go_16[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
+go_17 = {}
+go_17[0] = { Name = "ParedA5", HowManyCmps = 3, Persist = false}
+go_17[1] = { Component = "Transform", Coord = {X = -4.25, Y = 0, Z = -10.25}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=3.5, Y = 4, Z = 2}}
+go_17[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
+go_17[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
+go_18 = {}
+go_18[0] = { Name = "ParedA6", HowManyCmps = 3, Persist = false}
+go_18[1] = { Component = "Transform", Coord = {X = -0.5, Y = 0, Z = -11.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=11, Y = 4, Z = 1}}
+go_18[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
+go_18[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
+go_19 = {}
+go_19[0] = { Name = "ParedA7", HowManyCmps = 3, Persist = false}
+go_19[1] = { Component = "Transform", Coord = {X = 0.5, Y = 0, Z = -8.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=3, Y = 4, Z = 2}}
+go_19[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
+go_19[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
 go_20 = {}
-go_20[0] = { Name = "ParedA1", HowManyCmps = 3, Persist = false}
-go_20[1] = { Component = "Transform", Coord = {X = -2, Y = 0, Z = -5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=12, Y = 4, Z = 2}}
+go_20[0] = { Name = "ParedA8", HowManyCmps = 3, Persist = false}
+go_20[1] = { Component = "Transform", Coord = {X = 4.5, Y = 0, Z = -10.25}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=6, Y = 4, Z = 2}}
 go_20[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
 go_20[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
-
-go_21 = {}
-go_21[0] = { Name = "ParedA2", HowManyCmps = 3, Persist = false}
-go_21[1] = { Component = "Transform", Coord = {X = 7.5, Y = 0, Z = -6}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=3, Y = 4, Z = 4}}
-go_21[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
-go_21[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
-
-go_22 = {}
-go_22[0] = { Name = "ParedA3", HowManyCmps = 3, Persist = false}
-go_22[1] = { Component = "Transform", Coord = {X = 1.5, Y = 0, Z = -8}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=5, Y = 4, Z = 1}}
-go_22[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
-go_22[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
-
-go_23 = {}
-go_23[0] = { Name = "ParedA4", HowManyCmps = 3, Persist = false}
-go_23[1] = { Component = "Transform", Coord = {X = -5.5, Y = 0, Z = -6.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=5, Y = 4, Z = 2}}
-go_23[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
-go_23[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
-
-go_24 = {}
-go_24[0] = { Name = "ParedA5", HowManyCmps = 3, Persist = false}
-go_24[1] = { Component = "Transform", Coord = {X = -5.5, Y = 0, Z = -11}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=5, Y = 4, Z = 3}}
-go_24[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
-go_24[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
-
-go_25 = {}
-go_25[0] = { Name = "ParedA6", HowManyCmps = 3, Persist = false}
-go_25[1] = { Component = "Transform", Coord = {X = -2, Y = 0, Z = -13}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=12, Y = 4, Z = 2}}
-go_25[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
-go_25[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
-
-go_26 = {}
-go_26[0] = { Name = "ParedA7", HowManyCmps = 3, Persist = false}
-go_26[1] = { Component = "Transform", Coord = {X = 0, Y = 0, Z = -9}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=2, Y = 4, Z = 2}}
-go_26[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
-go_26[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
-
-go_27 = {}
-go_27[0] = { Name = "ParedA8", HowManyCmps = 3, Persist = false}
-go_27[1] = { Component = "Transform", Coord = {X = 5, Y = 0, Z = -11}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=8, Y = 4, Z = 2}}
-go_27[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
-go_27[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
 
 
 --- ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B ZONA B
 
+go_21 = {}
+go_21[0] = { Name = "ParedB1", HowManyCmps = 3, Persist = false}
+go_21[1] = { Component = "Transform", Coord = {X = 11.75, Y = 0, Z = -10.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=4.5, Y = 4, Z = 3}}
+go_21[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
+go_21[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
+go_22 = {}
+go_22[0] = { Name = "ParedB2", HowManyCmps = 3, Persist = false}
+go_22[1] = { Component = "Transform", Coord = {X = 18.625, Y = 0, Z = -10.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=5.75, Y = 4, Z = 3}}
+go_22[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
+go_22[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
+go_23 = {}
+go_23[0] = { Name = "ParedB3", HowManyCmps = 3, Persist = false}
+go_23[1] = { Component = "Transform", Coord = {X = 12.75, Y = 0, Z = -6.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=6.5, Y = 4, Z = 2.8}}
+go_23[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
+go_23[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
+go_24 = {}
+go_24[0] = { Name = "ParedB4", HowManyCmps = 3, Persist = false}
+go_24[1] = { Component = "Transform", Coord = {X = 19.5, Y = 0, Z = -7.25}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=4, Y = 4, Z = 4.5}}
+go_24[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
+go_24[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
+
+--  ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C    ZONA C  
+
+go_25 = {}
+go_25[0] = { Name = "ParedC1", HowManyCmps = 3, Persist = false}
+go_25[1] = { Component = "Transform", Coord = {X = 12.5, Y = 2, Z = 0.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 2, Y = 4, Z = 6}}
+go_25[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_25[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+go_26 = {}
+go_26[0] = { Name = "ParedC2", HowManyCmps = 3, Persist = false}
+go_26[1] = { Component = "Transform", Coord = {X = 10.5, Y = 2, Z = 6.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 6, Y = 4, Z = 3}}
+go_26[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_26[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+go_27 = {}
+go_27[0] = { Name = "ParedC3", HowManyCmps = 3, Persist = false}
+go_27[1] = { Component = "Transform", Coord = {X = 17.5, Y = 2, Z = -0.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 5, Y = 4, Z = 4}}
+go_27[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_27[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
 go_28 = {}
-go_28[0] = { Name = "ParedB1", HowManyCmps = 3, Persist = false}
-go_28[1] = { Component = "Transform", Coord = {X = 13, Y = 0, Z = -11.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=4, Y = 4, Z = 3}}
-go_28[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
-go_28[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+go_28[0] = { Name = "ParedC4", HowManyCmps = 3, Persist = false}
+go_28[1] = { Component = "Transform", Coord = {X = 17.5, Y = 2, Z = 7.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 5, Y = 4, Z = 4}}
+go_28[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_28[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
 go_29 = {}
-go_29[0] = { Name = "ParedB2", HowManyCmps = 3, Persist = false}
-go_29[1] = { Component = "Transform", Coord = {X = 20, Y = 0, Z = -11.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=7, Y = 4, Z = 3}}
-go_29[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
-go_29[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+go_29[0] = { Name = "ParedC5", HowManyCmps = 3, Persist = false}
+go_29[1] = { Component = "Transform", Coord = {X = 19, Y = 2, Z = 3.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 2, Y = 4, Z = 4}}
+go_29[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_29[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
 go_30 = {}
-go_30[0] = { Name = "ParedB3", HowManyCmps = 3, Persist = false}
-go_30[1] = { Component = "Transform", Coord = {X = 14.5, Y = 0, Z = -6}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=7, Y = 4, Z = 4}}
-go_30[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
-go_30[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+go_30[0] = { Name = "ParedC6", HowManyCmps = 3, Persist = false}
+go_30[1] = { Component = "Transform", Coord = {X = 15.5, Y = 2, Z = 2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 4, Z = 1}}
+go_30[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_30[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
 go_31 = {}
-go_31[0] = { Name = "ParedB4", HowManyCmps = 3, Persist = false}
-go_31[1] = { Component = "Transform", Coord = {X = 21.5, Y = 0, Z = -7}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=4, Y = 4, Z = 6}}
-go_31[2] = {Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo",Visible=true, Shadows=true, RenderingDistance = 1000}
-go_31[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+go_31[0] = { Name = "ParedC7", HowManyCmps = 3, Persist = false}
+go_31[1] = { Component = "Transform", Coord = {X = 15.5, Y = 2, Z = 5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 4, Z = 1}}
+go_31[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_31[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+
+--  ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D    ZONA D  
+
+go_32 = {}
+go_32[0] = { Name = "ParedD1", HowManyCmps = 3, Persist = false}
+go_32[1] = { Component = "Transform", Coord = {X = 24.5, Y = 2, Z = -1.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=6, Y = 4, Z = 2}}
+go_32[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 1000}
+go_32[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
+go_33 = {}
+go_33[0] = { Name = "ParedD2", HowManyCmps = 3, Persist = false}
+go_33[1] = { Component = "Transform", Coord = {X = 25.5, Y = 2, Z = -3.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=4, Y = 4, Z = 2.5}}
+go_33[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 1000}
+go_33[3] = { Component = "BoxCollider", Type="Box",IsTrigger=false}
+
+go_34 = {}
+go_34[0] = { Name = "ParedD3", HowManyCmps = 3, Persist = false}
+go_34[1] = { Component = "Transform", Coord = {X = 23.25, Y = 2, Z = 6.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=3, Y = 4, Z = 6}}
+go_34[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 1000}
+go_34[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+go_35 = {}
+go_35[0] = { Name = "ParedD4", HowManyCmps = 3, Persist = false}
+go_35[1] = { Component = "Transform", Coord = {X = 24.75, Y = 2, Z = 2.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=6, Y = 4, Z = 2}}
+go_35[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 1000}
+go_35[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+
+
+
+
+
+
 
 --Enemigos
 --go_2 = {}
