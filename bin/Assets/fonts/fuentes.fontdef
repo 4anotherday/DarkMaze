@@ -1,4 +1,4 @@
-font ariaFont {
+font arialFont {
     type truetype
     source ARIAL.ttf
     size 24

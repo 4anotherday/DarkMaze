@@ -32,7 +32,11 @@ namespace UserComponentId {
 		ObjectDeactivatorComponent,
 		HideoutComponent,
 		PlayerVisibilityComponent,
-		UIManagerComponent
+		UIManagerComponent,
+
+		//Buttons
+		PlayButtonComponent,
+		QuitButtonComponent
 	};
 }
 
