@@ -13,6 +13,7 @@ class HealthComponent;
 class ParticleSystemComponent;
 class AudioSourceComponent;
 class RenderObjectComponent;
+class PlayerVisibilityComponent;
 
 class KamikazeEnemyComponent : public Component {
 public:
@@ -47,6 +48,7 @@ private:
 	ParticleSystemComponent* _particleSystem;
 	AudioSourceComponent* _audioSource;
 	RenderObjectComponent* _renderObject;
+	PlayerVisibilityComponent* _playerVisibility;
 
 	//Position where player was last seen
 	Vector3 _lastPlayerPos;
