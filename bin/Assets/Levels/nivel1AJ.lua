@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 47
+HowManyGameObjects = 50
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 9, Persist = false}
@@ -357,6 +357,25 @@ go_46[1] = { Component = "Transform", Coord = {X = -8.5, Y = 2, Z = 5.25}, Rotat
 go_46[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
 go_46[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
+--  ZONA H    ZONA H    ZONA H    ZONA H    ZONA H    ZONA H    ZONA H    ZONA H    ZONA H    ZONA H    ZONA H    ZONA H    ZONA H    ZONA H    ZONA H    ZONA H    ZONA H  
+
+go_47 = {}
+go_47[0] = { Name = "ParedH1", HowManyCmps = 3, Persist = false}
+go_47[1] = { Component = "Transform", Coord = {X = -20, Y = 2, Z = 7.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 8, Y = 4, Z = 1}}
+go_47[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_47[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+go_48 = {}
+go_48[0] = { Name = "ParedH2", HowManyCmps = 3, Persist = false}
+go_48[1] = { Component = "Transform", Coord = {X = -19.25, Y = 2, Z = 8.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 6.5, Y = 4, Z = 1.5}}
+go_48[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_48[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
+
+go_49 = {}
+go_49[0] = { Name = "ParedH3", HowManyCmps = 3, Persist = false}
+go_49[1] = { Component = "Transform", Coord = {X = -17.15, Y = 2, Z = 10.65}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X =2.25, Y = 4, Z = 2.25}}
+go_49[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
+go_49[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
 
 
