@@ -15,16 +15,16 @@
 HowManyGameObjects = 21--16
 -- Player
 go_0 = {}
-go_0[0] = { Name = "Player", HowManyCmps = 10, Persist = false}
-go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 1.01, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 2, Z = 1}}
-go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 2, CameraSpeed=35 }
-go_0[3] = { Component = "RigidBody", Type="Box", Mass=10, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
-go_0[4] = { Component = "Camera", Plane = {Near = 0.01}, Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false, "JugadorVisionInjured", false}, SlaveRotation=false}
-go_0[5] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
-go_0[6] = { Component = "PlayerInteractiveComponent" }
-go_0[7] = { Component = "PlayerKeysComponent"}
-go_0[8] = { Component = "HealthComponent", HP=100 }
-go_0[9] = { Component = "LightComponent", LightType= "POINT", Visible = true,
+go_0[0] = { Name = "Player", HowManyCmps = 8, Persist = false}
+go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 200, Z = 0}, Rotation = {X = -90, Y = 0, Z = 0}, Scale = {X = 1, Y = 2, Z = 1}}
+--go_0[2] = { Component = "PlayerMovementComponent", PlayerHeight = 2, CameraSpeed=35 }
+--go_0[2] = { Component = "RigidBody", Type="Box", Mass=10, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
+go_0[2] = { Component = "Camera", Plane = {Near = 0.01}, Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false, "JugadorVisionInjured", false}, SlaveRotation=true}
+go_0[3] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
+go_0[4] = { Component = "PlayerInteractiveComponent" }
+go_0[5] = { Component = "PlayerKeysComponent"}
+go_0[6] = { Component = "HealthComponent", HP=100 }
+go_0[7] = { Component = "LightComponent", LightType= "POINT", Visible = true,
 										Diffuse = {Red = 1, Green= 1, Blue = 1}, 
 									    Specular = {Red = 1, Green= 1, Blue = 1},																				
 										LightDirection = {X = 0, Y = 0, Z = -1},
@@ -36,14 +36,14 @@ go_0[9] = { Component = "LightComponent", LightType= "POINT", Visible = true,
                                         -- Specular = {Red = 1, Green= 1, Blue = 1},
                                         -- LightDirection = {X = 0, Y = 0, Z = 0},
                                         -- Intensity=5}
-go_0[10] = { Component = "PlayerVisibilityComponent" }
+go_0[8] = { Component = "PlayerVisibilityComponent" }
 
 
 -- Suelo
 go_1 = {}
 go_1[0] = { Name = "Suelo", HowManyCmps = 3, Persist = false}
-go_1[1] = { Component = "Transform", Coord = {X = 0, Y = -0.5, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 100, Y = 1, Z = 100}}
-go_1[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", 
+go_1[1] = { Component = "Transform", Coord = {X = 0, Y = -0.5, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 200, Y = 1, Z = 150}}
+go_1[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_1[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
