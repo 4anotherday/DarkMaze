@@ -15,7 +15,7 @@ material keyMaterial{
 		pass{
 			lighting off
 			depth_check off
-			scene_blend add
+			scene_blend alpha_blend
 			texture_unit {
 				texture key.png
 				colour_op modulate
@@ -24,6 +24,90 @@ material keyMaterial{
 	}
 }
 
+//-------------------------------------------MENU-------------------------------------------------
+material DefaultButton{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			scene_blend alpha_blend
+			texture_unit {
+				texture DefaultButton.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material OverButton{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			scene_blend alpha_blend
+			texture_unit {
+				texture OverButton.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material ClickedButton{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			scene_blend alpha_blend
+			texture_unit {
+				texture ClickedButton.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material LogoDarkMaze{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			scene_blend alpha_blend
+			texture_unit {
+				texture DarkMazeLogo.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material LogoUs{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			scene_blend alpha_blend
+			diffuse 0.53 0.53 0.53
+			texture_unit {
+				texture LogoGris.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material FondoMenu{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			texture_unit {
+				texture FondMenu.png
+			}
+		}
+	}
+}
+//-------------------------------------------------------------------------------------------------
 material OverlayNegro{
 	technique{
 		pass{
