@@ -7,6 +7,7 @@
 #include "Engine.h"
 #include "KeyboardInput.h"
 #include "MouseInput.h"
+#include "AudioSourceComponent.h"
 
 ADD_COMPONENT(GameManagerComponent)
 
@@ -46,6 +47,9 @@ void GameManagerComponent::toMenu()
 {
 	MouseInput::getInstance()->setMouseRelativeMode(false);
 	Engine::getInstance()->changeScene("menu.lua");
+
+	GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->playAudio(0);
+	GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->setVolumeChannel(0.1, 0);
 }
 
 

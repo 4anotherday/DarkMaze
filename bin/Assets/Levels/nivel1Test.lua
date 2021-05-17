@@ -15,7 +15,7 @@
 HowManyGameObjects = 107
 -- Player
 go_0 = {}
-go_0[0] = { Name = "Player", HowManyCmps = 10, Persist = false}
+go_0[0] = { Name = "Player", HowManyCmps = 11, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 1.75, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 2, Z = 1}}
 go_0[2] = { Component = "Camera", Plane = {Near = 0.01}, Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false, "JugadorVisionInjured", false}, SlaveRotation=false}
 go_0[3] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
@@ -31,7 +31,7 @@ go_0[7] = { Component = "LightComponent", LightType= "POINT", Visible = true,
 go_0[8] = { Component = "PlayerVisibilityComponent" }
 go_0[9] = { Component = "RigidBody", Type="Box", Mass=10, Width=0.5,Height=1,Depth=0.5, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
 go_0[10] = { Component = "PlayerMovementComponent", SpeedForward = 180, SpeedSideWays = 120, SpeedBackwards = 120, CameraSpeed = 15}
-
+go_0[11] = { Component = "UIManagerComponent"}
 
 -- Suelo
 go_1 = {}
@@ -73,9 +73,8 @@ go_4[5] = { Component = "DoorComponent" }
 
 -- UI Manager
 go_5 = {}
-go_5[0] = { Name = "UIManager", HowManyCmps = 2, Persist = false}
+go_5[0] = { Name = "Rellenable", HowManyCmps = 1, Persist = false}
 go_5[1] = { Component = "Transform"}
-go_5[2] = { Component = "OverlayComponent", Name = "GameUI", Hide = false}
 
 -- Bush
 go_6 = {}
@@ -385,7 +384,7 @@ go_51[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
 go_52 = {}
 go_52[0] = { Name = "ParedG6", HowManyCmps = 3, Persist = false}
-go_52[1] = { Component = "Transform", Coord = {X = -7.5, Y = 2, Z = 10}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1.5, Y = 2, Z = 4}}
+go_52[1] = { Component = "Transform", Coord = {X = -7.5, Y = 2, Z = 10}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1.5, Y = 4, Z = 4}}
 go_52[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
 go_52[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 
