@@ -6,6 +6,7 @@
 #include "GameObject.h"
 #include "Engine.h"
 #include "KeyboardInput.h"
+#include "MouseInput.h"
 
 ADD_COMPONENT(GameManagerComponent)
 
@@ -43,6 +44,7 @@ void GameManagerComponent::nextLevel()
 
 void GameManagerComponent::toMenu()
 {
+	MouseInput::getInstance()->setMouseRelativeMode(false);
 	Engine::getInstance()->changeScene("menu.lua");
 }
 

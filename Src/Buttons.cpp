@@ -4,6 +4,7 @@
 #include "Engine.h"
 #include "ButtonComponent.h"
 #include "GameObject.h"
+#include "MouseInput.h"
 
 
 //-----------------------------------------------PLAY BUTTON-------------------------------------------------------------
@@ -26,7 +27,8 @@ void PlayButtonComponent::start()
 
 void PlayButtonComponent::startGame(void* null)
 {
-	Engine::getInstance()->changeScene("nivel1.lua");
+	MouseInput::getInstance()->setMouseRelativeMode(true);
+	Engine::getInstance()->changeScene("nivel1Test.lua");
 }
 
 //-----------------------------------------------QUIT BUTTON-------------------------------------------------------------

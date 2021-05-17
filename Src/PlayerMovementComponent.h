@@ -54,7 +54,6 @@ private:
 
 	KeyCode _keyForward, _keyLeft, _keyRight, _keyBackward, _keyCrouch;
 	float _speedForward, _speedSideways, _speedBackwards, _slowCrouching;
-	float _playerHeight;
 
 	bool _crouching;
 
