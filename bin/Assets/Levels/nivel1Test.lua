@@ -15,7 +15,7 @@
 HowManyGameObjects = 107
 -- Player
 go_0 = {}
-go_0[0] = { Name = "Player", HowManyCmps = 11, Persist = false}
+go_0[0] = { Name = "Player", HowManyCmps = 12, Persist = false}
 go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 1.75, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 2, Z = 1}}
 go_0[2] = { Component = "Camera", Plane = {Near = 0.01}, Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false, "JugadorVisionInjured", false}, SlaveRotation=false}
 go_0[3] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
@@ -32,6 +32,7 @@ go_0[8] = { Component = "PlayerVisibilityComponent" }
 go_0[9] = { Component = "RigidBody", Type="Box", Mass=10, Width=0.5,Height=1,Depth=0.5, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
 go_0[10] = { Component = "PlayerMovementComponent", SpeedForward = 180, SpeedSideWays = 120, SpeedBackwards = 120, CameraSpeed = 15}
 go_0[11] = { Component = "UIManagerComponent"}
+go_0[12] = { Component = "AudioSource", Route = {"Assets/Audio/FootStep2.wav", "Assets/Audio/Footsteps1.mp3"}}
 
 -- Suelo
 go_1 = {}

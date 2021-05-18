@@ -9,11 +9,12 @@
 #include "MouseInput.h"
 #include "EngineTime.h"
 #include "includeLUA.h"
+#include "AudioSourceComponent.h"
 
 ADD_COMPONENT(PlayerMovementComponent)
 
 PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject) : Component(UserComponentId::PlayerMovementComponent, gameObject),
-_tr(nullptr), _rb(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
+_tr(nullptr), _rb(nullptr), _audio(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
 _cameraSpeed(5.0f), _cam(nullptr),
 _keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyBackward(KeyCode::KEYCODE_S), _keyCrouch(KeyCode::KEYCODE_LCTRL),
 _speedForward(80), _speedSideways(60), _speedBackwards(60), _slowCrouching(0.6f),
@@ -45,6 +46,7 @@ void PlayerMovementComponent::start()
 	_tr = static_cast<Transform*>(_gameObject->getComponent(ComponentId::Transform));
 	_rb = static_cast<RigidBodyComponent*>(_gameObject->getComponent(ComponentId::Rigidbody));
 	_cam = static_cast<CameraComponent*>(_gameObject->getComponent(ComponentId::Camera));
+	_audio = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
 	_rb->setGravity(false);
 }
 
@@ -113,18 +115,28 @@ void PlayerMovementComponent::manageMovement(const float deltaTime)
 
 	direction = direction * deltaTime;
 
+	if (direction.magnitude() > 0.2) {
+		if(!_audio->isPlaying(_crouching))
+			_audio->playAudio(_crouching);
+	}
+	else {
+		_audio->stopChannel(_crouching);
+	}
+
 	_rb->setLinearVelocity(direction);
 }
 
 void PlayerMovementComponent::manageCrouching()
 {
 	if (_keyboard->isKeyJustDown(_keyCrouch)) {
+		_audio->stopChannel(0);
 		_crouching = true;
 		//Move camera and make smaller the collider
 		_tr->setPosition(Vector3(_tr->getPosition().getX(), 1, _tr->getPosition().getZ()));
 		//_rb->setScale(Vector3(1, 0.5, 1));
 	}
 	else if (_keyboard->isKeyJustUp(_keyCrouch)) {
+		_audio->stopChannel(1);
 		_crouching = false;
 		//Move camerea and restore collider
 		_tr->setPosition(Vector3(_tr->getPosition().getX(), 1.75, _tr->getPosition().getZ()));

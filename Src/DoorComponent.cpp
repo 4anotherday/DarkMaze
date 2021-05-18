@@ -41,8 +41,11 @@ void DoorComponent::interact()
 			}
 		}
 		else {
-			GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->playAudio(0);
-			GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->setVolumeChannel(0.1, 0);
+			AudioSourceComponent* audio = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
+			if (!audio->isPlaying(0)) {	
+				audio->playAudio(0);
+				audio->setVolumeChannel(0.1, 0);
+			}
 		}
 	}
 }
