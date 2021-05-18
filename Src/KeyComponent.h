@@ -8,6 +8,7 @@
 class GameObject;
 class PlayerInteractiveComponent;
 class PlayerKeysComponent;
+class AudioSourceComponent;
 
 class KeyComponent : public InteractiveObjectComponent
 {
@@ -30,6 +31,7 @@ private:
 
 	PlayerInteractiveComponent* _plInteractive;
 	PlayerKeysComponent* _playerKeys;
+	AudioSourceComponent* _audio;
 };
 
 #endif // !KEYCOMPONENT_H

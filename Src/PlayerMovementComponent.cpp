@@ -12,33 +12,32 @@
 
 ADD_COMPONENT(PlayerMovementComponent)
 
-PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject): Component(UserComponentId::PlayerMovementComponent, gameObject), 
-	_tr(nullptr), _rb(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
-	_cameraSpeed(5.0f), _cam(nullptr),
-	_keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyBackward(KeyCode::KEYCODE_S), _keyCrouch(KeyCode::KEYCODE_LCTRL),
-	_speedForward(80), _speedSideways(60), _speedBackwards(60), _slowCrouching(0.6f),
-	_crouching(false)
+PlayerMovementComponent::PlayerMovementComponent(GameObject* gameObject) : Component(UserComponentId::PlayerMovementComponent, gameObject),
+_tr(nullptr), _rb(nullptr), _time(EngineTime::getInstance()), _keyboard(KeyBoardInput::getInstance()), _mouse(MouseInput::getInstance()),
+_cameraSpeed(5.0f), _cam(nullptr),
+_keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode::KEYCODE_D), _keyBackward(KeyCode::KEYCODE_S), _keyCrouch(KeyCode::KEYCODE_LCTRL),
+_speedForward(80), _speedSideways(60), _speedBackwards(60), _slowCrouching(0.6f),
+_crouching(false)
 {
 }
 
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
 {
-
 	//Lua values if exist
 	if (LUAFIELDEXIST(SpeedForward))
-		_speedForward = GETLUAFIELD(SpeedForward,float);
+		_speedForward = GETLUAFIELD(SpeedForward, float);
 
 	if (LUAFIELDEXIST(SpeedSideWays))
 		_speedSideways = GETLUAFIELD(SpeedSideWays, float);
 
 	if (LUAFIELDEXIST(SpeedBackwards))
-		_speedBackwards = GETLUAFIELD(SpeedBackwards,float);
+		_speedBackwards = GETLUAFIELD(SpeedBackwards, float);
 
 	if (LUAFIELDEXIST(SlowCrouching))
-		_slowCrouching = GETLUAFIELD(SlowCrouching,float);
-	
+		_slowCrouching = GETLUAFIELD(SlowCrouching, float);
+
 	if (LUAFIELDEXIST(CameraSpeed))
-		_cameraSpeed= GETLUAFIELD(CameraSpeed,float);
+		_cameraSpeed = GETLUAFIELD(CameraSpeed, float);
 }
 
 void PlayerMovementComponent::start()
@@ -76,7 +75,7 @@ void PlayerMovementComponent::moveCameraWithMouse(const float deltaTime)
 	}
 	yaw = deltaHorizontal * _cameraSpeed * deltaTime;
 	orientation.setY(_cam->getOrientation().getY() + yaw);
-	
+
 	_cam->setOrientation(orientation.getX() * PI / 180, orientation.getY() * PI / 180, 0);
 
 	double y = _tr->getRotation().getY() - yaw;
@@ -106,7 +105,7 @@ void PlayerMovementComponent::manageMovement(const float deltaTime)
 		direction = direction + (rightVector * _speedSideways * -1);
 	}
 	else if (_keyboard->isKeyDown(_keyLeft)) {
-		direction = direction + (rightVector *  _speedSideways);
+		direction = direction + (rightVector * _speedSideways);
 	}
 
 	if (_crouching)

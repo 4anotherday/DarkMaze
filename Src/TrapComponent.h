@@ -4,10 +4,10 @@
 #include "Component.h"
 class Logger;
 class RenderObjectComponent;
+class AudioSourceComponent;
 class TrapComponent :
 	public Component
 {
-
 public:
 	TrapComponent();
 	~TrapComponent();
@@ -17,7 +17,7 @@ public:
 	/// <summary>
 	/// Triggered when player enables the trap
 	/// </summary>
-	void onEnable(); 
+	void onEnable();
 	/// <summary>
 	/// Triggered when player disables the trap
 	/// </summary>
@@ -42,11 +42,10 @@ public:
 
 private:
 	RenderObjectComponent* _renderObject;
+	AudioSourceComponent* _audio;
 	Logger* _log;
 	bool _active;
 	std::string _enabledMaterial;
 	std::string _disabledMaterial;
-
 };
 #endif // !TRAPCOMPONENT_H
-
