@@ -27,6 +27,8 @@ public:
 	/// </summary>
 	virtual void interact() override;
 
+	void onTrigger(GameObject* other) override;
+
 private:
 
 	PlayerInteractiveComponent* _plInteractive;

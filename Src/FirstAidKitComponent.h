@@ -29,6 +29,8 @@ public:
 	/// </summary>
 	virtual void interact() override;
 
+	void onTrigger(GameObject* other);
+
 private:
 
 	HealthComponent* _health;

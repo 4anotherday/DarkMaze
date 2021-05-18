@@ -34,8 +34,13 @@ void KeyComponent::interact()
 			_plInteractive->setObject(nullptr);
 			_audio->playAudio(0);
 			Engine::getInstance()->remGameObjectString(_gameObject->getName());
-			//Engine::getInstance()->remGameObject(_gameObject);
-			//_gameObject->setEnabled(false);
 		}
+	}
+}
+
+void KeyComponent::onTrigger(GameObject* other)
+{
+	if (other->getName() == "Player") {
+		interact();
 	}
 }

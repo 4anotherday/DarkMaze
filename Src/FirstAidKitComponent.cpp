@@ -47,3 +47,10 @@ void FirstAidKitComponent::interact()
 		}
 	}
 }
+
+void FirstAidKitComponent::onTrigger(GameObject* other)
+{
+	if (other->hasComponent(UserComponentId::HealthComponent)) {
+		interact();
+	}
+}

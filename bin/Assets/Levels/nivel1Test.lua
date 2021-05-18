@@ -45,11 +45,9 @@ go_1[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 go_2 = {}
 go_2[0] = { Name = "FirstAidKit", HowManyCmps = 5, Persist = false}
 go_2[1] = { Component = "Transform", Coord = {X = 1, Y = 1, Z = -2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_2[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Green", 
-						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-						Visible=true, Shadows=false, RenderingDistance = 1000}
+go_2[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Green", Visible=true, Shadows=false, RenderingDistance = 1000}
 go_2[3] = { Component = "SphereCollider",Radius=1,IsTrigger=true}
-go_2[4] = { Component = "FirstAidKitComponent", HealthAmount = 10 }
+go_2[4] = { Component = "FirstAidKitComponent", HealthAmount = 1 }
 go_2[5] = { Component = "AudioSource", Route = {"Assets/Audio/Bandage.wav" }}
 
 go_3 = {}
@@ -58,17 +56,16 @@ go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 10, Z = 2}, Rotation = 
 go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Green", Visible=true, Shadows=false, RenderingDistance = 1000}
 go_3[3] = { Component = "SphereCollider",Radius=0.5,IsTrigger=true}
 go_3[4] = { Component = "KeyComponent" }
-go_3[5] = { Component = "AudioSource", Route = {"Assets/Audio/Lock.wav" }}
+go_3[5] = { Component = "AudioSource", Route = {"Assets/Audio/KeyPickUp.wav" }}
 
 go_4 = {}
-go_4[0] = { Name = "Puerta", HowManyCmps = 5, Persist = false}
+go_4[0] = { Name = "Puerta", HowManyCmps = 6, Persist = false}
 go_4[1] = { Component = "Transform", Coord = {X = 0, Y = 10, Z = -2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.6, Y = 1, Z = 0.6}}
-go_4[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
-						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-						Visible=true, Shadows=false, RenderingDistance = 1000}
+go_4[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red",	Visible=true, Shadows=false, RenderingDistance = 1000}
 go_4[3] = { Component = "SphereCollider",Radius=10,IsTrigger=true}
 go_4[4] = { Component = "BoxCollider", Type="Box",Height=2,IsTrigger=false}
-go_4[5] = { Component = "DoorComponent" }
+go_4[5] = { Component = "AudioSource", Route = {"Assets/Audio/Lock.wav" }}
+go_4[6] = { Component = "DoorComponent" }
 
 -- UI Manager
 go_5 = {}
@@ -78,10 +75,8 @@ go_5[1] = { Component = "Transform"}
 -- Bush
 go_6 = {}
 go_6[0] = { Name = "Bush1", HowManyCmps = 4, Persist = false}
-go_6[1] = { Component = "Transform", Coord = {X = 0, Y = -50, Z = -100}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .8, Z = .3}}
-go_6[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Bush", 
-						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-						Visible=true, Shadows=false, RenderingDistance = 1000}
+go_6[1] = { Component = "Transform", Coord = {X = 1.5, Y = 1, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .5, Y = 2, Z = .9}}
+go_6[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Bush", Visible=true, Shadows=false, RenderingDistance = 1000}
 go_6[3] = { Component = "SphereCollider", Radius=50, IsTrigger=true}
 go_6[4] = { Component = "HideoutComponent" }
 
@@ -100,9 +95,7 @@ go_7[5] = { Component = "AudioSource", Route = {"Assets/Audio/MetalHit.wav" }}
 go_8 = {}
 go_8[0] = { Name = "Desactivador1", HowManyCmps = 4, Persist = false}
 go_8[1] = { Component = "Transform", Coord = {X = 0, Y = -50, Z = 50}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .10, Y = .10, Z = .05}}
-go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
-			Visible=true, Shadows=true, RenderingDistance = 1000}
+go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", Visible=true, Shadows=true, RenderingDistance = 1000}
 go_8[3] = { Component = "SphereCollider",Radius=50,IsTrigger=true}
 go_8[4] = { Component = "ObjectDeactivatorComponent",ObjName="Trampa1"}
 

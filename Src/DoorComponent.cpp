@@ -5,6 +5,7 @@
 #include "Engine.h"
 #include "GameObject.h"
 #include "GameManagerComponent.h"
+#include "AudioSourceComponent.h"
 
 ADD_COMPONENT(DoorComponent)
 
@@ -38,7 +39,11 @@ void DoorComponent::interact()
 				GameManagerComponent* gm = static_cast<GameManagerComponent*>(go->getComponent(UserComponentId::GameManagerComponent));
 				gm->toMenu();
 			}
-		}		
+		}
+		else {
+			GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->playAudio(0);
+			GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->setVolumeChannel(0.1, 0);
+		}
 	}
 }
 
