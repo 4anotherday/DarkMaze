@@ -55,7 +55,7 @@ void TrapComponent::onDisable()
 
 }
 
-void TrapComponent::onCollision(GameObject* other)
+void TrapComponent::onTrigger(GameObject* other)
 {
 	HealthComponent* health = dynamic_cast<HealthComponent*>(other->getComponent(UserComponentId::HealthComponent));
 	if (health != nullptr && _active) {

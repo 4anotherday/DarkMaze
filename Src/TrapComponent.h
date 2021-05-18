@@ -27,7 +27,7 @@ public:
 	/// kills the player if the trap is active
 	/// </summary>
 	/// <param name="other">the collision gameObject</param>
-	virtual void onCollision(GameObject* other)override;
+	virtual void onTrigger(GameObject* other)override;
 	/// <summary>
 	/// get whether the trap is active or not
 	/// </summary>
