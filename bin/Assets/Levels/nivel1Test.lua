@@ -21,7 +21,7 @@ go_0[2] = { Component = "Camera", Plane = {Near = 0.01}, Compositors = {"Jugador
 go_0[3] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
 go_0[4] = { Component = "PlayerInteractiveComponent" }
 go_0[5] = { Component = "PlayerKeysComponent"}
-go_0[6] = { Component = "HealthComponent", HP=100 }
+go_0[6] = { Component = "HealthComponent", HP=2 }
 go_0[7] = { Component = "LightComponent", LightType= "POINT", Visible = true, 
 											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
 											Diffuse = {Red = 1, Green= 1, Blue = 1}, 
@@ -52,26 +52,22 @@ go_2[3] = { Component = "SphereCollider",Radius=1,IsTrigger=true}
 go_2[4] = { Component = "FirstAidKitComponent", HealthAmount = 10 }
 go_2[5] = { Component = "AudioSource", Route = {"Assets/Audio/Bandage.wav" }}
 
-
-
 go_3 = {}
 go_3[0] = { Name = "Key", HowManyCmps = 5, Persist = false}
-go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 1, Z = 2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
-go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
-						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-						Visible=true, Shadows=false, RenderingDistance = 1000}
+go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 10, Z = 2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
+go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Green", Visible=true, Shadows=false, RenderingDistance = 1000}
 go_3[3] = { Component = "SphereCollider",Radius=0.5,IsTrigger=true}
 go_3[4] = { Component = "KeyComponent" }
 go_3[5] = { Component = "AudioSource", Route = {"Assets/Audio/Lock.wav" }}
 
 go_4 = {}
 go_4[0] = { Name = "Puerta", HowManyCmps = 5, Persist = false}
-go_4[1] = { Component = "Transform", Coord = {X = 0, Y = -50, Z = 190}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .4, Y = .7, Z = .4}}
+go_4[1] = { Component = "Transform", Coord = {X = 0, Y = 10, Z = -2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.6, Y = 1, Z = 0.6}}
 go_4[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", 
 						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 						Visible=true, Shadows=false, RenderingDistance = 1000}
 go_4[3] = { Component = "SphereCollider",Radius=10,IsTrigger=true}
-go_4[4] = { Component = "BoxCollider", Type="Box",Width=1,Height=1,Depth=1,IsTrigger=false}
+go_4[4] = { Component = "BoxCollider", Type="Box",Height=2,IsTrigger=false}
 go_4[5] = { Component = "DoorComponent" }
 
 -- UI Manager
@@ -86,7 +82,7 @@ go_6[1] = { Component = "Transform", Coord = {X = 0, Y = -50, Z = -100}, Rotatio
 go_6[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Bush", 
 						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 						Visible=true, Shadows=false, RenderingDistance = 1000}
-go_6[3] = { Component = "SphereCollider", Radius=50,IsTrigger=true}
+go_6[3] = { Component = "SphereCollider", Radius=50, IsTrigger=true}
 go_6[4] = { Component = "HideoutComponent" }
 
 -- Trampa
@@ -94,9 +90,8 @@ go_7 = {}
 go_7[0] = { Name = "Trampa1", HowManyCmps = 5, Persist = false}
 go_7[1] = { Component = "Transform", Coord = {X = 0, Y = 1, Z = -2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .5, Y = .1, Z = .5}}
 go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
-go_7[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=50,Depth=1,IsTrigger=false}
+go_7[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=50,Depth=1,IsTrigger=true}
 go_7[4] = { Component = "TrapComponent",EnabledMaterial="Practica1/Red"}
 go_7[5] = { Component = "AudioSource", Route = {"Assets/Audio/MetalHit.wav" }}
 

@@ -23,6 +23,7 @@ void GameManagerComponent::awake(luabridge::LuaRef& data)
 void GameManagerComponent::start()
 {
 	_keyboard = KeyBoardInput::getInstance();
+	
 }
 
 void GameManagerComponent::update()
@@ -46,10 +47,9 @@ void GameManagerComponent::nextLevel()
 void GameManagerComponent::toMenu()
 {
 	MouseInput::getInstance()->setMouseRelativeMode(false);
-	Engine::getInstance()->changeScene("menu.lua");
-
 	GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->playAudio(0);
 	GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->setVolumeChannel(0.1, 0);
+	Engine::getInstance()->changeScene("menu.lua");
 }
 
 

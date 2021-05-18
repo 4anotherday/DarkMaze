@@ -26,6 +26,8 @@ public:
 	/// </summary>
 	virtual void interact() override;
 
+	void onCollision(GameObject* other) override;
+
 private:
 
 	PlayerInteractiveComponent* _plInteractive;

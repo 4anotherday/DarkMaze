@@ -58,8 +58,8 @@ void HideoutComponent::start()
 
 void HideoutComponent::update()
 {
-	std::cout << _myTransform->getPosition().getX() << " " << _myTransform->getPosition().getY() << _myTransform->getPosition().getZ() << '\n';
-	std::cout << _playerTransform->getPosition().getX() << " " << _playerTransform->getPosition().getY() << _playerTransform->getPosition().getZ() << '\n';
+	//std::cout << _myTransform->getPosition().getX() << " " << _myTransform->getPosition().getY() << _myTransform->getPosition().getZ() << '\n';
+	//std::cout << _playerTransform->getPosition().getX() << " " << _playerTransform->getPosition().getY() << _playerTransform->getPosition().getZ() << '\n';
 
 	if (!_visibility->getVisible()) {
 

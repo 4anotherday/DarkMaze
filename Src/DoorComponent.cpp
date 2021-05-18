@@ -4,6 +4,7 @@
 #include "PlayerKeysComponent.h"
 #include "Engine.h"
 #include "GameObject.h"
+#include "GameManagerComponent.h"
 
 ADD_COMPONENT(DoorComponent)
 
@@ -33,9 +34,18 @@ void DoorComponent::interact()
 			{
 				//I set the interactiveObject to nullptr, because I want to destoy it 
 				_plInteractive->setObject(nullptr);
-				Engine::getInstance()->remGameObjectString(_gameObject->getName());
+				GameObject* go = Engine::getInstance()->findGameObject("GameManager");
+				GameManagerComponent* gm = static_cast<GameManagerComponent*>(go->getComponent(UserComponentId::GameManagerComponent));
+				gm->toMenu();
 			}
 		}		
+	}
+}
+
+void DoorComponent::onCollision(GameObject* other)
+{
+	if (other->getName() == "Player") {
+		interact();
 	}
 }
 

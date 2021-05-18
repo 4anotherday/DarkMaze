@@ -6,6 +6,7 @@
 #include "RenderObjectComponent.h"
 #include "GameObject.h"
 #include "AudioSourceComponent.h"
+#include "Engine.h"
 
 ADD_COMPONENT(TrapComponent)
 TrapComponent::TrapComponent() :Component(UserComponentId::TrapComponent), _active(true), _renderObject(nullptr), _enabledMaterial("Practica1/Suelo"),
@@ -62,6 +63,6 @@ void TrapComponent::onTrigger(GameObject* other)
 	if (health != nullptr && _active) {
 		health->loseHPs(health->getCurrentHP() / 2);
 		_audio->playAudio(0);
-		//_gameObject->setEnabled(false);
+		Engine::getInstance()->remGameObject(_gameObject);
 	}
 }
