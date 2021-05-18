@@ -32,7 +32,7 @@ go_0[8] = { Component = "PlayerVisibilityComponent" }
 go_0[9] = { Component = "RigidBody", Type="Box", Mass=10, Width=0.5,Height=1,Depth=0.5, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
 go_0[10] = { Component = "PlayerMovementComponent", SpeedForward = 180, SpeedSideWays = 120, SpeedBackwards = 120, CameraSpeed = 15}
 go_0[11] = { Component = "UIManagerComponent"}
-go_0[12] = { Component = "AudioSource", Route = {"Assets/Audio/FootStep2.wav", "Assets/Audio/Footsteps1.mp3"}}
+go_0[12] = { Component = "AudioSource", Route = {"Assets/Audio/FootStep2.wav", "Assets/Audio/Footsteps1.ogg"}}
 
 -- Suelo
 go_1 = {}
