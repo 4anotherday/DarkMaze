@@ -45,7 +45,6 @@ private:
 	Transform* _playerTr;
 	InvisibleEnemyAIComponent* _invisibleEnemy;
 	HealthComponent* _playerHealth;
-	ParticleSystemComponent* _particleSystem;
 	AudioSourceComponent* _audioSource;
 	RenderObjectComponent* _renderObject;
 	PlayerVisibilityComponent* _playerVisibility;

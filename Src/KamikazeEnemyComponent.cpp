@@ -18,7 +18,7 @@ ADD_COMPONENT(KamikazeEnemyComponent)
 
 KamikazeEnemyComponent::KamikazeEnemyComponent() : Component(UserComponentId::KamikazeEnemyComponent),
 	_rb(nullptr), _tr(nullptr), _playerTr(nullptr), _invisibleEnemy(nullptr), _playerHealth(nullptr),
-	_audioSource(nullptr),_particleSystem(nullptr), _renderObject(nullptr),_playerVisibility(nullptr),
+	_audioSource(nullptr), _renderObject(nullptr),_playerVisibility(nullptr),
 	_active(false), _dead(false), _lastPlayerPos(Vector3(0, 0, 0)),
 	_elapsedFollowTime(0.0f), _elapsedParticlesTime(0.0f),
 
@@ -47,8 +47,6 @@ void KamikazeEnemyComponent::start()
 	_rb = GETCOMPONENT(RigidBodyComponent, ComponentId::Rigidbody);
 
 	_tr = GETCOMPONENT(Transform, ComponentId::Transform);
-
-	//_particleSystem = GETCOMPONENT(ParticleSystemComponent, ComponentId::ParticleSystem);
 
 	_audioSource = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
 
@@ -113,7 +111,6 @@ void KamikazeEnemyComponent::moveTowardsPos(const Vector3& pos)
 
 void KamikazeEnemyComponent::explode()
 {
-	//_particleSystem->setEnabled(true);
 	_active = false;
 	_dead = true;
 
