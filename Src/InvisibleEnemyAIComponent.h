@@ -39,7 +39,7 @@ public:
 	inline Transform* getPlayerTransform() const { return _transformPlayer; }
 
 	inline void updateRadiusFind(double delta) { _radiusFindPlayer = std::min(_maxRadiusFindPlayer, std::max(_minRadiusFindPlayer, (_radiusFindPlayer + delta))); }
-	inline void setFindRadius(double radius) { _radiusFindPlayer = std::min(_maxRadiusFindPlayer, std::max(_minRadiusFindPlayer, radius)); }
+	void setFindRadius(double radius);
 
 	void justLostSight();
 	inline const Vector3& getLastKnownPosition() const { return _lastKnownPosition; }
