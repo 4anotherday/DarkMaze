@@ -738,7 +738,7 @@ go_107[3] = { Component = "InvisibleEnemyAIComponent", Speed = 1}
 go_108 = {}
 go_108[0] = { Name = "Kamikaze1", HowManyCmps = 5, Persist = false}
 go_108[1] = { Component = "Transform", Coord = {X = -7.5, Y = 0, Z = -16}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_108[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
+go_108[2] = { Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia",
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_108[3] = { Component = "RigidBody", Type="Sphere", Mass=9, kinematic = false,
 			ConstrainAngle = true, IsTrigger=false, StaticFriction = 0, DynamicFriction = 0, Bounciness = 1}
@@ -748,10 +748,9 @@ go_108[5] = { Component = "KamikazeEnemyComponent" }
 
 go_109 = {}
 go_109[0] = { Name = "Kamikaze2", HowManyCmps = 5, Persist = false}
-go_109[1] = { Component = "Transform", Coord = {X = -36, Y = 0, Z = -1.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_109[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-			Visible=true, Shadows=false, RenderingDistance = 1000}
+go_109[1] = { Component = "Transform", Coord = {X = -36, Y = 0, Z = -1.5}, Rotation = {X = 0, Y = 90, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_109[2] = { Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia",
+			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_109[3] = { Component = "RigidBody", Type="Sphere", Mass=9, kinematic = false,
 			ConstrainAngle = true, IsTrigger=false, StaticFriction = 0, DynamicFriction = 0, Bounciness = 1}
 go_109[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
@@ -761,9 +760,8 @@ go_109[5] = { Component = "KamikazeEnemyComponent" }
 go_110 = {}
 go_110[0] = { Name = "Kamikaze3", HowManyCmps = 5, Persist = false}
 go_110[1] = { Component = "Transform", Coord = {X = 10.5, Y = 0, Z = 0.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_110[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-			Visible=true, Shadows=false, RenderingDistance = 1000}
+go_110[2] = { Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia",
+			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_110[3] = { Component = "RigidBody", Type="Sphere", Mass=9, kinematic = false,
 			ConstrainAngle = true, IsTrigger=false, StaticFriction = 0, DynamicFriction = 0, Bounciness = 1}
 go_110[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
@@ -772,10 +770,9 @@ go_110[5] = { Component = "KamikazeEnemyComponent" }
 
 go_111 = {}
 go_111[0] = { Name = "Kamikaze4", HowManyCmps = 5, Persist = false}
-go_111[1] = { Component = "Transform", Coord = {X = 26, Y = 0, Z = 4}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_111[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-			Visible=true, Shadows=false, RenderingDistance = 1000}
+go_111[1] = { Component = "Transform", Coord = {X = 26, Y = 0, Z = 4}, Rotation = {X = 0, Y = 90, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_111[2] = { Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia",
+			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_111[3] = { Component = "RigidBody", Type="Sphere", Mass=9, kinematic = false,
 			ConstrainAngle = true, IsTrigger=false, StaticFriction = 0, DynamicFriction = 0, Bounciness = 1}
 go_111[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
@@ -785,9 +782,8 @@ go_111[5] = { Component = "KamikazeEnemyComponent" }
 go_112 = {}
 go_112[0] = { Name = "Kamikaze5", HowManyCmps = 5, Persist = false}
 go_112[1] = { Component = "Transform", Coord = {X = 5, Y = 0, Z = 19}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_112[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-			Visible=true, Shadows=false, RenderingDistance = 1000}
+go_112[2] = { Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia",
+			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_112[3] = { Component = "RigidBody", Type="Sphere", Mass=9, kinematic = false,
 			ConstrainAngle = true, IsTrigger=false, StaticFriction = 0, DynamicFriction = 0, Bounciness = 1}
 go_112[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
@@ -797,9 +793,8 @@ go_112[5] = { Component = "KamikazeEnemyComponent" }
 go_113 = {}
 go_113[0] = { Name = "Kamikaze6", HowManyCmps = 5, Persist = false}
 go_113[1] = { Component = "Transform", Coord = {X = -13, Y = 0, Z = 20.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_113[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
-			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-			Visible=true, Shadows=false, RenderingDistance = 1000}
+go_113[2] = { Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia",
+			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_113[3] = { Component = "RigidBody", Type="Sphere", Mass=9, kinematic = false,
 			ConstrainAngle = true, IsTrigger=false, StaticFriction = 0, DynamicFriction = 0, Bounciness = 1}
 go_113[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
