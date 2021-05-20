@@ -16,24 +16,24 @@ HowManyGameObjects = 114
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 13, Persist = false}
-go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 1.75, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 2, Z = 1}}
-go_0[2] = { Component = "Camera", Plane = {Near = 0.01}, Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false, "JugadorVisionInjured", false}, SlaveRotation=false}
+go_0[1] = { Component = "Transform",  Coord = {X = 0, Y = 1.75, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=1, Y = 2, Z = 1}}
+go_0[2] = { Component = "Camera", Plane = {Near = 0.1, Far = 100}, Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false, "JugadorVisionInjured", false}, SlaveRotation=false}
 go_0[3] = { Component = "Listener", ListenerNumber = 0, Velocity = {X = 0, Y = 0, Z = 0} }
 go_0[4] = { Component = "PlayerInteractiveComponent" }
 go_0[5] = { Component = "PlayerKeysComponent"}
 go_0[6] = { Component = "HealthComponent", HP=2 }
-go_0[7] = { Component = "LightComponent", LightType= "POINT", Visible = true, 
+go_0[7] = { Component = "PlayerVisibilityComponent" }
+go_0[8] = { Component = "RigidBody", Type="Box", Mass=10, Width=0.25,Height=1,Depth=0.25, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
+go_0[9] = { Component = "PlayerMovementComponent", SpeedForward = 180, SpeedSideWays = 120, SpeedBackwards = 120, CameraSpeed = 15}
+go_0[10] = { Component = "PlayerLookEnemyGlitchComponent"}
+go_0[11] = { Component = "UIManagerComponent"}
+go_0[12] = { Component = "AudioSource", Route = {"Assets/Audio/FootStep2.wav", "Assets/Audio/Footsteps1.ogg"}}
+go_0[13] = { Component = "LightComponent", LightType= "POINT", Visible = true, 
 											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
 											Diffuse = {Red = 1, Green= 1, Blue = 1}, 
 											Specular = {Red = 1, Green= 1, Blue = 1},
 											LightDirection = {X = 0, Y = 0, Z = 0},
 											Intensity=50}
-go_0[8] = { Component = "PlayerVisibilityComponent" }
-go_0[9] = { Component = "RigidBody", Type="Box", Mass=10, Width=0.5,Height=1,Depth=0.5, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
-go_0[10] = { Component = "PlayerMovementComponent", SpeedForward = 180, SpeedSideWays = 120, SpeedBackwards = 120, CameraSpeed = 15}
-go_0[11] = { Component = "PlayerLookEnemyGlitchComponent"}
-go_0[12] = { Component = "UIManagerComponent"}
-go_0[13] = { Component = "AudioSource", Route = {"Assets/Audio/FootStep2.wav", "Assets/Audio/Footsteps1.ogg"}}
 
 -- Suelo
 go_1 = {}
@@ -47,15 +47,15 @@ go_1[3] = { Component = "RigidBody", Type="Box", Static=true, IsTrigger=false}
 go_2 = {}
 go_2[0] = { Name = "FirstAidKit", HowManyCmps = 5, Persist = false}
 go_2[1] = { Component = "Transform", Coord = {X = 1, Y = 1, Z = -2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_2[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Green", Visible=true, Shadows=false, RenderingDistance = 1000}
+go_2[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", Visible=true, Shadows=false, RenderingDistance = 1000}
 go_2[3] = { Component = "SphereCollider",Radius=1,IsTrigger=true}
 go_2[4] = { Component = "FirstAidKitComponent", HealthAmount = 1 }
 go_2[5] = { Component = "AudioSource", Route = {"Assets/Audio/Bandage.wav" }}
 
 go_3 = {}
 go_3[0] = { Name = "Key", HowManyCmps = 5, Persist = false}
-go_3[1] = { Component = "Transform", Coord = {X = 0, Y = 10, Z = 2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
-go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Green", Visible=true, Shadows=false, RenderingDistance = 1000}
+go_3[1] = { Component = "Transform", Coord = {X = 29, Y = 1.75, Z = 7.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
+go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=false, RenderingDistance = 1000}
 go_3[3] = { Component = "SphereCollider",Radius=0.5,IsTrigger=true}
 go_3[4] = { Component = "KeyComponent" }
 go_3[5] = { Component = "AudioSource", Route = {"Assets/Audio/KeyPickUp.wav" }}
@@ -730,9 +730,9 @@ go_106[3] = { Component = "RigidBody", Type="Box", Static=true, IsTrigger=false}
 --Enemigos
 go_107 = {}
 go_107[0] = { Name = "InvisibleEnemy", HowManyCmps = 3, Persist = false}
-go_107[1] = { Component = "Transform", Coord = {X =-25, Y = 1, Z = -1}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_107[2] = { Component = "AudioSource", Route = {"Assets/Audio/MonsterNear.wav", "Assets/Audio/MonsterProwling.wav"}, Stereo = true,
-				MinMaxDistance = {Min = 0.1, Max = 1}, Volumes = {0.5, 0.1}, Plays = {true, false}}
+go_107[1] = { Component = "Transform", Coord = {X =-25, Y = -100, Z = -1}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_107[2] = { Component = "AudioSource", Route = {"Assets/Audio/goat_cry.mp3", "Assets/Audio/goat_cry.mp3"}, Stereo = true,
+			MinMaxDistance = {Min = 2, Max = 6}, Volume= 0.0, Play = true}
 go_107[3] = { Component = "InvisibleEnemyAIComponent", Speed = 1}
 
 go_108 = {}
@@ -801,6 +801,40 @@ go_113[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.
 			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
 go_113[5] = { Component = "KamikazeEnemyComponent" }
 
+
+-- go_114 = {}
+-- go_114[0] = { Name = "FirstAidKitZonaH", HowManyCmps = 5, Persist = false}
+-- go_114[1] = { Component = "Transform", Coord = {X = -23, Y = 0.5, Z = 8.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+-- go_114[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", Visible=true, Shadows=false, RenderingDistance = 1000}
+-- go_114[3] = { Component = "SphereCollider",Radius=1,IsTrigger=true}
+-- go_114[4] = { Component = "FirstAidKitComponent", HealthAmount = 1 }
+-- go_114[5] = { Component = "AudioSource", Route = {"Assets/Audio/Bandage.wav" }}
+
+-- go_115 = {}
+-- go_115[0] = { Name = "FirstAidKitZonaJ", HowManyCmps = 5, Persist = false}
+-- go_115[1] = { Component = "Transform", Coord = {X = 11, Y = 0.5, Z = 13}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+-- go_115[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", Visible=true, Shadows=false, RenderingDistance = 1000}
+-- go_115[3] = { Component = "SphereCollider",Radius=1,IsTrigger=true}
+-- go_115[4] = { Component = "FirstAidKitComponent", HealthAmount = 1 }
+-- go_115[5] = { Component = "AudioSource", Route = {"Assets/Audio/Bandage.wav" }}
+
+-- go_116 = {}
+-- go_116[0] = { Name = "FirstAidKitZonaG", HowManyCmps = 5, Persist = false}
+-- go_116[1] = { Component = "Transform", Coord = {X = -9, Y = 0.5, Z = 10.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+-- go_116[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Yellow", Visible=true, Shadows=false, RenderingDistance = 1000}
+-- go_116[3] = { Component = "SphereCollider",Radius=1,IsTrigger=true}
+-- go_116[4] = { Component = "FirstAidKitComponent", HealthAmount = 1 }
+-- go_116[5] = { Component = "AudioSource", Route = {"Assets/Audio/Bandage.wav" }}
+
+-- go_114 = {}
+-- go_114[0] = { Name = "Luz", HowManyCmps = 1, Persist = false}
+-- go_114[1] = { Component = "Transform", Coord = {X = 1, Y = 1, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+-- go_114[2] = { Component = "LightComponent", LightType= "POINT", Visible = true, 
+-- 											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
+-- 											Diffuse = {Red = 1, Green= 0, Blue = 0}, 
+-- 											Specular = {Red = 1, Green= 1, Blue = 1},
+-- 											--LightDirection = {X = 0, Y = 0, Z = 0},
+-- 											Intensity=20}
 --Enemigos
 --go_2 = {}
 --go_2[0] = { Name = "Screamer", HowManyCmps = 5, Persist = false}

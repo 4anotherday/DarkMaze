@@ -20,6 +20,7 @@ _keyForward(KeyCode::KEYCODE_W), _keyLeft(KeyCode::KEYCODE_A), _keyRight(KeyCode
 _speedForward(80), _speedSideways(60), _speedBackwards(60), _slowCrouching(0.6f),
 _crouching(false)
 {
+	MouseInput::getInstance()->setMouseRelativeMode(true);
 }
 
 void PlayerMovementComponent::awake(luabridge::LuaRef& data)
@@ -93,8 +94,6 @@ void PlayerMovementComponent::manageMovement(const float deltaTime)
 	Vector3 rightVector = { direction.getZ(), 0, -direction.getX() };
 	rightVector.normalize();
 
-	Vector3 vel;
-
 	//Front and back movement
 	if (_keyboard->isKeyDown(_keyForward)) {
 		direction = direction * (_speedForward);
@@ -110,13 +109,18 @@ void PlayerMovementComponent::manageMovement(const float deltaTime)
 		direction = direction + (rightVector * _speedSideways);
 	}
 
+	if (direction.magnitude() > _speedForward) {
+		direction = direction.normalize();
+		direction = direction * _speedForward;
+	}
+
 	if (_crouching)
 		direction = direction * _slowCrouching;
 
 	direction = direction * deltaTime;
 
 	if (direction.magnitude() > 0.2) {
-		if(!_audio->isPlaying(_crouching))
+		if (!_audio->isPlaying(_crouching))
 			_audio->playAudio(_crouching);
 	}
 	else {
