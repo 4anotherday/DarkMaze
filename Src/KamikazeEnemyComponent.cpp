@@ -23,8 +23,8 @@ KamikazeEnemyComponent::KamikazeEnemyComponent() : Component(UserComponentId::Ka
 	_elapsedFollowTime(0.0f), _elapsedParticlesTime(0.0f),
 
 	//Default configuration values
-	_nearExplosionRange(8.0f), _farExplosionRange(20.0f),
-	_followTime(3.0f), _speed(40.0f), _visionRange(30.0f), _shoutingIntensity(0.6f),
+	_nearExplosionRange(2.0f), _farExplosionRange(5.0f),
+	_followTime(3.0f), _speed(4.5f), _visionRange(5.0f), _shoutingIntensity(0.6f),
 	_particlesDuration(2.0f)
 {}
 
@@ -72,10 +72,10 @@ void KamikazeEnemyComponent::update()
 	RayCast::RayCastHit ray = RayCast(myPos, playerPos, RayCast::Type::Static).getRayCastInformation();
 	if (!ray.hit && (playerPos - myPos).magnitude() < _visionRange && _playerVisibility->getVisible()) {
 		_lastPlayerPos = playerPos;
-		if (!_active) {
+		if (!_active && !_dead) {
 			_active = true;
-			_audioSource->setAudioLoop(0, 0);
 			_audioSource->playAudio(0);
+			_audioSource->setAudioLoop(0, 0);
 			_elapsedFollowTime = 0;
 		}
 	}
@@ -100,6 +100,9 @@ void KamikazeEnemyComponent::update()
 void KamikazeEnemyComponent::moveTowardsPos(const Vector3& pos)
 {
 	Vector3 dir =  pos - _tr->getPosition();
+	Vector3 look = _playerTr->getPosition() - _tr->getPosition();
+	float angle = atan2(look.getX(), look.getZ());
+	_tr->setRotation(Vector3(0, angle, 0));
 	dir.setY(0);
 	if (dir.magnitude() < 0.2)
 		return;
@@ -116,8 +119,8 @@ void KamikazeEnemyComponent::explode()
 
 	_renderObject->setEnabled(false);
 	_audioSource->stopChannel(0);
-	_audioSource->setAudioLoop(1, 0);
 	_audioSource->playAudio(1);
+	_audioSource->setAudioLoop(1, 0);
 
 	//Damage player
 	const Vector3& playerPos = _playerTr->getPosition();
@@ -125,9 +128,9 @@ void KamikazeEnemyComponent::explode()
 	float distance = (playerPos - myPos).magnitude();
 
 	if (distance < _nearExplosionRange) {
-		_playerHealth->loseHPs();
+		_playerHealth->loseHPs(_playerHealth->getCurrentHP());
 	}
 	else if ( distance < _farExplosionRange) {
-		_playerHealth->loseHPs(2);
+		_playerHealth->loseHPs();
 	}
 }

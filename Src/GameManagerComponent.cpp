@@ -23,7 +23,7 @@ void GameManagerComponent::awake(luabridge::LuaRef& data)
 void GameManagerComponent::start()
 {
 	_keyboard = KeyBoardInput::getInstance();
-	
+	Engine::getInstance()->setViewportColour(0, 0, 0);
 }
 
 void GameManagerComponent::update()

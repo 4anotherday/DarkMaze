@@ -33,7 +33,7 @@ void HealthComponent::loseHPs()
 
 void HealthComponent::loseHPs(unsigned int n)
 {
-	_healthPoints -= 1;
+	_healthPoints -= n;
 	if (_healthPoints <= 0) {
 		GETCOMPONENT(CameraComponent, ComponentId::Camera)->setCompositor("JugadorVisionInjured", false);
 		_healthPoints = 0;
