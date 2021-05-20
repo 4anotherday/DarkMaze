@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 114
+HowManyGameObjects = 115
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 13, Persist = false}
@@ -802,6 +802,20 @@ go_113[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.
 go_113[5] = { Component = "KamikazeEnemyComponent" }
 
 
+go_114 = {}
+go_114[0] = { Name = "Screamer1", HowManyCmps = 5, Persist = false}
+go_114[1] = { Component = "Transform", Coord ={X = 10, Y = 1, Z = -4}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
+go_114[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Brown", 
+		RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+		Visible=true, Shadows=false, RenderingDistance = 1000}
+go_114[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, Kinematic = false,
+		ConstrainAngle = true, IsTrigger= false}
+go_114[4] = { Component = "AudioSource", Route = {"Assets/Audio/woman_cry.mp3" ,"Assets/Audio/baby_crying.mp3"},
+		Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
+-- go121[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
+go_114[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
+			  IdleSoundRange = 10, DetectionRange = 5, FollowTime = 4, DyingTime = 3, MoveSpeed = 2}
+			  
 -- go_114 = {}
 -- go_114[0] = { Name = "FirstAidKitZonaH", HowManyCmps = 5, Persist = false}
 -- go_114[1] = { Component = "Transform", Coord = {X = -23, Y = 0.5, Z = 8.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
