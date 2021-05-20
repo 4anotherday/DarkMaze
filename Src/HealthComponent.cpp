@@ -51,6 +51,6 @@ void HealthComponent::reset()
 void HealthComponent::onDead()
 {	
 	GameObject * go = Engine::getInstance()->findGameObject("GameManager");
-	GameManagerComponent* gm = GETCOMPONENT(GameManagerComponent, UserComponentId::GameManagerComponent);
+	GameManagerComponent* gm = static_cast<GameManagerComponent*>(go->getComponent(UserComponentId::GameManagerComponent));
 	gm->toMenu();
 }
