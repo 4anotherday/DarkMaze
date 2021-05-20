@@ -16,7 +16,7 @@ HowManyGameObjects = 125
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 9, Persist = false}
-go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 40, Z = 0}, Rotation = {X = -90, Y = 0, Z = 0}, Scale = {X = 1, Y = 2, Z = 1}}
+go_0[1] = { Component = "Transform", Coord = {X = 0, Y = 20, Z = 0}, Rotation = {X = -90, Y = 0, Z = 0}, Scale = {X = 1, Y = 2, Z = 1}}
 go_0[9] = { Component = "PlayerMovementComponent", PlayerHeight = 2, CameraSpeed=35 }
 --go_0[2] = { Component = "RigidBody", Type="Box", Mass=10, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
 go_0[2] = { Component = "Camera", Plane = {Near = 0.01}, Compositors = {"JugadorVisionWeak", false, "JugadorVisionStrong", false, "JugadorVisionInjured", false}, SlaveRotation=true}
@@ -51,7 +51,7 @@ go_1[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 go_2 = {}
 go_2[0] = { Name = "FirstAidKit", HowManyCmps = 4, Persist = false}
 go_2[1] = { Component = "Transform", Coord = {X = -23.25, Y = 0, Z = 8.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .8, Y = .2, Z = .8}}
-go_2[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+go_2[2] = {	Component = "RenderObject", MeshName="firstAid.mesh", Material="botiquin", 
 						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 						Visible=true, Shadows=false, RenderingDistance = 1000}
 go_2[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=10,Depth=1,IsTrigger=true}
@@ -95,7 +95,7 @@ go_6[4] = { Component = "HideoutComponent" }
 go_7 = {}
 go_7[0] = { Name = "Trampa1", HowManyCmps = 4, Persist = false}
 go_7[1] = { Component = "Transform", Coord = {X = -16.75, Y = 0, Z = -11.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .2, Z = 2}}
-go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Checker", 
+go_7[2] = {	Component = "RenderObject", MeshName="trap.mesh", Material="Trap", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_7[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=50,Depth=1,IsTrigger=true}
@@ -735,8 +735,8 @@ go_105[3] = { Component = "BoxCollider", Type="Box", IsTrigger=false}
 --FirstAidKit part 2
 go_106 = {}
 go_106[0] = { Name = "FirstAidKit2", HowManyCmps = 4, Persist = false}
-go_106[1] = { Component = "Transform", Coord = {X = -8.75, Y = 0, Z = 10.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .8, Y = .2, Z = .8}}
-go_106[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+go_106[1] = { Component = "Transform", Coord = {X = -8.75, Y = 0, Z = 10.75}, Rotation = {X = 0, Y = 90, Z = 0}, Scale = {X = .8, Y = .2, Z = .8}}
+go_106[2] = {	Component = "RenderObject", MeshName="firstAid.mesh", Material="botiquin", 
 						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 						Visible=true, Shadows=false, RenderingDistance = 1000}
 go_106[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=10,Depth=1,IsTrigger=true}
@@ -745,7 +745,7 @@ go_106[4] = { Component = "FirstAidKitComponent", HealthAmount = 10 }
 go_107 = {}
 go_107[0] = { Name = "FirstAidKit3", HowManyCmps = 4, Persist = false}
 go_107[1] = { Component = "Transform", Coord = {X = 10.75, Y = 0, Z = 13}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .8, Y = .2, Z = .8}}
-go_107[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Fucsia", 
+go_107[2] = {	Component = "RenderObject", MeshName="firstAid.mesh", Material="botiquin", 
 						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 						Visible=true, Shadows=false, RenderingDistance = 1000}
 go_107[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=10,Depth=1,IsTrigger=true}
@@ -824,7 +824,7 @@ go_114[4] = { Component = "InvisibleEnemyAIComponent"}
 go_115 = {}
 go_115[0] = { Name = "Kamikaze1", HowManyCmps = 5, Persist = false}
 go_115[1] = { Component = "Transform", Coord = {X = -7.5, Y = 0, Z = -16}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_115[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
+go_115[2] = {	Component = "RenderObject", MeshName="kamikaze.mesh", Material="Kamikaze", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
 go_115[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, kinematic = true,
@@ -835,8 +835,8 @@ go_115[5] = { Component = "KamikazeEnemyComponent" }
 
 go_116 = {}
 go_116[0] = { Name = "Kamikaze2", HowManyCmps = 5, Persist = false}
-go_116[1] = { Component = "Transform", Coord = {X = -36, Y = 0, Z = -1.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_116[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
+go_116[1] = { Component = "Transform", Coord = {X = -36, Y = 0, Z = -1.5}, Rotation = {X = 0, Y = 90, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_116[2] = {	Component = "RenderObject", MeshName="kamikaze.mesh", Material="Kamikaze", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
 go_116[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, kinematic = true,
@@ -848,7 +848,7 @@ go_116[5] = { Component = "KamikazeEnemyComponent" }
 go_117 = {}
 go_117[0] = { Name = "Kamikaze3", HowManyCmps = 5, Persist = false}
 go_117[1] = { Component = "Transform", Coord = {X = 10.5, Y = 0, Z = 0.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_117[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
+go_117[2] = {	Component = "RenderObject", MeshName="kamikaze.mesh", Material="Kamikaze", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
 go_117[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, kinematic = true,
@@ -859,8 +859,8 @@ go_117[5] = { Component = "KamikazeEnemyComponent" }
 
 go_118 = {}
 go_118[0] = { Name = "Kamikaze4", HowManyCmps = 5, Persist = false}
-go_118[1] = { Component = "Transform", Coord = {X = 26, Y = 0, Z = 4}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_118[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
+go_118[1] = { Component = "Transform", Coord = {X = 26, Y = 0, Z = 4}, Rotation = {X = 0, Y = 90, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_118[2] = {	Component = "RenderObject", MeshName="kamikaze.mesh", Material="Kamikaze", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
 go_118[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, kinematic = true,
@@ -872,7 +872,7 @@ go_118[5] = { Component = "KamikazeEnemyComponent" }
 go_119 = {}
 go_119[0] = { Name = "Kamikaze5", HowManyCmps = 5, Persist = false}
 go_119[1] = { Component = "Transform", Coord = {X = 5, Y = 0, Z = 19}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_119[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
+go_119[2] = {	Component = "RenderObject", MeshName="kamikaze.mesh", Material="Kamikaze", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
 go_119[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, kinematic = true,
@@ -884,7 +884,7 @@ go_119[5] = { Component = "KamikazeEnemyComponent" }
 go_120 = {}
 go_120[0] = { Name = "Kamikaze6", HowManyCmps = 5, Persist = false}
 go_120[1] = { Component = "Transform", Coord = {X = -13, Y = 0, Z = 20.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_120[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Fucsia", 
+go_120[2] = {	Component = "RenderObject", MeshName="kamikaze.mesh", Material="Kamikaze", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
 go_120[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, kinematic = true,
@@ -895,8 +895,8 @@ go_120[5] = { Component = "KamikazeEnemyComponent" }
 
 go_121 = {}
 go_121[0] = { Name = "Screamer1", HowManyCmps = 5, Persist = false}
-go_121[1] = { Component = "Transform", Coord ={X = -14.5, Y = 0, Z = -3.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
-go_121[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Brown", 
+go_121[1] = { Component = "Transform", Coord ={X = -14.5, Y = 0, Z = -3.5}, Rotation = {X = 0, Y = -90, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
+go_121[2] = {	Component = "RenderObject", MeshName="screamer.mesh", Material="mujer", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
 go_121[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, Kinematic = false,
@@ -910,7 +910,7 @@ go_121[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, 
 go_122 = {}
 go_122[0] = { Name = "Screamer2", HowManyCmps = 5, Persist = false}
 go_122[1] = { Component = "Transform", Coord ={X = 23, Y = 0, Z = -13.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
-go_122[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Brown", 
+go_122[2] = {	Component = "RenderObject", MeshName="screamer.mesh", Material="mujer", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
 go_122[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, Kinematic = false,
@@ -923,8 +923,8 @@ go_122[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, 
 
 go_123 = {}
 go_123[0] = { Name = "Screamer3", HowManyCmps = 5, Persist = false}
-go_123[1] = { Component = "Transform", Coord ={X = 22, Y = 0, Z = 24.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
-go_123[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Brown", 
+go_123[1] = { Component = "Transform", Coord ={X = 22, Y = 0, Z = 24.5}, Rotation = {X = 0, Y = 180, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
+go_123[2] = {	Component = "RenderObject", MeshName="screamer.mesh", Material="mujer", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
 			Visible=true, Shadows=false, RenderingDistance = 1000}
 go_123[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, Kinematic = false,
