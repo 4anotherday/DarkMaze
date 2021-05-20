@@ -87,11 +87,12 @@ void ScreamerAIEnemyComponent::update()
 		movingState();
 		_elapsedFollowTime += EngineTime::getInstance()->deltaTime();
 
-		if ((distance <= _detectionRange / 2) ||
+		if ((distance <= _detectionRange / 3) ||
 			_elapsedFollowTime >= _followTime) {
 			_invisibleEnemy->sound(currentPlayerPos, _shoutIntensityAttack);
 			screamingState();
 		}
+		if((distance < (2*_detectionRange )/ 3)) _audioSource->stopChannel(0);
 	}
 
 	if (_dead) {
@@ -133,8 +134,6 @@ void ScreamerAIEnemyComponent::movingState()
 {
 	if (!_moving) return;
 
-	_audioSource->stopChannel(0);
-
 	//Vector3 dir = (_tranformPlayer->getPosition()).normalize() - _transformEnemy->getPosition();
 	Vector3 look = _lastPlayerPos - _transformEnemy->getPosition();
 	float angle = atan2(look.getX(), look.getZ());
@@ -159,7 +158,7 @@ void ScreamerAIEnemyComponent::screamingState()
 	if (!_screamingSoundOn) {
 		_audioSource->playAudio(1);
 		int a = _audioSource->getVolumeChannel(0); // esto es 0??
-		_audioSource->setVolumeChannel(4, 1);
+		_audioSource->setVolumeChannel(10, 1);
 		_screamingSoundOn = true;
 	}
 	//_particleSystem->setEnabled(true);

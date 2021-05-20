@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 115
+HowManyGameObjects = 117
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 13, Persist = false}
@@ -24,7 +24,7 @@ go_0[5] = { Component = "PlayerKeysComponent"}
 go_0[6] = { Component = "HealthComponent", HP=2 }
 go_0[7] = { Component = "PlayerVisibilityComponent" }
 go_0[8] = { Component = "RigidBody", Type="Box", Mass=10, Width=0.25,Height=1,Depth=0.25, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
-go_0[9] = { Component = "PlayerMovementComponent", SpeedForward = 180, SpeedSideWays = 120, SpeedBackwards = 120, CameraSpeed = 15}
+go_0[9] = { Component = "PlayerMovementComponent", SpeedForward = 500, SpeedSideWays = 500, SpeedBackwards = 500, CameraSpeed = 15}
 go_0[10] = { Component = "PlayerLookEnemyGlitchComponent"}
 go_0[11] = { Component = "UIManagerComponent"}
 go_0[12] = { Component = "AudioSource", Route = {"Assets/Audio/FootStep2.wav", "Assets/Audio/Footsteps1.ogg"}}
@@ -742,7 +742,7 @@ go_108[2] = { Component = "RenderObject", MeshName="ogrehead.mesh", Material="Pr
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_108[3] = { Component = "RigidBody", Type="Sphere", Mass=9, kinematic = false,
 			ConstrainAngle = true, IsTrigger=false, StaticFriction = 0, DynamicFriction = 0, Bounciness = 1}
-go_108[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
+go_108[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.wav"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
 go_108[5] = { Component = "KamikazeEnemyComponent" }
 
@@ -753,7 +753,7 @@ go_109[2] = { Component = "RenderObject", MeshName="ogrehead.mesh", Material="Pr
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_109[3] = { Component = "RigidBody", Type="Sphere", Mass=9, kinematic = false,
 			ConstrainAngle = true, IsTrigger=false, StaticFriction = 0, DynamicFriction = 0, Bounciness = 1}
-go_109[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
+go_109[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.wav"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
 go_109[5] = { Component = "KamikazeEnemyComponent" }
 
@@ -764,7 +764,7 @@ go_110[2] = { Component = "RenderObject", MeshName="ogrehead.mesh", Material="Pr
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_110[3] = { Component = "RigidBody", Type="Sphere", Mass=9, kinematic = false,
 			ConstrainAngle = true, IsTrigger=false, StaticFriction = 0, DynamicFriction = 0, Bounciness = 1}
-go_110[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
+go_110[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.wav"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
 go_110[5] = { Component = "KamikazeEnemyComponent" }
 
@@ -775,7 +775,7 @@ go_111[2] = { Component = "RenderObject", MeshName="ogrehead.mesh", Material="Pr
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_111[3] = { Component = "RigidBody", Type="Sphere", Mass=9, kinematic = false,
 			ConstrainAngle = true, IsTrigger=false, StaticFriction = 0, DynamicFriction = 0, Bounciness = 1}
-go_111[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
+go_111[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.wav"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
 go_111[5] = { Component = "KamikazeEnemyComponent" }
 
@@ -786,7 +786,7 @@ go_112[2] = { Component = "RenderObject", MeshName="ogrehead.mesh", Material="Pr
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_112[3] = { Component = "RigidBody", Type="Sphere", Mass=9, kinematic = false,
 			ConstrainAngle = true, IsTrigger=false, StaticFriction = 0, DynamicFriction = 0, Bounciness = 1}
-go_112[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
+go_112[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.wav"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
 go_112[5] = { Component = "KamikazeEnemyComponent" }
 
@@ -797,24 +797,65 @@ go_113[2] = { Component = "RenderObject", MeshName="ogrehead.mesh", Material="Pr
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_113[3] = { Component = "RigidBody", Type="Sphere", Mass=9, kinematic = false,
 			ConstrainAngle = true, IsTrigger=false, StaticFriction = 0, DynamicFriction = 0, Bounciness = 1}
-go_113[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.mp3"}, Stereo = true,
+go_113[4] = { Component = "AudioSource", Route = {"Assets/Audio/kamikaze_scream.wav" ,"Assets/Audio/kamikaze_explosion.wav"}, Stereo = true,
 			MinMaxDistance = {Min = 2, Max = 6}, Volume= 15, Play = false}
 go_113[5] = { Component = "KamikazeEnemyComponent" }
 
-
 go_114 = {}
 go_114[0] = { Name = "Screamer1", HowManyCmps = 5, Persist = false}
-go_114[1] = { Component = "Transform", Coord ={X = 10, Y = 1, Z = -4}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
+go_114[1] = { Component = "Transform", Coord ={X = -14.5, Y = 1, Z = -3.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
 go_114[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Brown", 
-		RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-		Visible=true, Shadows=false, RenderingDistance = 1000}
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+			Visible=true, Shadows=false, RenderingDistance = 1000}
 go_114[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, Kinematic = false,
-		ConstrainAngle = true, IsTrigger= false}
-go_114[4] = { Component = "AudioSource", Route = {"Assets/Audio/woman_cry.mp3" ,"Assets/Audio/baby_crying.mp3"},
-		Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
--- go121[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
+			ConstrainAngle = true, IsTrigger= false}
+go_114[4] = { Component = "AudioSource", Route = {"Assets/Audio/girl_sobbing.mp3" ,"Assets/Audio/screaming_girl.mp3"},
+			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
+-- go_114[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
 go_114[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
-			  IdleSoundRange = 10, DetectionRange = 5, FollowTime = 4, DyingTime = 3, MoveSpeed = 2}
+			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1.5}
+
+go_115 = {}
+go_115[0] = { Name = "Screamer2", HowManyCmps = 5, Persist = false}
+go_115[1] = { Component = "Transform", Coord ={X = 23, Y = 1, Z = -13.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
+go_115[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Brown", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+			Visible=true, Shadows=false, RenderingDistance = 1000}
+go_115[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, Kinematic = false,
+			ConstrainAngle = true, IsTrigger= false}
+go_115[4] = { Component = "AudioSource", Route = {"Assets/Audio/girl_sobbing.mp3" ,"Assets/Audio/screaming_girl.mp3"},
+			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
+-- go_115[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
+go_115[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
+			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1.5}
+
+go_116 = {}
+go_116[0] = { Name = "Screamer3", HowManyCmps = 5, Persist = false}
+go_116[1] = { Component = "Transform", Coord ={X = 22, Y = 1, Z = 24.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
+go_116[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Brown", 
+			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+			Visible=true, Shadows=false, RenderingDistance = 1000}
+go_116[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, Kinematic = false,
+			ConstrainAngle = true, IsTrigger= false}
+go_116[4] = { Component = "AudioSource", Route = {"Assets/Audio/girl_sobbing.mp3" ,"Assets/Audio/screaming_girl.mp3"},
+			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
+-- go_116[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
+go_116[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
+			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1.5}
+
+--go_114 = {}
+--go_114[0] = { Name = "Screamer1", HowManyCmps = 5, Persist = false}
+--go_114[1] = { Component = "Transform", Coord ={X = 0, Y = 1, Z = -4}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y =1, Z = 1}}
+--go_114[2] = {	Component = "RenderObject", MeshName="ogrehead.mesh", Material="Practica1/Brown", 
+--		RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
+--		Visible=true, Shadows=false, RenderingDistance = 1000}
+--go_114[3] = { Component = "RigidBody", Type="Box", Mass=9, Width=1, Depth=1, Height=1, Kinematic = false,
+--		ConstrainAngle = true, IsTrigger= false}
+--go_114[4] = { Component = "AudioSource", Route = {"Assets/Audio/girl_sobbing.mp3" ,"Assets/Audio/screaming_girl.mp3"},
+--		Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
+-- go121[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
+--go_114[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
+--			  IdleSoundRange = 10, DetectionRange = 6, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1.5}
 			  
 -- go_114 = {}
 -- go_114[0] = { Name = "FirstAidKitZonaH", HowManyCmps = 5, Persist = false}
