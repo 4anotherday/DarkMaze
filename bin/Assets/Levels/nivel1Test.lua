@@ -731,8 +731,8 @@ go_106[3] = { Component = "RigidBody", Type="Box", Static=true, IsTrigger=false}
 go_107 = {}
 go_107[0] = { Name = "InvisibleEnemy", HowManyCmps = 3, Persist = false}
 go_107[1] = { Component = "Transform", Coord = {X =-25, Y = 1, Z = -1}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_107[2] = { Component = "AudioSource", Route = {"Assets/Audio/goat_cry.mp3", "Assets/Audio/MonsterProwling.wav"}, Stereo = true,
-				MinMaxDistance = {Min = 0.1, Max = 15}, Volumes = {0.5, 0.1}, Plays = {true, false}}
+go_107[2] = { Component = "AudioSource", Route = {"Assets/Audio/MonsterNear.wav", "Assets/Audio/MonsterProwling.wav"}, Stereo = true,
+				MinMaxDistance = {Min = 0.1, Max = 1}, Volumes = {0.5, 0.1}, Plays = {true, false}}
 go_107[3] = { Component = "InvisibleEnemyAIComponent", Speed = 1}
 
 go_108 = {}
