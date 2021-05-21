@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 126
+HowManyGameObjects = 130
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 13, Persist = false}
@@ -61,14 +61,13 @@ go_3[4] = { Component = "KeyComponent" }
 go_3[5] = { Component = "AudioSource", Route = {"Assets/Audio/KeyPickUp.wav" }, StopOnDestroy = false}
 
 go_4 = {}
-go_4[0] = { Name = "Puerta", HowManyCmps = 5, Persist = false}
-go_4[1] = { Component = "Transform", Coord = {X = -35.5, Y = 0, Z = 17.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 13, Y = 4, Z = 1}}
-go_4[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Orange", 
-						RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=0, Y=0, Z=0},
-						Visible=true, Shadows=false, RenderingDistance = 1000}
+go_4[0] = { Name = "Puerta", HowManyCmps = 6, Persist = false}
+go_4[1] = { Component = "Transform", Coord = {X = -35.5, Y = 2, Z = 17.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 13, Y = 4, Z = 1}}
+go_4[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Orange", Visible=true, Shadows=false, RenderingDistance = 50}
 go_4[3] = { Component = "SphereCollider",Radius=10,IsTrigger=true}
-go_4[4] = { Component = "BoxCollider", Type="Box",Width=1,Height=1,Depth=1,IsTrigger=false}
-go_4[5] = { Component = "DoorComponent" }
+go_4[4] = { Component = "BoxCollider", Type="Box", Width=1, Height=1, Depth=1, IsTrigger=false}
+go_4[5] = { Component = "AudioSource", Route = {"Assets/Audio/Lock.wav" }, StopOnDestroy = false}
+go_4[6] = { Component = "DoorComponent" }
 
 -- UI Manager
 go_5 = {}
@@ -730,7 +729,7 @@ go_107 = {}
 go_107[0] = { Name = "InvisibleEnemy", HowManyCmps = 3, Persist = false}
 go_107[1] = { Component = "Transform", Coord = {X =-25, Y = -100, Z = -1}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_107[2] = { Component = "AudioSource", Route = {"Assets/Audio/MonsterNear.wav", "Assets/Audio/MonsterProwling.wav"}, Stereo = true,
-				MinMaxDistance = {Min = 1, Max = 2}, Volume = 0.1, Loops = {-1, 0}, Plays = {true, false}, StopOnDestroy = false}
+				MinMaxDistance = {Min = 1, Max = 2}, Volume = 0.1, Loops = {-1, 0}, Plays = {true, false}}
 go_107[3] = { Component = "InvisibleEnemyAIComponent", Speed = 1}
 
 go_108 = {}
@@ -885,36 +884,61 @@ go_124[1] = { Component = "Transform", Coord = {X = 0, Y = 4.5, Z = 0}, Rotation
 go_124[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 1000}
 go_124[3] = { Component = "RigidBody", Type="Box", Static=true, IsTrigger=false}
 
+
+----------------------------------------------------------------------- LUCES ----------------------------------------------------------------------------------------
+
 go_125 = {}
 go_125[0] = { Name = "Luz1", HowManyCmps = 2, Persist = false}
-go_125[1] = { Component = "Transform", Coord = {X = 23, Y = 3.5, Z = -13.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_125[2] = { Component = "LightComponent", LightType= "POINT", Visible = true, 
+go_125[1] = { Component = "Transform", Coord = {X = 22.5, Y = 3.5, Z = -13}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_125[2] = { Component = "LightComponent", LightType= "SPOTLIGHT", Visible = true, 
 											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
-											Diffuse = {Red = 1, Green= 0, Blue = 0}, 
-											Specular = {Red = 1, Green= 0, Blue = 0},
-											LightDirection = {X = 0, Y = 0, Z = 0},
+											Diffuse = {Red = 1, Green= 0.2, Blue = 0.2}, 
+											SpotLightRange = {InnerAngle = 5, OuterAngle = 60, FallOf = 1},
+											LightDirection = {X = 0, Y = 1, Z = 0},
 											Intensity=5}
 
 go_126 = {}
 go_126[0] = { Name = "Luz2", HowManyCmps = 2, Persist = false}
 go_126[1] = { Component = "Transform", Coord = {X = 30, Y = 3.5, Z = 8.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_126[2] = { Component = "LightComponent", LightType= "POINT", Visible = true, 
+go_126[2] = { Component = "LightComponent", LightType= "SPOTLIGHT", Visible = true, 
 											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
-											Diffuse = {Red = 1, Green= 1, Blue = 1}, 
-											Specular = {Red = 1, Green= 1, Blue = 1},
-											LightDirection = {X = 0, Y = 0, Z = 0},
+											Diffuse = {Red = 1, Green= 0.5, Blue = 0.2}, 
+											SpotLightRange = {InnerAngle = 5, OuterAngle = 60, FallOf = 1},
+											LightDirection = {X = 0, Y = 1, Z = 0},
 											Intensity=5}
 
 go_127 = {}
 go_127[0] = { Name = "Luz3", HowManyCmps = 2, Persist = false}
-go_127[1] = { Component = "Transform", Coord = {X = 4, Y = 3.5, Z = 24.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
-go_127[2] = { Component = "LightComponent", LightType= "POINT", Visible = true, 
+go_127[1] = { Component = "Transform", Coord = {X = 4, Y = 3.5, Z = 23.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_127[2] = { Component = "LightComponent", LightType= "SPOTLIGHT", Visible = true, 
 											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
-											Diffuse = {Red = 1, Green= 1, Blue = 1}, 
-											Specular = {Red = 1, Green= 1, Blue = 1},
-											LightDirection = {X = 0, Y = 0, Z = 0},
+											Diffuse = {Red = 1, Green= 0.2, Blue = 0.1}, 
+											SpotLightRange = {InnerAngle = 5, OuterAngle = 60, FallOf = 1},
+											LightDirection = {X = 0, Y = 1, Z = 0},
 											Intensity=5}
 
+go_128 = {}
+go_128[0] = { Name = "Luz4", HowManyCmps = 2, Persist = false}
+go_128[1] = { Component = "Transform", Coord = {X = -35.5, Y = 4, Z = 20.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_128[2] = { Component = "LightComponent", LightType= "SPOTLIGHT", Visible = true, 
+											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
+											Diffuse = {Red = 0.5, Green = 1, Blue = 0.5}, 
+											SpotLightRange = {InnerAngle = 5, OuterAngle = 80, FallOf = 1},
+											LightDirection = {X = 0, Y = 1, Z = 0},
+											Intensity=5}
+
+go_129 = {}
+go_129[0] = { Name = "Luz5", HowManyCmps = 2, Persist = false}
+go_129[1] = { Component = "Transform", Coord = {X=-20.5, Y = 3.5, Z = -1.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_129[2] = { Component = "LightComponent", LightType= "SPOTLIGHT", Visible = true, 
+											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
+											Diffuse = {Red = 0.6, Green= 0.6, Blue = 0.6}, 
+											SpotLightRange = {InnerAngle = 5, OuterAngle = 60, FallOf = 1},
+											LightDirection = {X = 0, Y = 1, Z = 0},
+											Intensity=5}
+
+
+											
 --Luces
 
 --go_2 = {}
