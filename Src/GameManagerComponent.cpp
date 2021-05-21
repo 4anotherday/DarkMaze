@@ -30,6 +30,9 @@ void GameManagerComponent::update()
 {
 	if (_keyboard->isKeyJustDown(KeyCode::KEYCODE_ESCAPE)) 
 		toMenu();
+	if (_keyboard->isKeyJustDown(KeyCode::KEYCODE_F)) {
+		Engine::getInstance()->setWindowFullScreen();
+	}
 }
 
 void GameManagerComponent::toMenu()
