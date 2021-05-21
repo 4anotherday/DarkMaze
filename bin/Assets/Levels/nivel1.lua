@@ -75,28 +75,30 @@ go_5 = {}
 go_5[0] = { Name = "UIManager", HowManyCmps = 2, Persist = false}
 go_5[1] = { Component = "Transform"}
 go_5[2] = { Component = "OverlayComponent", Name = "GameUI", Hide = false}
--- Bush
+-- Bush parte 1
 go_6 = {}
 go_6[0] = { Name = "Bush1", HowManyCmps = 4, Persist = false}
-go_6[1] = { Component = "Transform", Coord = {X = -29.2, Y = 0, Z = -6.85}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1.75, Y = 1.5, Z = 1.5}}
+go_6[1] = { Component = "Transform", Coord = {X = -29.1, Y = 1, Z = -6.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1.75, Y = 2, Z = 1.5}}
 go_6[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Bush", Visible=true, Shadows=false, RenderingDistance = 50}
 go_6[3] = { Component = "SphereCollider", Radius=1,IsTrigger=true}
 go_6[4] = { Component = "HideoutComponent" }
 -- Trampa
 go_7 = {}
-go_7[0] = { Name = "Trampa1", HowManyCmps = 4, Persist = false}
+go_7[0] = { Name = "Trampa1", HowManyCmps = 5, Persist = false}
 go_7[1] = { Component = "Transform", Coord = {X = -16.75, Y = 0.05, Z = -11.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .2, Z = 2}}
-go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Metal", Visible=true, Shadows=true, RenderingDistance = 1000}
+go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Metal", Visible=true, Shadows=true, RenderingDistance = 50}
 go_7[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=50,Depth=1,IsTrigger=true}
 go_7[4] = { Component = "TrapComponent",EnabledMaterial="Practica1/Red"}
+go_7[5] = { Component = "AudioSource", Route = {"Assets/Audio/MetalHit.wav" }, StopOnDestroy = false}
 
 -- Desactivador
 go_8 = {}
-go_8[0] = { Name = "Desactivador1", HowManyCmps = 4, Persist = false}
-go_8[1] = { Component = "Transform", Coord = {X = -16.75, Y = 0.3, Z = -12.2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .6, Y = .6, Z = .6}}
+go_8[0] = { Name = "Desactivador1", HowManyCmps = 5, Persist = false}
+go_8[1] = { Component = "Transform", Coord = {X = -16.75, Y = 0.3, Z = -12.2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .3, Z = .3}}
 go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Metal", Visible=true, Shadows=true, RenderingDistance = 50}
 go_8[3] = { Component = "SphereCollider",Radius=2,IsTrigger=true}
 go_8[4] = { Component = "ObjectDeactivatorComponent",ObjName="Trampa1"}
+go_8[5] = { Component = "AudioSource", Route = {"Assets/Audio/SwitchSound.mp3" }, StopOnDestroy = false}
 
 
 -- Paredes
@@ -797,7 +799,7 @@ go_114[1] = { Component = "Transform", Coord ={X = -14.5, Y = 1, Z = -3.5}, Rota
 go_114[2] = { Component = "RenderObject", MeshName="screamer.mesh", Material="mujer", Visible=true, Shadows=false, RenderingDistance = 50}
 go_114[3] = { Component = "RigidBody", Type="Box", Mass=9, Kinematic = false, ConstrainAngle = true, IsTrigger= false}
 go_114[4] = { Component = "AudioSource", Route = {"Assets/Audio/girl_sobbing.mp3" ,"Assets/Audio/screaming_girl.mp3"},
-			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false, StopOnDestroy = false}
+			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
 go_114[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
 			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1}
 
@@ -807,7 +809,7 @@ go_115[1] = { Component = "Transform", Coord ={X = 23, Y = 1, Z = -13.5}, Rotati
 go_115[2] = { Component = "RenderObject", MeshName="screamer.mesh", Material="mujer", Visible=true, Shadows=false, RenderingDistance = 50}
 go_115[3] = { Component = "RigidBody", Type="Box", Mass=9, Kinematic = false, ConstrainAngle = true, IsTrigger= false}
 go_115[4] = { Component = "AudioSource", Route = {"Assets/Audio/girl_sobbing.mp3" ,"Assets/Audio/screaming_girl.mp3"},
-			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false, StopOnDestroy = false}
+			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
 go_115[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
 			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1}
 
@@ -817,24 +819,26 @@ go_116[1] = { Component = "Transform", Coord ={X = 22, Y = 1, Z = 24.5}, Rotatio
 go_116[2] = { Component = "RenderObject", MeshName="screamer.mesh", Material="mujer", Visible=true, Shadows=false, RenderingDistance = 50}
 go_116[3] = { Component = "RigidBody", Type="Box", Mass=9, Kinematic = false, ConstrainAngle = true, IsTrigger= false}
 go_116[4] = { Component = "AudioSource", Route = {"Assets/Audio/girl_sobbing.mp3" ,"Assets/Audio/screaming_girl.mp3"},
-			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false, StopOnDestroy = false}
+			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
 go_116[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
 			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1}
 
 --Trampas part 2
 go_117 = {}
-go_117[0] = { Name = "Trampa2", HowManyCmps = 4, Persist = false}
+go_117[0] = { Name = "Trampa2", HowManyCmps = 5, Persist = false}
 go_117[1] = { Component = "Transform", Coord = {X = 10, Y = 0.05, Z = 9.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .1, Z = 3.75}}
 go_117[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Checker", Visible=true, Shadows=true, RenderingDistance = 50}
 go_117[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=50,Depth=1,IsTrigger=true}
 go_117[4] = { Component = "TrapComponent",EnabledMaterial="Practica1/Red"}
+go_117[5] = { Component = "AudioSource", Route = {"Assets/Audio/MetalHit.wav" }, StopOnDestroy = false}
 
 go_118 = {}
-go_118[0] = { Name = "Desactivador2", HowManyCmps = 4, Persist = false}
+go_118[0] = { Name = "Desactivador2", HowManyCmps = 5, Persist = false}
 go_118[1] = { Component = "Transform", Coord = {X = 10, Y = 0.3, Z = 9.75 + 1.875 - 0.3}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .6, Y = .6, Z = .6}}
 go_118[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Metal", Visible=true, Shadows=true, RenderingDistance = 50}
 go_118[3] = { Component = "SphereCollider",Radius=2,IsTrigger=true}
 go_118[4] = { Component = "ObjectDeactivatorComponent",ObjName="Trampa2"}
+go_118[5] = { Component = "AudioSource", Route = {"Assets/Audio/SwitchSound.mp3" }, StopOnDestroy = false}
 
 -- Last First Aid
 
@@ -849,28 +853,28 @@ go_119[4] = { Component = "FirstAidKitComponent", HealthAmount = 10 }
 
 go_120 = {}
 go_120[0] = { Name = "Bush2", HowManyCmps = 4, Persist = false}
-go_120[1] = { Component = "Transform", Coord = {X =  -29.75, Y = 0, Z = 11.25}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1.75, Y = 1.5, Z = 3.5}}
+go_120[1] = { Component = "Transform", Coord = {X =  -29.65, Y = 1, Z = 11.25}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1.75, Y = 2, Z = 3.45}}
 go_120[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Bush", Visible=true, Shadows=false, RenderingDistance = 50}
 go_120[3] = { Component = "SphereCollider", Radius=1,IsTrigger=true}
 go_120[4] = { Component = "HideoutComponent" }
 
 go_121 = {}
 go_121[0] = { Name = "Bush3", HowManyCmps = 4, Persist = false}
-go_121[1] = { Component = "Transform", Coord = {X = 6.25, Y = 0, Z = -11.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=2.5, Y = 1.75, Z = 1}}
+go_121[1] = { Component = "Transform", Coord = {X = 6.35, Y = 1, Z = -11.85}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X=2.5, Y = 2, Z = 1}}
 go_121[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Bush", Visible=true, Shadows=false, RenderingDistance = 50}
 go_121[3] = { Component = "SphereCollider", Radius=1,IsTrigger=true}
 go_121[4] = { Component = "HideoutComponent" }
 
 go_122 = {}
 go_122[0] = { Name = "Bush4", HowManyCmps = 4, Persist = false}
-go_122[1] = { Component = "Transform", Coord = {X = 5.25, Y = 0, Z = 11}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 2.5, Y = 1.75, Z = 1}}
+go_122[1] = { Component = "Transform", Coord = {X = 5.35, Y = 1, Z = 11.1}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 2.5, Y = 2, Z = 1}}
 go_122[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Bush", Visible=true, Shadows=false, RenderingDistance = 50}
 go_122[3] = { Component = "SphereCollider", Radius=1,IsTrigger=true}
 go_122[4] = { Component = "HideoutComponent" }
 
 go_123 = {}
 go_123[0] = { Name = "Bush5", HowManyCmps = 4, Persist = false}
-go_123[1] = { Component = "Transform", Coord = {X = 21.5, Y = 0, Z = 25.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 2, Y = 1.75, Z = 1}}
+go_123[1] = { Component = "Transform", Coord = {X = 21.5, Y = 1, Z = 25.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1.98, Y = 2, Z = 0.98}}
 go_123[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Bush", Visible=true, Shadows=false, RenderingDistance = 50}
 go_123[3] = { Component = "SphereCollider", Radius=1,IsTrigger=true}
 go_123[4] = { Component = "HideoutComponent" }
