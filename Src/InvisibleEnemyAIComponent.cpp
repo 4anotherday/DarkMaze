@@ -120,7 +120,6 @@ void InvisibleEnemyAIComponent::sound(const Vector3& soundLocation, float intens
 void InvisibleEnemyAIComponent::setFindRadius(double radius)
 {
 	_radiusFindPlayer = std::min(_maxRadiusFindPlayer, std::max(_minRadiusFindPlayer, radius));
-	_attackCooldownTime = _attackCooldown;
 }
 
 void InvisibleEnemyAIComponent::justLostSight()
