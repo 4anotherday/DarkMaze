@@ -37,7 +37,7 @@ void ObjectDeactivatorComponent::start()
 void ObjectDeactivatorComponent::interact()
 {
 	if (Engine::getInstance()->findGameObject(_deactivatableName) != nullptr)
-		_trap->setActive(false);
+		_trap->defuse();
 	_audio->playAudio(0);
 	Engine::getInstance()->remGameObject(_gameObject);
 }

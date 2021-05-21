@@ -1,4 +1,7 @@
 #pragma once
+#ifndef OBJECT_DEACTIVATOR_COMPONENT
+#define OBJECT_DEACTIVATOR_COMPONENT
+
 #include "InteractiveObjectComponent.h"
 #include <string>
 class TrapComponent;
@@ -20,3 +23,5 @@ private:
 	TrapComponent* _trap;
 	std::string _deactivatableName;
 };
+
+#endif
