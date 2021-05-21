@@ -6,19 +6,18 @@ class LightComponent;
 class SwitcherComponent : public InteractiveObjectComponent
 {
 public:
-    SwitcherComponent();
+	SwitcherComponent();
 
-    virtual void awake(luabridge::LuaRef& data) override;
+	virtual void awake(luabridge::LuaRef& data) override;
 
-    virtual void start() override;
+	virtual void start() override;
 
-    /// <summary>
-    /// Activates or deactivates an deactivatable object
-    /// </summary>
-    virtual void interact() override;
+	/// <summary>
+	/// Activates or deactivates an deactivatable object
+	/// </summary>
+	virtual void interact() override;
 
 private:
-    LightComponent* _light;
-    std::string _deactivatableName;   
+	LightComponent* _light;
+	std::string _deactivatableName;
 };
-

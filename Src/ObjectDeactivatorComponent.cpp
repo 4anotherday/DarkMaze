@@ -4,10 +4,11 @@
 #include "TrapComponent.h"
 #include "GameObject.h"
 #include "Exceptions.h"
+#include "AudioSourceComponent.h"
+
 ADD_COMPONENT(ObjectDeactivatorComponent)
 ObjectDeactivatorComponent::ObjectDeactivatorComponent() :InteractiveObjectComponent(UserComponentId::ObjectDeactivatorComponent), _trap(nullptr)
 {
-
 }
 
 ObjectDeactivatorComponent::~ObjectDeactivatorComponent()
@@ -25,6 +26,7 @@ void ObjectDeactivatorComponent::start()
 {
 	InteractiveObjectComponent::start();
 	GameObject* go = Engine::getInstance()->findGameObject(_deactivatableName);
+	_audio = static_cast<AudioSourceComponent*>(_gameObject->getComponent(ComponentId::AudioSource));
 	if (go == nullptr)
 		throw NullptrObjectException("trap not found");
 	_trap = static_cast<TrapComponent*>(go->getComponent(UserComponentId::TrapComponent));
@@ -34,5 +36,8 @@ void ObjectDeactivatorComponent::start()
 
 void ObjectDeactivatorComponent::interact()
 {
-	_trap->setActive(!_trap->getActive());
+	if (Engine::getInstance()->findGameObject(_deactivatableName) != nullptr)
+		_trap->setActive(false);
+	_audio->playAudio(0);
+	Engine::getInstance()->remGameObject(_gameObject);
 }

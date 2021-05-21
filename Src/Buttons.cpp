@@ -10,7 +10,7 @@
 //-----------------------------------------------PLAY BUTTON-------------------------------------------------------------
 ADD_COMPONENT(PlayButtonComponent)
 
-PlayButtonComponent::PlayButtonComponent(): Component(UserComponentId::PlayButtonComponent), _buttonComp(nullptr)
+PlayButtonComponent::PlayButtonComponent() : Component(UserComponentId::PlayButtonComponent), _buttonComp(nullptr)
 {
 }
 
@@ -37,7 +37,7 @@ void PlayButtonComponent::startGame(void* null)
 //-----------------------------------------------QUIT BUTTON-------------------------------------------------------------
 ADD_COMPONENT(QuitButtonComponent)
 
-QuitButtonComponent::QuitButtonComponent(): Component(UserComponentId::QuitButtonComponent), _buttonComp(nullptr)
+QuitButtonComponent::QuitButtonComponent() : Component(UserComponentId::QuitButtonComponent), _buttonComp(nullptr)
 {
 }
 
