@@ -84,9 +84,9 @@ go_6[4] = { Component = "HideoutComponent" }
 -- Trampa
 go_7 = {}
 go_7[0] = { Name = "Trampa1", HowManyCmps = 5, Persist = false}
-go_7[1] = { Component = "Transform", Coord = {X = -16.75, Y = 0.05, Z = -11.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .2, Z = 2}}
-go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Metal", Visible=true, Shadows=true, RenderingDistance = 50}
-go_7[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=50,Depth=1,IsTrigger=true}
+go_7[1] = { Component = "Transform", Coord = {X = -16.8, Y = 0.1, Z = -10.8}, Rotation = {X = -90, Y = 90, Z = 0}, Scale = {X = 2, Y = 2, Z = 4}}
+go_7[2] = {	Component = "RenderObject", MeshName="spikes.mesh", Material="pincho", Visible=true, Shadows=true, RenderingDistance = 50}
+go_7[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=1,Depth=50,IsTrigger=true}
 go_7[4] = { Component = "TrapComponent",EnabledMaterial="Practica1/Red"}
 go_7[5] = { Component = "AudioSource", Route = {"Assets/Audio/MetalHit.wav" }, StopOnDestroy = false}
 
@@ -825,8 +825,8 @@ go_116[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, 
 --Trampas part 2
 go_117 = {}
 go_117[0] = { Name = "Trampa2", HowManyCmps = 5, Persist = false}
-go_117[1] = { Component = "Transform", Coord = {X = 10, Y = 0.05, Z = 9.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .1, Z = 3.75}}
-go_117[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Checker", Visible=true, Shadows=true, RenderingDistance = 50}
+go_117[1] = { Component = "Transform", Coord = {X = 10, Y = 0.07, Z = 11.4}, Rotation = {X = -90, Y = 90, Z = 0}, Scale = {X = 3.5, Y = 2, Z = 6}}
+go_117[2] = { Component = "RenderObject", MeshName="spikes.mesh", Material="pincho", Visible=true, Shadows=true, RenderingDistance = 50}
 go_117[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=50,Depth=1,IsTrigger=true}
 go_117[4] = { Component = "TrapComponent",EnabledMaterial="Practica1/Red"}
 go_117[5] = { Component = "AudioSource", Route = {"Assets/Audio/MetalHit.wav" }, StopOnDestroy = false}
