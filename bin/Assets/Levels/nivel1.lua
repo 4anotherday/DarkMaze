@@ -45,11 +45,12 @@ go_1[3] = { Component = "RigidBody", Type="Box", Static=true, IsTrigger=false}
 
 -- FirstAidKit
 go_2 = {}
-go_2[0] = { Name = "FirstAidKit", HowManyCmps = 4, Persist = false}
-go_2[1] = { Component = "Transform", Coord = {X = -23.25, Y = 0, Z = 8.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .8, Y = .2, Z = .8}}
+go_2[0] = { Name = "FirstAidKit", HowManyCmps = 5, Persist = false}
+go_2[1] = { Component = "Transform", Coord = {X = -23.25, Y = 1.75, Z = 8.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .8, Y = 1, Z = .8}}
 go_2[2] = { Component = "RenderObject", MeshName="firstAid.mesh", Material="botiquin", Visible=true, Shadows=false, RenderingDistance = 50}
 go_2[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=10,Depth=1,IsTrigger=true}
-go_2[4] = { Component = "FirstAidKitComponent", HealthAmount = 10 }
+go_2[4] = { Component = "FirstAidKitComponent", HealthAmount = 1 }
+go_2[5] = { Component = "AudioSource", Route = {"Assets/Audio/Bandage.wav" }, StopOnDestroy = false}
 
 
 go_3 = {}
@@ -718,18 +719,19 @@ go_105[3] = { Component = "RigidBody", Type="Box", Static=true, IsTrigger=false}
 
 --FirstAidKit part 2
 go_106 = {}
-go_106[0] = { Name = "FirstAidKit2", HowManyCmps = 4, Persist = false}
-go_106[1] = { Component = "Transform", Coord = {X = -8.75, Y = 0, Z = 10.75}, Rotation = {X = 0, Y = 90, Z = 0}, Scale = {X = .8, Y = .2, Z = .8}}
+go_106[0] = { Name = "FirstAidKit2", HowManyCmps = 5, Persist = false}
+go_106[1] = { Component = "Transform", Coord = {X = -8.75, Y = 1, Z = 10.75}, Rotation = {X = 0, Y = -90, Z = 0}, Scale = {X = .8, Y = 1, Z = .8}}
 go_106[2] = { Component = "RenderObject", MeshName="firstAid.mesh", Material="botiquin", Visible=true, Shadows=false, RenderingDistance = 50}
 go_106[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=10,Depth=1,IsTrigger=true}
-go_106[4] = { Component = "FirstAidKitComponent", HealthAmount = 10 }
+go_106[4] = { Component = "FirstAidKitComponent", HealthAmount = 1 }
+go_106[5] = { Component = "AudioSource", Route = {"Assets/Audio/Bandage.wav" }, StopOnDestroy = false}
 
 --Enemigos
 go_107 = {}
 go_107[0] = { Name = "InvisibleEnemy", HowManyCmps = 3, Persist = false}
-go_107[1] = { Component = "Transform", Coord = {X =-25, Y = -100, Z = -1}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_107[1] = { Component = "Transform", Coord = {X =-25, Y = 1, Z = 20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_107[2] = { Component = "AudioSource", Route = {"Assets/Audio/MonsterNear.wav", "Assets/Audio/MonsterProwling.wav"}, Stereo = true,
-				MinMaxDistance = {Min = 1, Max = 2}, Volume = 0.1, Loops = {-1, 0}, Plays = {true, false}}
+			MinMaxDistance = {Min = 1, Max = 2}, Volume = 0.1, Loops = {-1, 0}, Plays = {true, false}, StopOnDestroy = true}
 go_107[3] = { Component = "InvisibleEnemyAIComponent", Speed = 1}
 
 go_108 = {}
@@ -825,9 +827,9 @@ go_116[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, 
 --Trampas part 2
 go_117 = {}
 go_117[0] = { Name = "Trampa2", HowManyCmps = 5, Persist = false}
-go_117[1] = { Component = "Transform", Coord = {X = 10, Y = 0.07, Z = 11.4}, Rotation = {X = -90, Y = 90, Z = 0}, Scale = {X = 3.5, Y = 2, Z = 6}}
+go_117[1] = { Component = "Transform", Coord = {X = 10, Y = 0.07, Z = 10}, Rotation = {X = -90, Y = 90, Z = 0}, Scale = {X = 3, Y = 2, Z = 6}}
 go_117[2] = { Component = "RenderObject", MeshName="spikes.mesh", Material="pincho", Visible=true, Shadows=true, RenderingDistance = 50}
-go_117[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=50,Depth=1,IsTrigger=true}
+go_117[3] = { Component = "BoxCollider", Type="Box",Width=2,Height=1,Depth=50,IsTrigger=true}
 go_117[4] = { Component = "TrapComponent",EnabledMaterial="Practica1/Red"}
 go_117[5] = { Component = "AudioSource", Route = {"Assets/Audio/MetalHit.wav" }, StopOnDestroy = false}
 
@@ -842,11 +844,12 @@ go_118[5] = { Component = "AudioSource", Route = {"Assets/Audio/SwitchSound.mp3"
 -- Last First Aid
 
 go_119 = {}
-go_119[0] = { Name = "FirstAidKit3", HowManyCmps = 4, Persist = false}
-go_119[1] = { Component = "Transform", Coord = {X = 10.75, Y = 0, Z = 13}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .8, Y = .2, Z = .8}}
+go_119[0] = { Name = "FirstAidKit3", HowManyCmps = 5, Persist = false}
+go_119[1] = { Component = "Transform", Coord = {X = 10.75, Y = 1, Z = 13}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .8, Y = 1, Z = .8}}
 go_119[2] = { Component = "RenderObject", MeshName="firstAid.mesh", Material="botiquin", Visible=true, Shadows=false, RenderingDistance = 50}
 go_119[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=10,Depth=1,IsTrigger=true}
-go_119[4] = { Component = "FirstAidKitComponent", HealthAmount = 10 }
+go_119[4] = { Component = "FirstAidKitComponent", HealthAmount = 1 }
+go_119[5] = { Component = "AudioSource", Route = {"Assets/Audio/Bandage.wav" }, StopOnDestroy = false}
 
 --Bush part 2
 

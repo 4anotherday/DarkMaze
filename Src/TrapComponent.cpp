@@ -43,7 +43,7 @@ void TrapComponent::onTrigger(GameObject* other)
 {
 	HealthComponent* health = dynamic_cast<HealthComponent*>(other->getComponent(UserComponentId::HealthComponent));
 	if (health != nullptr && _active) {
-		health->loseHPs(health->getCurrentHP() / 2);
+		health->loseHPs();
 		_audio->playAudio(0);
 		Engine::getInstance()->remGameObject(_gameObject);
 	}

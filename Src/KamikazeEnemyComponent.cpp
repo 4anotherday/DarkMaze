@@ -24,7 +24,7 @@ KamikazeEnemyComponent::KamikazeEnemyComponent() : Component(UserComponentId::Ka
 
 	//Default configuration values
 	_nearExplosionRange(2.0f), _farExplosionRange(5.0f),
-	_followTime(3.0f), _speed(4.5f), _visionRange(5.0f), _shoutingIntensity(0.6f),
+	_followTime(3.0f), _speed(4.75f), _visionRange(8.0f), _shoutingIntensity(0.6f),
 	_particlesDuration(2.0f)
 {}
 
