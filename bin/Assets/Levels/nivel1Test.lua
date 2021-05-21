@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 117
+HowManyGameObjects = 119
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 13, Persist = false}
@@ -95,11 +95,13 @@ go_7[5] = { Component = "AudioSource", Route = {"Assets/Audio/MetalHit.wav" }, S
 
 -- Desactivador
 go_8 = {}
-go_8[0] = { Name = "Desactivador1", HowManyCmps = 4, Persist = false}
-go_8[1] = { Component = "Transform", Coord = {X = 0, Y = -50, Z = 50}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .10, Y = .10, Z = .05}}
+go_8[0] = { Name = "Desactivador1", HowManyCmps = 5, Persist = false}
+go_8[1] = { Component = "Transform", Coord = {X = -1, Y = 1, Z = -2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Red", Visible=true, Shadows=true, RenderingDistance = 1000}
-go_8[3] = { Component = "SphereCollider",Radius=50,IsTrigger=true}
+go_8[3] = { Component = "SphereCollider",Radius=1,IsTrigger=true}
 go_8[4] = { Component = "ObjectDeactivatorComponent",ObjName="Trampa1"}
+go_8[5] = { Component = "AudioSource", Route = {"Assets/Audio/SwitchSound.mp3" }, StopOnDestroy = false}
+
 
 
 -- Paredes
@@ -842,6 +844,27 @@ go_116[4] = { Component = "AudioSource", Route = {"Assets/Audio/girl_sobbing.mp3
 -- go_116[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
 go_116[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
 			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1}
+
+
+-- Desactivador
+go_117 = {}
+go_117[0] = { Name = "Interr", HowManyCmps = 5, Persist = false}
+go_117[1] = { Component = "Transform", Coord = {X = -1, Y = 1, Z = -4}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_117[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 1000}
+go_117[3] = { Component = "SphereCollider",Radius=1,IsTrigger=true}
+go_117[4] = { Component = "SwitcherComponent",ObjName="LuzPrueba"}
+go_117[5] = { Component = "AudioSource", Route = {"Assets/Audio/SwitchSound.mp3" }, StopOnDestroy = false}
+
+
+go_118 = {}
+go_118[0] = { Name = "LuzPrueba", HowManyCmps = 2, Persist = false}
+go_118[1] = { Component = "Transform", Coord = {X = 1, Y = 1, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_118[2] = { Component = "LightComponent", LightType= "POINT", Visible = true, 
+											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
+											Diffuse = {Red = 1, Green= 0, Blue = 0}, 
+											Specular = {Red = 1, Green= 1, Blue = 1},
+											--LightDirection = {X = 0, Y = 0, Z = 0},
+											Intensity=20}
 
 --go_114 = {}
 --go_114[0] = { Name = "Screamer1", HowManyCmps = 5, Persist = false}

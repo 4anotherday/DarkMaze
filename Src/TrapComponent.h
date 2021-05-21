@@ -15,30 +15,16 @@ public:
 	virtual void awake(luabridge::LuaRef& data) override;
 
 	/// <summary>
-	/// Triggered when player enables the trap
-	/// </summary>
-	void onEnable();
-	/// <summary>
-	/// Triggered when player disables the trap
-	/// </summary>
-	void onDisable();
-
-	/// <summary>
 	/// kills the player if the trap is active
 	/// </summary>
 	/// <param name="other">the collision gameObject</param>
 	virtual void onTrigger(GameObject* other)override;
+	
 	/// <summary>
-	/// get whether the trap is active or not
+	/// Defuses the trap
 	/// </summary>
-	/// <returns>true if the trap is active, false if not</returns>
-	inline bool getActive() { return _active; }
-
-	/// <summary>
-	/// Activates or deactivates the trap
-	/// </summary>
-	/// <param name="active">true activates the trap, false deactivates the trap</param>
-	void setActive(bool active);
+	/// <returns></returns>
+	void defuse();
 
 private:
 	RenderObjectComponent* _renderObject;

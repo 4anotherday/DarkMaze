@@ -38,24 +38,6 @@ void TrapComponent::awake(luabridge::LuaRef& data)
 		_log->log("disabledMaterial not set", Logger::Level::WARN);
 }
 
-void TrapComponent::setActive(bool active)
-{
-	_active = active;
-	if (_active)
-		onEnable();
-	else
-		onDisable();
-}
-
-void TrapComponent::onEnable()
-{
-	_renderObject->setMaterial(_enabledMaterial);
-}
-
-void TrapComponent::onDisable()
-{
-	_renderObject->setMaterial(_disabledMaterial);
-}
 
 void TrapComponent::onTrigger(GameObject* other)
 {
@@ -65,4 +47,9 @@ void TrapComponent::onTrigger(GameObject* other)
 		_audio->playAudio(0);
 		Engine::getInstance()->remGameObject(_gameObject);
 	}
+}
+
+void TrapComponent::defuse()
+{
+	Engine::getInstance()->remGameObject(_gameObject);
 }

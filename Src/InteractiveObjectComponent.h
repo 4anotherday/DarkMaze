@@ -6,12 +6,12 @@
 #include "Component.h"
 #include "UserComponentsIDs.h"
 class Logger;
+class AudioSourceComponent;
 
 class InteractiveObjectComponent : public Component
 {
 public:
 
-	
 	/// <summary>
 	/// Constructor of the class
 	/// </summary>
@@ -23,7 +23,7 @@ public:
 	~InteractiveObjectComponent();
 
 	/// <summary>
-	/// Notify the player in case the interactive object(this) collide with the player 
+	/// Notify the player in case the interactive object(this) collide with the player
 	/// </summary>
 	void onTrigger(GameObject* other) override;
 	void start() override;
@@ -40,10 +40,12 @@ public:
 	/// Get the max distance at which the object is no longer interactive
 	/// </summary>
 	inline double getDistance() { return _distance; }
+
+protected:
+	AudioSourceComponent* _audio;
 private:
 	Logger* _log;
 	double _distance;
-
 };
 
 #endif // !INTERACTIVEOBJECTCOMPONENT_H
