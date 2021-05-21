@@ -92,11 +92,13 @@ go_7[4] = { Component = "TrapComponent",EnabledMaterial="Practica1/Red"}
 
 -- Desactivador
 go_8 = {}
-go_8[0] = { Name = "Desactivador1", HowManyCmps = 4, Persist = false}
+go_8[0] = { Name = "Desactivador1", HowManyCmps = 5, Persist = false}
 go_8[1] = { Component = "Transform", Coord = {X = -16.75, Y = 0.3, Z = -12.2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .6, Y = .6, Z = .6}}
 go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Metal", Visible=true, Shadows=true, RenderingDistance = 50}
 go_8[3] = { Component = "SphereCollider",Radius=2,IsTrigger=true}
 go_8[4] = { Component = "ObjectDeactivatorComponent",ObjName="Trampa1"}
+go_8[5] = { Component = "AudioSource", Route = {"Assets/Audio/SwitchSound.mp3" }, StopOnDestroy = false}
+
 
 
 -- Paredes
