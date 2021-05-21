@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 125
+HowManyGameObjects = 126
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 13, Persist = false}
@@ -24,7 +24,7 @@ go_0[5] = { Component = "PlayerKeysComponent"}
 go_0[6] = { Component = "HealthComponent", HP=2 }
 go_0[7] = { Component = "PlayerVisibilityComponent" }
 go_0[8] = { Component = "RigidBody", Type="Box", Mass=10, Width=0.25,Height=1,Depth=0.25, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
-go_0[9] = { Component = "PlayerMovementComponent", SpeedForward = 500, SpeedSideWays = 500, SpeedBackwards = 500, CameraSpeed = 15}
+go_0[9] = { Component = "PlayerMovementComponent", SpeedForward = 320, SpeedSideWays = 260, SpeedBackwards = 260, CameraSpeed = 15}
 go_0[10] = { Component = "PlayerLookEnemyGlitchComponent"}
 go_0[11] = { Component = "UIManagerComponent"}
 go_0[12] = { Component = "AudioSource", Route = {"Assets/Audio/FootStep2.wav", "Assets/Audio/Footsteps1.ogg"}}
@@ -54,7 +54,7 @@ go_2[4] = { Component = "FirstAidKitComponent", HealthAmount = 10 }
 
 go_3 = {}
 go_3[0] = { Name = "Key", HowManyCmps = 5, Persist = false}
-go_3[1] = { Component = "Transform", Coord = {X = 30, Y = 2, Z = 7.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.8, Y = 0.8, Z = 0.8}}
+go_3[1] = { Component = "Transform", Coord = {X = 30, Y = 0.4, Z = 8.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.8, Y = 0.8, Z = 0.8}}
 go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Brown", Visible=true, Shadows=false, RenderingDistance = 50}
 go_3[3] = { Component = "SphereCollider",Radius=1,IsTrigger=true}
 go_3[4] = { Component = "KeyComponent" }
@@ -94,7 +94,7 @@ go_7[5] = { Component = "AudioSource", Route = {"Assets/Audio/MetalHit.wav" }, S
 -- Desactivador
 go_8 = {}
 go_8[0] = { Name = "Desactivador1", HowManyCmps = 5, Persist = false}
-go_8[1] = { Component = "Transform", Coord = {X = -16.75, Y = 0.3, Z = -12.2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .3, Z = .3}}
+go_8[1] = { Component = "Transform", Coord = {X = -16.75, Y = 0.2, Z = -12.2}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .4, Z = .3}}
 go_8[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Metal", Visible=true, Shadows=true, RenderingDistance = 50}
 go_8[3] = { Component = "SphereCollider",Radius=2,IsTrigger=true}
 go_8[4] = { Component = "ObjectDeactivatorComponent",ObjName="Trampa1"}
@@ -378,7 +378,7 @@ go_51[3] = { Component = "RigidBody", Type="Box", Static=true, IsTrigger=false}
 
 go_52 = {}
 go_52[0] = { Name = "ParedG6", HowManyCmps = 3, Persist = false}
-go_52[1] = { Component = "Transform", Coord = {X = -7.5, Y = 2, Z = 10}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1.5, Y = 2, Z = 4}}
+go_52[1] = { Component = "Transform", Coord = {X = -7.5, Y = 2, Z = 10}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1.5, Y = 4, Z = 4}}
 go_52[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 250}
 go_52[3] = { Component = "RigidBody", Type="Box", Static=true, IsTrigger=false}
 
@@ -834,7 +834,7 @@ go_117[5] = { Component = "AudioSource", Route = {"Assets/Audio/MetalHit.wav" },
 
 go_118 = {}
 go_118[0] = { Name = "Desactivador2", HowManyCmps = 5, Persist = false}
-go_118[1] = { Component = "Transform", Coord = {X = 10, Y = 0.3, Z = 9.75 + 1.875 - 0.3}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .6, Y = .6, Z = .6}}
+go_118[1] = { Component = "Transform", Coord = {X = 10, Y = 0.2, Z = 9.75 + 1.875 - 0.3}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .4, Z = .3}}
 go_118[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Metal", Visible=true, Shadows=true, RenderingDistance = 50}
 go_118[3] = { Component = "SphereCollider",Radius=2,IsTrigger=true}
 go_118[4] = { Component = "ObjectDeactivatorComponent",ObjName="Trampa2"}
@@ -879,13 +879,41 @@ go_123[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practi
 go_123[3] = { Component = "SphereCollider", Radius=1,IsTrigger=true}
 go_123[4] = { Component = "HideoutComponent" }
 
-
 go_124 = {}
 go_124[0] = { Name = "Techo", HowManyCmps = 3, Persist = false}
 go_124[1] = { Component = "Transform", Coord = {X = 0, Y = 4.5, Z = 0}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 200, Y = 1, Z = 150}}
 go_124[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Suelo", Visible=true, Shadows=true, RenderingDistance = 1000}
 go_124[3] = { Component = "RigidBody", Type="Box", Static=true, IsTrigger=false}
 
+go_125 = {}
+go_125[0] = { Name = "Luz1", HowManyCmps = 2, Persist = false}
+go_125[1] = { Component = "Transform", Coord = {X = 23, Y = 3.5, Z = -13.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_125[2] = { Component = "LightComponent", LightType= "POINT", Visible = true, 
+											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
+											Diffuse = {Red = 1, Green= 0, Blue = 0}, 
+											Specular = {Red = 1, Green= 0, Blue = 0},
+											LightDirection = {X = 0, Y = 0, Z = 0},
+											Intensity=5}
+
+go_126 = {}
+go_126[0] = { Name = "Luz2", HowManyCmps = 2, Persist = false}
+go_126[1] = { Component = "Transform", Coord = {X = 30, Y = 3.5, Z = 8.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_126[2] = { Component = "LightComponent", LightType= "POINT", Visible = true, 
+											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
+											Diffuse = {Red = 1, Green= 1, Blue = 1}, 
+											Specular = {Red = 1, Green= 1, Blue = 1},
+											LightDirection = {X = 0, Y = 0, Z = 0},
+											Intensity=5}
+
+go_127 = {}
+go_127[0] = { Name = "Luz3", HowManyCmps = 2, Persist = false}
+go_127[1] = { Component = "Transform", Coord = {X = 4, Y = 3.5, Z = 24.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_127[2] = { Component = "LightComponent", LightType= "POINT", Visible = true, 
+											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
+											Diffuse = {Red = 1, Green= 1, Blue = 1}, 
+											Specular = {Red = 1, Green= 1, Blue = 1},
+											LightDirection = {X = 0, Y = 0, Z = 0},
+											Intensity=5}
 
 --Luces
 
