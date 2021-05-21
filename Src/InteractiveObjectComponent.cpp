@@ -5,9 +5,6 @@
 #include "Logger.h"
 #include <iostream>
 
-//ADD_COMPONENT(InteractiveObjectComponent)
-
-
 InteractiveObjectComponent::InteractiveObjectComponent(UserComponentId::UserComponentId id) : Component(id), _distance(30.0f), _log(nullptr)
 {
 }

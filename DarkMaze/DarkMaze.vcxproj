@@ -39,6 +39,7 @@
     <ClCompile Include="..\Src\PlayerMovementComponent.cpp" />
     <ClCompile Include="..\Src\PlayerVisibilityComponent.cpp" />
     <ClCompile Include="..\Src\ScreamerAIEnemyComponent.cpp" />
+    <ClCompile Include="..\Src\SwitcherComponent.cpp" />
     <ClCompile Include="..\Src\TrapComponent.cpp" />
     <ClCompile Include="..\Src\UIManagerComponent.cpp" />
   </ItemGroup>
@@ -66,6 +67,7 @@
     <ClInclude Include="..\Src\PlayerVisibilityComponent.h" />
     <ClInclude Include="..\Src\ScreamerAIEnemyComponent.h" />
     <ClInclude Include="..\Src\HealthComponent.h" />
+    <ClInclude Include="..\Src\SwitcherComponent.h" />
     <ClInclude Include="..\Src\TrapComponent.h" />
     <ClInclude Include="..\Src\UIManagerComponent.h" />
     <ClInclude Include="..\Src\UserComponentsIDs.h" />

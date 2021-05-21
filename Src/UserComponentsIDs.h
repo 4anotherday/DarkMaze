@@ -30,6 +30,7 @@ namespace UserComponentId {
 		DoorComponent,
 		TrapComponent,
 		ObjectDeactivatorComponent,
+		SwitcherComponent,
 		HideoutComponent,
 		PlayerVisibilityComponent,
 		UIManagerComponent,
