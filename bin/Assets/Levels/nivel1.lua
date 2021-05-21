@@ -12,7 +12,7 @@
 
 -- You can find component definition examples at the end of this document
 
-HowManyGameObjects = 130
+HowManyGameObjects = 134
 -- Player
 go_0 = {}
 go_0[0] = { Name = "Player", HowManyCmps = 13, Persist = false}
@@ -56,7 +56,7 @@ go_2[5] = { Component = "AudioSource", Route = {"Assets/Audio/Bandage.wav" }, St
 go_3 = {}
 go_3[0] = { Name = "Key", HowManyCmps = 5, Persist = false}
 go_3[1] = { Component = "Transform", Coord = {X = 30, Y = 0.4, Z = 8.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 0.8, Y = 0.8, Z = 0.8}}
-go_3[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Brown", Visible=true, Shadows=false, RenderingDistance = 50}
+go_3[2] = {	Component = "RenderObject", MeshName="key.mesh", Material="key", Visible=true, Shadows=false, RenderingDistance = 50}
 go_3[3] = { Component = "SphereCollider",Radius=1,IsTrigger=true}
 go_3[4] = { Component = "KeyComponent" }
 go_3[5] = { Component = "AudioSource", Route = {"Assets/Audio/KeyPickUp.wav" }, StopOnDestroy = false}
@@ -941,7 +941,48 @@ go_129[2] = { Component = "LightComponent", LightType= "SPOTLIGHT", Visible = tr
 											Intensity=5}
 
 
+--Luz e interruptor zona izquierda del mapa
+go_130 = {}
+go_130[0] = { Name = "LuzDesactivable1", HowManyCmps = 2, Persist = false}
+go_130[1] = { Component = "Transform", Coord = {X = -35, Y = 4, Z = -1.75}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_130[2] = { Component = "LightComponent", LightType= "SPOTLIGHT", Visible = true, 
+											Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
+											Diffuse = {Red = 1, Green= 0.2, Blue = 0.2}, 
+											SpotLightRange = {InnerAngle = 5, OuterAngle = 60, FallOf = 1},
+											LightDirection = {X = 0, Y = 1, Z = 0},
+											Intensity=30}
+go_131 = {}
+go_131[0] = { Name = "DesactivadorLuz1", HowManyCmps = 5, Persist = false}
+go_131[1] = { Component = "Transform", Coord = {X = -19.5, Y = 2, Z = -1}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .4, Z = .3}}
+go_131[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Metal", Visible=true, Shadows=true, RenderingDistance = 50}
+go_131[3] = { Component = "SphereCollider",Radius=1,IsTrigger=true}
+go_131[4] = { Component = "SwitcherComponent",ObjName="LuzDesactivable1"}
+go_131[5] = { Component = "AudioSource", Route = {"Assets/Audio/SwitchSound.mp3" }, StopOnDestroy = false}
+
+
+
+
+--Luz e interruptor zona inferior del mapa
+go_132 = {}
+go_132[0] = { Name = "LuzDesactivable2", HowManyCmps = 2, Persist = false}
+go_132[1] = { Component = "Transform", Coord ={X = 21, Y = 3, Z = 24.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
+go_132[2] = { Component = "LightComponent", LightType= "SPOTLIGHT", Visible = true, 
+	Attenuation = {Range = 200, Constant = 1.0, Linear = 0.30, Quadratic=2},
+	Diffuse = {Red = 1, Green= 0.2, Blue = 0.2}, 
+	SpotLightRange = {InnerAngle = 5, OuterAngle = 60, FallOf = 1},
+	LightDirection = {X = 0, Y = 1, Z = 0},
+	Intensity=30}
 											
+go_133 = {}
+go_133[0] = { Name = "DesactivadorLuz2", HowManyCmps = 5, Persist = false}
+go_133[1] = { Component = "Transform",  Coord = {X = 8.5, Y = 2, Z = 21.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .4, Z = .3}}
+go_133[2] = { Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Metal", Visible=true, Shadows=true, RenderingDistance = 50}
+go_133[3] = { Component = "SphereCollider",Radius=1,IsTrigger=true}
+go_133[4] = { Component = "SwitcherComponent",ObjName="LuzDesactivable2"}
+go_133[5] = { Component = "AudioSource", Route = {"Assets/Audio/SwitchSound.mp3" }, StopOnDestroy = false}
+
+
+
 --Luces
 
 --go_2 = {}

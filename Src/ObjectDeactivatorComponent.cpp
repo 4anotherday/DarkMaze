@@ -7,6 +7,7 @@
 #include "AudioSourceComponent.h"
 
 ADD_COMPONENT(ObjectDeactivatorComponent)
+
 ObjectDeactivatorComponent::ObjectDeactivatorComponent() :InteractiveObjectComponent(UserComponentId::ObjectDeactivatorComponent), _trap(nullptr)
 {
 }

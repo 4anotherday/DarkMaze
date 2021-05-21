@@ -30,6 +30,8 @@ void SwitcherComponent::start()
 	_light = static_cast<LightComponent*>(go->getComponent(ComponentId::LightComponent));
 	if (_light == nullptr)
 		throw ComponentException("TrapComponent not found in an object");
+	else
+		_light->setEnabled(false);
 }
 
 void SwitcherComponent::interact()
