@@ -75,6 +75,10 @@ void ScreamerAIEnemyComponent::update()
 			_moving = false;
 			_elapsedFollowTime = 0;
 		}
+		if (distance > _idleSoundRange) {
+			_audioSource->stopChannel(0);
+			_idleSoundOn = false;
+		}
 	}
 	if (_readyToMove) {
 		//If ray doesnt hit anything static, that means we have direct sight towards the player
@@ -108,7 +112,9 @@ void ScreamerAIEnemyComponent::update()
 void ScreamerAIEnemyComponent::idlestate()
 {
 	//0 is the audio corresponding to idle
-	if (!_idleSoundOn && (_transformEnemy->getPosition() - _tranformPlayer->getPosition()).magnitude() < _idleSoundRange) {
+
+
+	if ((_transformEnemy->getPosition() - _tranformPlayer->getPosition()).magnitude() < _idleSoundRange && !_idleSoundOn) {
 		_audioSource->setAudioLoop(0, -1);
 		_audioSource->playAudio(0);
 		_idleSoundOn = true;

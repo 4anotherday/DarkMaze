@@ -813,7 +813,7 @@ go_114[4] = { Component = "AudioSource", Route = {"Assets/Audio/girl_sobbing.mp3
 			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
 -- go_114[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
 go_114[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
-			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1.5}
+			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1}
 
 go_115 = {}
 go_115[0] = { Name = "Screamer2", HowManyCmps = 5, Persist = false}
@@ -827,7 +827,7 @@ go_115[4] = { Component = "AudioSource", Route = {"Assets/Audio/girl_sobbing.mp3
 			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
 -- go_115[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
 go_115[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
-			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1.5}
+			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1}
 
 go_116 = {}
 go_116[0] = { Name = "Screamer3", HowManyCmps = 5, Persist = false}
@@ -841,7 +841,7 @@ go_116[4] = { Component = "AudioSource", Route = {"Assets/Audio/girl_sobbing.mp3
 			Stereo = true, MinMaxDistance = {Min = 2, Max = 6}, Volume= 1, Play = false}
 -- go_116[5] = { Component = "ParticleSystem", Path="Assets/ParticleSystems/Practica2.particle"}
 go_116[5] = { Component = "ScreamerAIEnemyComponent", ShoutIntensityAttack = 1, ShoutIntensityIdle = 0.1,
-			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1.5}
+			  IdleSoundRange = 10, DetectionRange = 7, FollowTime = 4, DyingTime = 3.5, MoveSpeed = 1}
 
 --go_114 = {}
 --go_114[0] = { Name = "Screamer1", HowManyCmps = 5, Persist = false}
