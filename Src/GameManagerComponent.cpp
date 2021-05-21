@@ -11,13 +11,13 @@
 
 ADD_COMPONENT(GameManagerComponent)
 
-GameManagerComponent::GameManagerComponent() : Component(UserComponentId::GameManagerComponent),_level(1), _maxLevel(0), _keyboard(nullptr)
+GameManagerComponent::GameManagerComponent() : Component(UserComponentId::GameManagerComponent), _keyboard(nullptr)
 {
+
 }
-void GameManagerComponent::awake(luabridge::LuaRef& data)
+
+GameManagerComponent::~GameManagerComponent()
 {
-	if (LUAFIELDEXIST(Level)) _level = GETLUAFIELD(Level, int);
-	if (LUAFIELDEXIST(MaxLevel)) _maxLevel = GETLUAFIELD(MaxLevel, int);
 }
 
 void GameManagerComponent::start()
@@ -32,21 +32,10 @@ void GameManagerComponent::update()
 		toMenu();
 }
 
-void GameManagerComponent::nextLevel()
-{
-	_level++;
-	if (_level < _maxLevel)
-		Engine::getInstance()->changeScene("nivel" + std::to_string(_level) + ".lua");
-	else {
-		toMenu();
-		throw "Last level already reached, cannot load next level";
-	}
-
-}
-
 void GameManagerComponent::toMenu()
 {
 	MouseInput::getInstance()->setMouseRelativeMode(false);
+	GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->setAudioLoop(0, -1);
 	GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->playAudio(0);
 	GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->setVolumeChannel(0.1, 0);
 	Engine::getInstance()->changeScene("menu.lua");

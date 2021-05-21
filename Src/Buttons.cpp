@@ -31,7 +31,7 @@ void PlayButtonComponent::startGame(void* null)
 
 	static_cast<AudioSourceComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(ComponentId::AudioSource))->stopChannel(0);
 
-	Engine::getInstance()->changeScene("nivel1Test.lua");
+	Engine::getInstance()->changeScene("nivel1.lua");
 }
 
 //-----------------------------------------------QUIT BUTTON-------------------------------------------------------------

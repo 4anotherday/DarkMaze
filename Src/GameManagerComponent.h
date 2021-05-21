@@ -5,31 +5,32 @@ class KeyBoardInput;
 class GameManagerComponent : public Component
 {
 public:
-
+	/// <summary>
+	/// Constructor of the class
+	/// </summary>
 	GameManagerComponent();
-    ~GameManagerComponent(){}
+	/// <summary>
+	/// Destructor of the class
+	/// </summary>
+	~GameManagerComponent();
 
-	void awake(luabridge::LuaRef& data) override;
-
+	/// <summary>
+	/// Initializes the component, called once at the start of the execution
+	/// </summary>
 	void start() override;
 
+	/// <summary>
+	/// Checks the distance between 
+	/// </summary>
 	void update() override;
 
 	/// <summary>
-	/// Loads the next level,if exists
-	/// </summary>
-	void nextLevel();
-
-	/// <summary>
-	/// Reloads the current level
+	/// Goes to the main menu
 	/// </summary>
 	void toMenu();
 
 
 private:
 	KeyBoardInput* _keyboard;
-    int _level;
-	int _maxLevel;
-
 };
 
