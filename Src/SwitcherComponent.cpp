@@ -4,10 +4,11 @@
 #include "GameObject.h"
 #include "Exceptions.h"
 #include "SwitcherComponent.h"
+#include "AudioSourceComponent.h"
 
 ADD_COMPONENT(SwitcherComponent)
 
-SwitcherComponent::SwitcherComponent(): InteractiveObjectComponent(UserComponentId::SwitcherComponent), _light(nullptr)
+SwitcherComponent::SwitcherComponent() : InteractiveObjectComponent(UserComponentId::SwitcherComponent), _light(nullptr)
 {
 }
 
@@ -22,6 +23,7 @@ void SwitcherComponent::start()
 {
 	InteractiveObjectComponent::start();
 	GameObject* go = Engine::getInstance()->findGameObject(_deactivatableName);
+	_audio = static_cast<AudioSourceComponent*>(_gameObject->getComponent(ComponentId::AudioSource));
 	if (go == nullptr)
 		throw NullptrObjectException("trap not found");
 
@@ -33,4 +35,5 @@ void SwitcherComponent::start()
 void SwitcherComponent::interact()
 {
 	_light->setEnabled(!_light->getEnabled());
+	_audio->playAudio(0);
 }
