@@ -4,3 +4,10 @@ font arialFont {
     size 24
     resolution 72
 }
+
+font chillerFont {
+    type truetype
+    source chiller.ttf
+    size 32
+    resolution 96
+}

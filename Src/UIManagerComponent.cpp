@@ -15,7 +15,8 @@ UIManagerComponent::~UIManagerComponent()
 
 void UIManagerComponent::start()
 {
-	_keySprite = new OverlayElementMngr("GameUI/key");
+	_keySprite = new OverlayElementMngr("GameUI/KeySprite");
+	_keySprite->setEnabled(false);
 }
 
 void UIManagerComponent::showKey()
@@ -25,5 +26,5 @@ void UIManagerComponent::showKey()
 
 void UIManagerComponent::hideKey()
 {
-	_keySprite->setEnabled(true);
+	_keySprite->setEnabled(false);
 }

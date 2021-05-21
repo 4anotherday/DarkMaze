@@ -8,6 +8,7 @@
 class GameObject;
 class HealthComponent;
 class PlayerInteractiveComponent;
+class AudioSourceComponent;
 
 class FirstAidKitComponent : public InteractiveObjectComponent
 {
@@ -28,10 +29,13 @@ public:
 	/// </summary>
 	virtual void interact() override;
 
+	void onTrigger(GameObject* other);
+
 private:
 
 	HealthComponent* _health;
 	PlayerInteractiveComponent* _plInteractive;
+	AudioSourceComponent* _audio;
 	unsigned int _healthAmount;
 };
 

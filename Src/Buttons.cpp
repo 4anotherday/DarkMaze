@@ -4,7 +4,8 @@
 #include "Engine.h"
 #include "ButtonComponent.h"
 #include "GameObject.h"
-
+#include "MouseInput.h"
+#include "AudioSourceComponent.h"
 
 //-----------------------------------------------PLAY BUTTON-------------------------------------------------------------
 ADD_COMPONENT(PlayButtonComponent)
@@ -26,7 +27,11 @@ void PlayButtonComponent::start()
 
 void PlayButtonComponent::startGame(void* null)
 {
-	Engine::getInstance()->changeScene("nivel1.lua");
+	MouseInput::getInstance()->setMouseRelativeMode(true);
+
+	static_cast<AudioSourceComponent*>(Engine::getInstance()->findGameObject("GameManager")->getComponent(ComponentId::AudioSource))->stopChannel(0);
+
+	Engine::getInstance()->changeScene("nivel1Test.lua");
 }
 
 //-----------------------------------------------QUIT BUTTON-------------------------------------------------------------

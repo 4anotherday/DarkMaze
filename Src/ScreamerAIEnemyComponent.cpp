@@ -16,7 +16,8 @@ ADD_COMPONENT(ScreamerAIEnemyComponent)
 
 ScreamerAIEnemyComponent::ScreamerAIEnemyComponent() : Component(UserComponentId::ScreamerAIEnemyComponent), _detectionRange(), _invisibleEnemy(nullptr),
  _tranformPlayer(nullptr), _initialTransformEnemy(), _transformEnemy(nullptr), _readyToMove(false), _audioSource(nullptr),_visibility(nullptr), _rigidBodyEnemy(nullptr),
-_particleSystem(nullptr), _dead(false), _elapsedFollowTime(0.0f), _elapsedDyingTime(0.0f), _lastPlayerPos(), _moving(false), _idleSoundOn(false), _screamingSoundOn(false),
+_particleSystem(nullptr), _dead(false), _elapsedFollowTime(0.0f), _elapsedDyingTime(0.0f), _lastPlayerPos(), _moving(false), _idleSoundOn(false), 
+_screamingSoundOn(false), _idleSoundRange(10),
 
 //some random values
 _followTime(3.0f), _moveSpeed(5.0f), _shoutIntensityIdle(0.1f), _shoutIntensityAttack(1.0f), _dyingTime (2.0f)
@@ -32,6 +33,7 @@ void ScreamerAIEnemyComponent::awake(luabridge::LuaRef& data)
 	if (LUAFIELDEXIST(ShoutIntensityAttack))	_shoutIntensityAttack = GETLUAFIELD(ShoutIntensityAttack, float);
 	if (LUAFIELDEXIST(ShoutIntensityIdle))		_shoutIntensityIdle = GETLUAFIELD(ShoutIntensityIdle, float);
 	if (LUAFIELDEXIST(DetectionRange))			_detectionRange = GETLUAFIELD(DetectionRange, float);
+	if (LUAFIELDEXIST(IdleSoundRange))			_idleSoundRange = GETLUAFIELD(IdleSoundRange, float);
 	if (LUAFIELDEXIST(FollowTime))				_followTime = GETLUAFIELD(FollowTime, float);
 	if (LUAFIELDEXIST(DyingTime))				_dyingTime = GETLUAFIELD(DyingTime, float);
 	if (LUAFIELDEXIST(MoveSpeed))				_moveSpeed = GETLUAFIELD(MoveSpeed, float);
@@ -62,7 +64,7 @@ void ScreamerAIEnemyComponent::update()
 			_readyToMove = true;
 		}
 		else if (!_dead) {
-			//_invisibleEnemy->sound(currentPlayerPos, _shoutIntensityIdle);
+			_invisibleEnemy->sound(currentPlayerPos, _shoutIntensityIdle);
 			idlestate();
 		}
 
@@ -72,6 +74,10 @@ void ScreamerAIEnemyComponent::update()
 			_readyToMove = false;
 			_moving = false;
 			_elapsedFollowTime = 0;
+		}
+		if (distance > _idleSoundRange) {
+			_audioSource->stopChannel(0);
+			_idleSoundOn = false;
 		}
 	}
 	if (_readyToMove) {
@@ -85,11 +91,12 @@ void ScreamerAIEnemyComponent::update()
 		movingState();
 		_elapsedFollowTime += EngineTime::getInstance()->deltaTime();
 
-		if ((distance <= _detectionRange / 2) ||
+		if ((distance <= _detectionRange / 3) ||
 			_elapsedFollowTime >= _followTime) {
 			_invisibleEnemy->sound(currentPlayerPos, _shoutIntensityAttack);
 			screamingState();
 		}
+		if((distance < (2*_detectionRange )/ 3)) _audioSource->stopChannel(0);
 	}
 
 	if (_dead) {
@@ -105,13 +112,16 @@ void ScreamerAIEnemyComponent::update()
 void ScreamerAIEnemyComponent::idlestate()
 {
 	//0 is the audio corresponding to idle
-	if (!_idleSoundOn) {
+
+
+	if ((_transformEnemy->getPosition() - _tranformPlayer->getPosition()).magnitude() < _idleSoundRange && !_idleSoundOn) {
 		_audioSource->setAudioLoop(0, -1);
 		_audioSource->playAudio(0);
 		_idleSoundOn = true;
 	}
-	Vector3 trEnem = _transformEnemy->getPosition();
-	if (_initialTransformEnemy != _transformEnemy->getPosition()) {
+	double distanceBetweenEnemAndPlayer = (_transformEnemy->getPosition() - _initialTransformEnemy).magnitude();
+	//if (_initialTransformEnemy != _transformEnemy->getPosition()) {
+	if (distanceBetweenEnemAndPlayer > _initialTransformEnemy.getY()) {
 		_transformEnemy->setPosition(_initialTransformEnemy);
 		//_particleSystem->setEnabled(true);
 		/*Vector3 dir =  (_initialTransformEnemy).normalize() - _transformEnemy->getPosition();
@@ -130,15 +140,17 @@ void ScreamerAIEnemyComponent::movingState()
 {
 	if (!_moving) return;
 
-	_audioSource->stopChannel(0);
-
 	//Vector3 dir = (_tranformPlayer->getPosition()).normalize() - _transformEnemy->getPosition();
+	Vector3 look = _lastPlayerPos - _transformEnemy->getPosition();
+	float angle = atan2(look.getX(), look.getZ());
+	_transformEnemy->setRotation(Vector3(0, angle, 0));
+
 	Vector3 dir = (_lastPlayerPos) - _transformEnemy->getPosition();
 	dir.normalize();
 	dir = dir * _moveSpeed;
 	dir.setY(0.0);
 
-	std::cout << dir.getX() << " " << dir.getY() << " " << dir.getZ() << " " << std::endl;
+	//std::cout << dir.getX() << " " << dir.getY() << " " << dir.getZ() << " " << std::endl;
 	_rigidBodyEnemy->setLinearVelocity(dir);
 
 	/*Vector3 dir = _tranformPlayer->getPosition();
@@ -152,7 +164,7 @@ void ScreamerAIEnemyComponent::screamingState()
 	if (!_screamingSoundOn) {
 		_audioSource->playAudio(1);
 		int a = _audioSource->getVolumeChannel(0); // esto es 0??
-		_audioSource->setVolumeChannel(4, 1);
+		_audioSource->setVolumeChannel(10, 1);
 		_screamingSoundOn = true;
 	}
 	//_particleSystem->setEnabled(true);

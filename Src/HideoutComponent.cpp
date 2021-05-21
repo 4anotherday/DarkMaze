@@ -47,7 +47,7 @@ void HideoutComponent::start()
 			throw "Hideout doesn't have Transform";
 		SphereColliderComponent* col = GETCOMPONENT(SphereColliderComponent, ComponentId::SphereCollider);
 		if (col != nullptr)
-			_distance = .55 * col->getRadius();
+			_distance = 2 * col->getRadius();
 		else if (_log != nullptr) _log->log("Hideout doesn't have SphereColliderComponent", Logger::Level::WARN);
 		_render = GETCOMPONENT(RenderObjectComponent, ComponentId::RenderObject);
 		if (_render == nullptr && _log != nullptr)
@@ -58,11 +58,15 @@ void HideoutComponent::start()
 
 void HideoutComponent::update()
 {
+	//std::cout << _myTransform->getPosition().getX() << " " << _myTransform->getPosition().getY() << _myTransform->getPosition().getZ() << '\n';
+	//std::cout << _playerTransform->getPosition().getX() << " " << _playerTransform->getPosition().getY() << _playerTransform->getPosition().getZ() << '\n';
+
 	if (!_visibility->getVisible()) {
 
 		Vector3 pos(_myTransform->getPosition().getX(), _playerTransform->getPosition().getY(), _myTransform->getPosition().getZ());
 		float distance = std::abs((pos - _playerTransform->getPosition()).magnitude());
-		if (distance >= _distance) {
+		//the second check is to avoid other hideouts setting visible the player
+		if (distance >= _distance && distance <= 1.1 * _distance) {
 
 			_visibility->setVisible(true);
 			_render->setMaterial(_normalMaterial);
@@ -73,7 +77,10 @@ void HideoutComponent::update()
 
 void HideoutComponent::onTrigger(GameObject* other)
 {
-	_visibility->setVisible(false);
-	_render->setMaterial(_alphaMaterial);
+	if (other->getComponent(UserComponentId::PlayerVisibilityComponent) != nullptr) {
+
+		_visibility->setVisible(false);
+		_render->setMaterial(_alphaMaterial);
+	}
 
 }

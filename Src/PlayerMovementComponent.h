@@ -13,6 +13,7 @@ class CameraComponent;
 class EngineTime;
 class KeyBoardInput;
 class MouseInput;
+class AudioSourceComponent;
 
 class PlayerMovementComponent : public Component {
 public:
@@ -45,6 +46,7 @@ private:
 	Transform* _tr;
 	RigidBodyComponent* _rb;
 	CameraComponent* _cam;
+	AudioSourceComponent* _audio;
 
 	EngineTime* _time;
 	KeyBoardInput* _keyboard;
@@ -54,7 +56,6 @@ private:
 
 	KeyCode _keyForward, _keyLeft, _keyRight, _keyBackward, _keyCrouch;
 	float _speedForward, _speedSideways, _speedBackwards, _slowCrouching;
-	float _playerHeight;
 
 	bool _crouching;
 

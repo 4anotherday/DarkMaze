@@ -6,6 +6,8 @@
 #include "GameObject.h"
 #include "Engine.h"
 #include "KeyboardInput.h"
+#include "MouseInput.h"
+#include "AudioSourceComponent.h"
 
 ADD_COMPONENT(GameManagerComponent)
 
@@ -21,6 +23,7 @@ void GameManagerComponent::awake(luabridge::LuaRef& data)
 void GameManagerComponent::start()
 {
 	_keyboard = KeyBoardInput::getInstance();
+	Engine::getInstance()->setViewportColour(0, 0, 0);
 }
 
 void GameManagerComponent::update()
@@ -43,6 +46,9 @@ void GameManagerComponent::nextLevel()
 
 void GameManagerComponent::toMenu()
 {
+	MouseInput::getInstance()->setMouseRelativeMode(false);
+	GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->playAudio(0);
+	GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->setVolumeChannel(0.1, 0);
 	Engine::getInstance()->changeScene("menu.lua");
 }
 

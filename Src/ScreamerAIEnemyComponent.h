@@ -88,7 +88,7 @@ private:
 	//Enemy's detection range to detect the player, if detected, it procceeds to move towards the player
 	float _detectionRange;
 	//The sound will be heard from this position
-	//float _idleSoundRange;
+	float _idleSoundRange;
 
 	float _moveSpeed;
 

@@ -18,7 +18,7 @@ ADD_COMPONENT(InvisibleEnemyAIComponent)
 InvisibleEnemyAIComponent::InvisibleEnemyAIComponent() : Component(UserComponentId::InvisibleEnemyAIComponent),
 	_transformPlayer(nullptr), _myTransform(nullptr), _audioSource(nullptr), _playerHealth(nullptr),
 	_playerVisibility(nullptr), _ai(nullptr), _states(), _transitions(),
-	_actualSpeed(3.0), _speed(3.0), _slowAfterHit(0.5),
+	_actualSpeed(), _speed(3.0), _slowAfterHit(0.25),
 	_radiusFindPlayer(15.0), _minRadiusFindPlayer(6.0), _maxRadiusFindPlayer(20.0),
 	_sightingDistance(19.0), _lastKnownPosition(), _justLostSightTime(-1.0f), _lostSightSearchTime(3.0f),
 	_attackRange(2.0f), _attackCooldown(3.0f), _attackCooldownTime(-1.0f),
@@ -115,6 +115,11 @@ void InvisibleEnemyAIComponent::sound(const Vector3& soundLocation, float intens
 		_soundTime = _soundTimeSearchTime;
 		_soundLocation.set(soundLocation);
 	}
+}
+
+void InvisibleEnemyAIComponent::setFindRadius(double radius)
+{
+	_radiusFindPlayer = std::min(_maxRadiusFindPlayer, std::max(_minRadiusFindPlayer, radius));
 }
 
 void InvisibleEnemyAIComponent::justLostSight()
@@ -298,9 +303,12 @@ bool InvisibleEnemyAIComponent::GainSightTransition::evaluate(Component* compone
 	const Vector3& playerPos = comp->getPlayerTransform()->getPosition();
 	const Vector3& myPos = comp->getMyTransform()->getPosition();
 
+	if ((playerPos - myPos).magnitude() > * _sightingDistance)
+		return false;
+
 	//If ray doesnt hit anything static, that means we have direct sight towards the player
 	RayCast::RayCastHit ray = RayCast(myPos, playerPos, RayCast::Type::Static).getRayCastInformation();
-	if (!ray.hit && (playerPos - myPos).magnitude() < *_sightingDistance) {
+	if (!ray.hit) {
 		comp->setFindRadius(0.0);
 		return true;
 	}

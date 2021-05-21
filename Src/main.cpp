@@ -14,6 +14,7 @@ WinMain(HINSTANCE zhInstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdS
 		Engine::CreateInstance();
 		Engine* prueba = Engine::getInstance();
 		prueba->init("Assets/prueba.cfg", "Assets/Levels");
+		prueba->disableShadows();
 		prueba->changeScene("menu.lua");
 		prueba->run();
 	}

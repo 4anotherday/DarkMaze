@@ -5,6 +5,9 @@
 #include "includeLUA.h"
 #include "RenderObjectComponent.h"
 #include "GameObject.h"
+#include "AudioSourceComponent.h"
+#include "Engine.h"
+
 ADD_COMPONENT(TrapComponent)
 TrapComponent::TrapComponent() :Component(UserComponentId::TrapComponent), _active(true), _renderObject(nullptr), _enabledMaterial("Practica1/Suelo"),
 _disabledMaterial("Practica1/Suelo"), _log(nullptr)
@@ -18,6 +21,7 @@ TrapComponent::~TrapComponent()
 void TrapComponent::start()
 {
 	_renderObject = GETCOMPONENT(RenderObjectComponent, ComponentId::RenderObject);
+	_audio = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
 }
 
 void TrapComponent::awake(luabridge::LuaRef& data)
@@ -32,7 +36,6 @@ void TrapComponent::awake(luabridge::LuaRef& data)
 		_disabledMaterial = GETLUASTRINGFIELD(DisabledMaterial);
 	else
 		_log->log("disabledMaterial not set", Logger::Level::WARN);
-
 }
 
 void TrapComponent::setActive(bool active)
@@ -52,17 +55,14 @@ void TrapComponent::onEnable()
 void TrapComponent::onDisable()
 {
 	_renderObject->setMaterial(_disabledMaterial);
-
 }
 
-void TrapComponent::onCollision(GameObject* other)
+void TrapComponent::onTrigger(GameObject* other)
 {
 	HealthComponent* health = dynamic_cast<HealthComponent*>(other->getComponent(UserComponentId::HealthComponent));
 	if (health != nullptr && _active) {
-		health->loseHPs(health->getCurrentHP());
-
-
+		health->loseHPs(health->getCurrentHP() / 2);
+		_audio->playAudio(0);
+		Engine::getInstance()->remGameObject(_gameObject);
 	}
 }
-
-

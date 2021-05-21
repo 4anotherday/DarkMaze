@@ -2,6 +2,7 @@
 #include "PlayerKeysComponent.h"
 #include "Engine.h"
 #include "GameObject.h"
+#include "UIManagerComponent.h"
 
 ADD_COMPONENT(PlayerKeysComponent)
 
@@ -16,10 +17,14 @@ PlayerKeysComponent::~PlayerKeysComponent()
 void PlayerKeysComponent::addKey()
 {
 	_nKeys++;
+	GETCOMPONENT(UIManagerComponent, UserComponentId::UIManagerComponent)->showKey();
 }
 
 void PlayerKeysComponent::spendKey()
 {
 	_nKeys--;
-	if (_nKeys <= 0) _nKeys = 0;
+	if (_nKeys <= 0) {
+		_nKeys = 0;
+		GETCOMPONENT(UIManagerComponent, UserComponentId::UIManagerComponent)->hideKey();
+	}
 }
