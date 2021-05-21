@@ -1,0 +1,449 @@
+material Practica1/Billboard{
+	technique{
+		pass{
+			lighting off
+			texture_unit {
+				texture MomiaMeme.png
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+material keyMaterial{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			scene_blend alpha_blend
+			texture_unit {
+				texture key.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+//-------------------------------------------MENU-------------------------------------------------
+material DefaultButton{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			scene_blend alpha_blend
+			texture_unit {
+				texture DefaultButton.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material OverButton{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			scene_blend alpha_blend
+			texture_unit {
+				texture OverButton.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material ClickedButton{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			scene_blend alpha_blend
+			texture_unit {
+				texture ClickedButton.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material LogoDarkMaze{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			scene_blend alpha_blend
+			texture_unit {
+				texture DarkMazeLogo.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material LogoUs{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			scene_blend alpha_blend
+			diffuse 0.53 0.53 0.53
+			texture_unit {
+				texture LogoGris.png
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material FondoMenu{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			texture_unit {
+				texture FondMenu.png
+			}
+		}
+	}
+}
+//-------------------------------------------------------------------------------------------------
+material OverlayNegro{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			texture_unit{
+				colour_op_ex source1 src_manual src_current 0 0 0
+			}
+		}
+	}
+}
+
+material Practica1/Grieta{
+	technique{
+		pass{
+			lighting off
+			diffuse 1.0 1.0 1.0
+			alpha_rejection greater_equal 128
+			texture_unit {
+				texture Grieta.png
+				tex_address_mode wrap 
+			}
+		}
+	}
+}
+
+material Practica1/Red{
+	technique{
+		pass{
+			diffuse 1.0 0.0 0.0
+		}
+	}
+}
+
+material Practica1/Yellow{
+	technique{
+		pass{
+			diffuse 1.0 1.0 1.0
+			alpha_rejection greater_equal 128
+			texture_unit {
+				texture MomiaMeme.png
+				tex_address_mode wrap
+			}
+		}
+	}
+}
+material Practica1/Suelo{
+	technique{
+		pass{
+			diffuse 1.0 1.0 1.0
+			texture_unit {
+				texture texture.png
+				tex_address_mode wrap 
+				scale 0.2 0.2
+			}
+		}
+	}
+}
+material Practica1/Bush{
+	technique{
+		pass{
+			diffuse 1.0 1.0 1.0
+			
+
+			texture_unit {
+				texture bushTexture.jpg
+				tex_address_mode wrap
+			}
+		}
+	}
+}
+
+material Practica1/BushAlpha{
+	technique{
+		pass{
+			diffuse 1.0 1.0 1.0 0.5
+			cull_software front
+			cull_hardware none
+			scene_blend alpha_blend
+       		 depth_write off
+			texture_unit {
+				texture bushTexture.jpg
+				tex_address_mode wrap
+			}
+		}
+	}
+}
+material Prueba{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			texture_unit{
+				texture MomiaMeme.png
+			}
+		}
+	}
+}
+
+material PruebaOverlay{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			texture_unit{
+				colour_op_ex source1 src_manual src_current 1 0 0
+			}
+		}
+	}
+}
+material PruebaOverlay2{
+	technique{
+		pass{
+			lighting off
+			depth_check off
+			texture_unit{
+				colour_op_ex source1 src_manual src_current 1 1 0
+			}
+		}
+	}
+}
+material Practica1/Brown{
+	technique{
+		pass{
+			diffuse 0.4 0.13 0.0
+		}
+	}
+}
+
+material Practica1/Fucsia{
+	technique{
+		pass{
+			diffuse 0.0 0.53 0.80
+		}
+	}
+}
+
+material Practica1/NoFucsia{
+	technique{
+		pass{
+			diffuse 0.0 0.53 0.80 0.0
+		}
+	}
+}
+
+
+material Practica1/Orange{
+	technique{
+		pass{
+			diffuse 1.0 0.33 0.0
+		}
+	}
+}
+
+material Practica1/Metal{
+	technique{
+		pass{
+			diffuse 1.0 1.0 1.0
+			texture_unit{
+				texture metal.jpg
+				colour_op modulate
+			}
+		}
+	}
+}
+
+material Practica1/Floor{
+	technique{
+		pass{
+			texture_unit{
+				texture floor.png
+			}
+		}
+	}
+}
+
+material Practica1/HappyFace{
+	technique{
+		pass{
+			texture_unit{
+				texture happyface.png
+				env_map spherical
+			}
+		}
+	}
+}
+
+material Practica1/HappyFace_flip{
+	technique{
+		pass{
+			texture_unit{
+				texture happyface_flip.png
+				env_map spherical
+			}
+		}
+	}
+}
+
+material Practica1/Checker{
+	technique{
+		pass{
+			texture_unit{
+				texture checker.png
+			}
+		}
+	}
+}
+
+material Practica1/Water{
+	technique{
+		pass{
+			texture_unit{
+				texture water.jpg
+				scroll_anim -0.1 0.0
+			}
+		}
+	}
+}
+
+material Practica1/WaterWithStones{
+	technique{
+		pass{
+			texture_unit{
+				texture waterstones.jpg
+			}
+		}
+	}
+}
+
+
+material Practica2/ColaAvion{
+	technique{
+		pass{
+			lighting off
+			texture_unit{
+				texture 10points.png
+				tex_address_mode clamp
+			}
+		}
+	}
+}
+
+vertex_program RenderQuadVS hlsl
+{
+    source DefaultVS.hlsl
+	target vs_2_0
+	entry_point vs_main
+    default_params {
+        param_named_auto worldViewProj worldviewproj_matrix
+    }
+}
+
+fragment_program JugadorVisionPS hlsl
+{
+    source JugadorVisionPS.hlsl
+	target ps_3_0
+	entry_point ps_main
+    default_params {
+        param_named strength float 0.0f
+		param_named_auto Time time
+    }
+}
+
+material JugadorVisionWeakMaterial {
+    technique {
+        pass {
+            depth_check off
+            depth_write off
+            vertex_program_ref RenderQuadVS {
+            }
+            fragment_program_ref JugadorVisionPS {
+				param_named strength float 0.5f
+            }
+            texture_unit RTT0
+            {
+                filtering none
+                tex_address_mode clamp
+            }
+        }
+    } 
+}
+
+material JugadorVisionStrongMaterial {
+    technique {
+        pass {
+            depth_check off
+            depth_write off
+            vertex_program_ref RenderQuadVS {
+            }
+            fragment_program_ref JugadorVisionPS {
+				param_named strength float 1.0f
+            }
+            texture_unit RTT0
+            {
+                filtering none
+                tex_address_mode clamp
+            }
+        }
+    } 
+}
+
+//---------------VisionInjured------------------
+fragment_program JugadorVisionInjuredPS hlsl
+{
+    source JugadorVisionInjuredPS.hlsl
+	target ps_4_0
+	entry_point ps_main
+    default_params {
+        param_named_auto timeSin sintime_0_2pi 2
+		param_named tamanioBorde float 0.5f
+    }
+}
+
+material JugadorVisionInjuredMaterial
+{
+	technique {
+        pass {
+            depth_check off
+            depth_write off
+			scene_blend alpha_blend
+            vertex_program_ref RenderQuadVS {
+            }
+            fragment_program_ref JugadorVisionInjuredPS {		
+            }
+            texture_unit RTT0
+            {
+                filtering none
+                tex_address_mode clamp
+            }
+
+			texture_unit bordeRojo
+            {
+				texture sangre.jpg
+                filtering none
+                tex_address_mode clamp
+            }
+        }
+    } 
+}

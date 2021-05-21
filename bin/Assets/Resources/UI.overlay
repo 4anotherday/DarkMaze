@@ -1,0 +1,13 @@
+// The name of the overlay comes first
+overlay GameUI
+{
+    zorder 200
+    overlay_element GameUI/KeySprite Panel
+    {
+        left 0
+        top 0.9
+        width 0.1
+        height 0.1
+        material keyMaterial
+    }
+}
