@@ -95,7 +95,7 @@ go_6[4] = { Component = "HideoutComponent" }
 go_7 = {}
 go_7[0] = { Name = "Trampa1", HowManyCmps = 4, Persist = false}
 go_7[1] = { Component = "Transform", Coord = {X = -16.75, Y = 0, Z = -11.5}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = .3, Y = .2, Z = 2}}
-go_7[2] = {	Component = "RenderObject", MeshName="trap.mesh", Material="Trap", 
+go_7[2] = {	Component = "RenderObject", MeshName="cube.mesh", Material="Practica1/Metal", 
 			RotateAngle = 0, Rotate={X=0, Y=0, Z=0}, Scale = {X=1, Y=1, Z=1}, LookAt ={X=1, Y=1, Z=1},
 			Visible=true, Shadows=true, RenderingDistance = 1000}
 go_7[3] = { Component = "BoxCollider", Type="Box",Width=1,Height=50,Depth=1,IsTrigger=true}
