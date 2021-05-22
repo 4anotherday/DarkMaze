@@ -9,7 +9,7 @@
 
 ADD_COMPONENT(HealthComponent)
 
-HealthComponent::HealthComponent() : Component(UserComponentId::HealthComponent), _maxHealthPoints(), _healthPoints(), _audioSource(nullptr)
+HealthComponent::HealthComponent() : Component(UserComponentId::HealthComponent), _maxHealthPoints(), _healthPoints()
 {}
 
 void HealthComponent::awake(luabridge::LuaRef& data)
@@ -18,11 +18,6 @@ void HealthComponent::awake(luabridge::LuaRef& data)
 	if (LUAFIELDEXIST(HP))
 		_maxHealthPoints = GETLUAFIELD(HP, int);
 	_healthPoints = _maxHealthPoints;
-}
-
-void HealthComponent::start()
-{
-	_audioSource = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
 }
 
 void HealthComponent::addHPs(unsigned int n)
