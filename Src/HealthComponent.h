@@ -55,7 +55,6 @@ private:
 	/// </summary>
 	void onDead();
 
-	AudioSourceComponent* _audioSource;
 	int _healthPoints;
 	int _maxHealthPoints;
 };
