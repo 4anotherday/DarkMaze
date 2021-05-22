@@ -24,7 +24,7 @@ go_0[5] = { Component = "PlayerKeysComponent"}
 go_0[6] = { Component = "HealthComponent", HP=2 }
 go_0[7] = { Component = "PlayerVisibilityComponent" }
 go_0[8] = { Component = "RigidBody", Type="Box", Mass=10, Width=0.25,Height=1,Depth=0.25, Kinematic = false, ConstrainAngle = true, IsTrigger=false}
-go_0[9] = { Component = "PlayerMovementComponent", SpeedForward = 320, SpeedSideWays = 260, SpeedBackwards = 260, CameraSpeed = 15}
+go_0[9] = { Component = "PlayerMovementComponent", SpeedForward = 320, SpeedSideWays = 260, SpeedBackwards = 260, CameraSpeed = 15, SlowCrouching = 0.5}
 go_0[10] = { Component = "PlayerLookEnemyGlitchComponent"}
 go_0[11] = { Component = "UIManagerComponent"}
 go_0[12] = { Component = "AudioSource", Route = {"Assets/Audio/FootStep2.wav", "Assets/Audio/Footsteps1.ogg"}}
@@ -732,7 +732,7 @@ go_107[0] = { Name = "InvisibleEnemy", HowManyCmps = 3, Persist = false}
 go_107[1] = { Component = "Transform", Coord = {X =-25, Y = 1, Z = 20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_107[2] = { Component = "AudioSource", Route = {"Assets/Audio/MonsterNear.wav", "Assets/Audio/MonsterProwling.wav"}, Stereo = true,
 			MinMaxDistance = {Min = 1, Max = 2}, Volume = 0.1, Loops = {-1, 0}, Plays = {true, false}, StopOnDestroy = true}
-go_107[3] = { Component = "InvisibleEnemyAIComponent", Speed = 1}
+go_107[3] = { Component = "InvisibleEnemyAIComponent", Speed = 1, HearingDistance = 50 }
 
 go_108 = {}
 go_108[0] = { Name = "Kamikaze1", HowManyCmps = 5, Persist = false}

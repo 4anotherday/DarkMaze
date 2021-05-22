@@ -1,14 +1,5 @@
-19:30:10 -> INFO: Creacion
-19:30:11 -> INFO: Archivo de carga de escena de lua correctamente inicializado
-19:30:15 -> WARN: disabledMaterial not set
-19:30:16 -> WARN: disabledMaterial not set
-19:30:16 -> INFO: Archivo de carga de escena de lua correctamente inicializado
-19:30:23 -> INFO: Archivo de carga de escena de lua correctamente inicializado
-19:30:26 -> WARN: disabledMaterial not set
-19:30:26 -> WARN: disabledMaterial not set
-19:30:26 -> INFO: Archivo de carga de escena de lua correctamente inicializado
-19:31:03 -> INFO: Archivo de carga de escena de lua correctamente inicializado
-19:31:05 -> WARN: disabledMaterial not set
-19:31:05 -> WARN: disabledMaterial not set
-19:31:05 -> INFO: Archivo de carga de escena de lua correctamente inicializado
-19:32:04 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+19:49:10 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+19:49:12 -> WARN: disabledMaterial not set
+19:49:13 -> WARN: disabledMaterial not set
+19:49:13 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+19:51:30 -> INFO: Archivo de carga de escena de lua correctamente inicializado
