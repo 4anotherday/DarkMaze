@@ -37,7 +37,7 @@ void DoorComponent::interact()
 				_plInteractive->setObject(nullptr);
 				GameObject* go = Engine::getInstance()->findGameObject("GameManager");
 				GameManagerComponent* gm = static_cast<GameManagerComponent*>(go->getComponent(UserComponentId::GameManagerComponent));
-				gm->toMenu();
+				gm->toMenu(1);
 			}
 		}
 		else {

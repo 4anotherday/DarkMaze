@@ -28,19 +28,27 @@ void GameManagerComponent::start()
 
 void GameManagerComponent::update()
 {
-	if (_keyboard->isKeyJustDown(KeyCode::KEYCODE_ESCAPE)) 
-		toMenu();
+	if (_keyboard->isKeyJustDown(KeyCode::KEYCODE_ESCAPE))
+		toMenu(2);
 	if (_keyboard->isKeyJustDown(KeyCode::KEYCODE_F)) {
 		Engine::getInstance()->setWindowFullScreen();
 	}
 }
 
-void GameManagerComponent::toMenu()
+void GameManagerComponent::toMenu(int cause)
 {
 	MouseInput::getInstance()->setMouseRelativeMode(false);
-	GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->setAudioLoop(0, -1);
-	GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->playAudio(0);
-	GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->setVolumeChannel(0.1, 0);
+	if (cause < 2) {
+
+		GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->setAudioLoop(cause + 1,0);
+		GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->playAudio(cause + 1);
+	}
+	else {
+
+		GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->setAudioLoop(0, -1);
+		GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->playAudio(0);
+		GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource)->setVolumeChannel(0.1, 0);
+	}
 	Engine::getInstance()->changeScene("menu.lua");
 }
 

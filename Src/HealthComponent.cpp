@@ -5,10 +5,11 @@
 #include "Engine.h"
 #include "GameObject.h"
 #include "CameraComponent.h"
+#include "AudioSourceComponent.h"
 
 ADD_COMPONENT(HealthComponent)
 
-HealthComponent::HealthComponent() : Component(UserComponentId::HealthComponent), _maxHealthPoints(), _healthPoints()
+HealthComponent::HealthComponent() : Component(UserComponentId::HealthComponent), _maxHealthPoints(), _healthPoints(), _audioSource(nullptr)
 {}
 
 void HealthComponent::awake(luabridge::LuaRef& data)
@@ -19,11 +20,16 @@ void HealthComponent::awake(luabridge::LuaRef& data)
 	_healthPoints = _maxHealthPoints;
 }
 
+void HealthComponent::start()
+{
+	_audioSource = GETCOMPONENT(AudioSourceComponent, ComponentId::AudioSource);
+}
+
 void HealthComponent::addHPs(unsigned int n)
 {
 	GETCOMPONENT(CameraComponent, ComponentId::Camera)->setCompositor("JugadorVisionInjured", false);
 	_healthPoints += n;
-	if(_healthPoints>=_maxHealthPoints) _healthPoints = _maxHealthPoints;
+	if (_healthPoints >= _maxHealthPoints) _healthPoints = _maxHealthPoints;
 }
 
 void HealthComponent::loseHPs()
@@ -49,8 +55,8 @@ void HealthComponent::reset()
 }
 
 void HealthComponent::onDead()
-{	
-	GameObject * go = Engine::getInstance()->findGameObject("GameManager");
+{
+	GameObject* go = Engine::getInstance()->findGameObject("GameManager");
 	GameManagerComponent* gm = static_cast<GameManagerComponent*>(go->getComponent(UserComponentId::GameManagerComponent));
-	gm->toMenu();
+	gm->toMenu(0);
 }

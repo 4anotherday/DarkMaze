@@ -23,11 +23,12 @@ public:
 	/// Checks the distance between 
 	/// </summary>
 	void update() override;
-
+	
 	/// <summary>
 	/// Goes to the main menu
 	/// </summary>
-	void toMenu();
+	/// <param name="cause">0 if defeat, 1 if victory, other if exit</param>
+	void toMenu(int cause);
 
 
 private:

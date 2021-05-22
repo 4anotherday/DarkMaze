@@ -5,7 +5,7 @@
 
 #include "Component.h"
 class GameObject;
-
+class AudioSourceComponent;
 class HealthComponent : public Component
 {
 public:
@@ -18,6 +18,8 @@ public:
 	/// </summary>
 	/// <param name="data"></param>
 	void awake(luabridge::LuaRef& data);
+
+	virtual void start() override;
 
 	/// <summary>
 	/// add n life points to the player
@@ -53,6 +55,7 @@ private:
 	/// </summary>
 	void onDead();
 
+	AudioSourceComponent* _audioSource;
 	int _healthPoints;
 	int _maxHealthPoints;
 };
