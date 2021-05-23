@@ -19,7 +19,6 @@ public:
 	/// <param name="data"></param>
 	void awake(luabridge::LuaRef& data);
 
-	virtual void start() override;
 
 	/// <summary>
 	/// add n life points to the player
