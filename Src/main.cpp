@@ -10,17 +10,12 @@ int WINAPI
 WinMain(HINSTANCE zhInstance, HINSTANCE prevInstance, LPSTR lpCmdLine, int nCmdShow) {
 #endif
 
-	try {
-		Engine::CreateInstance();
-		Engine* prueba = Engine::getInstance();
-		prueba->init("Assets/prueba.cfg", "Assets/Levels");
-		prueba->disableShadows();
-		prueba->changeScene("menu.lua");
-		prueba->run();
-	}
-	catch (const ExcepcionTAD& e) {
-		Logger::getInstance()->log(e.msg(), Logger::Level::FATAL);
-	}
+	Engine::CreateInstance();
+	Engine* prueba = Engine::getInstance();
+	prueba->init("Assets/resources.cfg", "Assets/Levels");
+	prueba->disableShadows();
+	prueba->changeScene("menu.lua");
+	prueba->run();
 
 	return 0;
 }

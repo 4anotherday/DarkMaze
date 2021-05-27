@@ -732,7 +732,7 @@ go_107[0] = { Name = "InvisibleEnemy", HowManyCmps = 3, Persist = false}
 go_107[1] = { Component = "Transform", Coord = {X =-25, Y = 1, Z = 20}, Rotation = {X = 0, Y = 0, Z = 0}, Scale = {X = 1, Y = 1, Z = 1}}
 go_107[2] = { Component = "AudioSource", Route = {"Assets/Audio/MonsterNear.wav", "Assets/Audio/MonsterProwling.wav"}, Stereo = true,
 			MinMaxDistance = {Min = 1, Max = 2}, Volume = 0.1, Loops = {-1, 0}, Plays = {true, false}, StopOnDestroy = true}
-go_107[3] = { Component = "InvisibleEnemyAIComponent", Speed = 1, HearingDistance = 50 }
+go_107[3] = { Component = "InvisibleEnemyAIComponent", Speed = 1.25,  HearingDistance = 35, MaxRadiusFindPlayer=10, SightingDistance = 34, }
 
 go_108 = {}
 go_108[0] = { Name = "Kamikaze1", HowManyCmps = 5, Persist = false}

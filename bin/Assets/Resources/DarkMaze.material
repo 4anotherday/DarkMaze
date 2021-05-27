@@ -1,15 +1,3 @@
-material Practica1/Billboard{
-	technique{
-		pass{
-			lighting off
-			texture_unit {
-				texture MomiaMeme.png
-				tex_address_mode clamp
-			}
-		}
-	}
-}
-
 material keyMaterial{
 	technique{
 		pass{
@@ -120,20 +108,6 @@ material OverlayNegro{
 	}
 }
 
-material Practica1/Grieta{
-	technique{
-		pass{
-			lighting off
-			diffuse 1.0 1.0 1.0
-			alpha_rejection greater_equal 128
-			texture_unit {
-				texture Grieta.png
-				tex_address_mode wrap 
-			}
-		}
-	}
-}
-
 material Practica1/Red{
 	technique{
 		pass{
@@ -142,18 +116,6 @@ material Practica1/Red{
 	}
 }
 
-material Practica1/Yellow{
-	technique{
-		pass{
-			diffuse 1.0 1.0 1.0
-			alpha_rejection greater_equal 128
-			texture_unit {
-				texture MomiaMeme.png
-				tex_address_mode wrap
-			}
-		}
-	}
-}
 material Practica1/Suelo{
 	technique{
 		pass{
@@ -195,63 +157,6 @@ material Practica1/BushAlpha{
 		}
 	}
 }
-material Prueba{
-	technique{
-		pass{
-			lighting off
-			depth_check off
-			texture_unit{
-				texture MomiaMeme.png
-			}
-		}
-	}
-}
-
-material PruebaOverlay{
-	technique{
-		pass{
-			lighting off
-			depth_check off
-			texture_unit{
-				colour_op_ex source1 src_manual src_current 1 0 0
-			}
-		}
-	}
-}
-material PruebaOverlay2{
-	technique{
-		pass{
-			lighting off
-			depth_check off
-			texture_unit{
-				colour_op_ex source1 src_manual src_current 1 1 0
-			}
-		}
-	}
-}
-material Practica1/Brown{
-	technique{
-		pass{
-			diffuse 0.4 0.13 0.0
-		}
-	}
-}
-
-material Practica1/Fucsia{
-	technique{
-		pass{
-			diffuse 0.0 0.53 0.80
-		}
-	}
-}
-
-material Practica1/NoFucsia{
-	technique{
-		pass{
-			diffuse 0.0 0.53 0.80 0.0
-		}
-	}
-}
 
 
 material Practica1/Orange{
@@ -269,82 +174,6 @@ material Practica1/Metal{
 			texture_unit{
 				texture metal.jpg
 				colour_op modulate
-			}
-		}
-	}
-}
-
-material Practica1/Floor{
-	technique{
-		pass{
-			texture_unit{
-				texture floor.png
-			}
-		}
-	}
-}
-
-material Practica1/HappyFace{
-	technique{
-		pass{
-			texture_unit{
-				texture happyface.png
-				env_map spherical
-			}
-		}
-	}
-}
-
-material Practica1/HappyFace_flip{
-	technique{
-		pass{
-			texture_unit{
-				texture happyface_flip.png
-				env_map spherical
-			}
-		}
-	}
-}
-
-material Practica1/Checker{
-	technique{
-		pass{
-			texture_unit{
-				texture checker.png
-			}
-		}
-	}
-}
-
-material Practica1/Water{
-	technique{
-		pass{
-			texture_unit{
-				texture water.jpg
-				scroll_anim -0.1 0.0
-			}
-		}
-	}
-}
-
-material Practica1/WaterWithStones{
-	technique{
-		pass{
-			texture_unit{
-				texture waterstones.jpg
-			}
-		}
-	}
-}
-
-
-material Practica2/ColaAvion{
-	technique{
-		pass{
-			lighting off
-			texture_unit{
-				texture 10points.png
-				tex_address_mode clamp
 			}
 		}
 	}

@@ -1,4 +1,7 @@
-18:15:14 -> INFO: Archivo de carga de escena de lua correctamente inicializado
-18:15:17 -> WARN: disabledMaterial not set
-18:15:18 -> WARN: disabledMaterial not set
-18:15:18 -> INFO: Archivo de carga de escena de lua correctamente inicializado
+15:48:09 -> INFO: Creacion
+15:48:40 -> INFO: Graphics Engine initialized correctly
+15:48:40 -> INFO: Physics Engine initialized correctly
+15:48:40 -> INFO: Audio Engine initialized correctly
+15:48:40 -> INFO: Input manager initialized correctly
+15:48:40 -> WARN: The game object with the name GameManager has not been found
+15:48:41 -> INFO: Lua scene properly initialized
